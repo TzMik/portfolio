@@ -44,7 +44,7 @@ body {
     font-family: 'Inter', sans-serif;
     font-size: 16px;
     scroll-behavior: smooth;
-    color: #999999;
+    color: #ebebeb;
     background: #1f1f1f;
     line-height: 1.7;
     overflow-x: hidden;
@@ -692,7 +692,7 @@ main.drake-main {
     font-weight: 400;
 }
 .left-sidebar h2 {
-    font-size: 24px;
+    font-size: 18px;
     color: #fff;
     text-align: center;
     font-weight: 300;
