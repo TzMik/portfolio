@@ -1,0 +1,47 @@
+---
+import { getCollection } from "astro:content";
+import type { ProjectSchema } from "../../content/config";
+import ProjectLayout from "../../layouts/ProjectLayout.astro";
+
+export async function getStaticPaths() {
+    const projects = await getCollection("projects");
+    return projects.map((entry) => ({
+        params: { slug: entry.slug },
+        props: { entry },
+    }));
+}
+
+const { entry } = Astro.props;
+const project: ProjectSchema = entry.data;
+const { Content } = await entry.render();
+---
+
+<ProjectLayout>
+    <main class="drake-main">
+        <div id="smooth-wrapper">
+            <div id="smooth-content">
+                <article class="container">
+                    {
+                        project.image && (
+                            <img class="w-100 rounded" src={project.image} alt={project.title} />
+                        )
+                    }
+                    <div class="section-header mt-3">
+                        <h1>{project.title}</h1>
+                    </div>
+                    
+                    <div style="margin-bottom: 1rem;">
+                        {
+                            project.tags?.map((tag) => (
+                                <span>
+                                    {tag}
+                                </span>
+                            ))
+                        }
+                    </div>
+                    <Content />
+                </article>
+            </div>
+        </div>
+    </main>
+</ProjectLayout>

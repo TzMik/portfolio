@@ -1,0 +1,23 @@
+---
+import Layout from "./Layout.astro";
+---
+
+<Layout>
+    <slot />
+    <section class="container p-5">
+        <div class="card p-3 bg-dark">
+            <div class="d-flex gap-3 align-items-center">
+                <div>
+                    <img src="/assets/images/portfolio.png" class="rounded" width="100" alt="Mikel Cantero">
+                </div>
+                <div class="section-header">
+                    <h2>Mikel Cantero</h2>
+                    <h3>Ingeniero de Software</h3>
+                    <div class="d-flex gap-2">
+                        <span>canteromikel@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</Layout>

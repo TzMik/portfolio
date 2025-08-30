@@ -16,14 +16,13 @@ if (diffMonths < 0 || (diffMonths === 0 && diffDays < 0)) {
 }
 
 const projects = await getCollection("projects");
-console.log(projects);
 const numProjects = projects.length;
 
 const topProjects = projects
 	.filter((project) => project.data.top_project === true)
 	.sort((a, b) => {
-		const dateA = new Date(a.data.date || 0).getTime();
-		const dateB = new Date(b.data.date || 0).getTime();
+		const dateA = new Date(a.data.pub_date || 0).getTime();
+		const dateB = new Date(b.data.pub_date || 0).getTime();
 		return dateB - dateA;
 	})
 	.slice(0, 3);
@@ -412,7 +411,7 @@ const topProjects = projects
 										<div class="portfolio-item portfolio-full">
 											<div class="portfolio-item-inner">
 												<a
-													href={topProjects[0].data.url || "/"}
+													href={`/projects/${topProjects[0].slug || "#"}`}
 													data-lightbox="example-1"
 												>
 													<img
@@ -427,7 +426,7 @@ const topProjects = projects
 												</ul>
 											</div>
 											<h2>
-												<a href={topProjects[0].data.url || "/"}>
+												<a href={`/projects/${topProjects[0].slug || "#"}`}>
 													{topProjects[0].data.title}
 												</a>
 											</h2>
