@@ -1,20 +1,62 @@
 ---
 import Layout from "./Layout.astro";
+import "../styles/ProjectLayout.css";
 ---
 
 <Layout>
     <slot />
     <section class="container p-5">
         <div class="card p-3 bg-dark">
-            <div class="d-flex gap-3 align-items-center">
-                <div>
-                    <img src="/assets/images/portfolio.png" class="rounded" width="100" alt="Mikel Cantero">
+            <div
+                class="d-flex gap-3 justify-content-center justify-content-md-between align-items-center"
+            >
+                <div class="d-md-flex d-block gap-4 align-items-center">
+                    <div class="d-flex justify-content-center mb-2 mb-md-0">
+                        <img
+                            src="/assets/images/portfolio.png"
+                            class="rounded"
+                            width="100"
+                            alt="Mikel Cantero"
+                        />
+                    </div>
+
+                    <div>
+                        <div class="section-header text-center text-md-start">
+                            <h2 class="h4">Mikel Cantero</h2>
+                            <h3 class="h6">Ingeniero de Software</h3>
+                            <ul
+                                class="social-links d-flex justify-content-center justify-content-md-start gap-3 align-items-center"
+                            >
+                                <li>
+                                    <a href="https://github.com/TzMik" target="_blank"><i class="lab la-github"></i></a
+                                    >
+                                </li>
+                                <li>
+                                    <a href="https://www.linkedin.com/in/mikel-cantero-loi/" target="_blank"
+                                        ><i class="lab la-linkedin"></i></a
+                                    >
+                                </li>
+                            </ul>
+                            <div class="d-md-none d-flex gap-2">
+                                <a
+                                    class="theme-btn"
+                                    href="mailto:canteromikel@gmail.com"
+                                >
+                                    <i class="las la-envelope"></i> Hablemos
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="section-header">
-                    <h2>Mikel Cantero</h2>
-                    <h3>Ingeniero de Software</h3>
-                    <div class="d-flex gap-2">
-                        <span>canteromikel@gmail.com</span>
+
+                <div class="d-none d-md-flex gap-2">
+                    <div>
+                        <a
+                            class="theme-btn"
+                            href="mailto:canteromikel@gmail.com"
+                        >
+                            <i class="las la-envelope"></i> Hablemos
+                        </a>
                     </div>
                 </div>
             </div>

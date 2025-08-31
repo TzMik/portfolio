@@ -27,5 +27,5 @@ Como **CTO y cofundador**, mi trabajo fue mucho más allá de lo técnico:
 
 ---
 
-### Storytelling  
+### Conclusión  
 Fonsecantero fue más que una empresa: fue mi **escuela de liderazgo y visión estratégica**. Pasé de ser un desarrollador a convertirme en **socio tecnológico de empresas**, aprendiendo a pensar como emprendedor y a asumir múltiples roles. En dos años construimos soluciones personalizadas que no solo resolvían problemas técnicos, sino que **impulsaban modelos de negocio completos**. Esa filosofía de ser un **aliado estratégico más que un proveedor** sigue guiando cada proyecto que lidero hoy.  

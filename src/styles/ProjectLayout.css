@@ -1,0 +1,36 @@
+.social-links a {
+    font-size: 35px;
+    color: var(--secondary_color);
+}
+
+.portfolio-categories li a {
+    display: block;
+    font-size: 14px;
+    background: #fff;
+    color: #000;
+    padding: 7px 20px;
+    border-radius: 19px;
+    transition: .3s;
+}
+
+.portfolio-categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    bottom: 20px;
+    left: 20px;
+    margin-top: 1rem;
+}
+
+h1, h2, h3 {
+    letter-spacing: -0.2px;
+    line-height: 90px;
+    margin-bottom: 1rem;
+    font-weight: 300;
+}
+
+.project-content ul {
+    list-style: square;
+    padding: 0 clamp(1rem, 3rem, 3rem);
+}

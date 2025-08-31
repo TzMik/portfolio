@@ -23,23 +23,37 @@ const { Content } = await entry.render();
                 <article class="container">
                     {
                         project.image && (
-                            <img class="w-100 rounded" src={project.image} alt={project.title} />
+                            <div
+                                class="project-hero mt-2"
+                                style={`background-image: url('${project.image}'); background-size: cover; background-position: center; position: relative; width: 100%; min-height: 300px; display: flex; align-items: center; justify-content: center; border-radius: 1rem;`}
+                            >
+                                <div
+                                    class="project-hero-title"
+                                    style="position: absolute; z-index: 2; width: 100%; text-align: center;"
+                                >
+                                    <h1 style="color: white; text-shadow: 0 2px 8px rgba(0,0,0,0.7); margin: 0;">
+                                        {project.title}
+                                    </h1>
+                                </div>
+                                <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.35); border-radius: 1rem;" />
+                            </div>
                         )
                     }
-                    <div class="section-header mt-3">
-                        <h1>{project.title}</h1>
-                    </div>
-                    
+
                     <div style="margin-bottom: 1rem;">
-                        {
-                            project.tags?.map((tag) => (
-                                <span>
-                                    {tag}
-                                </span>
-                            ))
-                        }
+                        <ul class="portfolio-categories">
+                            {
+                                project.tags?.map((cat) => (
+                                    <li>
+                                        <a href="/">{cat}</a>
+                                    </li>
+                                ))
+                            }
+                        </ul>
                     </div>
-                    <Content />
+                    <div class="project-content">
+                        <Content />
+                    </div>
                 </article>
             </div>
         </div>
