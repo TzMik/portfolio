@@ -1,7 +1,7 @@
 import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
 
-export async function get() {
+export const GET = async () => {
   const projects = await getCollection('projects');
   return rss({
     title: 'Mi Portfolio - Proyectos - Mikel Cantero',
@@ -14,4 +14,4 @@ export async function get() {
       pubDate: project.data.date,
     })),
   });
-}
+};
