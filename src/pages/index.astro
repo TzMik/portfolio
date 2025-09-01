@@ -1,6 +1,9 @@
 ---
 import ProfileSidebar from "../components/ProfileSidebar.astro";
+import GoogleCalendarButton from "../components/GoogleCalendarButton.astro";
+import ClientLogo from "../components/ClientLogo.astro";
 import Skill from "../components/Skill.astro";
+import Testimonial from "../components/Testimonial.astro";
 import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 
@@ -26,6 +29,13 @@ const topProjects = projects
 		return dateB - dateA;
 	})
 	.slice(0, 3);
+
+let testimonials = await getCollection("testimonials");
+
+testimonials = testimonials.sort(() => Math.random() - 0.5);
+
+testimonials = testimonials.slice(0, 3);
+console.log(testimonials);
 ---
 
 <Layout>
@@ -407,94 +417,169 @@ const topProjects = projects
 									class="col-md-12 scroll-animation"
 									data-animation="fade_from_bottom"
 								>
-									{topProjects.length > 0 && (
-										<div class="portfolio-item portfolio-full">
-											<div class="portfolio-item-inner">
-												<a
-													href={`/projects/${topProjects[0].slug || "#"}`}
-													data-lightbox="example-1"
-												>
-													<img
-														src={topProjects[0].data.image}
-														alt={topProjects[0].data.title || "Portfolio"}
-													/>
-												</a>
-												<ul class="portfolio-categories">
-													{topProjects[0].data.tags?.map((cat) => (
-														<li><a href="/">{cat}</a></li>
-													))}
-												</ul>
+									{
+										topProjects.length > 0 && (
+											<div class="portfolio-item portfolio-full">
+												<div class="portfolio-item-inner">
+													<a
+														href={`/projects/${topProjects[0].slug || "#"}`}
+														data-lightbox="example-1"
+													>
+														<img
+															src={
+																topProjects[0]
+																	.data.image
+															}
+															alt={
+																topProjects[0]
+																	.data
+																	.title ||
+																"Portfolio"
+															}
+														/>
+													</a>
+													<ul class="portfolio-categories">
+														{topProjects[0].data.tags?.map(
+															(cat) => (
+																<li>
+																	<a href="/">
+																		{cat}
+																	</a>
+																</li>
+															),
+														)}
+													</ul>
+												</div>
+												<h2>
+													<a
+														href={`/projects/${topProjects[0].slug || "#"}`}
+													>
+														{
+															topProjects[0].data
+																.title
+														}
+													</a>
+												</h2>
 											</div>
-											<h2>
-												<a href={`/projects/${topProjects[0].slug || "#"}`}>
-													{topProjects[0].data.title}
-												</a>
-											</h2>
-										</div>
-									)}
+										)
+									}
 								</div>
 
-								{topProjects.length > 1 && (
-									<div
-										class="col-md-6 scroll-animation"
-										data-animation="fade_from_left"
-									>
-										<div class="portfolio-item portfolio-half">
-											<div class="portfolio-item-inner">
-												<a
-													href={topProjects[1].data.url || "/"}
-													data-lightbox="example-1"
-												>
-													<img
-														src={topProjects[1].data.image}
-														alt={topProjects[1].data.title || "Portfolio"}
-													/>
-												</a>
-												<ul class="portfolio-categories">
-													{topProjects[1].data.tags?.map((cat) => (
-														<li><a href="/">{cat}</a></li>
-													))}
-												</ul>
+								{
+									topProjects.length > 1 && (
+										<div
+											class="col-md-6 scroll-animation"
+											data-animation="fade_from_left"
+										>
+											<div class="portfolio-item portfolio-half">
+												<div class="portfolio-item-inner">
+													<a
+														href={
+															topProjects[1].data
+																.url || "/"
+														}
+														data-lightbox="example-1"
+													>
+														<img
+															src={
+																topProjects[1]
+																	.data.image
+															}
+															alt={
+																topProjects[1]
+																	.data
+																	.title ||
+																"Portfolio"
+															}
+														/>
+													</a>
+													<ul class="portfolio-categories">
+														{topProjects[1].data.tags?.map(
+															(cat) => (
+																<li>
+																	<a href="/">
+																		{cat}
+																	</a>
+																</li>
+															),
+														)}
+													</ul>
+												</div>
+												<h2>
+													<a
+														href={
+															topProjects[1].data
+																.url || "/"
+														}
+													>
+														{
+															topProjects[1].data
+																.title
+														}
+													</a>
+												</h2>
 											</div>
-											<h2>
-												<a href={topProjects[1].data.url || "/"}>
-													{topProjects[1].data.title}
-												</a>
-											</h2>
 										</div>
-									</div>
-								)}
+									)
+								}
 
-								{topProjects.length > 2 && (
-									<div
-										class="col-md-6 scroll-animation"
-										data-animation="fade_from_right"
-									>
-										<div class="portfolio-item portfolio-half">
-											<div class="portfolio-item-inner">
-												<a
-													href={topProjects[2].data.url || "/"}
-													data-lightbox="example-1"
-												>
-													<img
-														src={topProjects[2].data.image}
-														alt={topProjects[2].data.title || "Portfolio"}
-													/>
-												</a>
-												<ul class="portfolio-categories">
-													{topProjects[2].data.tags?.map((cat) => (
-														<li><a href="/">{cat}</a></li>
-													))}
-												</ul>
+								{
+									topProjects.length > 2 && (
+										<div
+											class="col-md-6 scroll-animation"
+											data-animation="fade_from_right"
+										>
+											<div class="portfolio-item portfolio-half">
+												<div class="portfolio-item-inner">
+													<a
+														href={
+															topProjects[2].data
+																.url || "/"
+														}
+														data-lightbox="example-1"
+													>
+														<img
+															src={
+																topProjects[2]
+																	.data.image
+															}
+															alt={
+																topProjects[2]
+																	.data
+																	.title ||
+																"Portfolio"
+															}
+														/>
+													</a>
+													<ul class="portfolio-categories">
+														{topProjects[2].data.tags?.map(
+															(cat) => (
+																<li>
+																	<a href="/">
+																		{cat}
+																	</a>
+																</li>
+															),
+														)}
+													</ul>
+												</div>
+												<h2>
+													<a
+														href={
+															topProjects[2].data
+																.url || "/"
+														}
+													>
+														{
+															topProjects[2].data
+																.title
+														}
+													</a>
+												</h2>
 											</div>
-											<h2>
-												<a href={topProjects[2].data.url || "/"}>
-													{topProjects[2].data.title}
-												</a>
-											</h2>
 										</div>
-									</div>
-								)}
+									)
+								}
 							</div>
 						</div>
 					</div>
@@ -528,102 +613,7 @@ const topProjects = projects
 								<div
 									class="owl-carousel testimonial-slider owl-theme"
 								>
-									<div class="testimonial-item">
-										<div class="testimonial-item-inner">
-											<div
-												class="author d-flex align-items-center"
-											>
-												<img
-													src="/assets/images/testimonial-1.jpg"
-													alt="testinomial"
-												/>
-												<div class="right">
-													<h3>Paublo Dybala</h3>
-													<p class="designation">
-														CEO of <span
-															>IBM Global</span
-														>
-													</p>
-												</div>
-											</div>
-											<p>
-												“Drake - A Developer with the
-												creativity, professional and
-												master of code. Much more than
-												what i'm expect. High quality
-												product & flexiable price.
-												Recommended!.”
-											</p>
-
-											<a href="/" class="project-btn"
-												>Project</a
-											>
-										</div>
-									</div>
-									<div class="testimonial-item">
-										<div class="testimonial-item-inner">
-											<div
-												class="author d-flex align-items-center"
-											>
-												<img
-													src="/assets/images/testimonial-2.jpg"
-													alt="testinomial"
-												/>
-												<div class="right">
-													<h3>Christina Morillo</h3>
-													<p class="designation">
-														Product Management of <span
-															>Invision App Inc</span
-														>
-													</p>
-												</div>
-											</div>
-											<p>
-												“Drake was a real pleasure to
-												work with and we look forward to
-												working with him again. He's
-												definitely the kind of designer
-												that you can trust with any
-												project from A-Z.”
-											</p>
-
-											<a href="/" class="project-btn"
-												>Project</a
-											>
-										</div>
-									</div>
-									<div class="testimonial-item">
-										<div class="testimonial-item-inner">
-											<div
-												class="author d-flex align-items-center"
-											>
-												<img
-													src="/assets/images/testimonial-3.jpg"
-													alt="testinomial"
-												/>
-												<div class="right">
-													<h3>Phil Foden</h3>
-													<p class="designation">
-														Director of <span
-															>Envato LLC</span
-														>
-													</p>
-												</div>
-											</div>
-											<p>
-												“Extremely profressional and
-												fast service!. Drake is a master
-												of code and he also very
-												creative. We done 3 projects
-												with him and certain will
-												continue.”
-											</p>
-
-											<a href="/" class="project-btn"
-												>Project</a
-											>
-										</div>
-									</div>
+									<Testimonial testimonials={testimonials} />
 								</div>
 								<div class="testimonial-footer-nav">
 									<div
@@ -650,78 +640,14 @@ const topProjects = projects
 									Marcas con las que he trabajado
 								</h4>
 								<div class="row align-items-center">
-									<div
-										class="col-md-3 scroll-animation"
-										data-animation="fade_from_left"
-									>
-										<img
-											src="/assets/images/client-1.png"
-											alt="client"
-										/>
-									</div>
-									<div
-										class="col-md-3 scroll-animation"
-										data-animation="fade_from_bottom"
-									>
-										<img
-											src="/assets/images/client-2.png"
-											alt="client"
-										/>
-									</div>
-									<div
-										class="col-md-3 scroll-animation"
-										data-animation="fade_from_top"
-									>
-										<img
-											src="/assets/images/client-3.png"
-											alt="client"
-										/>
-									</div>
-									<div
-										class="col-md-3 scroll-animation"
-										data-animation="fade_from_right"
-									>
-										<img
-											src="/assets/images/client-4.png"
-											alt="client"
-										/>
-									</div>
-									<div
-										class="col-md-3 scroll-animation"
-										data-animation="fade_from_left"
-									>
-										<img
-											src="/assets/images/client-5.png"
-											alt="client"
-										/>
-									</div>
-									<div
-										class="col-md-3 scroll-animation"
-										data-animation="fade_from_bottom"
-									>
-										<img
-											src="/assets/images/client-6.png"
-											alt="client"
-										/>
-									</div>
-									<div
-										class="col-md-3 scroll-animation"
-										data-animation="fade_from_top"
-									>
-										<img
-											src="/assets/images/client-7.png"
-											alt="client"
-										/>
-									</div>
-									<div
-										class="col-md-3 scroll-animation"
-										data-animation="fade_from_right"
-									>
-										<img
-											src="/assets/images/client-8.png"
-											alt="client"
-										/>
-									</div>
+									<ClientLogo src="/assets/images/brands/pinkup.png" alt="PinkUP Cosmetics" />
+									<ClientLogo src="/assets/images/brands/GOC.png" alt="GOC Make Up" />
+									<ClientLogo src="/assets/images/brands/Intermoda.png" alt="Intermoda" />
+									<ClientLogo src="/assets/images/brands/Beserva.png" alt="Beserva" />
+									<ClientLogo src="/assets/images/brands/cloe.png" alt="Cloe" />
+									<ClientLogo src="/assets/images/brands/Instituto-jalisciense-de-cancerologia.png" alt="Instituto Jalisciense de Cancerología" />
+									<ClientLogo src="/assets/images/brands/vax.png" alt="VAX Solutions" />
+									<ClientLogo src="/assets/images/brands/idoo.png" alt="IDOO Dev" />
 								</div>
 							</div>
 						</div>
@@ -752,149 +678,14 @@ const topProjects = projects
 								class="scroll-animation"
 								data-animation="fade_from_bottom"
 							>
-								canteromikel@gmail.com
+								contacto@mikelcantero.dev
 							</h3>
-							<p id="required-msg">
-								* Los campos marcados son obligatorios
-							</p>
-
-							<form
-								class="contact-form scroll-animation"
-								data-animation="fade_from_bottom"
-								method="POST"
-								action="#"
-							>
-								<div
-									class="alert alert-success messenger-box-contact__msg"
-									style="display: none"
-									role="alert"
-								>
-									Su mensaje fue enviado con éxito.
-								</div>
-								<div class="row">
-									<div class="col-md-6">
-										<div class="input-group">
-											<label for="full-name"
-												>Nombre completo <sup>*</sup></label
-											>
-											<input
-												type="text"
-												name="full-name"
-												id="full-name"
-												placeholder="Tu nombre completo"
-											/>
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="input-group">
-											<label for="email"
-												>Email <sup>*</sup></label
-											>
-											<input
-												type="email"
-												name="email"
-												id="email"
-												placeholder="Tu dirección de correo electrónico"
-											/>
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="input-group">
-											<label for="phone-number"
-												>Teléfono <span>(opcional)</span
-												></label
-											>
-											<input
-												type="text"
-												name="phone-number"
-												id="phone-number"
-												placeholder="Tu número de teléfono"
-											/>
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="input-group">
-											<label for="subject"
-												>Asunto <sup>*</sup></label
-											>
-											<select name="subject" id="subject">
-												<option value=""
-													>Selecciona un asunto</option
-												>
-												<option value="subject1"
-													>Quiero desarrollar algo a medida</option
-												>
-												<option value="subject2"
-													>Necesito asesoría técnica</option
-												>
-												<option value="subject3"
-													>Otros</option
-												>
-											</select>
-										</div>
-									</div>
-									<div class="col-md-12">
-										<div class="input-group">
-											<label for="budget"
-												>Tu presupuesto <span
-													>(opcional)</span
-												></label
-											>
-											<input
-												type="number"
-												name="budget"
-												id="budget"
-												placeholder="Introduce un presupuesto aproximado para tu proyecto"
-											/>
-										</div>
-									</div>
-									<div class="col-md-12">
-										<div class="input-group">
-											<label for="message">Mensaje</label>
-											<textarea
-												name="message"
-												id="message"
-												placeholder="Escribe tu mensaje aquí ..."
-											></textarea>
-										</div>
-									</div>
-									<div class="col-md-12">
-										<div
-											class="input-group upload-attachment"
-										>
-											<div>
-												<label for="upload-attachment">
-													<i
-														class="las la-cloud-upload-alt"
-													></i> Añadir un archivo
-													<input
-														type="file"
-														name="file"
-														id="upload-attachment"
-													/>
-												</label>
-											</div>
-										</div>
-									</div>
-									<div class="col-md-12">
-										<div
-											class="input-group submit-btn-wrap"
-										>
-											<button
-												class="theme-btn"
-												name="submit"
-												type="submit"
-												id="submit-form"
-												>Enviar mensaje</button
-											>
-										</div>
-									</div>
-								</div>
-							</form>
+							<GoogleCalendarButton />
 						</div>
 					</div>
 				</section>
 			</div>
 		</div>
 	</main>
+	<!-- El script de Google Calendar ahora está en el componente GoogleCalendarButton -->
 </Layout>

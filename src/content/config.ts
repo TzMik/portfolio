@@ -14,8 +14,22 @@ const projectsCollection = defineCollection({
   schema: projectSchema,
 });
 
+const testimonialSchema = z.object({
+  name: z.string(),
+  role: z.string(),
+  company: z.string().optional(),
+  testimonial: z.string(),
+  avatar: z.string().optional(),
+});
+
+const testimonials = defineCollection({
+  schema: testimonialSchema,
+});
+
 export type ProjectSchema = z.infer<typeof projectSchema>;
+export type TestimonialSchema = z.infer<typeof testimonialSchema>;
 
 export const collections = {
   projects: projectsCollection,
+  testimonials: testimonials,
 };

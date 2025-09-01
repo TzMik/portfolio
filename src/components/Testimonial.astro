@@ -1,0 +1,29 @@
+---
+import type { TestimonialSchema } from "../content/config";
+
+const { testimonials } = Astro.props as { testimonials: TestimonialSchema[] };
+---
+
+<div class="testimonial-slider-wrap scroll-animation" data-animation="fade_from_bottom">
+  <div class="owl-carousel testimonial-slider owl-theme">
+    {testimonials.map((testimonial) => (
+      <div class="testimonial-item">
+        <div class="testimonial-item-inner">
+          <div class="author d-flex align-items-center">
+            <img src={testimonial.data.avatar} alt={testimonial.data.name} />
+            <div class="right">
+              <h3>{testimonial.data.name}</h3>
+              <p class="designation">
+                <span>{testimonial.data.company}</span>
+              </p>
+            </div>
+          </div>
+          <p>"{testimonial.data.testimonial}"</p>
+          {testimonial.data.role && (
+                  <p><span> {testimonial.data.role}</span></p>
+            )}
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
