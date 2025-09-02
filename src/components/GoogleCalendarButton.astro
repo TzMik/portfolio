@@ -1,22 +1,8 @@
 ---
 ---
-<!-- Google Calendar Appointment Scheduling begin -->
-<link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet" />
-<script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
-<!-- end Google Calendar Appointment Scheduling -->
-
-<div id="calendar-btn-container"></div>
-
-<script>
-window.addEventListener("load", function () {
-  var container = document.getElementById("calendar-btn-container");
-  if (container && window.calendar && window.calendar.schedulingButton) {
-    window.calendar.schedulingButton.load({
-      url: "https://calendar.google.com/calendar/appointments/schedules/AcZssZ1Y1CaEdN8br00DT2DQWWlv02XUJ39RCPMCn5KDXygf8GmQMTz0ayBlbEcIiwq33mlIn9FeZtk-?gv=true",
-      color: "#EF6C00",
-      label: "Programar una cita",
-      target: container,
-    });
-  }
-});
-</script>
+<a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1Y1CaEdN8br00DT2DQWWlv02XUJ39RCPMCn5KDXygf8GmQMTz0ayBlbEcIiwq33mlIn9FeZtk-?gv=true" 
+   target="_blank" 
+   class="theme-btn">
+   <i class="las la-calendar"></i>
+   Programar una cita
+</a>
