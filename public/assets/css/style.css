@@ -1088,7 +1088,7 @@ body .body-overlay {
 .testimonial-item .testimonial-item-inner {
     border: 2px solid #565656;
     border-radius: 30px;
-    padding: 50px 50px 43px 50px;
+    padding: 50px 30px 43px 30px;
 }
 .testimonial-item .testimonial-item-inner .author {
     gap: 16px;
@@ -1116,7 +1116,7 @@ body .body-overlay {
     color: var(--primary_color);
 }
 .testimonial-item .testimonial-item-inner > p {
-    font-size: 24px;
+    font-size: 16px;
     color: #fff;
     font-weight: 300;
     line-height: 36px;
