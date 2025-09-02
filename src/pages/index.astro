@@ -144,7 +144,7 @@ testimonials = testimonials.slice(0, 5);
 								desarrollo y escalabilidad. Más tarde cofundé
 								Fonsecantero, ofreciendo durante 2 años
 								soluciones digitales a medida para negocios.
-								Hoy, como freelance software engineer y
+								Hoy, con mi experiencia como software engineer y
 								consultor, combino mi experiencia técnica y de
 								negocio para ayudar a empresas en su
 								transformación digital, comercio electrónico e
@@ -218,7 +218,10 @@ testimonials = testimonials.slice(0, 5);
 								>
 									<span class="date">2014 - 2019</span>
 									<h2>Grado en Ingeniería Informática</h2>
-									<p>Universidad del País Vasco (EHU)<br />Donostia - San Sebastián, España</p>
+									<p>
+										Universidad del País Vasco (EHU)<br
+										/>Donostia - San Sebastián, España
+									</p>
 								</div>
 							</div>
 						</div>
@@ -254,13 +257,14 @@ testimonials = testimonials.slice(0, 5);
 									<i class="las la-bezier-curve"></i>
 									<h2>Desarrollo a medida</h2>
 									<p>
-										Creo aplicaciones y plataformas
+										Creación de aplicaciones y plataformas
 										digitales diseñadas específicamente para
 										cada cliente. Desde e-commerce hasta
-										sistemas empresariales, mi enfoque está
-										en construir software escalable, seguro
-										y adaptable, que impulse la eficiencia y
-										el crecimiento del negocio.
+										sistemas empresariales, el enfoque
+										siempre debe estar en construir software
+										escalable, seguro y adaptable, que
+										impulse la eficiencia y el crecimiento
+										del negocio.
 									</p>
 								</div>
 								<div
@@ -270,7 +274,7 @@ testimonials = testimonials.slice(0, 5);
 									<i class="las la-code"></i>
 									<h2>Visión Estratégica de Negocio</h2>
 									<p>
-										No solo programo, entiendo el valor
+										Entiendo el valor
 										detrás de cada línea de código. Mi
 										experiencia con emprendedores y empresas
 										me permite alinear la tecnología con los
@@ -472,10 +476,7 @@ testimonials = testimonials.slice(0, 5);
 											<div class="portfolio-item portfolio-half">
 												<div class="portfolio-item-inner">
 													<a
-														href={
-															topProjects[1].data
-																.url || "/"
-														}
+														href={`/projects/${topProjects[1].slug || "#"}`}
 													>
 														<img
 															src={
@@ -504,10 +505,7 @@ testimonials = testimonials.slice(0, 5);
 												</div>
 												<h2>
 													<a
-														href={
-															topProjects[1].data
-																.url || "/"
-														}
+														href={`/projects/${topProjects[1].slug || "#"}`}
 													>
 														{
 															topProjects[1].data
@@ -636,14 +634,38 @@ testimonials = testimonials.slice(0, 5);
 									Marcas con las que he trabajado
 								</h4>
 								<div class="row align-items-center">
-									<ClientLogo src="/assets/images/brands/pinkup.png" alt="PinkUP Cosmetics" />
-									<ClientLogo src="/assets/images/brands/GOC.png" alt="GOC Make Up" />
-									<ClientLogo src="/assets/images/brands/Intermoda.png" alt="Intermoda" />
-									<ClientLogo src="/assets/images/brands/Beserva.png" alt="Beserva" />
-									<ClientLogo src="/assets/images/brands/cloe.png" alt="Cloe" />
-									<ClientLogo src="/assets/images/brands/Instituto-jalisciense-de-cancerologia.png" alt="Instituto Jalisciense de Cancerología" />
-									<ClientLogo src="/assets/images/brands/vax.png" alt="VAX Solutions" />
-									<ClientLogo src="/assets/images/brands/idoo.png" alt="IDOO Dev" />
+									<ClientLogo
+										src="/assets/images/brands/pinkup.png"
+										alt="PinkUP Cosmetics"
+									/>
+									<ClientLogo
+										src="/assets/images/brands/GOC.png"
+										alt="GOC Make Up"
+									/>
+									<ClientLogo
+										src="/assets/images/brands/Intermoda.png"
+										alt="Intermoda"
+									/>
+									<ClientLogo
+										src="/assets/images/brands/Beserva.png"
+										alt="Beserva"
+									/>
+									<ClientLogo
+										src="/assets/images/brands/cloe.png"
+										alt="Cloe"
+									/>
+									<ClientLogo
+										src="/assets/images/brands/Instituto-jalisciense-de-cancerologia.png"
+										alt="Instituto Jalisciense de Cancerología"
+									/>
+									<ClientLogo
+										src="/assets/images/brands/vax.png"
+										alt="VAX Solutions"
+									/>
+									<ClientLogo
+										src="/assets/images/brands/idoo.png"
+										alt="IDOO Dev"
+									/>
 								</div>
 							</div>
 						</div>
