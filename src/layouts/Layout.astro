@@ -33,6 +33,20 @@
 
 		<link rel="stylesheet" href="/assets/css/style.css" />
 		<link rel="stylesheet" href="/assets/css/responsive.css" />
+		<!-- Google tag (gtag.js) -->
+		<script
+			async
+			src="https://www.googletagmanager.com/gtag/js?id=G-HEJ2CCTQ8S"
+		></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag("js", new Date());
+
+			gtag("config", "G-HEJ2CCTQ8S");
+		</script>
 	</head>
 	<body class="home5-page">
 		<video class="body-overlay" muted autoplay loop>
@@ -169,7 +183,7 @@
 				</a>
 			</li>
 		</ul>
-		
+
 		<slot />
 
 		<script src="/assets/js/jquery.js" is:inline></script>
