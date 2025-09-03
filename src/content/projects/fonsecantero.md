@@ -2,6 +2,8 @@
 title: "Fonsecantero: Socios tecnológicos para empresas visionarias"
 description: "Mi experiencia como CTO y cofundador en Fonsecantero, una empresa dedicada a diseñar soluciones tecnológicas personalizadas, liderar equipos y transformar negocios a través de la innovación."
 pub_date: 2021-08-01
+start_date: 2023-04-01
+end_date: 2025-08-31
 image: "/assets/images/projects/fonsecantero.png"
 top_project: true
 tags: ["Liderazgo", "Arquitectura de Software", "Consultoría Tecnológica", "Automatización"]

@@ -727,6 +727,7 @@ main.drake-main {
 }
 .left-sidebar .theme-btn {
     width: 100%;
+    max-width: 20rem;
 }
 
 
@@ -755,9 +756,9 @@ main.drake-main {
     max-width: 480px;
     margin-bottom: 31px;
 }
-.hero-section .hero-content .go-to-project-btn {
-    width: 175px;
-    height: 175px;
+.go-to-project-btn {
+    width: clamp(115px, 115px, 175px);
+    height: clamp(115px, 115px, 175px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -768,11 +769,12 @@ main.drake-main {
     overflow: hidden;
     margin-right: 15px;
 }
-.hero-section .hero-content .go-to-project-btn img {
+.go-to-project-btn img {
     display: block;
+    width: clamp(100px, 100px, 216px);
     animation: rotating 6s infinite linear;
 }
-.hero-section .hero-content .go-to-project-btn i {
+.go-to-project-btn i {
     position: absolute;
     color: #fff;
     font-size: 40px;
@@ -1029,20 +1031,16 @@ body .body-overlay {
     margin-bottom: 0;
 }
 .portfolio-items .portfolio-item .portfolio-item-inner {
-    height: 370px;
     overflow: hidden;
     border-radius: 30px;
     position: relative;
     margin-bottom: 30px;
 }
-.portfolio-items .portfolio-item.portfolio-full .portfolio-item-inner {
-    height: 410px;
-}
 .portfolio-items .portfolio-item .portfolio-item-inner img {
     display: block;
     width: 100%;
-    height: 100%;
     object-fit: cover;
+    aspect-ratio: 16 / 9;
 }
 .portfolio-items .portfolio-item .portfolio-item-inner .portfolio-categories {
     position: absolute;

@@ -2,6 +2,8 @@
 title: "PinkUP E-commerce: De WordPress a una plataforma a medida"
 description: "Rediseño completo del ecommerce de PinkUP para mejorar velocidad, conversión y experiencia de usuario, integrando ERP y sistemas de pago personalizados."
 pub_date: 2023-05-01
+start_date: 2023-08-15
+end_date: 2023-11-01
 image: "/assets/images/projects/pinkup.png"
 top_project: true
 tags: ["E-commerce", "Optimización", "Integración de sistemas", "Automatización"]

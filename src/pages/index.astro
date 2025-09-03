@@ -1,5 +1,6 @@
 ---
 import ProfileSidebar from "../components/ProfileSidebar.astro";
+import PortfolioCategories from "../components/PortfolioCategories.astro";
 import GoogleCalendarButton from "../components/GoogleCalendarButton.astro";
 import ClientLogo from "../components/ClientLogo.astro";
 import Skill from "../components/Skill.astro";
@@ -24,8 +25,8 @@ const numProjects = projects.length;
 const topProjects = projects
 	.filter((project) => project.data.top_project === true)
 	.sort((a, b) => {
-		const dateA = new Date(a.data.pub_date || 0).getTime();
-		const dateB = new Date(b.data.pub_date || 0).getTime();
+		const dateA = new Date(a.data.end_date || 0).getTime();
+		const dateB = new Date(b.data.end_date || 0).getTime();
 		return dateB - dateA;
 	})
 	.slice(0, 3);
@@ -46,30 +47,24 @@ testimonials = testimonials.slice(0, 5);
 				<ProfileSidebar />
 
 				<section
-					class="hero-section page-section scroll-to-page"
+					class="hero-section page-section"
 					id="home"
 				>
 					<div class="custom-container">
 						<div class="hero-content content-width">
 							<div class="section-header">
 								<h4
-									class="subtitle scroll-animation"
+									class="subtitle"
 									data-animation="fade_from_bottom"
 								>
 									<i class="las la-home"></i> Inicio
 								</h4>
-								<h1
-									class="scroll-animation"
-									data-animation="fade_from_bottom"
-								>
+								<h1>
 									Hola! Soy <span>Mikel</span>,<br />
 									Ingeniero de Software
 								</h1>
 							</div>
-							<p
-								class="scroll-animation"
-								data-animation="fade_from_bottom"
-							>
+							<p>
 								Llevo más de {yearsExperience} años trabajando en
 								soluciones personalizadas para pequeñas, medianas
 								y grandes empresas. Proponiendo soluciones tecnologicas
@@ -78,7 +73,7 @@ testimonials = testimonials.slice(0, 5);
 							</p>
 							<a
 								href="/#portfolio"
-								class="go-to-project-btn scroll-to scroll-animation"
+								class="go-to-project-btn d-none d-md-flex"
 								data-animation="rotate_up"
 							>
 								<img
@@ -90,14 +85,14 @@ testimonials = testimonials.slice(0, 5);
 
 							<div class="facts d-flex">
 								<div
-									class="left scroll-animation"
+									class="left "
 									data-animation="fade_from_left"
 								>
 									<h1>{yearsExperience}+</h1>
 									<p>Años de <br />Experiencia</p>
 								</div>
 								<div
-									class="right scroll-animation"
+									class="right "
 									data-animation="fade_from_right"
 								>
 									<h1>{numProjects}+</h1>
@@ -112,30 +107,23 @@ testimonials = testimonials.slice(0, 5);
 				</section>
 
 				<section
-					class="about-area page-section scroll-to-page"
+					class="about-area page-section"
 					id="about"
 				>
 					<div class="custom-container">
 						<div class="about-content content-width">
 							<div class="section-header">
 								<h4
-									class="subtitle scroll-animation"
-									data-animation="fade_from_bottom"
+									class="subtitle"
 								>
 									<i class="lar la-user"></i> Acerca de mí
 								</h4>
-								<h1
-									class="scroll-animation"
-									data-animation="fade_from_bottom"
-								>
+								<h1>
 									Un buen <span>software</span> comienza<br />
 									con una estructura bien pensada
 								</h1>
 							</div>
-							<p
-								class="scroll-animation"
-								data-animation="fade_from_bottom"
-							>
+							<p>
 								Soy Ingeniero de Software con MBA en Dirección
 								de Empresas, apasionado por crear soluciones
 								tecnológicas que aporten valor real. Mi carrera
@@ -155,29 +143,25 @@ testimonials = testimonials.slice(0, 5);
 				</section>
 
 				<section
-					class="resume-area page-section scroll-to-page"
+					class="resume-area page-section"
 					id="resume"
 				>
 					<div class="custom-container">
 						<div class="resume-content content-width">
 							<div class="section-header">
 								<h4
-									class="subtitle scroll-animation"
-									data-animation="fade_from_bottom"
+									class="subtitle"
 								>
 									<i class="las la-briefcase"></i> CV
 								</h4>
-								<h1
-									class="scroll-animation"
-									data-animation="fade_from_bottom"
-								>
+								<h1>
 									Educación & <span>Experiencia</span>
 								</h1>
 							</div>
 
 							<div class="resume-timeline">
 								<div
-									class="item scroll-animation"
+									class="item "
 									data-animation="fade_from_right"
 								>
 									<span class="date">Actualidad</span>
@@ -185,7 +169,7 @@ testimonials = testimonials.slice(0, 5);
 									<p>Freelance</p>
 								</div>
 								<div
-									class="item scroll-animation"
+									class="item "
 									data-animation="fade_from_right"
 								>
 									<span class="date">2023 - 2025</span>
@@ -193,7 +177,7 @@ testimonials = testimonials.slice(0, 5);
 									<p>Fonsecantero</p>
 								</div>
 								<div
-									class="item scroll-animation"
+									class="item "
 									data-animation="fade_from_right"
 								>
 									<span class="date">2019 - 2023</span>
@@ -205,7 +189,7 @@ testimonials = testimonials.slice(0, 5);
 									<p>Fidanto</p>
 								</div>
 								<div
-									class="item scroll-animation"
+									class="item "
 									data-animation="fade_from_right"
 								>
 									<span class="date">2019</span>
@@ -213,7 +197,7 @@ testimonials = testimonials.slice(0, 5);
 									<p>GADE Business School</p>
 								</div>
 								<div
-									class="item scroll-animation"
+									class="item "
 									data-animation="fade_from_right"
 								>
 									<span class="date">2014 - 2019</span>
@@ -236,13 +220,13 @@ testimonials = testimonials.slice(0, 5);
 						<div class="services-content content-width">
 							<div class="section-header">
 								<h4
-									class="subtitle scroll-animation"
+									class="subtitle "
 									data-animation="fade_from_bottom"
 								>
 									<i class="las la-stream"></i> Habilidades
 								</h4>
 								<h1
-									class="scroll-animation"
+									class=""
 									data-animation="fade_from_bottom"
 								>
 									Mis <span>Habilidades</span>
@@ -251,7 +235,7 @@ testimonials = testimonials.slice(0, 5);
 
 							<div class="services-items">
 								<div
-									class="service-item scroll-animation"
+									class="service-item "
 									data-animation="fade_from_bottom"
 								>
 									<i class="las la-bezier-curve"></i>
@@ -268,7 +252,7 @@ testimonials = testimonials.slice(0, 5);
 									</p>
 								</div>
 								<div
-									class="service-item scroll-animation"
+									class="service-item "
 									data-animation="fade_from_bottom"
 								>
 									<i class="las la-code"></i>
@@ -284,7 +268,7 @@ testimonials = testimonials.slice(0, 5);
 									</p>
 								</div>
 								<div
-									class="service-item scroll-animation"
+									class="service-item "
 									data-animation="fade_from_bottom"
 								>
 									<i class="las la-users"></i>
@@ -315,13 +299,13 @@ testimonials = testimonials.slice(0, 5);
 						<div class="skills-content content-width">
 							<div class="section-header">
 								<h4
-									class="subtitle scroll-animation"
+									class="subtitle "
 									data-animation="fade_from_bottom"
 								>
 									<i class="las la-shapes"></i> Tecnologías
 								</h4>
 								<h1
-									class="scroll-animation"
+									class=""
 									data-animation="fade_from_bottom"
 								>
 									Mi Stack <span>Tecnológico</span>
@@ -402,13 +386,13 @@ testimonials = testimonials.slice(0, 5);
 						<div class="portfolio-content content-width">
 							<div class="section-header">
 								<h4
-									class="subtitle scroll-animation"
+									class="subtitle "
 									data-animation="fade_from_bottom"
 								>
 									<i class="las la-grip-vertical"></i> portfolio
 								</h4>
 								<h1
-									class="scroll-animation"
+									class=""
 									data-animation="fade_from_bottom"
 								>
 									<span>Proyectos</span> Destacados
@@ -417,7 +401,7 @@ testimonials = testimonials.slice(0, 5);
 
 							<div class="row portfolio-items">
 								<div
-									class="col-md-12 scroll-animation"
+									class="col-md-12 "
 									data-animation="fade_from_bottom"
 								>
 									{
@@ -440,17 +424,7 @@ testimonials = testimonials.slice(0, 5);
 															}
 														/>
 													</a>
-													<ul class="portfolio-categories">
-														{topProjects[0].data.tags?.map(
-															(cat) => (
-																<li>
-																	<a href="/">
-																		{cat}
-																	</a>
-																</li>
-															),
-														)}
-													</ul>
+													<PortfolioCategories tags={topProjects[0].data.tags} />
 												</div>
 												<h2>
 													<a
@@ -470,7 +444,7 @@ testimonials = testimonials.slice(0, 5);
 								{
 									topProjects.length > 1 && (
 										<div
-											class="col-md-6 scroll-animation"
+											class="col-md-6 "
 											data-animation="fade_from_left"
 										>
 											<div class="portfolio-item portfolio-half">
@@ -491,17 +465,6 @@ testimonials = testimonials.slice(0, 5);
 															}
 														/>
 													</a>
-													<ul class="portfolio-categories">
-														{topProjects[1].data.tags?.map(
-															(cat) => (
-																<li>
-																	<a href="/">
-																		{cat}
-																	</a>
-																</li>
-															),
-														)}
-													</ul>
 												</div>
 												<h2>
 													<a
@@ -521,7 +484,7 @@ testimonials = testimonials.slice(0, 5);
 								{
 									topProjects.length > 2 && (
 										<div
-											class="col-md-6 scroll-animation"
+											class="col-md-6 "
 											data-animation="fade_from_right"
 										>
 											<div class="portfolio-item portfolio-half">
@@ -545,17 +508,6 @@ testimonials = testimonials.slice(0, 5);
 															}
 														/>
 													</a>
-													<ul class="portfolio-categories">
-														{topProjects[2].data.tags?.map(
-															(cat) => (
-																<li>
-																	<a href="/">
-																		{cat}
-																	</a>
-																</li>
-															),
-														)}
-													</ul>
 												</div>
 												<h2>
 													<a
@@ -587,13 +539,13 @@ testimonials = testimonials.slice(0, 5);
 						<div class="testimonial-content content-width">
 							<div class="section-header">
 								<h4
-									class="subtitle scroll-animation"
+									class="subtitle "
 									data-animation="fade_from_bottom"
 								>
 									<i class="lar la-comment"></i> Testimonios
 								</h4>
 								<h1
-									class="scroll-animation"
+									class=""
 									data-animation="fade_from_bottom"
 								>
 									<span>Testimonios</span> de Clientes y Colegas
@@ -601,7 +553,7 @@ testimonials = testimonials.slice(0, 5);
 							</div>
 
 							<div
-								class="testimonial-slider-wrap scroll-animation"
+								class="testimonial-slider-wrap "
 								data-animation="fade_from_bottom"
 							>
 								<div
@@ -628,7 +580,7 @@ testimonials = testimonials.slice(0, 5);
 
 							<div class="clients-logos">
 								<h4
-									class="scroll-animation"
+									class=""
 									data-animation="fade_from_bottom"
 								>
 									Marcas con las que he trabajado
@@ -680,20 +632,20 @@ testimonials = testimonials.slice(0, 5);
 						<div class="contact-content content-width">
 							<div class="section-header">
 								<h4
-									class="subtitle scroll-animation"
+									class="subtitle "
 									data-animation="fade_from_bottom"
 								>
 									<i class="las la-dollar-sign"></i> contacto
 								</h4>
 								<h1
-									class="scroll-animation"
+									class=""
 									data-animation="fade_from_bottom"
 								>
 									Trabajemos <span>Juntos</span>
 								</h1>
 							</div>
 							<h3
-								class="scroll-animation"
+								class=""
 								data-animation="fade_from_bottom"
 							>
 								contacto@mikelcantero.dev

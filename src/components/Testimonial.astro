@@ -4,7 +4,7 @@ import type { TestimonialSchema } from "../content/config";
 const { testimonials } = Astro.props as { testimonials: TestimonialSchema[] };
 ---
 
-<div class="testimonial-slider-wrap scroll-animation" data-animation="fade_from_bottom">
+<div class="testimonial-slider-wrap" data-animation="fade_from_bottom">
   <div class="owl-carousel testimonial-slider owl-theme">
     {testimonials.map((testimonial) => (
       <div class="testimonial-item">

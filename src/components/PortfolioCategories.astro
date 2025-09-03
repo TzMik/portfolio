@@ -1,0 +1,15 @@
+---
+export interface Props {
+  tags: string[];
+  className?: string;
+}
+---
+<ul class={Astro.props.className ?? "portfolio-categories d-none d-md-flex"}>
+  {Astro.props.tags?.map((cat) => (
+    <li>
+      <a href="/">
+        {cat}
+      </a>
+    </li>
+  ))}
+</ul>

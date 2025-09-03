@@ -7,6 +7,8 @@ const projectSchema = z.object({
   url: z.string().optional(),
   tags: z.array(z.string()).optional(),
   pub_date: z.date(),
+  start_date: z.date(),
+  end_date: z.date().optional(),
   top_project: z.boolean().default(false),
 });
 
