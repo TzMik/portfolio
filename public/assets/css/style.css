@@ -1040,7 +1040,6 @@ body .body-overlay {
     display: block;
     width: 100%;
     object-fit: cover;
-    aspect-ratio: 16 / 9;
 }
 .portfolio-items .portfolio-item .portfolio-item-inner .portfolio-categories {
     position: absolute;
