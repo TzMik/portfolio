@@ -2,17 +2,27 @@
 const { title, description, image, tags, date } = Astro.props;
 
 const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Project",
-  name: title,
-  description,
-  image,
-  keywords: tags,
-  dateCreated: date,
-  author: { "@type": "Person", name: "Mikel Cantero" }
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: title,
+    description,
+    image,
+    keywords: tags,
+    datePublished: date,
+    author: { "@type": "Person", name: "Mikel Cantero" },
+    publisher: {
+        "@type": "Organization",
+        name: "Mikel Cantero",
+        logo: {
+            "@type": "ImageObject",
+            url: "https://mikelcantero.dev/assets/images/mc-logo.png",
+        },
+    },
+    mainEntityOfPage: Astro.url,
 };
 
 const json = JSON.stringify(jsonLd);
 ---
+
 <!-- inyecta el contenido tal cual dentro del <script> -->
 <script is:inline type="application/ld+json" set:html={json} />
