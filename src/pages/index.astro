@@ -1,5 +1,6 @@
 ---
 import ProfileSidebar from "../components/ProfileSidebar.astro";
+import ProfileMobileSidebar from "../components/ProfileMobileSidebar.astro";
 import PortfolioCategories from "../components/PortfolioCategories.astro";
 import GoogleCalendarButton from "../components/GoogleCalendarButton.astro";
 import ClientLogo from "../components/ClientLogo.astro";
@@ -42,12 +43,12 @@ testimonials = testimonials.slice(0, 5);
 ---
 
 <Layout>
-	<ProfileSidebar />
+	<ProfileSidebar yearsExperience={yearsExperience} />
 
 	<main class="drake-main">
 		<div id="smooth-wrapper">
 			<div id="smooth-content">
-				<ProfileSidebar />
+				<ProfileMobileSidebar yearsExperience={yearsExperience} />
 
 				<section class="hero-section page-section" id="home">
 					<div class="custom-container">
@@ -65,60 +66,6 @@ testimonials = testimonials.slice(0, 5);
 								</h1>
 							</div>
 							<p>
-								Llevo más de {yearsExperience} años trabajando en
-								soluciones personalizadas para pequeñas, medianas
-								y grandes empresas. Proponiendo soluciones tecnologicas
-								creativas y escalables para mejorar y agilizar la
-								operación de los negocios.
-							</p>
-							<a
-								href="/#portfolio"
-								class="go-to-project-btn d-none d-md-flex"
-								data-animation="rotate_up"
-							>
-								<img
-									src="/assets/images/round-text.png"
-									alt=""
-								/>
-								<i class="las la-arrow-down"></i>
-							</a>
-
-							<div class="facts d-flex">
-								<div
-									class="left"
-									data-animation="fade_from_left"
-								>
-									<h1>{yearsExperience}+</h1>
-									<p>Años de <br />Experiencia</p>
-								</div>
-								<div
-									class="right"
-									data-animation="fade_from_right"
-								>
-									<h1>{numProjects}+</h1>
-									<p>
-										Proyectos<br />
-										completados
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
-
-				<section class="about-area page-section" id="about">
-					<div class="custom-container">
-						<div class="about-content content-width">
-							<div class="section-header">
-								<h4 class="subtitle">
-									<i class="lar la-user"></i> Acerca de mí
-								</h4>
-								<h1>
-									Un buen <span>software</span> comienza<br />
-									con una estructura bien pensada
-								</h1>
-							</div>
-							<p>
 								Soy Ingeniero de Software con MBA en Dirección
 								de Empresas, apasionado por crear soluciones
 								tecnológicas que aporten valor real. Mi carrera
@@ -133,230 +80,41 @@ testimonials = testimonials.slice(0, 5);
 								transformación digital, comercio electrónico e
 								integración de herramientas innovadoras.
 							</p>
-						</div>
-					</div>
-				</section>
-
-				<section class="resume-area page-section" id="resume">
-					<div class="custom-container">
-						<div class="resume-content content-width">
-							<div class="section-header">
-								<h4 class="subtitle">
-									<i class="las la-briefcase"></i> CV
-								</h4>
-								<h1>
-									Educación & <span>Experiencia</span>
-								</h1>
-							</div>
-
-							<div class="resume-timeline">
-								<div
-									class="item"
-									data-animation="fade_from_right"
-								>
-									<span class="date">Actualidad</span>
-									<h2>Ing. de Software y Consultor</h2>
-									<p>Freelance</p>
+							<div class="row">
+								<div class="col">
+									<div class="facts d-flex">
+										<div
+											class="left"
+											data-animation="fade_from_left"
+										>
+											<h1>{yearsExperience}+</h1>
+											<p>Años de <br />Experiencia</p>
+										</div>
+										<div
+											class="right"
+											data-animation="fade_from_right"
+										>
+											<h1>{numProjects}+</h1>
+											<p>
+												Proyectos<br />
+												completados
+											</p>
+										</div>
+									</div>
 								</div>
-								<div
-									class="item"
-									data-animation="fade_from_right"
-								>
-									<span class="date">2023 - 2025</span>
-									<h2>CTO & Co-Fundador</h2>
-									<p>Fonsecantero</p>
+								<div class="col">
+									<a
+										href="/#portfolio"
+										class="go-to-project-btn d-none d-md-flex"
+										data-animation="rotate_up"
+									>
+										<img
+											src="/assets/images/round-text.png"
+											alt=""
+										/>
+										<i class="las la-arrow-down"></i>
+									</a>
 								</div>
-								<div
-									class="item"
-									data-animation="fade_from_right"
-								>
-									<span class="date">2019 - 2023</span>
-									<h2>Tech Lead</h2>
-									<p>Fidanto</p>
-									<h2>Full Stack Developer</h2>
-									<p>Fidanto</p>
-									<h2>Junior Backend Developer</h2>
-									<p>Fidanto</p>
-								</div>
-								<div
-									class="item"
-									data-animation="fade_from_right"
-								>
-									<span class="date">2019</span>
-									<h2>MBA</h2>
-									<p>GADE Business School</p>
-								</div>
-								<div
-									class="item"
-									data-animation="fade_from_right"
-								>
-									<span class="date">2014 - 2019</span>
-									<h2>Grado en Ingeniería Informática</h2>
-									<p>
-										Universidad del País Vasco (EHU)<br
-										/>Donostia - San Sebastián, España
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
-
-				<section
-					class="services-area page-section scroll-to-page"
-					id="services"
-				>
-					<div class="custom-container">
-						<div class="services-content content-width">
-							<div class="section-header">
-								<h4
-									class="subtitle"
-									data-animation="fade_from_bottom"
-								>
-									<i class="las la-stream"></i> Habilidades
-								</h4>
-								<h1 class="" data-animation="fade_from_bottom">
-									Mis <span>Habilidades</span>
-								</h1>
-							</div>
-
-							<div class="services-items">
-								<div
-									class="service-item"
-									data-animation="fade_from_bottom"
-								>
-									<i class="las la-bezier-curve"></i>
-									<h2>Desarrollo a medida</h2>
-									<p>
-										Creación de aplicaciones y plataformas
-										digitales diseñadas específicamente para
-										cada cliente. Desde e-commerce hasta
-										sistemas empresariales, el enfoque
-										siempre debe estar en construir software
-										escalable, seguro y adaptable, que
-										impulse la eficiencia y el crecimiento
-										del negocio.
-									</p>
-								</div>
-								<div
-									class="service-item"
-									data-animation="fade_from_bottom"
-								>
-									<i class="las la-code"></i>
-									<h2>Visión Estratégica de Negocio</h2>
-									<p>
-										Entiendo el valor detrás de cada línea
-										de código. Mi experiencia con
-										emprendedores y empresas me permite
-										alinear la tecnología con los objetivos
-										comerciales, optimizando procesos y
-										generando soluciones que realmente
-										resuelven problemas.
-									</p>
-								</div>
-								<div
-									class="service-item"
-									data-animation="fade_from_bottom"
-								>
-									<i class="las la-users"></i>
-									<h2>
-										Liderazgo Técnico y Gestión de Proyectos
-									</h2>
-									<p>
-										He guiado equipos y proyectos desde la
-										idea hasta la implementación, asegurando
-										calidad, innovación y resultados. Mi
-										estilo de liderazgo fomenta la
-										colaboración, la eficiencia y la
-										adopción de nuevas tecnologías como la
-										IA, siempre con foco en la entrega de
-										valor.
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
-
-				<section
-					class="skills-area page-section scroll-to-page"
-					id="skills"
-				>
-					<div class="custom-container">
-						<div class="skills-content content-width">
-							<div class="section-header">
-								<h4
-									class="subtitle"
-									data-animation="fade_from_bottom"
-								>
-									<i class="las la-shapes"></i> Tecnologías
-								</h4>
-								<h1 class="" data-animation="fade_from_bottom">
-									Mi Stack <span>Tecnológico</span>
-								</h1>
-							</div>
-
-							<div class="row skills text-center">
-								<Skill
-									imgSrc="/assets/images/php.png"
-									alt="PHP"
-									name="PHP"
-								/>
-								<Skill
-									imgSrc="/assets/images/js.png"
-									alt="JavaScript"
-									name="JavaScript"
-								/>
-								<Skill
-									imgSrc="/assets/images/python.png"
-									alt="Python"
-									name="Python"
-								/>
-								<Skill
-									imgSrc="/assets/images/bash.png"
-									alt="Bash"
-									name="Bash"
-								/>
-								<Skill
-									imgSrc="/assets/images/laravel.png"
-									alt="Laravel"
-									name="Laravel"
-								/>
-								<Skill
-									imgSrc="/assets/images/astro.png"
-									alt="Astro"
-									name="Astro"
-								/>
-								<Skill
-									imgSrc="/assets/images/mariadb.png"
-									alt="MariaDB"
-									name="MariaDB"
-								/>
-								<Skill
-									imgSrc="/assets/images/docker.png"
-									alt="Docker"
-									name="Docker"
-								/>
-								<Skill
-									imgSrc="/assets/images/GCP.png"
-									alt="Google Cloud Platform"
-									name="GCP"
-								/>
-								<Skill
-									imgSrc="/assets/images/aws.png"
-									alt="Amazon Web Services"
-									name="AWS"
-								/>
-								<Skill
-									imgSrc="/assets/images/apache.png"
-									alt="Apache"
-									name="Apache"
-								/>
-								<Skill
-									imgSrc="/assets/images/debian.png"
-									alt="Debian"
-									name="Debian"
-								/>
 							</div>
 						</div>
 					</div>
@@ -364,7 +122,7 @@ testimonials = testimonials.slice(0, 5);
 
 				<section
 					class="portfolio-area page-section scroll-to-page"
-					id="portfolio"
+					id="projects"
 				>
 					<div class="custom-container">
 						<div class="portfolio-content content-width">
@@ -511,12 +269,237 @@ testimonials = testimonials.slice(0, 5);
 								<div class="col-md-4 text-end">
 									<a
 										href="/projects"
-										class="btn btn-outline-secondary"
+										class="btn btn-outline-light"
 									>
 										Ver Todos
 										<i class="las la-arrow-right"></i>
 									</a>
 								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section class="resume-area page-section" id="resume">
+					<div class="custom-container">
+						<div class="resume-content content-width">
+							<div class="section-header">
+								<h4 class="subtitle">
+									<i class="las la-briefcase"></i> CV
+								</h4>
+								<h1>
+									Educación & <span>Experiencia</span>
+								</h1>
+							</div>
+
+							<div class="resume-timeline">
+								<div
+									class="item"
+									data-animation="fade_from_right"
+								>
+									<span class="date">Actualidad</span>
+									<h2>Ing. de Software y Consultor</h2>
+									<p>Freelance</p>
+								</div>
+								<div
+									class="item"
+									data-animation="fade_from_right"
+								>
+									<span class="date">2023 - 2025</span>
+									<h2>CTO & Co-Fundador</h2>
+									<p>Fonsecantero</p>
+								</div>
+								<div
+									class="item"
+									data-animation="fade_from_right"
+								>
+									<span class="date">2019 - 2023</span>
+									<h2>Tech Lead</h2>
+									<p>Fidanto</p>
+									<h2>Full Stack Developer</h2>
+									<p>Fidanto</p>
+									<h2>Junior Backend Developer</h2>
+									<p>Fidanto</p>
+								</div>
+								<div
+									class="item"
+									data-animation="fade_from_right"
+								>
+									<span class="date">2019</span>
+									<h2>MBA</h2>
+									<p>GADE Business School</p>
+								</div>
+								<div
+									class="item"
+									data-animation="fade_from_right"
+								>
+									<span class="date">2014 - 2019</span>
+									<h2>Grado en Ingeniería Informática</h2>
+									<p>
+										Universidad del País Vasco (EHU)<br
+										/>Donostia - San Sebastián, España
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section
+					class="services-area page-section scroll-to-page"
+					id="skills"
+				>
+					<div class="custom-container">
+						<div class="services-content content-width">
+							<div class="section-header">
+								<h4
+									class="subtitle"
+									data-animation="fade_from_bottom"
+								>
+									<i class="las la-stream"></i> Habilidades
+								</h4>
+								<h1 class="" data-animation="fade_from_bottom">
+									Mis <span>Habilidades</span>
+								</h1>
+							</div>
+
+							<div class="services-items">
+								<div
+									class="service-item"
+									data-animation="fade_from_bottom"
+								>
+									<i class="las la-bezier-curve"></i>
+									<h2>Desarrollo a medida</h2>
+									<p>
+										Creación de aplicaciones y plataformas
+										digitales diseñadas específicamente para
+										cada cliente. Desde e-commerce hasta
+										sistemas empresariales, el enfoque
+										siempre debe estar en construir software
+										escalable, seguro y adaptable, que
+										impulse la eficiencia y el crecimiento
+										del negocio.
+									</p>
+								</div>
+								<div
+									class="service-item"
+									data-animation="fade_from_bottom"
+								>
+									<i class="las la-code"></i>
+									<h2>Visión Estratégica de Negocio</h2>
+									<p>
+										Entiendo el valor detrás de cada línea
+										de código. Mi experiencia con
+										emprendedores y empresas me permite
+										alinear la tecnología con los objetivos
+										comerciales, optimizando procesos y
+										generando soluciones que realmente
+										resuelven problemas.
+									</p>
+								</div>
+								<div
+									class="service-item"
+									data-animation="fade_from_bottom"
+								>
+									<i class="las la-users"></i>
+									<h2>
+										Liderazgo Técnico y Gestión de Proyectos
+									</h2>
+									<p>
+										He guiado equipos y proyectos desde la
+										idea hasta la implementación, asegurando
+										calidad, innovación y resultados. Mi
+										estilo de liderazgo fomenta la
+										colaboración, la eficiencia y la
+										adopción de nuevas tecnologías como la
+										IA, siempre con foco en la entrega de
+										valor.
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section
+					class="skills-area page-section scroll-to-page"
+					id="technologies"
+				>
+					<div class="custom-container">
+						<div class="skills-content content-width">
+							<div class="section-header">
+								<h4
+									class="subtitle"
+									data-animation="fade_from_bottom"
+								>
+									<i class="las la-shapes"></i> Tecnologías
+								</h4>
+								<h1 class="" data-animation="fade_from_bottom">
+									Mi Stack <span>Tecnológico</span>
+								</h1>
+							</div>
+
+							<div class="row skills text-center">
+								<Skill
+									imgSrc="/assets/images/php.png"
+									alt="PHP"
+									name="PHP"
+								/>
+								<Skill
+									imgSrc="/assets/images/js.png"
+									alt="JavaScript"
+									name="JavaScript"
+								/>
+								<Skill
+									imgSrc="/assets/images/python.png"
+									alt="Python"
+									name="Python"
+								/>
+								<Skill
+									imgSrc="/assets/images/bash.png"
+									alt="Bash"
+									name="Bash"
+								/>
+								<Skill
+									imgSrc="/assets/images/laravel.png"
+									alt="Laravel"
+									name="Laravel"
+								/>
+								<Skill
+									imgSrc="/assets/images/astro.png"
+									alt="Astro"
+									name="Astro"
+								/>
+								<Skill
+									imgSrc="/assets/images/mariadb.png"
+									alt="MariaDB"
+									name="MariaDB"
+								/>
+								<Skill
+									imgSrc="/assets/images/docker.png"
+									alt="Docker"
+									name="Docker"
+								/>
+								<Skill
+									imgSrc="/assets/images/GCP.png"
+									alt="Google Cloud Platform"
+									name="GCP"
+								/>
+								<Skill
+									imgSrc="/assets/images/aws.png"
+									alt="Amazon Web Services"
+									name="AWS"
+								/>
+								<Skill
+									imgSrc="/assets/images/apache.png"
+									alt="Apache"
+									name="Apache"
+								/>
+								<Skill
+									imgSrc="/assets/images/debian.png"
+									alt="Debian"
+									name="Debian"
+								/>
 							</div>
 						</div>
 					</div>

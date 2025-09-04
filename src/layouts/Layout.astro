@@ -1,3 +1,43 @@
+---
+const sections = [
+	{
+		url: "/",
+		title: "Inicio",
+		icon: "las la-home",
+	},
+	{
+		url: "/#projects",
+		title: "Proyectos",
+		icon: "las la-briefcase",
+	},
+	{
+		url: "/#resume",
+		title: "CV",
+		icon: "las la-grip-vertical",
+	},
+	{
+		url: "/#skills",
+		title: "Habilidades",
+		icon: "las la-stream",
+	},
+	{
+		url: "/#technologies",
+		title: "Tecnologías",
+		icon: "las la-shapes",
+	},
+	{
+		url: "/#testimonial",
+		title: "Reseñas",
+		icon: "lar la-comment",
+	},
+	{
+		url: "/#contact",
+		title: "Contacto",
+		icon: "las la-envelope",
+	},
+];
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
@@ -68,54 +108,16 @@
 				<div class="menu-wrap">
 					<p>Menú</p>
 					<ul class="menu scroll-nav-responsive d-flex">
-						<li>
-							<a class="scroll-to" href="/#home">
-								<i class="las la-home"></i>
-								<span>Inicio</span>
-							</a>
-						</li>
-						<li>
-							<a class="scroll-to" href="/#about">
-								<i class="lar la-user"></i>
-								<span>Acerca de mí</span>
-							</a>
-						</li>
-						<li>
-							<a class="scroll-to" href="/#resume">
-								<i class="las la-briefcase"></i>
-								<span>CV</span>
-							</a>
-						</li>
-						<li>
-							<a class="scroll-to" href="/#services">
-								<i class="las la-stream"></i>
-								<span>Habilidades</span>
-							</a>
-						</li>
-						<li>
-							<a class="scroll-to" href="/#skills">
-								<i class="las la-shapes"></i>
-								<span>Tecnologías</span>
-							</a>
-						</li>
-						<li>
-							<a class="scroll-to" href="/#portfolio">
-								<i class="las la-grip-vertical"></i>
-								<span>Proyectos</span>
-							</a>
-						</li>
-						<li>
-							<a class="scroll-to" href="/#testimonial">
-								<i class="lar la-comment"></i>
-								<span>Testimonios</span>
-							</a>
-						</li>
-						<li>
-							<a class="scroll-to" href="/#contact">
-								<i class="las la-envelope"></i>
-								<span>Contacto</span>
-							</a>
-						</li>
+						{
+							sections.map((section) => (
+								<li>
+									<a class="scroll-to" href={section.url}>
+										<i class={section.icon} />
+										<span>{section.title}</span>
+									</a>
+								</li>
+							))
+						}
 					</ul>
 				</div>
 
@@ -134,54 +136,16 @@
 		</div>
 
 		<ul class="menu scroll-nav d-flex">
-			<li>
-				<a class="scroll-to" href="/#home">
-					<span>Inicio</span>
-					<i class="las la-home"></i>
-				</a>
-			</li>
-			<li>
-				<a class="scroll-to" href="/#about">
-					<span>Acerca de mí</span>
-					<i class="lar la-user"></i>
-				</a>
-			</li>
-			<li>
-				<a class="scroll-to" href="/#resume">
-					<span>CV</span>
-					<i class="las la-briefcase"></i>
-				</a>
-			</li>
-			<li>
-				<a href="/#services">
-					<span>Habilidades</span>
-					<i class="las la-stream"></i>
-				</a>
-			</li>
-			<li>
-				<a class="scroll-to" href="/#skills">
-					<span>Tecnologías</span>
-					<i class="las la-shapes"></i>
-				</a>
-			</li>
-			<li>
-				<a class="scroll-to" href="/#portfolio">
-					<span>Proyectos</span>
-					<i class="las la-grip-vertical"></i>
-				</a>
-			</li>
-			<li>
-				<a class="scroll-to" href="/#testimonial">
-					<span>Testimonios</span>
-					<i class="lar la-comment"></i>
-				</a>
-			</li>
-			<li>
-				<a class="scroll-to" href="/#contact">
-					<span>Contacto</span>
-					<i class="las la-envelope"></i>
-				</a>
-			</li>
+			{
+				sections.map((section) => (
+					<li>
+						<a class="scroll-to" href={section.url}>
+							<span>{section.title}</span>
+							<i class={section.icon} />
+						</a>
+					</li>
+				))
+			}
 		</ul>
 
 		<slot />

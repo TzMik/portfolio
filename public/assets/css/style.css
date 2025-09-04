@@ -68,9 +68,24 @@ ul {
     padding: 0;
 }
 .content-width {
-    max-width: 770px;
+    max-width: 100%;
     width: 100%;
     margin-left: auto;
+}
+@media (max-width: 2394px) and (min-width: 1863px) {
+    .content-width {
+        max-width: 90%;
+    }
+}
+@media (max-width: 1862px) and (min-width: 1545px) {
+    .content-width {
+        max-width: 80%;
+    }
+}
+@media (max-width: 1544px) {
+    .content-width {
+        max-width: 70%;
+    }
 }
 .theme-btn {
     background: var(--primary_color);
@@ -216,14 +231,25 @@ main.drake-main {
     border: 1px solid #575757;
     border-radius: 30px;
     position: fixed;
-    right: 68px;
-    top: 322px;
-    /* width: 55px; */
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
     text-align: center;
     gap: 20px;
     padding: 24px 0;
     background: #1f1f1f;
     z-index: 20;
+}
+@media (max-width: 600px) {
+    .menu {
+        position: static;
+        right: auto;
+        top: auto;
+        transform: none;
+        border-radius: 0;
+        width: 100%;
+        padding: 16px 0;
+    }
 }
 .menu li .scroll-to,
 .menu li a {
@@ -672,17 +698,39 @@ main.drake-main {
     transform: translateY(-50%);
     padding: 50px;
     z-index: 10;
+    /* Asegura alineación vertical en todas las resoluciones */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+@media (max-height: 700px) {
+    .left-sidebar {
+        top: 0;
+        transform: none;
+        height: 100vh;
+        justify-content: center;
+    }
+}
+@media (max-width: 600px) {
+    .left-sidebar {
+        position: static;
+        left: auto;
+        top: auto;
+        transform: none;
+        max-width: 100%;
+        width: 100%;
+        border-radius: 0;
+        padding: 20px;
+        height: auto;
+        justify-content: center;
+    }
 }
 .drake-main .left-sidebar {
     display: none;
 }
-.left-sidebar > img.me {
-    border-radius: 30px;
+.left-sidebar img.me {
     display: block;
-    margin-bottom: 56px;
-}
-.left-sidebar .sidebar-header {
-    margin-bottom: 65px;
+    border: 2px solid var(--secondary_color);
 }
 .left-sidebar .sidebar-header .designation {
     max-width: 110px;
@@ -694,11 +742,11 @@ main.drake-main {
 .left-sidebar h2 {
     font-size: 18px;
     color: #fff;
-    text-align: center;
-    font-weight: 300;
 }
-.left-sidebar .address {
-    margin-bottom: 30px;
+.left-sidebar h3 {
+    font-size: 14px;
+    color: #fff;
+    font-weight: 300;
 }
 .left-sidebar .copyright {
     font-size: 14px;
@@ -727,7 +775,7 @@ main.drake-main {
 }
 .left-sidebar .theme-btn {
     width: 100%;
-    max-width: 20rem;
+    max-width: 15rem;
 }
 
 
@@ -753,7 +801,7 @@ main.drake-main {
     color: var(--primary_color);
 }
 .hero-section .hero-content > p {
-    max-width: 480px;
+    max-width: 80%;
     margin-bottom: 31px;
 }
 .go-to-project-btn {
