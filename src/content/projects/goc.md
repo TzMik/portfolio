@@ -7,6 +7,7 @@ end_date: 2024-04-15
 image: "/assets/images/projects/goc.png"
 top_project: true
 tags: ["E-commerce", "Optimización", "Transformación Digital", "Integración de Sistemas"]
+draft: false
 ---
 ### De qué se trató el proyecto  
 GOC Cosmetics, una marca reconocida en la industria de la belleza, contaba con un **ecommerce en WordPress con WooCommerce** que no respondía a sus necesidades de crecimiento. Limitaciones en las promociones, problemas de rendimiento y falta de integración con su ERP interno estaban afectando directamente la conversión de clientes y la eficiencia operativa.  

@@ -25,9 +25,37 @@
 
 h1, h2, h3 {
     letter-spacing: -0.2px;
-    line-height: 90px;
+    line-height: 2.5rem;
     margin-bottom: 1rem;
     font-weight: 300;
+    color: white;
+}
+
+.project-listing-title {
+    font-size: 1.5rem;
+    font-weight: 200;
+}
+
+.project-listing-title a {
+    color: white;
+}
+
+.project-listing-image {
+    aspect-ratio: 16 / 9;
+}
+
+.portfolio-item-inner {
+    overflow: hidden;
+    border-radius: 30px;
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.portfolio-item-inner img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+    aspect-ratio: 16 / 9;
 }
 
 .project-content ul {

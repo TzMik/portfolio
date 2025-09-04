@@ -1,0 +1,106 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import "../../styles/ProjectLayout.css";
+
+const PAGE_SIZE = 10;
+
+function sortProjects(a, b) {
+  if (a.data.top_project && !b.data.top_project) return -1;
+  if (!a.data.top_project && b.data.top_project) return 1;
+  return b.data.start_date.getTime() - a.data.start_date.getTime();
+}
+
+const allProjects = (
+  await getCollection("projects", ({ data }) => !data.draft)
+).sort(sortProjects);
+
+const { page = [] } = Astro.params;
+const currentPage = Number(page[0] ?? "1");
+const totalPages = Math.max(Math.ceil(allProjects.length / PAGE_SIZE), 1);
+
+if (
+  !Number.isInteger(currentPage) ||
+  currentPage < 1 ||
+  currentPage > totalPages
+) {
+  return Astro.response(new Response("Página no encontrada", { status: 404 }));
+}
+
+const start = (currentPage - 1) * PAGE_SIZE;
+const items = allProjects.slice(start, start + PAGE_SIZE);
+
+const pageUrl = (n) => (n === 1 ? "/projects" : `/projects/${n}`);
+const prevUrl = currentPage > 1 ? pageUrl(currentPage - 1) : null;
+const nextUrl = currentPage < totalPages ? pageUrl(currentPage + 1) : null;
+const canonicalUrl = pageUrl(currentPage);
+
+export async function getStaticPaths() {
+  const PAGE_SIZE = 10;
+  function sortProjects(a, b) {
+    if (a.data.top_project && !b.data.top_project) return -1;
+    if (!a.data.top_project && b.data.top_project) return 1;
+    return b.data.start_date.getTime() - a.data.start_date.getTime();
+  }
+  const all = (await getCollection("projects", ({ data }) => !data.draft)).sort(
+    sortProjects,
+  );
+  const totalPages = Math.max(Math.ceil(all.length / PAGE_SIZE), 1);
+  // Página 1 debe existir también como ruta vacía para que /projects funcione
+  const paths = [{ params: { page: undefined } }];
+  for (let n = 2; n <= totalPages; n++) {
+    paths.push({ params: { page: String(n) } });
+  }
+  return paths;
+}
+---
+
+<Layout>
+  <section class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 container py-3 mt-5">
+    <div class="section-header">
+      <h1>Todos mis <span>Proyectos</span></h1>
+      <p class="description">
+        Aquí puedes encontrar una selección de mis trabajos más destacados.
+      </p>
+    </div>
+    <div class="row">
+      {
+        items.map((project) => (
+          <div class="col-md-6 p-3" data-animation="fade_from_left">
+            <div class="portfolio-item portfolio-half">
+              <div class="portfolio-item-inner">
+                <a href={`/projects/${project.slug}`}>
+                  <img
+                    src={project.data.image}
+                    alt={project.data.title ?? "Portfolio"}
+                  />
+                </a>
+              </div>
+              <h2 class="project-listing-title">
+                <a href={`/projects/${project.slug}`}>{project.data.title}</a>
+              </h2>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  {
+    totalPages > 1 && (
+      <nav class="mt-8 flex flex-wrap items-center justify-center gap-2">
+        {Array.from({ length: totalPages }, (_, i) => {
+          const n = i + 1;
+          return (
+            <a
+              href={pageUrl(n)}
+              class={`rounded-md border px-3 py-1 text-sm ${n === currentPage ? "bg-black text-white" : ""}`}
+            >
+              {n}
+            </a>
+          );
+        })}
+      </nav>
+    )
+  }
+</Layout>

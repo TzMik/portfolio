@@ -7,6 +7,7 @@ end_date: 2023-11-01
 image: "/assets/images/projects/pinkup.png"
 top_project: true
 tags: ["E-commerce", "Optimización", "Integración de sistemas", "Automatización"]
+draft: false
 ---
 
 ### De qué se trató el proyecto  

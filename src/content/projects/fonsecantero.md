@@ -7,6 +7,7 @@ end_date: 2025-08-31
 image: "/assets/images/projects/fonsecantero.png"
 top_project: true
 tags: ["Liderazgo", "Arquitectura de Software", "Consultoría Tecnológica", "Automatización"]
+draft: false
 ---
 
 ### De qué se trató el proyecto  

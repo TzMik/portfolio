@@ -490,10 +490,7 @@ testimonials = testimonials.slice(0, 5);
 											<div class="portfolio-item portfolio-half">
 												<div class="portfolio-item-inner">
 													<a
-														href={
-															topProjects[2].data
-																.url || "/"
-														}
+														href={`/projects/${topProjects[2].slug || "#"}`}
 													>
 														<img
 															src={
@@ -511,10 +508,7 @@ testimonials = testimonials.slice(0, 5);
 												</div>
 												<h2>
 													<a
-														href={
-															topProjects[2].data
-																.url || "/"
-														}
+														href={`/projects/${topProjects[2].slug || "#"}`}
 													>
 														{
 															topProjects[2].data
@@ -526,6 +520,17 @@ testimonials = testimonials.slice(0, 5);
 										</div>
 									)
 								}
+							</div>
+							<div class="row justify-content-end">
+								<div class="col-md-4 text-end">
+									<a
+										href="/projects"
+										class="btn btn-outline-secondary"
+									>
+										Ver Todos
+										<i class="las la-arrow-right"></i>
+									</a>
+								</div>
 							</div>
 						</div>
 					</div>

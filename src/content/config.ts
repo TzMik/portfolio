@@ -10,6 +10,7 @@ const projectSchema = z.object({
   start_date: z.date(),
   end_date: z.date().optional(),
   top_project: z.boolean().default(false),
+  draft: z.boolean().default(true),
 });
 
 const projectsCollection = defineCollection({
