@@ -637,16 +637,4 @@ testimonials = testimonials.slice(0, 5);
 			</div>
 		</div>
 	</main>
-	<!-- El script de Google Calendar ahora está en el componente GoogleCalendarButton -->
-	{
-		testimonials.map((t) => (
-			<ReviewRichSnippet
-				name={t.data.name}
-				role={t.data.role}
-				company={t.data.company}
-				avatar={t.data.avatar}
-				testimonial={t.data.testimonial}
-			/>
-		))
-	}
 </Layout>
