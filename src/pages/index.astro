@@ -2,6 +2,7 @@
 import ProfileSidebar from "../components/ProfileSidebar.astro";
 import PortfolioCategories from "../components/PortfolioCategories.astro";
 import GoogleCalendarButton from "../components/GoogleCalendarButton.astro";
+import ReviewRichSnippet from "../components/ReviewRichSnippet.astro";
 import ClientLogo from "../components/ClientLogo.astro";
 import Skill from "../components/Skill.astro";
 import Testimonial from "../components/Testimonial.astro";
@@ -23,7 +24,10 @@ const projects = await getCollection("projects");
 const numProjects = projects.length;
 
 const topProjects = projects
-	.filter((project) => project.data.top_project === true && project.data.draft === false)
+	.filter(
+		(project) =>
+			project.data.top_project === true && project.data.draft === false,
+	)
 	.sort((a, b) => {
 		const dateA = new Date(a.data.end_date || 0).getTime();
 		const dateB = new Date(b.data.end_date || 0).getTime();
@@ -46,10 +50,7 @@ testimonials = testimonials.slice(0, 5);
 			<div id="smooth-content">
 				<ProfileSidebar />
 
-				<section
-					class="hero-section page-section"
-					id="home"
-				>
+				<section class="hero-section page-section" id="home">
 					<div class="custom-container">
 						<div class="hero-content content-width">
 							<div class="section-header">
@@ -85,14 +86,14 @@ testimonials = testimonials.slice(0, 5);
 
 							<div class="facts d-flex">
 								<div
-									class="left "
+									class="left"
 									data-animation="fade_from_left"
 								>
 									<h1>{yearsExperience}+</h1>
 									<p>Años de <br />Experiencia</p>
 								</div>
 								<div
-									class="right "
+									class="right"
 									data-animation="fade_from_right"
 								>
 									<h1>{numProjects}+</h1>
@@ -106,16 +107,11 @@ testimonials = testimonials.slice(0, 5);
 					</div>
 				</section>
 
-				<section
-					class="about-area page-section"
-					id="about"
-				>
+				<section class="about-area page-section" id="about">
 					<div class="custom-container">
 						<div class="about-content content-width">
 							<div class="section-header">
-								<h4
-									class="subtitle"
-								>
+								<h4 class="subtitle">
 									<i class="lar la-user"></i> Acerca de mí
 								</h4>
 								<h1>
@@ -142,16 +138,11 @@ testimonials = testimonials.slice(0, 5);
 					</div>
 				</section>
 
-				<section
-					class="resume-area page-section"
-					id="resume"
-				>
+				<section class="resume-area page-section" id="resume">
 					<div class="custom-container">
 						<div class="resume-content content-width">
 							<div class="section-header">
-								<h4
-									class="subtitle"
-								>
+								<h4 class="subtitle">
 									<i class="las la-briefcase"></i> CV
 								</h4>
 								<h1>
@@ -161,7 +152,7 @@ testimonials = testimonials.slice(0, 5);
 
 							<div class="resume-timeline">
 								<div
-									class="item "
+									class="item"
 									data-animation="fade_from_right"
 								>
 									<span class="date">Actualidad</span>
@@ -169,7 +160,7 @@ testimonials = testimonials.slice(0, 5);
 									<p>Freelance</p>
 								</div>
 								<div
-									class="item "
+									class="item"
 									data-animation="fade_from_right"
 								>
 									<span class="date">2023 - 2025</span>
@@ -177,7 +168,7 @@ testimonials = testimonials.slice(0, 5);
 									<p>Fonsecantero</p>
 								</div>
 								<div
-									class="item "
+									class="item"
 									data-animation="fade_from_right"
 								>
 									<span class="date">2019 - 2023</span>
@@ -189,7 +180,7 @@ testimonials = testimonials.slice(0, 5);
 									<p>Fidanto</p>
 								</div>
 								<div
-									class="item "
+									class="item"
 									data-animation="fade_from_right"
 								>
 									<span class="date">2019</span>
@@ -197,7 +188,7 @@ testimonials = testimonials.slice(0, 5);
 									<p>GADE Business School</p>
 								</div>
 								<div
-									class="item "
+									class="item"
 									data-animation="fade_from_right"
 								>
 									<span class="date">2014 - 2019</span>
@@ -220,22 +211,19 @@ testimonials = testimonials.slice(0, 5);
 						<div class="services-content content-width">
 							<div class="section-header">
 								<h4
-									class="subtitle "
+									class="subtitle"
 									data-animation="fade_from_bottom"
 								>
 									<i class="las la-stream"></i> Habilidades
 								</h4>
-								<h1
-									class=""
-									data-animation="fade_from_bottom"
-								>
+								<h1 class="" data-animation="fade_from_bottom">
 									Mis <span>Habilidades</span>
 								</h1>
 							</div>
 
 							<div class="services-items">
 								<div
-									class="service-item "
+									class="service-item"
 									data-animation="fade_from_bottom"
 								>
 									<i class="las la-bezier-curve"></i>
@@ -252,23 +240,23 @@ testimonials = testimonials.slice(0, 5);
 									</p>
 								</div>
 								<div
-									class="service-item "
+									class="service-item"
 									data-animation="fade_from_bottom"
 								>
 									<i class="las la-code"></i>
 									<h2>Visión Estratégica de Negocio</h2>
 									<p>
-										Entiendo el valor
-										detrás de cada línea de código. Mi
-										experiencia con emprendedores y empresas
-										me permite alinear la tecnología con los
-										objetivos comerciales, optimizando
-										procesos y generando soluciones que
-										realmente resuelven problemas.
+										Entiendo el valor detrás de cada línea
+										de código. Mi experiencia con
+										emprendedores y empresas me permite
+										alinear la tecnología con los objetivos
+										comerciales, optimizando procesos y
+										generando soluciones que realmente
+										resuelven problemas.
 									</p>
 								</div>
 								<div
-									class="service-item "
+									class="service-item"
 									data-animation="fade_from_bottom"
 								>
 									<i class="las la-users"></i>
@@ -299,15 +287,12 @@ testimonials = testimonials.slice(0, 5);
 						<div class="skills-content content-width">
 							<div class="section-header">
 								<h4
-									class="subtitle "
+									class="subtitle"
 									data-animation="fade_from_bottom"
 								>
 									<i class="las la-shapes"></i> Tecnologías
 								</h4>
-								<h1
-									class=""
-									data-animation="fade_from_bottom"
-								>
+								<h1 class="" data-animation="fade_from_bottom">
 									Mi Stack <span>Tecnológico</span>
 								</h1>
 							</div>
@@ -386,22 +371,19 @@ testimonials = testimonials.slice(0, 5);
 						<div class="portfolio-content content-width">
 							<div class="section-header">
 								<h4
-									class="subtitle "
+									class="subtitle"
 									data-animation="fade_from_bottom"
 								>
 									<i class="las la-grip-vertical"></i> portfolio
 								</h4>
-								<h1
-									class=""
-									data-animation="fade_from_bottom"
-								>
+								<h1 class="" data-animation="fade_from_bottom">
 									<span>Proyectos</span> Destacados
 								</h1>
 							</div>
 
 							<div class="row portfolio-items">
 								<div
-									class="col-md-12 "
+									class="col-md-12"
 									data-animation="fade_from_bottom"
 								>
 									{
@@ -424,7 +406,12 @@ testimonials = testimonials.slice(0, 5);
 															}
 														/>
 													</a>
-													<PortfolioCategories tags={topProjects[0].data.tags} />
+													<PortfolioCategories
+														tags={
+															topProjects[0].data
+																.tags
+														}
+													/>
 												</div>
 												<h2>
 													<a
@@ -544,21 +531,18 @@ testimonials = testimonials.slice(0, 5);
 						<div class="testimonial-content content-width">
 							<div class="section-header">
 								<h4
-									class="subtitle "
+									class="subtitle"
 									data-animation="fade_from_bottom"
 								>
 									<i class="lar la-comment"></i> Testimonios
 								</h4>
-								<h1
-									class=""
-									data-animation="fade_from_bottom"
-								>
+								<h1 class="" data-animation="fade_from_bottom">
 									<span>Testimonios</span> de Clientes y Colegas
 								</h1>
 							</div>
 
 							<div
-								class="testimonial-slider-wrap "
+								class="testimonial-slider-wrap"
 								data-animation="fade_from_bottom"
 							>
 								<div
@@ -584,10 +568,7 @@ testimonials = testimonials.slice(0, 5);
 							</div>
 
 							<div class="clients-logos">
-								<h4
-									class=""
-									data-animation="fade_from_bottom"
-								>
+								<h4 class="" data-animation="fade_from_bottom">
 									Marcas con las que he trabajado
 								</h4>
 								<div class="row align-items-center">
@@ -637,22 +618,16 @@ testimonials = testimonials.slice(0, 5);
 						<div class="contact-content content-width">
 							<div class="section-header">
 								<h4
-									class="subtitle "
+									class="subtitle"
 									data-animation="fade_from_bottom"
 								>
 									<i class="las la-dollar-sign"></i> contacto
 								</h4>
-								<h1
-									class=""
-									data-animation="fade_from_bottom"
-								>
+								<h1 class="" data-animation="fade_from_bottom">
 									Trabajemos <span>Juntos</span>
 								</h1>
 							</div>
-							<h3
-								class=""
-								data-animation="fade_from_bottom"
-							>
+							<h3 class="" data-animation="fade_from_bottom">
 								contacto@mikelcantero.dev
 							</h3>
 							<GoogleCalendarButton />
@@ -663,4 +638,15 @@ testimonials = testimonials.slice(0, 5);
 		</div>
 	</main>
 	<!-- El script de Google Calendar ahora está en el componente GoogleCalendarButton -->
+	{
+		testimonials.map((t) => (
+			<ReviewRichSnippet
+				name={t.data.name}
+				role={t.data.role}
+				company={t.data.company}
+				avatar={t.data.avatar}
+				testimonial={t.data.testimonial}
+			/>
+		))
+	}
 </Layout>

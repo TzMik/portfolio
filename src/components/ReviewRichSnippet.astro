@@ -1,0 +1,28 @@
+---
+const { name, role, company, avatar, testimonial } = Astro.props;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Review",
+  reviewBody: testimonial,
+  author: {
+    "@type": "Person",
+    name,
+    jobTitle: role,
+    image: avatar,
+    worksFor: {
+      "@type": "Organization",
+      name: company ?? "Cliente",
+    },
+  },
+  itemReviewed: {
+    "@type": "Person",
+    name: "Mikel Cantero",
+  },
+};
+
+const json = JSON.stringify(jsonLd);
+---
+
+<!-- inyecta el contenido tal cual dentro del <script> -->
+<script is:inline type="application/ld+json" set:html={json} />
