@@ -2,7 +2,14 @@
 // Props: project (objeto del proyecto)
 const { project } = Astro.props;
 ---
-<div class="col-md-4 p-3" data-animation="fade_from_left">
+<div class="col-md-4 p-3 position-relative" data-animation="fade_from_left">
+  {project.data.top_project && (
+    <span class="top-project-star" title="Proyecto destacado">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="#FFD700" stroke="#FFD700" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 4px #FFD700);">
+        <polygon points="12,2 15,9 22,9.5 17,14.5 18.5,22 12,18 5.5,22 7,14.5 2,9.5 9,9"/>
+      </svg>
+    </span>
+  )}
   <div class="portfolio-item portfolio-half">
     <div class="portfolio-item-inner">
       <a href={`/projects/${project.slug}`}>

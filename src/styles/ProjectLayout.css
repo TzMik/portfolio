@@ -57,3 +57,11 @@ h1, h2, h3 {
     list-style: square;
     padding: 0 clamp(1rem, 3rem, 3rem);
 }
+
+.top-project-star {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+  z-index: 2;
+  pointer-events: none;
+}
