@@ -1,5 +1,5 @@
 ---
-const { name, role, company, avatar, testimonial } = Astro.props;
+const { name, role, company, avatar, testimonial, service } = Astro.props;
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -16,9 +16,13 @@ const jsonLd = {
     },
   },
   itemReviewed: {
-    "@type": "Person",
-    name: "Mikel Cantero",
-  },
+    "@type": "Service",
+    name: service ?? "Ingeniería de Software",
+    provider: {
+      "@type": "Person",
+      name: "Mikel Cantero"
+    }
+  }
 };
 
 const json = JSON.stringify(jsonLd);

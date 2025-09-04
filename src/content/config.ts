@@ -23,6 +23,7 @@ const testimonialSchema = z.object({
   company: z.string().optional(),
   testimonial: z.string(),
   avatar: z.string().optional(),
+  service: z.string().optional(),
 });
 
 const testimonials = defineCollection({
