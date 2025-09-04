@@ -14,6 +14,10 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const project: ProjectSchema = entry.data;
 const { Content } = await entry.render();
+
+if (project.draft !== false) {
+    return new Response(null, { status: 404 });
+}
 ---
 
 <ProjectLayout>

@@ -23,7 +23,7 @@ const projects = await getCollection("projects");
 const numProjects = projects.length;
 
 const topProjects = projects
-	.filter((project) => project.data.top_project === true)
+	.filter((project) => project.data.top_project === true && project.data.draft === false)
 	.sort((a, b) => {
 		const dateA = new Date(a.data.end_date || 0).getTime();
 		const dateB = new Date(b.data.end_date || 0).getTime();
