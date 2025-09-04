@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import type { ProjectSchema } from "../../content/config";
 import ProjectLayout from "../../layouts/ProjectLayout.astro";
+import ProjectRichSnippet from "../../components/ProjectRichSnippet.astro";
 
 export async function getStaticPaths() {
     const projects = await getCollection("projects");
@@ -62,4 +63,11 @@ if (project.draft !== false) {
             </div>
         </div>
     </main>
+    <ProjectRichSnippet
+        title={project.title}
+        description={project.description}
+        image={project.image}
+        tags={project.tags}
+        date={project.pub_date}
+    />
 </ProjectLayout>
