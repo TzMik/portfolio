@@ -88,7 +88,7 @@ export async function getStaticPaths() {
 
   {
     totalPages > 1 && (
-      <nav class="mt-8 flex flex-wrap items-center justify-center gap-2">
+      <nav class="mt-8 d-flex flex-wrap align-items-center justify-content-center gap-2">
         {Array.from({ length: totalPages }, (_, i) => {
           const n = i + 1;
           return (
