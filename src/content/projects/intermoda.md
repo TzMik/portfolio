@@ -6,6 +6,7 @@ pub_date: 2020-01-15
 start_date: 2025-06-28
 end_date: 2025-07-18
 draft: false
+top_project: true
 tags: ["Eventos", "Interactividad", "Mapas", "Estadísticas", "UX/UI"]
 ---
 ### De qué se trató el proyecto  
