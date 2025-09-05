@@ -65,3 +65,7 @@ h1, h2, h3 {
   z-index: 2;
   pointer-events: none;
 }
+
+.proyect-profile-image {
+    border: 2px solid var(--secondary_color);
+}
