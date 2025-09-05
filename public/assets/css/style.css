@@ -782,7 +782,6 @@ main.drake-main {
 
 /* 07 - Hero Section */
 .hero-section {
-    padding: 68px 0;
     position: relative;
     overflow: hidden;
 }
@@ -907,10 +906,6 @@ body .body-overlay {
 
 
 /* 11 - Resume */
-.resume-area {
-    padding-top: 90px;
-    padding-bottom: 90px;
-}
 .resume-area .resume-content .resume-timeline .item {
     position: relative;
     padding-left: 74px;
@@ -976,10 +971,6 @@ body .body-overlay {
 
 
 /* 12 - Services */
-.services-area {
-    padding-top: 90px;
-    padding-bottom: 90px;
-}
 .services-items .service-item {
     border: 1px solid #565656;
     border-radius: 20px;
@@ -1032,10 +1023,6 @@ body .body-overlay {
 
 
 /* 13 - Skills */
-.skills-area {
-    padding-top: 90px;
-    padding-bottom: 40px;
-}
 .skills .skill {
     margin-bottom: 50px;
 }
@@ -1068,9 +1055,9 @@ body .body-overlay {
 
 
 /* 14 - Portfolio */
-.portfolio-area {
-    padding-top: 90px;
-    padding-bottom: 90px;
+section {
+    padding-top: 45px;
+    padding-bottom: 45px;
 }
 .portfolio-items .portfolio-item {
     margin-bottom: 62px;

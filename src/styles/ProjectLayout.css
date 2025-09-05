@@ -55,7 +55,7 @@ h1, h2, h3 {
 
 .project-content ul {
     list-style: square;
-    padding: 0 clamp(1rem, 3rem, 3rem);
+    padding: 0px 1rem 1rem 3rem;
 }
 
 .top-project-star {
