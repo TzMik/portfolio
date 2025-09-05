@@ -1,60 +1,84 @@
 ---
 import Layout from "./Layout.astro";
 import "../styles/ProjectLayout.css";
+
+const startDate = new Date(2018, 8, 1); // Mes 8 = septiembre (0-indexed)
+const today = new Date();
+const diffYears = today.getFullYear() - startDate.getFullYear();
+const diffMonths = today.getMonth() - startDate.getMonth();
+const diffDays = today.getDate() - startDate.getDate();
+
+let yearsExperience = diffYears;
+if (diffMonths < 0 || (diffMonths === 0 && diffDays < 0)) {
+    yearsExperience--;
+}
 ---
 
 <Layout>
     <slot />
     <section class="container p-5">
         <div class="card p-3 bg-dark">
-            <div
-                class="d-flex gap-3 justify-content-center justify-content-md-between align-items-center"
-            >
-                <div class="d-md-flex d-block gap-4 align-items-center">
-                    <div class="d-flex justify-content-center mb-2 mb-md-0">
+            <div class="row align-items-center">
+                <div class="d-flex flex-column flex-md-row align-items-center col-12 col-lg-8 gap-3">
+                    <div class="col-12 col-md-3 d-flex justify-content-center">
                         <img
                             src="/assets/images/portfolio.jpeg"
-                            class="rounded"
+                            class="rounded-circle"
                             height="100"
                             alt="Mikel Cantero"
                         />
                     </div>
-
-                    <div>
-                        <div class="section-header text-center text-md-start">
-                            <h2 class="h4">Mikel Cantero</h2>
-                            <h3 class="h6">Ingeniero de Software</h3>
-                            <ul
-                                class="social-links d-flex justify-content-center justify-content-md-start gap-3 align-items-center"
+                    <div class="col-12 col-md-9">
+                        <div>
+                            <div
+                                class="section-header text-center text-md-start"
                             >
-                                <li>
-                                    <a href="https://github.com/TzMik" target="_blank"><i class="lab la-github"></i></a
-                                    >
-                                </li>
-                                <li>
-                                    <a href="https://www.linkedin.com/in/mikel-cantero-loi/" target="_blank"
-                                        ><i class="lab la-linkedin"></i></a
-                                    >
-                                </li>
-                                <li>
-                                    <a href="https://calendar.app.google/kEia5FjmbNAdXiT57" target="_blank"
-                                        ><i class="las la-calendar"></i></a
-                                    >
-                                </li>
-                            </ul>
-                            <div class="d-md-none d-flex gap-2">
-                                <a
-                                    class="theme-btn"
-                                    href="mailto:contacto@mikelcantero.dev"
+                                <h2 class="h4">Mikel Cantero</h2>
+                                <h3 class="h6 mb-3">Ingeniero de Software</h3>
+                                <p>
+                                    Llevo más de {yearsExperience} años trabajando
+                                    en soluciones personalizadas para pequeñas, medianas
+                                    y grandes empresas. Proponiendo soluciones tecnologicas
+                                    creativas y escalables para mejorar y agilizar
+                                    la operación de los negocios.
+                                </p>
+                                <ul
+                                    class="social-links d-flex justify-content-center justify-content-md-start gap-3 align-items-center"
                                 >
-                                    <i class="las la-envelope"></i> Hablemos
-                                </a>
+                                    <li>
+                                        <a
+                                            href="/"
+                                            target="_blank"
+                                            ><i class="las la-home"></i></a
+                                        >
+                                    </li>
+                                    <li>
+                                        <a
+                                            href="https://github.com/TzMik"
+                                            target="_blank"
+                                            ><i class="lab la-github"></i></a
+                                        >
+                                    </li>
+                                    <li>
+                                        <a
+                                            href="https://www.linkedin.com/in/mikel-cantero-loi/"
+                                            target="_blank"
+                                            ><i class="lab la-linkedin"></i></a
+                                        >
+                                    </li>
+                                    <li>
+                                        <a
+                                            href="https://calendar.app.google/kEia5FjmbNAdXiT57"
+                                            target="_blank"
+                                            ><i class="las la-calendar"></i></a
+                                        >
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="d-none d-md-flex gap-2">
+                <div class="col-12 col-lg-4 d-flex justify-content-center">
                     <div>
                         <a
                             class="theme-btn"
