@@ -4,11 +4,12 @@ const { yearsExperience } = Astro.props;
 
 <div class="left-sidebar">
   <div class="row align-items-center mb-3">
-    <div class="col-4 col-md-2">
+    <div class="col-4 col-md-2 d-flex justify-content-end">
       <img
         class="me rounded-circle"
         src="/assets/images/portfolio.jpeg"
         alt="Me"
+        width="110"
       />
     </div>
     <div class="col-8">
@@ -48,7 +49,7 @@ const { yearsExperience } = Astro.props;
       </ul>
     </div>
   </div>
-  <p class="d-block d-md-none">
+  <p class="d-block d-md-none text-center">
     Llevo más de {yearsExperience} años trabajando en soluciones personalizadas para
     pequeñas, medianas y grandes empresas. Proponiendo soluciones tecnologicas creativas
     y escalables para mejorar y agilizar la operación de los negocios.
