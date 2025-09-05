@@ -1,7 +1,7 @@
 ---
 title: "Cloe: Automatización de ventas con TikTok Shop"
 description: "Implementación de una solución de automatización para integrar NetSuite con TikTok Shop, optimizando inventarios y pedidos en tiempo real."
-image: "/assets/images/projects/cloe.png"
+image: "/assets/images/projects/cloe.jpg"
 pub_date: 2023-10-01
 start_date: 2025-08-27
 end_date: 2025-09-05

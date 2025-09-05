@@ -1,7 +1,7 @@
 ---
 title: "Intermoda 83: Sistema interactivo para visitantes"
 description: "Desarrollo de un sistema de búsqueda, agenda y mapas interactivos para los tótems de Intermoda 83, con un backend de administración y métricas en tiempo real."
-image: "/assets/images/projects/intermoda.png"
+image: "/assets/images/projects/intermoda.jpg"
 pub_date: 2020-01-15
 start_date: 2025-06-28
 end_date: 2025-07-18

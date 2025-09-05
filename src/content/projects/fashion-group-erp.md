@@ -1,7 +1,7 @@
 ---
 title: "Fashion Group: ERP a medida para transformar la operación"
 description: "Desarrollo de un ERP personalizado para centralizar datos, automatizar procesos internos y optimizar la gestión de inventarios, ventas y operaciones de Fashion Group."
-image: "/assets/images/projects/fg-erp.png"
+image: "/assets/images/projects/fg-erp.jpg"
 pub_date: 2022-03-01
 start_date: 2023-07-30
 end_date: 2025-08-31
