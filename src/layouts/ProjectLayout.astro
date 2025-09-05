@@ -2,6 +2,8 @@
 import Layout from "./Layout.astro";
 import "../styles/ProjectLayout.css";
 
+const { image } = Astro.props;
+
 const startDate = new Date(2018, 8, 1); // Mes 8 = septiembre (0-indexed)
 const today = new Date();
 const diffYears = today.getFullYear() - startDate.getFullYear();
@@ -14,7 +16,7 @@ if (diffMonths < 0 || (diffMonths === 0 && diffDays < 0)) {
 }
 ---
 
-<Layout>
+<Layout image={image}>
     <slot />
     <section class="container p-2 px-lg-5 mt-5">
         <div class="card px-3 py-5 bg-dark">

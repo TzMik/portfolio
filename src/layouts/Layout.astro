@@ -1,4 +1,10 @@
 ---
+interface Props {
+	image?: string;
+}
+
+const { image } = Astro.props as Props;
+const metaImage = image ?? "https://mikelcantero.com/assets/images/portfolio.jpeg";
 const sections = [
 	{
 		url: "/",
@@ -44,6 +50,40 @@ const sections = [
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="canonical" href={Astro.url} />
+		<!-- SEO Meta Tags -->
+		<meta
+			name="description"
+			content="Portfolio de Mikel Cantero, Ingeniero de Software especializado en desarrollo web, proyectos, tecnologías y soluciones digitales."
+		/>
+		<meta
+			name="keywords"
+			content="Mikel Cantero, portfolio, ingeniero de software, desarrollo web, proyectos, tecnologías, reseñas, contacto"
+		/>
+		<meta name="author" content="Mikel Cantero" />
+		<!-- Open Graph Meta Tags -->
+		<meta
+			property="og:title"
+			content="Mikel Cantero - Ingeniero de Software"
+		/>
+		<meta
+			property="og:description"
+			content="Portfolio de Mikel Cantero, Ingeniero de Software especializado en desarrollo web y soluciones digitales."
+		/>
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://mikelcantero.com/" />
+		<meta property="og:image" content={metaImage} />
+		<!-- Twitter Card Meta Tags -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta
+			name="twitter:title"
+			content="Mikel Cantero - Ingeniero de Software"
+		/>
+		<meta
+			name="twitter:description"
+			content="Portfolio de Mikel Cantero, Ingeniero de Software especializado en desarrollo web y soluciones digitales."
+		/>
+		<meta name="twitter:image" content={metaImage} />
 		<title>Mikel Cantero - Ingeniero de Software</title>
 		<link
 			rel="icon"
