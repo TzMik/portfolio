@@ -12,7 +12,7 @@ draft: false
 ### De qué se trató el proyecto  
 GOC Cosmetics, una marca reconocida en la industria de la belleza, contaba con un **ecommerce en WordPress con WooCommerce** que no respondía a sus necesidades de crecimiento. Limitaciones en las promociones, problemas de rendimiento y falta de integración con su ERP interno estaban afectando directamente la conversión de clientes y la eficiencia operativa.  
 
-El reto fue construir **una plataforma ecommerce desde cero**, optimizada y totalmente adaptable a las necesidades estratégicas de la marca.  
+El reto de Fonsecantero fue construir **una plataforma ecommerce desde cero**, optimizada y totalmente adaptable a las necesidades estratégicas de la marca.  
 
 ---
 

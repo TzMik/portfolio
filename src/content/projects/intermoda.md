@@ -10,7 +10,7 @@ top_project: true
 tags: ["Eventos", "Interactividad", "Mapas", "Estadísticas", "UX/UI"]
 ---
 ### De qué se trató el proyecto  
-Para el **83º evento de Intermoda**, una de las ferias de moda más importantes de Latinoamérica, desarrollamos un **sistema interactivo para tótems digitales**. Estos permitían a los visitantes buscar marcas participantes, consultar la agenda de actividades y navegar en un **mapa interactivo** que mostraba el camino desde el tótem hasta la ubicación de la marca o evento.  
+Para el **83º evento de Intermoda**, una de las ferias de moda más importantes de Latinoamérica, en Fonsecantero desarrollamos un **sistema interactivo para tótems digitales**. Estos permitían a los visitantes buscar marcas participantes, consultar la agenda de actividades y navegar en un **mapa interactivo** que mostraba el camino desde el tótem hasta la ubicación de la marca o evento.  
 
 ---
 

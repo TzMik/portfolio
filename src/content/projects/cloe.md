@@ -10,7 +10,7 @@ tags: ["Automatización", "Integración de Sistemas", "E-commerce", "Python"]
 draft: false
 ---
 ### De qué se trató el proyecto  
-Cloe, reconocida marca mexicana de **bolsas y moda**, buscaba potenciar sus ventas digitales al integrarse con **TikTok Shop**. La operación manual resultaba poco eficiente y costosa, por lo que el objetivo fue **automatizar por completo la gestión de inventarios y pedidos** conectando TikTok con su sistema empresarial **NetSuite**.  
+Cloe, reconocida marca mexicana de **bolsas y moda**, buscaba potenciar sus ventas digitales al integrarse con **TikTok Shop**. La operación manual resultaba poco eficiente y costosa, por lo que el objetivo de Fonsecantero fue **automatizar por completo la gestión de inventarios y pedidos** conectando TikTok con su sistema empresarial **NetSuite**.  
 
 ---
 

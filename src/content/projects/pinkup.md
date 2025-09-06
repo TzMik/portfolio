@@ -16,7 +16,7 @@ PinkUP, una reconocida marca de cosméticos, enfrentaba graves limitaciones en s
 - **Problemas severos de rendimiento** que afectaban la tasa de conversión.  
 - Falta de escalabilidad para integrarse con sistemas internos.  
 
-Nuestro reto fue crear una **plataforma completamente personalizada** que superara estas limitaciones, optimizara el rendimiento y mejorara la experiencia de compra.  
+El reto de Fonsecantero fue crear una **plataforma completamente personalizada** que superara estas limitaciones, optimizara el rendimiento y mejorara la experiencia de compra.  
 
 ---
 

@@ -11,7 +11,7 @@ tags: ["ERP", "Automatización", "WMS", "Business Intelligence", "Transformació
 ---
 
 ### De qué se trató el proyecto  
-Fashion Group, un conglomerado con múltiples marcas, necesitaba un sistema robusto para **centralizar su operación y datos en un solo lugar**. El objetivo fue crear un **ERP a medida** que sustituyera procesos manuales, optimizara la gestión y brindara visibilidad total de la operación.  
+Fashion Group, un conglomerado con múltiples marcas, necesitaba un sistema robusto para **centralizar su operación y datos en un solo lugar**. El objetivo de Fonsecantero fue crear un **ERP a medida** que sustituyera procesos manuales, optimizara la gestión y brindara visibilidad total de la operación.  
 
 ---
 
