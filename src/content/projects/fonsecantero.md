@@ -5,7 +5,7 @@ pub_date: 2021-08-01
 start_date: 2023-04-01
 end_date: 2025-08-31
 image: "/assets/images/projects/fonsecantero.jpg"
-top_project: true
+top_project: false
 tags: ["Liderazgo", "Arquitectura de Software", "Consultoría Tecnológica", "Automatización"]
 draft: false
 ---
