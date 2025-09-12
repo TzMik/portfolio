@@ -8,6 +8,7 @@ import Skill from "../components/Skill.astro";
 import Testimonial from "../components/Testimonial.astro";
 import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
+import SecondaryLinkBtn from "../components/SecondaryLinkBtn.astro";
 
 const startDate = new Date(2018, 8, 1); // Mes 8 = septiembre (0-indexed)
 const today = new Date();
@@ -267,13 +268,11 @@ testimonials = testimonials.slice(0, 5);
 							</div>
 							<div class="row justify-content-end">
 								<div class="col-md-4 text-end">
-									<a
+									<SecondaryLinkBtn
 										href="/projects"
-										class="btn btn-outline-light"
-									>
-										Ver Todos
-										<i class="las la-arrow-right"></i>
-									</a>
+										text="Ver todos"
+										icon="las la-arrow-right"
+									/>
 								</div>
 							</div>
 							<div class="clients-logos">
