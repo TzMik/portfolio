@@ -31,6 +31,10 @@ h1, h2, h3 {
     color: white;
 }
 
+strong {
+    color: var(--secondary_color);
+}
+
 .project-listing-title {
     font-size: 1.5rem;
     font-weight: 200;
