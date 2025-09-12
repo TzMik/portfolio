@@ -5,7 +5,7 @@ import "../../styles/ProjectLayout.css";
 
 import ProjectCard from "../../components/ProjectCard.astro";
 
-const PAGE_SIZE = 9;
+const PAGE_SIZE = 12;
 
 function sortProjects(a, b) {
   if (a.data.top_project && !b.data.top_project) return -1;
@@ -38,7 +38,7 @@ const nextUrl = currentPage < totalPages ? pageUrl(currentPage + 1) : null;
 const canonicalUrl = pageUrl(currentPage);
 
 export async function getStaticPaths() {
-  const PAGE_SIZE = 9;
+  const PAGE_SIZE = 12;
   function sortProjects(a, b) {
     if (a.data.top_project && !b.data.top_project) return -1;
     if (!a.data.top_project && b.data.top_project) return 1;
