@@ -41,6 +41,17 @@ let testimonials = await getCollection("testimonials");
 testimonials = testimonials.sort(() => Math.random() - 0.5);
 
 testimonials = testimonials.slice(0, 5);
+
+const blogPosts = await getCollection("blog");
+
+const latestPosts = blogPosts
+    .filter((post) => post.data.draft === false)
+    .sort((a, b) => {
+        const dateA = new Date(a.data.pub_date || 0).getTime();
+        const dateB = new Date(b.data.pub_date || 0).getTime();
+        return dateB - dateA;
+    })
+    .slice(0, 2); // Cambia el 3 por un 2
 ---
 
 <Layout>
@@ -538,6 +549,118 @@ testimonials = testimonials.slice(0, 5);
 									alt="Debian"
 									name="Debian"
 								/>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section
+					class="portfolio-area page-section scroll-to-page"
+					id="projects"
+				>
+					<div class="custom-container">
+						<div class="portfolio-content content-width">
+							<div class="section-header">
+								<h4
+									class="subtitle"
+									data-animation="fade_from_bottom"
+								>
+									<i class="las la-grip-vertical"></i> blog
+								</h4>
+								<h1 class="" data-animation="fade_from_bottom">
+									Últimas <span>Publicaciones</span>
+								</h1>
+							</div>
+
+							<div class="row portfolio-items">
+								{
+									latestPosts.length > 0 && (
+										<div
+											class="col-md-6 "
+											data-animation="fade_from_left"
+										>
+											<div class="portfolio-item portfolio-half">
+												<div class="portfolio-item-inner">
+													<a
+														href={`/blog/${latestPosts[0].slug || "#"}`}
+													>
+														<img
+															src={
+																latestPosts[0]
+																	.data.image
+															}
+															alt={
+																latestPosts[0]
+																	.data
+																	.title ||
+																"Portfolio"
+															}
+														/>
+													</a>
+												</div>
+												<h2>
+													<a
+														href={`/blog/${latestPosts[0].slug || "#"}`}
+													>
+														{
+															latestPosts[0].data
+																.title
+														}
+													</a>
+												</h2>
+											</div>
+										</div>
+									)
+								}
+
+								{
+									latestPosts.length > 1 && (
+										<div
+											class="col-md-6 "
+											data-animation="fade_from_right"
+										>
+											<div class="portfolio-item portfolio-half">
+												<div class="portfolio-item-inner">
+													<a
+														href={`/blog/${latestPosts[1].slug || "#"}`}
+													>
+														<img
+															src={
+																latestPosts[1]
+																	.data.image
+															}
+															alt={
+																latestPosts[1]
+																	.data
+																	.title ||
+																"Portfolio"
+															}
+														/>
+													</a>
+												</div>
+												<h2>
+													<a
+														href={`/blog/${latestPosts[1].slug || "#"}`}
+													>
+														{
+															latestPosts[1].data
+																.title
+														}
+													</a>
+												</h2>
+											</div>
+										</div>
+									)
+								}
+							</div>
+							<div class="row justify-content-end">
+								<div class="col-md-4 text-end">
+									<SecondaryLinkBtn
+										href="/blog"
+										text="Ver publicaciones"
+										icon="las la-arrow-right"
+									/>
+								</div>
 							</div>
 						</div>
 					</div>
