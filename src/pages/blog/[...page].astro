@@ -8,9 +8,7 @@ import ProjectCard from "../../components/ProjectCard.astro";
 const PAGE_SIZE = 12;
 
 function sortProjects(a, b) {
-  if (a.data.top_project && !b.data.top_project) return -1;
-  if (!a.data.top_project && b.data.top_project) return 1;
-  return b.data.start_date.getTime() - a.data.start_date.getTime();
+  return b.data.pub_date.getTime() - a.data.pub_date.getTime();
 }
 
 const allProjects = (
@@ -40,9 +38,7 @@ const canonicalUrl = pageUrl(currentPage);
 export async function getStaticPaths() {
   const PAGE_SIZE = 12;
   function sortProjects(a, b) {
-    if (a.data.top_project && !b.data.top_project) return -1;
-    if (!a.data.top_project && b.data.top_project) return 1;
-    return b.data.start_date.getTime() - a.data.start_date.getTime();
+    return b.data.pub_date.getTime() - a.data.pub_date.getTime();
   }
   const all = (await getCollection("blog", ({ data }) => !data.draft)).sort(
     sortProjects,
