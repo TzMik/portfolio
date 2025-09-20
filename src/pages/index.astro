@@ -9,6 +9,7 @@ import Testimonial from "../components/Testimonial.astro";
 import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import SecondaryLinkBtn from "../components/SecondaryLinkBtn.astro";
+import { getSortedAndFilteredPosts } from "../lib/blog-posts.js";
 
 const startDate = new Date(2018, 8, 1); // Mes 8 = septiembre (0-indexed)
 const today = new Date();
@@ -42,16 +43,8 @@ testimonials = testimonials.sort(() => Math.random() - 0.5);
 
 testimonials = testimonials.slice(0, 5);
 
-const blogPosts = await getCollection("blog");
-
-const latestPosts = blogPosts
-    .filter((post) => post.data.draft === false)
-    .sort((a, b) => {
-        const dateA = new Date(a.data.pub_date || 0).getTime();
-        const dateB = new Date(b.data.pub_date || 0).getTime();
-        return dateB - dateA;
-    })
-    .slice(0, 2); // Cambia el 3 por un 2
+const blogPosts = await getSortedAndFilteredPosts();
+const latestPosts = blogPosts.slice(0, 2);
 ---
 
 <Layout>
