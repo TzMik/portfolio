@@ -6,7 +6,6 @@ pub_date: 2022-03-01
 start_date: 2023-07-30
 end_date: 2025-08-31
 draft: false
-top_project: true
 tags: ["ERP", "Automatización", "WMS", "Business Intelligence", "Transformación Digital"]
 ---
 

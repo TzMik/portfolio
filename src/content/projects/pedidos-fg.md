@@ -5,7 +5,6 @@ image: "/assets/images/projects/pedidos-fg.jpg"
 pub_date: 2025-09-08
 start_date: 2024-01-01
 end_date: 2024-03-01
-top_project: true
 tags: ["PWA", "Progressive Web App", "e-commerce", "aplicación a medida", "Fashion Group", "lógica de negocio", "automatización", "pedidos", "tienda en línea", "UX/UI", "desarrollo web", "CTO", "Fonsecantero"]
 draft: false
 ---

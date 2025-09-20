@@ -6,7 +6,6 @@ pub_date: 2025-09-15
 start_date: 2024-08-01
 end_date: 2024-12-31
 draft: false
-top_project: true
 tags: ["Eventos", "Interactividad", "Mapas", "Estadísticas", "UX/UI"]
 ---
 Como co-fundador y CTO de Fonsecantero, participé en el desarrollo de una **PWA (Progressive Web App)** para optimizar el proceso de **surtido de productos** en los almacenes de Fashion Group. El reto era reemplazar un sistema obsoleto e ineficiente que no podía manejar las interrupciones de conexión, lo que generaba retrasos y errores operativos significativos.
