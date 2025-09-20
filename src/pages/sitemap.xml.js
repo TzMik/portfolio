@@ -1,4 +1,5 @@
 import { getCollection } from 'astro:content';
+import { getSortedAndFilteredPosts } from '../lib/blog-posts.js'
 
 export async function get() {
     const projects = await getCollection('projects');
@@ -10,10 +11,7 @@ export async function get() {
     );
 
     // Filtramos las publicaciones del blog que no tienen draft=true
-    const filteredBlogPosts = blogPosts.filter(
-        (post) => post.data.draft === false
-    );
-
+    const filteredBlogPosts = getSortedAndFilteredPosts();
     const urls = [
         { url: '/', changefreq: 'daily', priority: 1.0 },
         ...filteredProjects.map((project) => ({
