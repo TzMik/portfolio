@@ -1,21 +1,14 @@
 ---
-import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
 import "../../styles/ProjectLayout.css";
 
-import ProjectCard from "../../components/ProjectCard.astro";
+// Importa las funciones de ayuda y la constante PAGE_SIZE
+import { getSortedProjects } from "../../lib/projects.js";
+import { PAGE_SIZE, createStaticPathsForProjects } from "../../lib/pagination.js";
 
-const PAGE_SIZE = 12;
-
-function sortProjects(a, b) {
-  if (a.data.top_project && !b.data.top_project) return -1;
-  if (!a.data.top_project && b.data.top_project) return 1;
-  return b.data.start_date.getTime() - a.data.start_date.getTime();
-}
-
-const allProjects = (
-  await getCollection("projects", ({ data }) => !data.draft)
-).sort(sortProjects);
+// Llama a la función una sola vez para obtener los proyectos
+const allProjects = await getSortedProjects();
 
 const { page = [] } = Astro.params;
 const currentPage = Number(page[0] ?? "1");
@@ -37,23 +30,9 @@ const prevUrl = currentPage > 1 ? pageUrl(currentPage - 1) : null;
 const nextUrl = currentPage < totalPages ? pageUrl(currentPage + 1) : null;
 const canonicalUrl = pageUrl(currentPage);
 
+//getStaticPaths ahora es mucho más simple y usa la función importada
 export async function getStaticPaths() {
-  const PAGE_SIZE = 12;
-  function sortProjects(a, b) {
-    if (a.data.top_project && !b.data.top_project) return -1;
-    if (!a.data.top_project && b.data.top_project) return 1;
-    return b.data.start_date.getTime() - a.data.start_date.getTime();
-  }
-  const all = (await getCollection("projects", ({ data }) => !data.draft)).sort(
-    sortProjects,
-  );
-  const totalPages = Math.max(Math.ceil(all.length / PAGE_SIZE), 1);
-  // Página 1 debe existir también como ruta vacía para que /projects funcione
-  const paths = [{ params: { page: undefined } }];
-  for (let n = 2; n <= totalPages; n++) {
-    paths.push({ params: { page: String(n) } });
-  }
-  return paths;
+  return createStaticPathsForProjects();
 }
 ---
 

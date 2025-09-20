@@ -1,14 +1,14 @@
 ---
 // src/pages/blog/[...page].astro
 import Layout from "../../layouts/Layout.astro";
-import ProjectCard from "../../components/ProjectCard.astro";
+import PostCard from "../../components/PostCard.astro";
 import "../../styles/ProjectLayout.css";
 
 // Importa PAGE_SIZE y las funciones de ayuda
-import { PAGE_SIZE, createStaticPathsForCollection } from "../../lib/pagination.js";
+import { PAGE_SIZE, createStaticPathsForPosts } from "../../lib/pagination.js";
 import { getSortedAndFilteredPosts } from "../../lib/blog-posts.js";
 
-// El resto de tu código de la página, sin la duplicación
+// Llama a la función correcta para obtener las publicaciones
 const allPosts = await getSortedAndFilteredPosts();
 
 const { page = [] } = Astro.params;
@@ -16,11 +16,11 @@ const currentPage = Number(page[0] ?? "1");
 const totalPages = Math.max(Math.ceil(allPosts.length / PAGE_SIZE), 1);
 
 if (
-  !Number.isInteger(currentPage) ||
-  currentPage < 1 ||
-  currentPage > totalPages
+  !Number.isInteger(currentPage) ||
+  currentPage < 1 ||
+  currentPage > totalPages
 ) {
-  return Astro.response(new Response("Página no encontrada", { status: 404 }));
+  return Astro.response(new Response("Página no encontrada", { status: 404 }));
 }
 
 const start = (currentPage - 1) * PAGE_SIZE;
@@ -33,42 +33,40 @@ const canonicalUrl = pageUrl(currentPage);
 
 //getStaticPaths ahora es mucho más simple y usa la función importada
 export async function getStaticPaths() {
-  return createStaticPathsForCollection();
+  return createStaticPathsForPosts();
 }
 ---
 
 <Layout>
-    <section class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 container py-3 mt-5">
-        <div class="section-header">
-            <h1>Todas las <span>Publicaciones</span></h1>
-            <p class="description">
-                Aquí puedes encontrar mis últimas publicaciones del blog.
-            </p>
-        </div>
-        <div class="row justify-content-center">
-            {
-            items.map((post) => (
-            <ProjectCard project={post} contentType={"blog"} />
-            ))
-            }
-        </div>
-    </section>
+    <section class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 container py-3 mt-5">
+        <div class="section-header">
+            <h1>Todas las <span>Publicaciones</span></h1>
+            <p class="description">
+                Aquí puedes encontrar mis últimas publicaciones del blog.
+            </p>
+        </div>
+        <div class="row justify-content-center">
+            {items.map((post) => (
+                <PostCard post={post} />
+            ))}
+        </div>
+    </section>
 
-    {
-    totalPages > 1 && (
-    <nav class="mt-8 d-flex flex-wrap align-items-center justify-content-center gap-2">
-        {Array.from({ length: totalPages }, (_, i) => {
-        const n = i + 1;
-        return (
-        <a
-            href={pageUrl(n)}
-            class={`rounded-md border px-3 py-1 text-sm ${n === currentPage ? "bg-black text-white" : ""}`}
-        >
-            {n}
-        </a>
-        );
-        })}
-    </nav>
-    )
-    }
+    {
+    totalPages > 1 && (
+    <nav class="mt-8 d-flex flex-wrap align-items-center justify-content-center gap-2">
+        {Array.from({ length: totalPages }, (_, i) => {
+        const n = i + 1;
+        return (
+        <a
+            href={pageUrl(n)}
+            class={`rounded-md border px-3 py-1 text-sm ${n === currentPage ? "bg-black text-white" : ""}`}
+        >
+            {n}
+        </a>
+        );
+        })}
+    </nav>
+    )
+    }
 </Layout>
