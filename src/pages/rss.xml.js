@@ -1,5 +1,6 @@
 import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
+import { getSortedAndFilteredPosts } from '../lib/blog-posts.js'
 
 export const GET = async () => {
     // Obtener y filtrar proyectos que no sean borradores
@@ -7,8 +8,7 @@ export const GET = async () => {
     const filteredProjects = projects.filter((project) => project.data.draft === false);
 
     // Obtener y filtrar publicaciones de blog que no sean borradores
-    const blogPosts = await getCollection('blog');
-    const filteredBlogPosts = blogPosts.filter((post) => post.data.draft === false);
+    const filteredBlogPosts = getSortedAndFilteredPosts();
 
     // Unir los proyectos y las publicaciones de blog en un solo array
     const allItems = [...filteredProjects, ...filteredBlogPosts];
