@@ -11,7 +11,7 @@ export async function get() {
     );
 
     // Filtramos las publicaciones del blog que no tienen draft=true
-    const filteredBlogPosts = getSortedAndFilteredPosts();
+    const filteredBlogPosts = await getSortedAndFilteredPosts();
     const urls = [
         { url: '/', changefreq: 'daily', priority: 1.0 },
         ...filteredProjects.map((project) => ({

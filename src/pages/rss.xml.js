@@ -9,7 +9,6 @@ export const GET = async () => {
 
     // Obtener y filtrar publicaciones de blog que no sean borradores
     const filteredBlogPosts = await getSortedAndFilteredPosts();
-    console.log(filteredBlogPosts)
 
     // Unir los proyectos y las publicaciones de blog en un solo array
     const allItems = [...filteredProjects, ...filteredBlogPosts];
