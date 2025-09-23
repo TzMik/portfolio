@@ -9,8 +9,10 @@ import Testimonial from "../components/Testimonial.astro";
 import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import SecondaryLinkBtn from "../components/SecondaryLinkBtn.astro";
-import { getSortedAndFilteredPosts } from "../lib/blog-posts.js";
+import { getSortedAndFilteredPosts, getPostsAmount } from "../lib/blog-posts.js";
+import { getProjectsAmount, getSortedProjects } from "../lib/projects.js";
 
+// Years of experience calculation
 const startDate = new Date(2018, 8, 1); // Mes 8 = septiembre (0-indexed)
 const today = new Date();
 const diffYears = today.getFullYear() - startDate.getFullYear();
@@ -22,27 +24,21 @@ if (diffMonths < 0 || (diffMonths === 0 && diffDays < 0)) {
 	yearsExperience--;
 }
 
-const projects = await getCollection("projects");
-const numProjects = projects.length;
+// Projects
+const numProjects = await getProjectsAmount();
 
-const topProjects = projects
-	.filter(
-		(project) =>
-			project.data.top_project === true && project.data.draft === false,
-	)
-	.sort((a, b) => {
-		const dateA = new Date(a.data.end_date || 0).getTime();
-		const dateB = new Date(b.data.end_date || 0).getTime();
-		return dateB - dateA;
-	})
-	.slice(0, 3);
+let topProjects = await getSortedProjects();
+topProjects = topProjects.slice(0, 3);
 
+// Testimonials
 let testimonials = await getCollection("testimonials");
 
 testimonials = testimonials.sort(() => Math.random() - 0.5);
 
 testimonials = testimonials.slice(0, 5);
 
+// Blog posts
+const numPosts = await getPostsAmount();
 const blogPosts = await getSortedAndFilteredPosts();
 const latestPosts = blogPosts.slice(0, 2);
 ---
@@ -103,6 +99,16 @@ const latestPosts = blogPosts.slice(0, 2);
 											<p>
 												Proyectos<br />
 												completados
+											</p>
+										</div>
+										<div
+											class="right"
+											data-animation="fade_from_right"
+										>
+											<h1>{numPosts}+</h1>
+											<p>
+												Publicaciones<br />
+												del blog
 											</p>
 										</div>
 									</div>

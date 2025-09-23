@@ -11,3 +11,8 @@ export async function getSortedAndFilteredPosts() {
 
     return allPosts;
 }
+
+export async function getPostsAmount() {
+    const allPosts = await getSortedAndFilteredPosts();
+    return allPosts.length;
+}

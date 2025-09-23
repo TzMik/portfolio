@@ -11,3 +11,8 @@ export async function getSortedProjects() {
 
   return allProjects;
 }
+
+export async function getProjectsAmount() {
+  const allProjects = await getSortedProjects();
+  return allProjects.length;
+}
