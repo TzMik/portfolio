@@ -27,9 +27,6 @@ const start = (currentPage - 1) * PAGE_SIZE;
 const items = allPosts.slice(start, start + PAGE_SIZE);
 
 const pageUrl = (n) => (n === 1 ? "/blog" : `/blog/${n}`);
-const prevUrl = currentPage > 1 ? pageUrl(currentPage - 1) : null;
-const nextUrl = currentPage < totalPages ? pageUrl(currentPage + 1) : null;
-const canonicalUrl = pageUrl(currentPage);
 
 //getStaticPaths ahora es mucho más simple y usa la función importada
 export async function getStaticPaths() {
