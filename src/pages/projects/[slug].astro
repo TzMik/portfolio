@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import type { ProjectSchema } from "../../content/config";
 import ProjectLayout from "../../layouts/ProjectLayout.astro";
 import ProjectRichSnippet from "../../components/ProjectRichSnippet.astro";
+import { slugify } from "../../utils/slugify";
 
 export async function getStaticPaths() {
     const projects = await getCollection("projects");
@@ -50,7 +51,7 @@ if (project.draft !== false) {
                             {
                                 project.tags?.map((cat) => (
                                     <li>
-                                        <a href="/">{cat}</a>
+                                        <a href={`/tags/${ slugify(cat) }`}>{cat}</a>
                                     </li>
                                 ))
                             }
