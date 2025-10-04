@@ -1,11 +1,18 @@
 # Portfolio de Mikel Cantero
-## Documentación
-- [Documentación de Astro](/docs/astrom.md)
 
 ## Ruta de aprendizaje
+### Conceptos detrás de los frameworks
 
-### Backend
+#### Backend
 - [ ] Arquitectura MVC
+    - [x] [Fundamentos](/src/content/blog/desarrollo-web-simplificado.md)
+    - [x] [Thin Controllers, clases de servicios y Fat Controllers](/src/content/blog/ampliando-el-patron-mvc.md)
+    - [ ] ORM
+    - [ ] Inseycción de dependencias
+    - [ ] View Engines
+    - [ ] MVC en Arquitectura de 3 Capas (_Tiers_)
+    - [ ] Model-View-ViewModel (MVVM)
+    - [ ] Model-View-Presenter (MVP)
 - [ ] Patrón de diseño Repository
 - [ ] Patrón de diseño Service
 - [ ] Patrón de diseño Factory
@@ -14,7 +21,7 @@
 - [ ] Inversión de Control (IoC)
 - [ ] Contenedores de Dependecias (DI)
 
-### Frontend
+#### Frontend
 - [ ] Component-Based Architecutre
 - [ ] Concepto de Props
 - [ ] Virtual DOM
@@ -28,16 +35,20 @@
 - [ ] Static Site Generation (SSG)
 - [ ] Qué soluciona NextJS de React
 
-### Arquitectura y Negocio
+#### Arquitectura y Negocio
 - [ ] API REST
 - [ ] GraphQL
 - [ ] Desacoplamiento
 - [ ] Microservicios
 - [ ] Patrón de comunicación (mensajería asincrona y eventos)
 - [ ] Costo de distribución
+- [ ] Clean Architecture/Hexagonal
 
-### Testing
+#### Testing
 - [ ] Test Unitarios
 - [ ] Test de Integración
 - [ ] Test End-To-End
 - [ ] Mocking y simulación de peticiones
+
+## Documentación
+- [Documentación de Astro](/docs/astrom.md)
