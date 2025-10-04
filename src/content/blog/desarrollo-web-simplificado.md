@@ -6,7 +6,7 @@ tags: ["MVC", "Arquitectura MVC", "Modelo-Vista-Controlador", "Patrón de Diseñ
 image: "/assets/images/blog/desarrollo-web-simplificado.webp"
 draft: false
 ---
-## **Introducción: La Necesidad de Orden en el Código**
+## Introducción: La Necesidad de Orden en el Código
 
 Si estás inmerso en el desarrollo de software, especialmente web, habrás notado que el código puede volverse complejo rápidamente. Un código donde la lógica de la base de datos se mezcla con la presentación visual es una pesadilla de mantener, testear y escalar.
 
@@ -18,7 +18,7 @@ La solución para este caos es el patrón **Modelo-Vista-Controlador (MVC)**. Es
 
 El objetivo de este primer paso es entender **por qué existe MVC** y cuáles son los roles específicos de cada uno de sus tres componentes.
 
-### **1. La Separación de Responsabilidades: El "Por Qué" de MVC**
+### 1. La Separación de Responsabilidades: El "Por Qué" de MVC
 
 El concepto clave de MVC es la **Separación de Intereses** (*Separation of Concerns*). En lugar de tener una sola pieza de código que lo haga todo, MVC nos pide dividir la aplicación en tres partes lógicas distintas, cada una enfocada en una única tarea.
 
@@ -30,11 +30,11 @@ El concepto clave de MVC es la **Separación de Intereses** (*Separation of Conc
 
 -----
 
-### **2. Los Componentes de MVC Explicados al Detalle**
+### 2. Los Componentes de MVC Explicados al Detalle
 
 Profundicemos en lo que hace cada componente:
 
-#### **El Modelo (Model): El Cerebro y los Datos**
+#### El Modelo (Model): El Cerebro y los Datos
 
 El Modelo es el corazón de la aplicación. Su única preocupación es el **estado de los datos y la lógica de negocio** que los manipula.
 
@@ -42,7 +42,7 @@ El Modelo es el corazón de la aplicación. Su única preocupación es el **esta
   * **Problema que Resuelve:** Resuelve el problema de mantener la **coherencia de los datos** (asegurar que un email sea único, que una edad sea un número, etc.).
   * **Ejemplo Práctico:** Una clase `Usuario` que sabe cómo guardar un nuevo usuario, buscarlo por su ID, o actualizar su información en la DB. **Nunca** interactúa con la petición HTTP o la interfaz.
 
-#### **La Vista (View): La Interfaz de Usuario**
+#### La Vista (View): La Interfaz de Usuario
 
 La Vista es lo que el usuario final ve. Su función es puramente estética y de presentación.
 
@@ -50,7 +50,7 @@ La Vista es lo que el usuario final ve. Su función es puramente estética y de 
   * **Problema que Resuelve:** Separa la **UI de la lógica** de negocio. Si cambias el diseño web, no tienes que tocar el código que maneja la base de datos.
   * **Ejemplo Práctico:** Un archivo de plantilla (`.blade.php`, `.html`) que recibe una lista de usuarios y los muestra en una tabla. **Nunca** contiene lógica de negocio o consulta a la base de datos.
 
-#### **El Controlador (Controller): El Director de Orquesta**
+#### El Controlador (Controller): El Director de Orquesta
 
 El Controlador es el intermediario. Es el que decide qué hacer cuando llega una petición del usuario.
 
