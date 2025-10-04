@@ -1,5 +1,5 @@
 // src/lib/pagination.js
-import { getSortedAndFilteredPosts } from "./blog-posts.js";
+import { getSortedAndFilteredPosts, getTags } from "./blog-posts.js";
 import { getSortedProjects } from "./projects.js";
 
 export const PAGE_SIZE = 12;
@@ -26,4 +26,8 @@ export async function createStaticPathsForPosts() {
 
 export async function createStaticPathsForProjects() {
     return createStaticPaths(getSortedProjects);
+}
+
+export async function createStaticPathsForTags() {
+    return createStaticPaths(getTags);
 }

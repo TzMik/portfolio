@@ -1,5 +1,6 @@
 // src/lib/blog-posts.js
-import { getCollection } from "astro:content"
+import { getCollection } from "astro:content";
+import { slugify } from "../utils/slugify.js";
 
 export async function getSortedAndFilteredPosts() {
     const now = new Date();
@@ -15,4 +16,16 @@ export async function getSortedAndFilteredPosts() {
 export async function getPostsAmount() {
     const allPosts = await getSortedAndFilteredPosts();
     return allPosts.length;
+}
+
+export async function filterByTag(tag) {
+  const allPosts = await getSortedAndFilteredPosts();
+  return allPosts.filter(post => post.data.tags.some(postTag => slugify(postTag) === tag));
+}
+
+export async function getTags() {
+  const posts = await getSortedAndFilteredPosts();
+  const allTags = posts.flatMap(post => post.data.tags);
+  const uniqueTags = [...new Set(allTags)];
+  return uniqueTags.map(tag => slugify(tag)); // Se añade .map para slugificar
 }
