@@ -1,5 +1,8 @@
 # Portfolio de Mikel Cantero
 
+## Tamaño de imágenes
+- Imágenes de portada para las publicaciones del blog: 800x436px
+
 ## Ruta de aprendizaje
 ### Conceptos detrás de los frameworks
 
@@ -8,7 +11,7 @@
     - [x] [Fundamentos](/src/content/blog/desarrollo-web-simplificado.md)
     - [x] [Thin Controllers, clases de servicios y Fat Controllers](/src/content/blog/ampliando-el-patron-mvc.md)
     - [x] [ORM](/src/content/blog/el-puente-entre-codigo-y-datos.md)
-    - [ ] Inseycción de dependencias
+    - [x] [Inseycción de dependencias](/src/content/blog/dominando-la-inyeccion-de-dependencias.md)
     - [ ] View Engines
     - [ ] MVC en Arquitectura de 3 Capas (_Tiers_)
     - [ ] Model-View-ViewModel (MVVM)
