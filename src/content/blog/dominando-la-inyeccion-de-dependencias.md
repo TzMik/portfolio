@@ -1,7 +1,7 @@
 ---
 title: "Dominando la Inyección de Dependencias (DI)"
 description: "¿Qué es la Inyección de Dependencias (DI)? Guía práctica para desarrolladores. Aprende cómo los frameworks usan el Contenedor de IoC para mejorar la modularidad, simplificar el mantenimiento y hacer tu código fácilmente testeable."
-pub_date: 2025-10-29
+pub_date: 2025-10-28
 tags: ["Inyección de Dependencias", "DI", "Dependency Injection", "IoC Container", "Contenedor de Inversión de Control", "Modularidad", "Testabilidad", "Mantenimiento Código", "Arquitectura Limpia", "Frameworks Web", "Patrones de Diseño"]
 image: "/assets/images/blog/dominando-la-inyeccion-de-dependencias.webp"
 draft: false
