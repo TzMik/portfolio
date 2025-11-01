@@ -12,7 +12,7 @@
     - [x] [Thin Controllers, clases de servicios y Fat Controllers](/src/content/blog/ampliando-el-patron-mvc.md)
     - [x] [ORM](/src/content/blog/el-puente-entre-codigo-y-datos.md)
     - [x] [Inyección de dependencias](/src/content/blog/dominando-la-inyeccion-de-dependencias.md)
-    - [ ] View Engines
+    - [x] [View Engines](/src/content/blog/dando-vida-a-la-vista.md)
     - [ ] MVC en Arquitectura de 3 Capas (_Tiers_)
     - [ ] Model-View-ViewModel (MVVM)
     - [ ] Model-View-Presenter (MVP)
