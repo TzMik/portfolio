@@ -10,7 +10,7 @@ const { testimonials } = Astro.props as { testimonials: TestimonialSchema[] };
       <div class="testimonial-item">
         <div class="testimonial-item-inner">
           <div class="author d-flex align-items-center">
-            <img src={testimonial.data.avatar} alt={testimonial.data.name} />
+            <img src={`/assets/images/testimonials/${testimonial.data.img}`} alt={testimonial.data.name} />
             <div class="right">
               <h3>{testimonial.data.name}</h3>
               <p class="designation">

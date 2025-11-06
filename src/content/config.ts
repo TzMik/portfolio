@@ -19,7 +19,7 @@ const testimonialSchema = z.object({
   role: z.string(),
   company: z.string().optional(),
   testimonial: z.string(),
-  avatar: z.string().optional(),
+  img: z.string().optional(),
   service: z.string().optional(),
 });
 
