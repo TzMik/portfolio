@@ -5,7 +5,6 @@ pub_date: 2023-08-01
 start_date: 2024-03-01
 end_date: 2024-04-15
 image: "/assets/images/projects/goc.jpg"
-top_project: true
 tags: ["E-commerce", "Optimización", "Transformación Digital", "Integración de Sistemas"]
 draft: false
 ---
