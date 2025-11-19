@@ -39,6 +39,3 @@ El *Cloud Computing* es el presente y el futuro, pero la **resiliencia** debe se
 ## Reflexión
 
 > Cuando el gigante tropieza, todo internet tiembla. Es hora de dejar de dar por sentada la promesa del "siempre activo" y empezar a construir con la mentalidad de que, tarde o temprano, **la nube también fallará**.
-
-
-¿Te gustaría que desarrollara alguna de las soluciones (como el Multi-Cloud) en una entrada de blog futura?
