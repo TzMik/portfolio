@@ -7,15 +7,15 @@
 ### Conceptos detrás de los frameworks
 
 #### Backend
-- [ ] Arquitectura MVC
+- [x] Arquitectura MVC
     - [x] [Fundamentos](/src/content/blog/desarrollo-web-simplificado.md)
     - [x] [Thin Controllers, clases de servicios y Fat Controllers](/src/content/blog/ampliando-el-patron-mvc.md)
     - [x] [ORM](/src/content/blog/el-puente-entre-codigo-y-datos.md)
     - [x] [Inyección de dependencias](/src/content/blog/dominando-la-inyeccion-de-dependencias.md)
     - [x] [View Engines](/src/content/blog/dando-vida-a-la-vista.md)
-    - [x] MVC en Arquitectura de 3 Capas (_Tiers_)
-    - [ ] Model-View-ViewModel (MVVM)
-    - [ ] Model-View-Presenter (MVP)
+    - [x] [MVC en Arquitectura de 3 Capas (_Tiers_)](/src/content/blog/el-rol-de-mvc-en-arquitectura-de-3-capas-tiers.md)
+    - [x] [Model-View-ViewModel (MVVM)](/src/content/blog/del-servidor-al-cliente.md)
+    - [x] [Model-View-Presenter (MVP)](/src/content/blog/mas-alla-del-mvc.md)
 - [ ] Patrón de diseño Repository
 - [ ] Patrón de diseño Service
 - [ ] Patrón de diseño Factory
