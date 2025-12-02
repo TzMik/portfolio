@@ -16,7 +16,7 @@
     - [x] [MVC en Arquitectura de 3 Capas (_Tiers_)](/src/content/blog/el-rol-de-mvc-en-arquitectura-de-3-capas-tiers.md)
     - [x] [Model-View-ViewModel (MVVM)](/src/content/blog/del-servidor-al-cliente.md)
     - [x] [Model-View-Presenter (MVP)](/src/content/blog/mas-alla-del-mvc.md)
-- [ ] Patrón de diseño Repository
+- [x] [Patrón de diseño Repository](/src/content/blog/patron-repository.md)
 - [ ] Patrón de diseño Service
 - [ ] Patrón de diseño Factory
 - [ ] Middlewares (ejecución antes o después)
