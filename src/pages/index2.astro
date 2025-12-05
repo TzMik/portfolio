@@ -1,11 +1,17 @@
 ---
 import AbstrakLayout from "../layouts/AbstrakLayout.astro";
 import ProjectGrid from "../components/abstrak/ProjectGrid.astro";
-import { getSortedProjects } from "../lib/projects.js";
+import { getSortedProjects, getProjectsAmount } from "../lib/projects.js";
+import {
+  getPostsAmount,
+  getSortedAndFilteredPosts,
+} from "../lib/blog-posts.js";
 import BrandGrid from "../components/abstrak/BrandGrid.astro";
 import { getCollection } from "astro:content";
 import TestimonialGrid from "../components/abstrak/TestimonialGrid.astro";
 import FollowersGrid from "../components/abstrak/FollowersGrid.astro";
+import CounterUpGrid from "../components/abstrak/CounterUpGrid.astro";
+import LastPostGrid from "../components/abstrak/LastPostGrid.astro";
 
 const brands = [
   {
@@ -44,10 +50,25 @@ const brands = [
 
 let topProjects = await getSortedProjects();
 topProjects = topProjects.slice(0, 4);
+const numProjects = await getProjectsAmount();
 
 let testimonials = await getCollection("testimonials");
 testimonials = testimonials.sort(() => Math.random() - 0.5);
 testimonials = testimonials.slice(0, 3);
+
+const startDate = new Date(2018, 8, 1); // Mes 8 = septiembre (0-indexed)
+const today = new Date();
+const diffYears = today.getFullYear() - startDate.getFullYear();
+const diffMonths = today.getMonth() - startDate.getMonth();
+const diffDays = today.getDate() - startDate.getDate();
+let yearsExperience = diffYears;
+if (diffMonths < 0 || (diffMonths === 0 && diffDays < 0)) {
+  yearsExperience--;
+}
+
+const numPosts = await getPostsAmount();
+const blogPosts = await getSortedAndFilteredPosts();
+const latestPosts = blogPosts.slice(0, 2);
 ---
 
 <AbstrakLayout>
@@ -59,18 +80,8 @@ testimonials = testimonials.slice(0, 3);
       <div class="row align-items-center">
         <div class="col-lg-6">
           <div class="banner-content">
-            <span
-              class="subtitle"
-              data-sal="slide-up"
-              data-sal-duration="1000"
-              data-sal-delay="100">MIKEL CANTERO</span
-            >
-            <h1
-              class="title"
-              data-sal="slide-up"
-              data-sal-duration="1000"
-              data-sal-delay="200"
-            >
+            <span class="subtitle">MIKEL CANTERO</span>
+            <h1 class="title">
               Ingeniero de Software
             </h1>
             <div
@@ -94,13 +105,10 @@ testimonials = testimonials.slice(0, 3);
           <div class="banner-thumbnail">
             <div
               class="large-thumb"
-              data-sal="slide-up"
-              data-sal-duration="800"
-              data-sal-delay="500"
             >
               <img
                 class="paralax-image"
-                src="/assets/images/mikel-cantero.webp"
+                src="/assets/images/banners/main.webp"
                 alt="Shape"
                 width="600"
               />
@@ -198,6 +206,105 @@ testimonials = testimonials.slice(0, 3);
       </li>
     </ul>
   </section>
+
+  <section class="section section-padding-equal bg-color-light" id="about">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6" data-sal="slide-up" data-sal-duration="800">
+          <div class="about-us">
+            <div class="section-heading heading-left mb-0">
+              <span class="subtitle">Sobre mí</span>
+              <h2 class="title mb--40">
+                Más de {yearsExperience} años en la industria de la tecnología
+              </h2>
+              <p>
+                Soy Ingeniero de Software con MBA en Dirección de Empresas,
+                apasionado por crear soluciones tecnológicas que aporten <b
+                  >valor real</b
+                >. Mi carrera inició en Fidanto, donde crecí de programador
+                junior a tech lead, <b
+                  >liderando proyectos de desarrollo y escalabilidad</b
+                >. Más tarde cofundé Fonsecantero, ofreciendo durante 2 años <b
+                  >soluciones digitales a medida para negocios</b
+                >. Hoy, con mi experiencia como software engineer y consultor,
+                combino mi experiencia técnica y de negocio para ayudar a
+                empresas en su <b>transformación digital</b>, comercio
+                electrónico e integración de herramientas innovadoras.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          class="col-xl-5 col-lg-6 offset-xl-1"
+          data-sal="slide-up"
+          data-sal-duration="800"
+          data-sal-delay="100"
+        >
+          <div class="contact-form-box">
+            <h3 class="title">Get a free Keystroke quote now</h3>
+            <form
+              method="POST"
+              action="https://new.axilthemes.com/demo/template/abstrak/mail.php"
+              class="axil-contact-form"
+            >
+              <div class="form-group">
+                <label>Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="contact-name"
+                  placeholder="John Smith"
+                />
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  name="contact-email"
+                  placeholder="example@mail.com"
+                />
+              </div>
+              <div class="form-group mb--40">
+                <label>Phone</label>
+                <input
+                  type="tel"
+                  class="form-control"
+                  name="contact-company"
+                  placeholder="+123456789"
+                />
+              </div>
+              <div class="form-group">
+                <button
+                  type="submit"
+                  class="axil-btn btn-fill-primary btn-fluid btn-primary"
+                  name="submit-btn">Get Free Quote</button
+                >
+              </div>
+              <input
+                type="hidden"
+                class="form-control"
+                name="contact-message"
+                value="Null"
+              />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ul class="shape-group-6 list-unstyled">
+      <li class="shape shape-1">
+        <img src="/abstrak/assets/media/others/bubble-7.png" alt="Bubble" />
+      </li>
+      <li class="shape shape-2">
+        <img src="/abstrak/assets/media/others/line-4.png" alt="line" />
+      </li>
+      <li class="shape shape-3">
+        <img src="/abstrak/assets/media/others/line-5.png" alt="line" />
+      </li>
+    </ul>
+  </section>
+
   <section class="section section-padding bg-color-dark">
     <div class="container">
       <div class="section-heading heading-light-left">
@@ -265,6 +372,125 @@ testimonials = testimonials.slice(0, 3);
     <ul class="shape-group-4 list-unstyled">
       <li class="shape-1">
         <img src="/abstrak/assets/media/others/bubble-1.png" alt="Bubble" />
+      </li>
+    </ul>
+  </section>
+
+  <section class="section call-to-action-area">
+    <div class="container">
+      <div class="call-to-action">
+        <div class="section-heading heading-light">
+          <span class="subtitle">Trabajemos juntos</span>
+          <h2 class="title">¿Necesitas ayuda con tu proyecto?</h2>
+          <a
+            href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1Y1CaEdN8br00DT2DQWWlv02XUJ39RCPMCn5KDXygf8GmQMTz0ayBlbEcIiwq33mlIn9FeZtk-?gv=true"
+            target="_blank"
+            class="axil-btn btn-large btn-fill-white">¡Hablemos!</a
+          >
+        </div>
+      </div>
+    </div>
+    <ul class="list-unstyled shape-group-9">
+      <li class="shape shape-1">
+        <img src="/abstrak/assets/media/others/bubble-12.png" alt="Comments" />
+      </li>
+      <li class="shape shape-2">
+        <img src="/abstrak/assets/media/others/bubble-16.png" alt="Comments" />
+      </li>
+      <li class="shape shape-3">
+        <img src="/abstrak/assets/media/others/bubble-13.png" alt="Comments" />
+      </li>
+      <li class="shape shape-4">
+        <img src="/abstrak/assets/media/others/bubble-14.png" alt="Comments" />
+      </li>
+      <li class="shape shape-5">
+        <img src="/abstrak/assets/media/others/bubble-16.png" alt="Comments" />
+      </li>
+      <li class="shape shape-6">
+        <img src="/abstrak/assets/media/others/bubble-15.png" alt="Comments" />
+      </li>
+      <li class="shape shape-7">
+        <img src="/abstrak/assets/media/others/bubble-16.png" alt="Comments" />
+      </li>
+    </ul>
+  </section>
+
+  <section class="section section-padding-equal">
+    <div class="container">
+      <div class="section-heading">
+        <span class="subtitle">Blog</span>
+        <h2 class="title">Últimas publicaciones</h2>
+        <p>Aquí encontrarás algunas de las publicaciones más recientes.</p>
+      </div>
+      <div class="row g-0">
+        {
+          latestPosts.map((post) => (
+            <LastPostGrid
+              url={post.slug}
+              image={post.data.image}
+              title={post.data.title}
+              content={post.data.description}
+            />
+          ))
+        }
+      </div>
+      <div class="row my-3">
+        <div class="col-12 d-flex justify-content-center">
+          <a href="/blog" class="axil-btn btn-large btn-fill-primary"
+            >Ver todos</a
+          >
+        </div>
+      </div>
+    </div>
+    <ul class="shape-group-1 list-unstyled">
+      <li class="shape shape-1">
+        <img src="/abstrak/assets/media/others/bubble-1.png" alt="bubble" />
+      </li>
+      <li class="shape shape-2">
+        <img src="/abstrak/assets/media/others/line-1.png" alt="bubble" />
+      </li>
+      <li class="shape shape-3">
+        <img src="/abstrak/assets/media/others/line-2.png" alt="bubble" />
+      </li>
+      <li class="shape shape-4">
+        <img src="/abstrak/assets/media/others/bubble-2.png" alt="bubble" />
+      </li>
+    </ul>
+  </section>
+
+  <section class="section section-padding bg-color-dark">
+    <div class="container">
+      <div class="section-heading heading-light">
+        <span class="subtitle">Mis números</span>
+        <h2 class="title">Información relevante</h2>
+        <p></p>
+      </div>
+      <div class="row">
+        <CounterUpGrid
+          icon="/abstrak/assets/media/icon/icon-24.png"
+          count={yearsExperience}
+          title="Años de experiencia"
+          symbol={true}
+        />
+        <CounterUpGrid
+          icon="/abstrak/assets/media/icon/icon-13.png"
+          count={numProjects}
+          title="Proyectos"
+        />
+        <CounterUpGrid
+          icon="/abstrak/assets/media/icon/icon-14.png"
+          count={numPosts}
+          title="Posts"
+        />
+      </div>
+    </div>
+    <ul class="list-unstyled shape-group-10">
+      <!-- <li class="shape shape-1"><img src="assets/media/others/line-9.png" alt="Circle"></li> -->
+      <li class="shape shape-2">
+        <img src="/abstrak/assets/media/others/bubble-42.png" alt="Circle" />
+      </li>
+      <li class="shape shape-3">
+        <img src="/abstrak/assets/media/others/bubble-43.png" alt="Circle" />
       </li>
     </ul>
   </section>

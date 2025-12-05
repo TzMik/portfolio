@@ -1,0 +1,32 @@
+---
+interface Props {
+  url: string;
+  image: string;
+  title: string;
+  content: string;
+}
+
+const { url, image, title, content } = Astro.props;
+---
+
+<div
+  class="col-xl-6"
+  data-sal="slide-right"
+  data-sal-duration="800"
+  data-sal-delay="100"
+>
+  <div class="blog-list flex-column gap-3">
+    <div class="post-thumbnail">
+      <a href={'/blog/' + url}><img src={image} alt="Blog Post" /></a>
+    </div>
+    <div class="post-content">
+      <h5 class="title">
+        <a href={'/blog/' + url}>{title}</a>
+      </h5>
+      <p>
+        {content}
+      </p>
+      <a href={'/blog/' + url} class="more-btn">Leer más</a>
+    </div>
+  </div>
+</div>
