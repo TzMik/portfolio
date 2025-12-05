@@ -1,53 +1,271 @@
 ---
 import AbstrakLayout from "../layouts/AbstrakLayout.astro";
----
-<AbstrakLayout>
+import ProjectGrid from "../components/abstrak/ProjectGrid.astro";
+import { getSortedProjects } from "../lib/projects.js";
+import BrandGrid from "../components/abstrak/BrandGrid.astro";
+import { getCollection } from "astro:content";
+import TestimonialGrid from "../components/abstrak/TestimonialGrid.astro";
+import FollowersGrid from "../components/abstrak/FollowersGrid.astro";
 
-    <!--=====================================-->
-    <!--=        Banner Area Start          =-->
-    <!--=====================================-->
-    <section class="banner banner-style-3">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <div class="banner-content">
-                        <span class="subtitle" data-sal="slide-up" data-sal-duration="1000" data-sal-delay="100">JOHNATHAN SMITH</span>
-                        <h1 class="title" data-sal="slide-up" data-sal-duration="1000" data-sal-delay="200">UI/UX ineraction designer</h1>
-                        <div class="btn-group" data-sal="slide-up" data-sal-duration="1000" data-sal-delay="300">
-                            <a href="https://dribbble.com/axilweb/" class="axil-btn btn-fill-primary btn-large">Latest Work On Dribbble</a>
-                            <a href="about-us.html" class="about-btn">About Me</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="banner-thumbnail">
-                        <div class="large-thumb" data-sal="slide-up" data-sal-duration="800" data-sal-delay="500">
-                            <img class="paralax-image" src="/abstrak/assets/media/banner/banner-thumb-6.png" alt="Shape">
-                        </div>
-                    </div>
-                </div>
+const brands = [
+  {
+    image: "/assets/images/brands/pinkup.png",
+    brand: "PinkUP Cosmetics",
+  },
+  {
+    image: "/assets/images/brands/GOC.png",
+    brand: "GOC Make Up",
+  },
+  {
+    image: "/assets/images/brands/Intermoda.png",
+    brand: "Intermoda",
+  },
+  {
+    image: "/assets/images/brands/Beserva.png",
+    brand: "Beserva",
+  },
+  {
+    image: "/assets/images/brands/cloe.png",
+    brand: "Cloe",
+  },
+  {
+    image: "/assets/images/brands/Instituto-jalisciense-de-cancerologia.png",
+    brand: "Instituto Jalisciense de Cancerología",
+  },
+  {
+    image: "/assets/images/brands/vax.png",
+    brand: "Vax Solutions",
+  },
+  {
+    image: "/assets/images/brands/idoo.png",
+    brand: "Idoo",
+  },
+];
+
+let topProjects = await getSortedProjects();
+topProjects = topProjects.slice(0, 4);
+
+let testimonials = await getCollection("testimonials");
+testimonials = testimonials.sort(() => Math.random() - 0.5);
+testimonials = testimonials.slice(0, 3);
+---
+
+<AbstrakLayout>
+  <!--=====================================-->
+  <!--=        Banner Area Start          =-->
+  <!--=====================================-->
+  <section class="banner banner-style-3">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <div class="banner-content">
+            <span
+              class="subtitle"
+              data-sal="slide-up"
+              data-sal-duration="1000"
+              data-sal-delay="100">MIKEL CANTERO</span
+            >
+            <h1
+              class="title"
+              data-sal="slide-up"
+              data-sal-duration="1000"
+              data-sal-delay="200"
+            >
+              Ingeniero de Software
+            </h1>
+            <div
+              class="btn-group"
+              data-sal="slide-up"
+              data-sal-duration="1000"
+              data-sal-delay="300"
+            >
+              <a
+                target="_blank"
+                href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1Y1CaEdN8br00DT2DQWWlv02XUJ39RCPMCn5KDXygf8GmQMTz0ayBlbEcIiwq33mlIn9FeZtk-?gv=true"
+                class="axil-btn btn-fill-primary btn-large"
+              >
+                ¡Trabajemos juntos!
+              </a>
+              <a href="" class="about-btn">Sobre mí</a>
             </div>
+          </div>
         </div>
-        <ul class="list-unstyled shape-group-20">
-            <li class="shape shape-1" data-sal="slide-down" data-sal-duration="500" data-sal-delay="100">
-                <img src="/abstrak/assets/media/others/bubble-32.png" alt="Bubble">
-            </li>
-            <li class="shape shape-2" data-sal="slide-left" data-sal-duration="500" data-sal-delay="200">
-                <img src="/abstrak/assets/media/others/bubble-33.png" alt="Bubble">
-            </li>
-            <li class="shape shape-4" data-sal="slide-left" data-sal-duration="500" data-sal-delay="700">
-                <img src="/abstrak/assets/media/others/bubble-14.png" alt="Bubble">
-            </li>
-            <li class="shape shape-5" data-sal="slide-left" data-sal-duration="500" data-sal-delay="700">
-                <img src="/abstrak/assets/media/others/bubble-4.png" alt="Bubble">
-            </li>
-            <li class="shape shape-6" data-sal="slide-left" data-sal-duration="500" data-sal-delay="700">
-                <img src="/abstrak/assets/media/others/bubble-30.png" alt="Bubble">
-            </li>
-            <li class="shape shape-7" data-sal="slide-left" data-sal-duration="500" data-sal-delay="700">
-                <img src="/abstrak/assets/media/others/bubble-31.png" alt="Bubble">
-            </li>
-            <li class="shape shape-8 marque-images"></li>
+        <div class="col-lg-6">
+          <div class="banner-thumbnail">
+            <div
+              class="large-thumb"
+              data-sal="slide-up"
+              data-sal-duration="800"
+              data-sal-delay="500"
+            >
+              <img
+                class="paralax-image"
+                src="/assets/images/mikel-cantero.webp"
+                alt="Shape"
+                width="600"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ul class="list-unstyled shape-group-20">
+      <li
+        class="shape shape-1"
+        data-sal="slide-down"
+        data-sal-duration="500"
+        data-sal-delay="100"
+      >
+        <img src="/abstrak/assets/media/others/bubble-32.png" alt="Bubble" />
+      </li>
+      <li
+        class="shape shape-2"
+        data-sal="slide-left"
+        data-sal-duration="500"
+        data-sal-delay="200"
+      >
+        <img src="/abstrak/assets/media/others/bubble-33.png" alt="Bubble" />
+      </li>
+      <li
+        class="shape shape-4"
+        data-sal="slide-left"
+        data-sal-duration="500"
+        data-sal-delay="700"
+      >
+        <img src="/abstrak/assets/media/others/bubble-14.png" alt="Bubble" />
+      </li>
+      <li
+        class="shape shape-5"
+        data-sal="slide-left"
+        data-sal-duration="500"
+        data-sal-delay="700"
+      >
+        <img src="/abstrak/assets/media/others/bubble-4.png" alt="Bubble" />
+      </li>
+      <li
+        class="shape shape-6"
+        data-sal="slide-left"
+        data-sal-duration="500"
+        data-sal-delay="700"
+      >
+        <img src="/abstrak/assets/media/others/bubble-30.png" alt="Bubble" />
+      </li>
+      <li
+        class="shape shape-7"
+        data-sal="slide-left"
+        data-sal-duration="500"
+        data-sal-delay="700"
+      >
+        <img src="/abstrak/assets/media/others/bubble-31.png" alt="Bubble" />
+      </li>
+      <li class="shape shape-8 marque-images"></li>
+    </ul>
+  </section>
+
+  <section class="section section-padding-equal bg-color-dark">
+    <div class="container">
+      <div class="section-heading heading-light-left">
+        <span class="subtitle">Portafolio</span>
+        <h2 class="title">Proyectos Destacados</h2>
+        <p>Aquí encontrarás algunos de mis proyectos más destacados.</p>
+      </div>
+      <div class="row row-45">
+        {
+          topProjects.map((project) => (
+            <ProjectGrid
+              url={project.slug}
+              image={project.data.image || ""}
+              title={project.data.title || ""}
+            />
+          ))
+        }
+      </div>
+      <div class="more-project-btn">
+        <a href="/projects" class="axil-btn btn-fill-white">
+          Ver todos los proyectos
+        </a>
+      </div>
+    </div>
+    <ul class="list-unstyled shape-group-10">
+      <li class="shape shape-1">
+        <img src="/abstrak/assets/media/others/circle-1.png" alt="Circle" />
+      </li>
+      <li class="shape shape-2">
+        <img src="/abstrak/assets/media/others/line-3.png" alt="Circle" />
+      </li>
+      <li class="shape shape-3">
+        <img src="/abstrak/assets/media/others/bubble-5.png" alt="Circle" />
+      </li>
+    </ul>
+  </section>
+  <section class="section section-padding bg-color-dark">
+    <div class="container">
+      <div class="section-heading heading-light-left">
+        <span class="subtitle">Clientes destacados</span>
+        <h2 class="title">He trabajado con...</h2>
+        <p>
+          Aquí encontrarás algunos de los clientes con los que he trabajado.
+        </p>
+      </div>
+      <div class="row align-items-center justify-content-center">
+        {
+          brands.map((brand) => (
+            <BrandGrid image={brand.image} brand={brand.brand} />
+          ))
+        }
+      </div>
+    </div>
+    <ul class="list-unstyled shape-group-10">
+      <li class="shape shape-1">
+        <img src="/abstrak/assets/media/others/line-9.png" alt="Circle" />
+      </li>
+    </ul>
+  </section>
+
+  <section class="section section-padding-equal">
+    <div class="container">
+      <div class="section-heading heading-left">
+        <span class="subtitle">Testimonios</span>
+        <h2 class="title">De mis clientes y compañeros</h2>
+        <p>
+          Aquí encontrarás algunos de los testimonios de mis clientes y
+          compañeros.
+        </p>
+      </div>
+      <div class="row">
+        {
+          testimonials.map((testimonial) => (
+            <TestimonialGrid
+              companyImage={testimonial.data.companyImg || ""}
+              companyName={testimonial.data.company || ""}
+              testimonial={testimonial.data.testimonial}
+              authorImage={testimonial.data.img || ""}
+              authorName={testimonial.data.name}
+              authorTitle={testimonial.data.role}
+            />
+          ))
+        }
+      </div>
+      <div class="axil-followers">
+        <ul class="followers-list list-unstyled">
+          <FollowersGrid
+            rss="linkedin"
+            link="https://www.linkedin.com/in/mikel-cantero-loi/"
+            followers="389"
+          />
+          <FollowersGrid
+            rss="tiktok"
+            link="https://www.tiktok.com/@mikelcantero"
+            followers="385"
+          />
+          <FollowersGrid rss="x" link="https://x.com/Tzmik" followers="33" />
         </ul>
-    </section>
+      </div>
+    </div>
+    <ul class="shape-group-4 list-unstyled">
+      <li class="shape-1">
+        <img src="/abstrak/assets/media/others/bubble-1.png" alt="Bubble" />
+      </li>
+    </ul>
+  </section>
 </AbstrakLayout>

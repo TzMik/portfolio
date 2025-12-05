@@ -1,0 +1,105 @@
+---
+interface Props {
+  companyImage: string;
+  companyName: string;
+  testimonial: string;
+  authorImage: string;
+  authorName: string;
+  authorTitle: string;
+}
+
+const { companyImage, companyName, testimonial, authorImage, authorName, authorTitle } = Astro.props;
+
+// Lógica mejorada para cortar el testimonio en la última palabra completa
+const MAX_LENGTH = 200;
+let shortTestimonial = testimonial;
+let needsTrimming = false;
+
+if (testimonial.length > MAX_LENGTH) {
+  // 1. Marcar que se necesita recortar
+  needsTrimming = true;
+
+  // 2. Obtener el subconjunto de texto que incluye el límite (200 caracteres)
+  let trimmedText = testimonial.substring(0, MAX_LENGTH);
+
+  // 3. Encontrar el índice del último espacio en este subconjunto
+  // Si no se encuentra un espacio, significa que la palabra es muy larga
+  // o que el corte cae justo después de una palabra completa.
+  const lastSpaceIndex = trimmedText.lastIndexOf(' ');
+
+  if (lastSpaceIndex !== -1) {
+    // 4. Cortar en el último espacio encontrado y añadir los puntos suspensivos
+    shortTestimonial = trimmedText.substring(0, lastSpaceIndex) + '...';
+  } else {
+    // 5. En el caso excepcional de que no haya espacios antes de 200 caracteres
+    // (una palabra muy larga), simplemente cortamos en el límite y añadimos '...'
+    shortTestimonial = trimmedText + '...';
+  }
+}
+
+// Nota: si testimonial.length <= MAX_LENGTH, needsTrimming sigue siendo false
+// y shortTestimonial sigue siendo el testimonial completo.
+---
+<div
+  class="col-lg-4"
+  data-sal="slide-up"
+  data-sal-duration="1000"
+  data-sal-delay="100"
+>
+  <div class="testimonial-grid">
+    <span class="social-media"
+      ><img src={'/assets/images/testimonials/' + companyImage} alt={companyName} width="50" class="rounded"/></span
+    >
+    <p>
+      <span class="testimonial-text" data-full-text={testimonial}>
+        {shortTestimonial}
+      </span>
+      {needsTrimming && (
+        <button class="read-more-btn btn btn-sm btn-outline-secondary mt-2" aria-expanded="false" data-toggle-text="Ver menos">
+          Ver más
+        </button>
+      )}
+    </p>
+
+    <div class="author-info">
+      <div class="thumb">
+        <img
+          src={'/assets/images/testimonials/' + authorImage}
+          alt={authorName}
+          width="50"
+        />
+      </div>
+      <div class="content">
+        <span class="name">{authorName}</span>
+        <span class="designation">{authorTitle}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const buttons = document.querySelectorAll('.read-more-btn');
+
+    buttons.forEach(button => {
+      button.addEventListener('click', function() {
+        const textSpan = this.closest('p').querySelector('.testimonial-text');
+        const isExpanded = this.getAttribute('aria-expanded') === 'true';
+        const fullText = textSpan.getAttribute('data-full-text');
+        const shortText = textSpan.textContent.substring(0, 203); // Corta la versión actual (200 + '...')
+
+        if (isExpanded) {
+          // Si está expandido, lo contraemos
+          textSpan.textContent = shortText;
+          this.textContent = 'Ver más';
+          this.setAttribute('aria-expanded', 'false');
+        } else {
+          // Si está contraído, lo expandimos
+          textSpan.textContent = fullText;
+          this.textContent = this.getAttribute('data-toggle-text'); // Usamos "Ver menos"
+          this.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  });
+</script>
