@@ -1,0 +1,738 @@
+---
+import ProfileSidebar from "../components/ProfileSidebar.astro";
+import ProfileMobileSidebar from "../components/ProfileMobileSidebar.astro";
+import PortfolioCategories from "../components/PortfolioCategories.astro";
+import GoogleCalendarButton from "../components/GoogleCalendarButton.astro";
+import ClientLogo from "../components/ClientLogo.astro";
+import Skill from "../components/Skill.astro";
+import Testimonial from "../components/Testimonial.astro";
+import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import SecondaryLinkBtn from "../components/SecondaryLinkBtn.astro";
+import { getSortedAndFilteredPosts, getPostsAmount } from "../lib/blog-posts.js";
+import { getProjectsAmount, getSortedProjects } from "../lib/projects.js";
+
+// Years of experience calculation
+const startDate = new Date(2018, 8, 1); // Mes 8 = septiembre (0-indexed)
+const today = new Date();
+const diffYears = today.getFullYear() - startDate.getFullYear();
+const diffMonths = today.getMonth() - startDate.getMonth();
+const diffDays = today.getDate() - startDate.getDate();
+
+let yearsExperience = diffYears;
+if (diffMonths < 0 || (diffMonths === 0 && diffDays < 0)) {
+	yearsExperience--;
+}
+
+// Projects
+const numProjects = await getProjectsAmount();
+
+let topProjects = await getSortedProjects();
+topProjects = topProjects.slice(0, 3);
+
+// Testimonials
+let testimonials = await getCollection("testimonials");
+
+testimonials = testimonials.sort(() => Math.random() - 0.5);
+
+testimonials = testimonials.slice(0, 5);
+
+// Blog posts
+const numPosts = await getPostsAmount();
+const blogPosts = await getSortedAndFilteredPosts();
+const latestPosts = blogPosts.slice(0, 2);
+---
+
+<Layout>
+	<ProfileSidebar yearsExperience={yearsExperience} />
+
+	<main class="drake-main">
+		<div id="smooth-wrapper">
+			<div id="smooth-content">
+				<ProfileMobileSidebar yearsExperience={yearsExperience} />
+
+				<section class="hero-section page-section" id="home">
+					<div class="custom-container">
+						<div class="hero-content content-width">
+							<div class="section-header">
+								<h4
+									class="subtitle"
+									data-animation="fade_from_bottom"
+								>
+									<i class="las la-home"></i> Inicio
+								</h4>
+								<h1>
+									Hola! Soy <span>Mikel</span>,<br />
+									Ingeniero de Software
+								</h1>
+							</div>
+							<p>
+								Soy Ingeniero de Software con MBA en Dirección
+								de Empresas, apasionado por crear soluciones
+								tecnológicas que aporten valor real. Mi carrera
+								inició en Fidanto, donde crecí de programador
+								junior a tech lead, liderando proyectos de
+								desarrollo y escalabilidad. Más tarde cofundé
+								Fonsecantero, ofreciendo durante 2 años
+								soluciones digitales a medida para negocios.
+								Hoy, con mi experiencia como software engineer y
+								consultor, combino mi experiencia técnica y de
+								negocio para ayudar a empresas en su
+								transformación digital, comercio electrónico e
+								integración de herramientas innovadoras.
+							</p>
+							<div class="row">
+								<div class="col">
+									<div class="facts d-flex">
+										<div
+											class="left"
+											data-animation="fade_from_left"
+										>
+											<h1>+{yearsExperience}</h1>
+											<p>Años de <br />Experiencia</p>
+										</div>
+										<div
+											class="right"
+											data-animation="fade_from_right"
+										>
+											<h1>{numProjects}</h1>
+											<p>
+												Proyectos<br />
+												completados
+											</p>
+										</div>
+										<div
+											class="right"
+											data-animation="fade_from_right"
+										>
+											<h1>{numPosts}</h1>
+											<p>
+												Publicaciones<br />
+												del blog
+											</p>
+										</div>
+									</div>
+								</div>
+								<div class="col">
+									<a
+										href="/#portfolio"
+										class="go-to-project-btn d-none d-md-flex"
+										data-animation="rotate_up"
+									>
+										<img
+											src="/assets/images/round-text.png"
+											alt=""
+										/>
+										<i class="las la-arrow-down"></i>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section
+					class="portfolio-area page-section scroll-to-page"
+					id="projects"
+				>
+					<div class="custom-container">
+						<div class="portfolio-content content-width">
+							<div class="section-header">
+								<h4
+									class="subtitle"
+									data-animation="fade_from_bottom"
+								>
+									<i class="las la-grip-vertical"></i> portfolio
+								</h4>
+								<h1 class="" data-animation="fade_from_bottom">
+									<span>Proyectos</span> Destacados
+								</h1>
+							</div>
+
+							<div class="row portfolio-items">
+								<div
+									class="col-md-12"
+									data-animation="fade_from_bottom"
+								>
+									{
+										topProjects.length > 0 && (
+											<div class="portfolio-item portfolio-full">
+												<div class="portfolio-item-inner">
+													<a
+														href={`/projects/${topProjects[0].slug || "#"}`}
+													>
+														<img
+															src={
+																topProjects[0]
+																	.data.image
+															}
+															alt={
+																topProjects[0]
+																	.data
+																	.title ||
+																"Portfolio"
+															}
+														/>
+													</a>
+												</div>
+												<h2>
+													<a
+														href={`/projects/${topProjects[0].slug || "#"}`}
+													>
+														{
+															topProjects[0].data
+																.title
+														}
+													</a>
+												</h2>
+											</div>
+										)
+									}
+								</div>
+
+								{
+									topProjects.length > 1 && (
+										<div
+											class="col-md-6 "
+											data-animation="fade_from_left"
+										>
+											<div class="portfolio-item portfolio-half">
+												<div class="portfolio-item-inner">
+													<a
+														href={`/projects/${topProjects[1].slug || "#"}`}
+													>
+														<img
+															src={
+																topProjects[1]
+																	.data.image
+															}
+															alt={
+																topProjects[1]
+																	.data
+																	.title ||
+																"Portfolio"
+															}
+														/>
+													</a>
+												</div>
+												<h2>
+													<a
+														href={`/projects/${topProjects[1].slug || "#"}`}
+													>
+														{
+															topProjects[1].data
+																.title
+														}
+													</a>
+												</h2>
+											</div>
+										</div>
+									)
+								}
+
+								{
+									topProjects.length > 2 && (
+										<div
+											class="col-md-6 "
+											data-animation="fade_from_right"
+										>
+											<div class="portfolio-item portfolio-half">
+												<div class="portfolio-item-inner">
+													<a
+														href={`/projects/${topProjects[2].slug || "#"}`}
+													>
+														<img
+															src={
+																topProjects[2]
+																	.data.image
+															}
+															alt={
+																topProjects[2]
+																	.data
+																	.title ||
+																"Portfolio"
+															}
+														/>
+													</a>
+												</div>
+												<h2>
+													<a
+														href={`/projects/${topProjects[2].slug || "#"}`}
+													>
+														{
+															topProjects[2].data
+																.title
+														}
+													</a>
+												</h2>
+											</div>
+										</div>
+									)
+								}
+							</div>
+							<div class="row justify-content-end">
+								<div class="col-md-4 text-end">
+									<SecondaryLinkBtn
+										href="/projects"
+										text="Ver todos"
+										icon="las la-arrow-right"
+									/>
+								</div>
+							</div>
+							<div class="clients-logos">
+								<h4 class="" data-animation="fade_from_bottom">
+									Marcas con las que he trabajado
+								</h4>
+								<div class="row align-items-center">
+									<ClientLogo
+										src="/assets/images/brands/pinkup.png"
+										alt="PinkUP Cosmetics"
+									/>
+									<ClientLogo
+										src="/assets/images/brands/GOC.png"
+										alt="GOC Make Up"
+									/>
+									<ClientLogo
+										src="/assets/images/brands/Intermoda.png"
+										alt="Intermoda"
+									/>
+									<ClientLogo
+										src="/assets/images/brands/Beserva.png"
+										alt="Beserva"
+									/>
+									<ClientLogo
+										src="/assets/images/brands/cloe.png"
+										alt="Cloe"
+									/>
+									<ClientLogo
+										src="/assets/images/brands/Instituto-jalisciense-de-cancerologia.png"
+										alt="Instituto Jalisciense de Cancerología"
+									/>
+									<ClientLogo
+										src="/assets/images/brands/vax.png"
+										alt="VAX Solutions"
+									/>
+									<ClientLogo
+										src="/assets/images/brands/idoo.png"
+										alt="IDOO Dev"
+									/>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section class="resume-area page-section" id="resume">
+					<div class="custom-container">
+						<div class="resume-content content-width">
+							<div class="section-header">
+								<h4 class="subtitle">
+									<i class="las la-briefcase"></i> CV
+								</h4>
+								<h1>
+									Educación & <span>Experiencia</span>
+								</h1>
+							</div>
+
+							<div class="resume-timeline">
+								<div
+									class="item"
+									data-animation="fade_from_right"
+								>
+									<span class="date">Actualidad</span>
+									<h2>Ing. de Software y Consultor</h2>
+									<p>Freelance</p>
+								</div>
+								<div
+									class="item"
+									data-animation="fade_from_right"
+								>
+									<span class="date">2023 - 2025</span>
+									<h2>CTO & Co-Fundador</h2>
+									<p>Fonsecantero</p>
+								</div>
+								<div
+									class="item"
+									data-animation="fade_from_right"
+								>
+									<span class="date">2019 - 2023</span>
+									<h2>Tech Lead</h2>
+									<p>Fidanto</p>
+									<h2>Full Stack Developer</h2>
+									<p>Fidanto</p>
+									<h2>Junior Backend Developer</h2>
+									<p>Fidanto</p>
+								</div>
+								<div
+									class="item"
+									data-animation="fade_from_right"
+								>
+									<span class="date">2019</span>
+									<h2>MBA</h2>
+									<p>GADE Business School</p>
+								</div>
+								<div
+									class="item"
+									data-animation="fade_from_right"
+								>
+									<span class="date">2014 - 2019</span>
+									<h2>Grado en Ingeniería Informática</h2>
+									<p>
+										Universidad del País Vasco (EHU)<br
+										/>Donostia - San Sebastián, España
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section
+					class="services-area page-section scroll-to-page"
+					id="skills"
+				>
+					<div class="custom-container">
+						<div class="services-content content-width">
+							<div class="section-header">
+								<h4
+									class="subtitle"
+									data-animation="fade_from_bottom"
+								>
+									<i class="las la-stream"></i> Habilidades
+								</h4>
+								<h1 class="" data-animation="fade_from_bottom">
+									Mis <span>Habilidades</span>
+								</h1>
+							</div>
+
+							<div class="services-items">
+								<div
+									class="service-item"
+									data-animation="fade_from_bottom"
+								>
+									<i class="las la-bezier-curve"></i>
+									<h2>Desarrollo a medida</h2>
+									<p>
+										Creación de aplicaciones y plataformas
+										digitales diseñadas específicamente para
+										cada cliente. Desde e-commerce hasta
+										sistemas empresariales, el enfoque
+										siempre debe estar en construir software
+										escalable, seguro y adaptable, que
+										impulse la eficiencia y el crecimiento
+										del negocio.
+									</p>
+								</div>
+								<div
+									class="service-item"
+									data-animation="fade_from_bottom"
+								>
+									<i class="las la-code"></i>
+									<h2>Visión Estratégica de Negocio</h2>
+									<p>
+										Entiendo el valor detrás de cada línea
+										de código. Mi experiencia con
+										emprendedores y empresas me permite
+										alinear la tecnología con los objetivos
+										comerciales, optimizando procesos y
+										generando soluciones que realmente
+										resuelven problemas.
+									</p>
+								</div>
+								<div
+									class="service-item"
+									data-animation="fade_from_bottom"
+								>
+									<i class="las la-users"></i>
+									<h2>
+										Liderazgo Técnico y Gestión de Proyectos
+									</h2>
+									<p>
+										He guiado equipos y proyectos desde la
+										idea hasta la implementación, asegurando
+										calidad, innovación y resultados. Mi
+										estilo de liderazgo fomenta la
+										colaboración, la eficiencia y la
+										adopción de nuevas tecnologías como la
+										IA, siempre con foco en la entrega de
+										valor.
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section
+					class="skills-area page-section scroll-to-page"
+					id="technologies"
+				>
+					<div class="custom-container">
+						<div class="skills-content content-width">
+							<div class="section-header">
+								<h4
+									class="subtitle"
+									data-animation="fade_from_bottom"
+								>
+									<i class="las la-shapes"></i> Tecnologías
+								</h4>
+								<h1 class="" data-animation="fade_from_bottom">
+									Mi Stack <span>Tecnológico</span>
+								</h1>
+							</div>
+
+							<div class="row skills text-center">
+								<Skill
+									imgSrc="/assets/images/php.png"
+									alt="PHP"
+									name="PHP"
+								/>
+								<Skill
+									imgSrc="/assets/images/js.png"
+									alt="JavaScript"
+									name="JavaScript"
+								/>
+								<Skill
+									imgSrc="/assets/images/python.png"
+									alt="Python"
+									name="Python"
+								/>
+								<Skill
+									imgSrc="/assets/images/bash.png"
+									alt="Bash"
+									name="Bash"
+								/>
+								<Skill
+									imgSrc="/assets/images/laravel.png"
+									alt="Laravel"
+									name="Laravel"
+								/>
+								<Skill
+									imgSrc="/assets/images/astro.png"
+									alt="Astro"
+									name="Astro"
+								/>
+								<Skill
+									imgSrc="/assets/images/mariadb.png"
+									alt="MariaDB"
+									name="MariaDB"
+								/>
+								<Skill
+									imgSrc="/assets/images/docker.png"
+									alt="Docker"
+									name="Docker"
+								/>
+								<Skill
+									imgSrc="/assets/images/GCP.png"
+									alt="Google Cloud Platform"
+									name="GCP"
+								/>
+								<Skill
+									imgSrc="/assets/images/aws.png"
+									alt="Amazon Web Services"
+									name="AWS"
+								/>
+								<Skill
+									imgSrc="/assets/images/apache.png"
+									alt="Apache"
+									name="Apache"
+								/>
+								<Skill
+									imgSrc="/assets/images/debian.png"
+									alt="Debian"
+									name="Debian"
+								/>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section
+					class="portfolio-area page-section scroll-to-page"
+					id="projects"
+				>
+					<div class="custom-container">
+						<div class="portfolio-content content-width">
+							<div class="section-header">
+								<h4
+									class="subtitle"
+									data-animation="fade_from_bottom"
+								>
+									<i class="las la-grip-vertical"></i> blog
+								</h4>
+								<h1 class="" data-animation="fade_from_bottom">
+									Últimas <span>Publicaciones</span>
+								</h1>
+							</div>
+
+							<div class="row portfolio-items mb-4">
+								{
+									latestPosts.length > 0 && (
+										<div
+											class="col-md-6 "
+											data-animation="fade_from_left"
+										>
+											<div class="portfolio-item portfolio-half">
+												<div class="portfolio-item-inner">
+													<a
+														href={`/blog/${latestPosts[0].slug || "#"}`}
+													>
+														<img
+															src={
+																latestPosts[0]
+																	.data.image
+															}
+															alt={
+																latestPosts[0]
+																	.data
+																	.title ||
+																"Portfolio"
+															}
+														/>
+													</a>
+												</div>
+												<h2>
+													<a
+														href={`/blog/${latestPosts[0].slug || "#"}`}
+													>
+														{
+															latestPosts[0].data
+																.title
+														}
+													</a>
+												</h2>
+											</div>
+										</div>
+									)
+								}
+
+								{
+									latestPosts.length > 1 && (
+										<div
+											class="col-md-6 "
+											data-animation="fade_from_right"
+										>
+											<div class="portfolio-item portfolio-half">
+												<div class="portfolio-item-inner">
+													<a
+														href={`/blog/${latestPosts[1].slug || "#"}`}
+													>
+														<img
+															src={
+																latestPosts[1]
+																	.data.image
+															}
+															alt={
+																latestPosts[1]
+																	.data
+																	.title ||
+																"Portfolio"
+															}
+														/>
+													</a>
+												</div>
+												<h2>
+													<a
+														href={`/blog/${latestPosts[1].slug || "#"}`}
+													>
+														{
+															latestPosts[1].data
+																.title
+														}
+													</a>
+												</h2>
+											</div>
+										</div>
+									)
+								}
+							</div>
+							<div class="row justify-content-end">
+								<div class="col-md-4 text-end">
+									<SecondaryLinkBtn
+										href="/blog"
+										text="Ver publicaciones"
+										icon="las la-arrow-right"
+									/>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section
+					class="testimonial-area page-section scroll-to-page"
+					id="testimonial"
+				>
+					<div class="custom-container">
+						<div class="testimonial-content content-width">
+							<div class="section-header">
+								<h4
+									class="subtitle"
+									data-animation="fade_from_bottom"
+								>
+									<i class="lar la-comment"></i> Testimonios
+								</h4>
+								<h1 class="" data-animation="fade_from_bottom">
+									<span>Testimonios</span> de Clientes y Colegas
+								</h1>
+							</div>
+
+							<div
+								class="testimonial-slider-wrap"
+								data-animation="fade_from_bottom"
+							>
+								<div
+									class="owl-carousel testimonial-slider owl-theme"
+								>
+									<Testimonial testimonials={testimonials} />
+								</div>
+								<div class="testimonial-footer-nav">
+									<div
+										class="testimonial-nav d-flex align-items-center"
+									>
+										<button class="prev"
+											><i class="las la-angle-left"
+											></i></button
+										>
+										<div id="testimonial-slide-count"></div>
+										<button class="next"
+											><i class="las la-angle-right"
+											></i></button
+										>
+									</div>
+								</div>
+							</div>
+
+							
+						</div>
+					</div>
+				</section>
+
+				<section
+					class="contact-area page-section scroll-content"
+					id="contact"
+				>
+					<div class="custom-container">
+						<div class="contact-content content-width">
+							<div class="section-header">
+								<h4
+									class="subtitle"
+									data-animation="fade_from_bottom"
+								>
+									<i class="las la-dollar-sign"></i> contacto
+								</h4>
+								<h1 class="" data-animation="fade_from_bottom">
+									Trabajemos <span>Juntos</span>
+								</h1>
+							</div>
+							<h3 class="" data-animation="fade_from_bottom">
+								contacto@mikelcantero.dev
+							</h3>
+							<GoogleCalendarButton />
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+	</main>
+</Layout>
