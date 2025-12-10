@@ -24,3 +24,5 @@ export const socialLinks = [
     icon: "fab fa-youtube",
   },
 ];
+
+export const calendarLink = "https://calendar.google.com/calendar/appointments/schedules/AcZssZ1Y1CaEdN8br00DT2DQWWlv02XUJ39RCPMCn5KDXygf8GmQMTz0ayBlbEcIiwq33mlIn9FeZtk-?gv=true";

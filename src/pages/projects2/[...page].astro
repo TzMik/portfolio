@@ -1,0 +1,121 @@
+---
+import AbstrakLayout from "../../layouts/AbstrakLayout.astro";
+import ProjectListElem from "../../components/abstrak/ProjectListElem.astro";
+import { getSortedProjects } from "../../lib/projects.js";
+import WorkTogether from "../../components/abstrak/WorkTogether.astro";
+import { calendarLink } from "../../data/MainInformation";
+
+export async function getStaticPaths({ paginate }) {
+  const allProjects = await getSortedProjects();
+  // Generate pages from our array of projects, with 6 items per page
+  return paginate(allProjects, { pageSize: 6 });
+}
+
+const { page } = Astro.props;
+---
+
+<AbstrakLayout>
+  <div class="breadcrum-area breadcrumb-banner">
+    <div class="container">
+      <div
+        class="section-heading heading-left"
+        data-sal="slide-right"
+        data-sal-duration="1000"
+        data-sal-delay="300"
+      >
+        <h1 class="title h2">Proyectos</h1>
+        <p>
+          Un rápido vistazo a los problemas que he resuelto a mis clientes a
+          tavés de soluciones personalizadas de software para resolver su
+          ineficiencia operativa.
+        </p>
+      </div>
+      <div
+        class="banner-thumbnail"
+        data-sal="slide-up"
+        data-sal-duration="1000"
+        data-sal-delay="400"
+      >
+        <img
+          class="paralax-image"
+          src="/abstrak/assets/media/banner/banner-thumb-1.png"
+          alt="Illustration"
+        />
+      </div>
+    </div>
+    <ul class="shape-group-8 list-unstyled">
+      <li
+        class="shape shape-1"
+        data-sal="slide-right"
+        data-sal-duration="500"
+        data-sal-delay="100"
+      >
+        <img src="/abstrak/assets/media/others/bubble-9.png" alt="Bubble" />
+      </li>
+      <li
+        class="shape shape-2"
+        data-sal="slide-left"
+        data-sal-duration="500"
+        data-sal-delay="200"
+      >
+        <img src="/abstrak/assets/media/others/bubble-20.png" alt="Bubble" />
+      </li>
+    </ul>
+  </div>
+  <section class="section section-padding-equal pt--200 pt_md--80 pt_sm--60">
+    <div class="container-fluid plr--30">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-3">
+        {
+          page.data.map((project) => (
+            <ProjectListElem
+              url={project.slug}
+              image={project.data.image || ""}
+              title={project.data.title || ""}
+            />
+          ))
+        }
+      </div>
+      <div class="pagination justify-content-center mt--20">
+        <ul>
+          <li>
+            {
+              page.url.prev ? (
+                <a class="prev page-numbers" href={page.url.prev}>
+                  <i class="fal fa-arrow-left" />
+                </a>
+              ) : null
+            }
+          </li>
+
+          {
+            Array.from({ length: page.lastPage }, (_, i) => i + 1).map(
+              (pageNum) => (
+                <li>
+                  <a
+                    href={
+                      pageNum === 1 ? "/projects2" : `/projects2/${pageNum}`
+                    }
+                    class={`page-numbers ${page.currentPage === pageNum ? "current" : ""}`}
+                  >
+                    {pageNum}
+                  </a>
+                </li>
+              )
+            )
+          }
+
+          <li>
+            {
+              page.url.next ? (
+                <a class="next page-numbers" href={page.url.next}>
+                  <i class="fal fa-arrow-right" />
+                </a>
+              ) : null
+            }
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <WorkTogether/>
+</AbstrakLayout>

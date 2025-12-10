@@ -13,9 +13,8 @@ import FollowersGrid from "../components/abstrak/FollowersGrid.astro";
 import CounterUpGrid from "../components/abstrak/CounterUpGrid.astro";
 import LastPostGrid from "../components/abstrak/LastPostGrid.astro";
 import FooterSocialLink from "../components/abstrak/FooterSocialLink.astro";
-import { socialLinks } from "../data/socialLinks";
-
-const calendarLink = "https://calendar.google.com/calendar/appointments/schedules/AcZssZ1Y1CaEdN8br00DT2DQWWlv02XUJ39RCPMCn5KDXygf8GmQMTz0ayBlbEcIiwq33mlIn9FeZtk-?gv=true";
+import { socialLinks, calendarLink } from "../data/MainInformation";
+import WorkTogether from "../components/abstrak/WorkTogether.astro";
 
 const brands = [
   {
@@ -347,44 +346,7 @@ const latestPosts = blogPosts.slice(0, 2);
     </ul>
   </section>
 
-  <section class="section call-to-action-area">
-    <div class="container">
-      <div class="call-to-action">
-        <div class="section-heading heading-light">
-          <span class="subtitle">Trabajemos juntos</span>
-          <h2 class="title">¿Necesitas ayuda con tu proyecto?</h2>
-          <a
-            href={calendarLink}
-            target="_blank"
-            class="axil-btn btn-large btn-fill-white">¡Hablemos!</a
-          >
-        </div>
-      </div>
-    </div>
-    <ul class="list-unstyled shape-group-9">
-      <li class="shape shape-1">
-        <img src="/abstrak/assets/media/others/bubble-12.png" alt="Comments" />
-      </li>
-      <li class="shape shape-2">
-        <img src="/abstrak/assets/media/others/bubble-16.png" alt="Comments" />
-      </li>
-      <li class="shape shape-3">
-        <img src="/abstrak/assets/media/others/bubble-13.png" alt="Comments" />
-      </li>
-      <li class="shape shape-4">
-        <img src="/abstrak/assets/media/others/bubble-14.png" alt="Comments" />
-      </li>
-      <li class="shape shape-5">
-        <img src="/abstrak/assets/media/others/bubble-16.png" alt="Comments" />
-      </li>
-      <li class="shape shape-6">
-        <img src="/abstrak/assets/media/others/bubble-15.png" alt="Comments" />
-      </li>
-      <li class="shape shape-7">
-        <img src="/abstrak/assets/media/others/bubble-16.png" alt="Comments" />
-      </li>
-    </ul>
-  </section>
+  <WorkTogether calendarLink={calendarLink} />
 
   <section class="section section-padding-equal">
     <div class="container">
