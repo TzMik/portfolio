@@ -1,73 +1,112 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import ProjectCard from "../../components/ProjectCard.astro";
-import "../../styles/ProjectLayout.css";
-
-// Importa las funciones de ayuda y la constante PAGE_SIZE
+import AbstrakLayout from "../../layouts/AbstrakLayout.astro";
+import ProjectListElem from "../../components/abstrak/ProjectListElem.astro";
 import { getSortedProjects } from "../../lib/projects.js";
-import { PAGE_SIZE, createStaticPathsForProjects } from "../../lib/pagination.js";
+import WorkTogether from "../../components/abstrak/WorkTogether.astro";
+import { calendarLink } from "../../data/MainInformation";
 
-// Llama a la función una sola vez para obtener los proyectos
-const allProjects = await getSortedProjects();
-
-const { page = [] } = Astro.params;
-const currentPage = Number(page[0] ?? "1");
-const totalPages = Math.max(Math.ceil(allProjects.length / PAGE_SIZE), 1);
-
-if (
-  !Number.isInteger(currentPage) ||
-  currentPage < 1 ||
-  currentPage > totalPages
-) {
-  return Astro.response(new Response("Página no encontrada", { status: 404 }));
+export async function getStaticPaths({ paginate }) {
+  const allProjects = await getSortedProjects();
+  // Generate pages from our array of projects, with 6 items per page
+  return paginate(allProjects, { pageSize: 6 });
 }
 
-const start = (currentPage - 1) * PAGE_SIZE;
-const items = allProjects.slice(start, start + PAGE_SIZE);
-
-const pageUrl = (n) => (n === 1 ? "/projects" : `/projects/${n}`);
-const prevUrl = currentPage > 1 ? pageUrl(currentPage - 1) : null;
-const nextUrl = currentPage < totalPages ? pageUrl(currentPage + 1) : null;
-const canonicalUrl = pageUrl(currentPage);
-
-//getStaticPaths ahora es mucho más simple y usa la función importada
-export async function getStaticPaths() {
-  return createStaticPathsForProjects();
-}
+const { page } = Astro.props;
 ---
 
-<Layout>
-  <section class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 container py-3 mt-5">
-    <div class="section-header">
-      <h1>Todos mis <span>Proyectos</span></h1>
-      <p class="description">
-        Aquí puedes encontrar una selección de mis trabajos más destacados.
-      </p>
+<AbstrakLayout title="Proyectos" >
+  <div class="breadcrum-area breadcrumb-banner">
+    <div class="container">
+      <div class="section-heading heading-left">
+        <h1 class="title h2">Proyectos</h1>
+        <p>
+          Un rápido vistazo a los problemas que he resuelto a mis clientes a
+          tavés de soluciones personalizadas de software para resolver su
+          ineficiencia operativa.
+        </p>
+      </div>
+      <div class="banner-thumbnail">
+        <img
+          class="paralax-image"
+          src="/assets/images/banners/management.webp"
+          alt="Illustration"
+          width="500"
+        />
+      </div>
     </div>
-    <div class="row justify-content-center">
-      {
-        items.map((project) => (
-          <ProjectCard project={project} />
-        ))
-      }
+    <ul class="shape-group-8 list-unstyled">
+      <li
+        class="shape shape-1"
+        data-sal="slide-right"
+        data-sal-duration="500"
+        data-sal-delay="100"
+      >
+        <img src="/abstrak/assets/media/others/bubble-9.png" alt="Bubble" />
+      </li>
+      <li
+        class="shape shape-2"
+        data-sal="slide-left"
+        data-sal-duration="500"
+        data-sal-delay="200"
+      >
+        <img src="/abstrak/assets/media/others/bubble-20.png" alt="Bubble" />
+      </li>
+    </ul>
+  </div>
+  <section class="section section-padding-equal pt--200 pt_md--80 pt_sm--60">
+    <div class="container-fluid plr--30">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-3">
+        {
+          page.data.map((project) => (
+            <ProjectListElem
+              url={project.slug}
+              image={project.data.image || ""}
+              title={project.data.title || ""}
+            />
+          ))
+        }
+      </div>
+      <div class="pagination justify-content-center mt--20">
+        <ul>
+          <li>
+            {
+              page.url.prev ? (
+                <a class="prev page-numbers" href={page.url.prev}>
+                  <i class="fal fa-arrow-left" />
+                </a>
+              ) : null
+            }
+          </li>
+
+          {
+            Array.from({ length: page.lastPage }, (_, i) => i + 1).map(
+              (pageNum) => (
+                <li>
+                  <a
+                    href={
+                      pageNum === 1 ? "/projects2" : `/projects2/${pageNum}`
+                    }
+                    class={`page-numbers ${page.currentPage === pageNum ? "current" : ""}`}
+                  >
+                    {pageNum}
+                  </a>
+                </li>
+              )
+            )
+          }
+
+          <li>
+            {
+              page.url.next ? (
+                <a class="next page-numbers" href={page.url.next}>
+                  <i class="fal fa-arrow-right" />
+                </a>
+              ) : null
+            }
+          </li>
+        </ul>
+      </div>
     </div>
   </section>
-
-  {
-    totalPages > 1 && (
-      <nav class="mt-8 d-flex flex-wrap align-items-center justify-content-center gap-2">
-        {Array.from({ length: totalPages }, (_, i) => {
-          const n = i + 1;
-          return (
-            <a
-              href={pageUrl(n)}
-              class={`rounded-md border px-3 py-1 text-sm ${n === currentPage ? "bg-black text-white" : ""}`}
-            >
-              {n}
-            </a>
-          );
-        })}
-      </nav>
-    )
-  }
-</Layout>
+  <WorkTogether/>
+</AbstrakLayout>

@@ -1,16 +1,12 @@
 ---
 import AbstrakLayout from "../layouts/AbstrakLayout.astro";
 import ProjectGrid from "../components/abstrak/ProjectGrid.astro";
-import { getSortedProjects, getProjectsAmount } from "../lib/projects.js";
-import {
-  getPostsAmount,
-  getSortedAndFilteredPosts,
-} from "../lib/blog-posts.js";
+import { getSortedProjects } from "../lib/projects.js";
+import { getSortedAndFilteredPosts } from "../lib/blog-posts.js";
 import BrandGrid from "../components/abstrak/BrandGrid.astro";
 import { getCollection } from "astro:content";
 import TestimonialGrid from "../components/abstrak/TestimonialGrid.astro";
 import FollowersGrid from "../components/abstrak/FollowersGrid.astro";
-import CounterUpGrid from "../components/abstrak/CounterUpGrid.astro";
 import LastPostGrid from "../components/abstrak/LastPostGrid.astro";
 import FooterSocialLink from "../components/abstrak/FooterSocialLink.astro";
 import { socialLinks, calendarLink } from "../data/MainInformation";
@@ -53,23 +49,11 @@ const brands = [
 
 let topProjects = await getSortedProjects();
 topProjects = topProjects.slice(0, 4);
-const numProjects = await getProjectsAmount();
 
 let testimonials = await getCollection("testimonials");
 testimonials = testimonials.sort(() => Math.random() - 0.5);
 testimonials = testimonials.slice(0, 3);
 
-const startDate = new Date(2018, 8, 1); // Mes 8 = septiembre (0-indexed)
-const today = new Date();
-const diffYears = today.getFullYear() - startDate.getFullYear();
-const diffMonths = today.getMonth() - startDate.getMonth();
-const diffDays = today.getDate() - startDate.getDate();
-let yearsExperience = diffYears;
-if (diffMonths < 0 || (diffMonths === 0 && diffDays < 0)) {
-  yearsExperience--;
-}
-
-const numPosts = await getPostsAmount();
 const blogPosts = await getSortedAndFilteredPosts();
 const latestPosts = blogPosts.slice(0, 2);
 ---
@@ -391,40 +375,5 @@ const latestPosts = blogPosts.slice(0, 2);
     </ul>
   </section>
 
-  <section class="section section-padding bg-color-dark">
-    <div class="container">
-      <div class="section-heading heading-light">
-        <span class="subtitle">Mis números</span>
-        <h2 class="title">Información relevante</h2>
-        <p></p>
-      </div>
-      <div class="row justify-content-center">
-        <CounterUpGrid
-          icon="/abstrak/assets/media/icon/icon-24.png"
-          count={yearsExperience}
-          title="Años de experiencia"
-          symbol={true}
-        />
-        <CounterUpGrid
-          icon="/abstrak/assets/media/icon/icon-13.png"
-          count={numProjects}
-          title="Proyectos"
-        />
-        <CounterUpGrid
-          icon="/abstrak/assets/media/icon/icon-14.png"
-          count={numPosts}
-          title="Posts"
-        />
-      </div>
-    </div>
-    <ul class="list-unstyled shape-group-10">
-      <!-- <li class="shape shape-1"><img src="assets/media/others/line-9.png" alt="Circle"></li> -->
-      <li class="shape shape-2">
-        <img src="/abstrak/assets/media/others/bubble-42.png" alt="Circle" />
-      </li>
-      <li class="shape shape-3">
-        <img src="/abstrak/assets/media/others/bubble-43.png" alt="Circle" />
-      </li>
-    </ul>
-  </section>
+  
 </AbstrakLayout>

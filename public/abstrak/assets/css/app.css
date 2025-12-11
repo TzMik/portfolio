@@ -834,7 +834,7 @@ input {
 
 .breadcrumb-banner .banner-thumbnail {
     position: absolute;
-    bottom: -100px;
+    top: 170px;
     right: 190px;
     text-align: right;
 }
