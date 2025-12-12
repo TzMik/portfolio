@@ -3,8 +3,7 @@ import AbstrakLayout from "../../layouts/AbstrakLayout.astro";
 import { getCollection } from "astro:content";
 import type { ProjectSchema } from "../../content/config";
 import "../../styles/AbstrakProjectLayout.css";
-import { calendarLink, socialLinks } from "../../data/MainInformation";
-import { getSortedAndFilteredPosts } from "../../lib/blog-posts.js";
+import ContentSidebar from "../../components/abstrak/ContentSidebar.astro";
 
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
@@ -22,13 +21,18 @@ if (project.draft !== false) {
   return new Response(null, { status: 404 });
 }
 
-const blogPosts = await getSortedAndFilteredPosts();
-const latestPosts = blogPosts.slice(0, 3);
 ---
 
 <AbstrakLayout>
   <div class="breadcrum-area breadcrumb-banner single-breadcrumb">
     <div class="container">
+      <div class="breadcrumb">
+        <ul class="list-unstyled">
+          <li><a href="/">Inicio</a></li>
+          <li><a href="/projects">Proyectos</a></li>
+          <li class="active">{project.title}</li>
+        </ul>
+      </div>
       <div class="row align-items-center">
         <div class="col-lg-6">
           <div class="section-heading heading-left">
@@ -84,59 +88,7 @@ const latestPosts = blogPosts.slice(0, 3);
           <Content />
         </div>
         <div class="col-lg-4 offset-lg-1">
-          <div class="axil-sidebar">
-            <div class="widget widget-banner-ad">
-              <a href={calendarLink} target="_blank">
-                <div class="banner-cta">
-                  <button class="axil-btn btn-fill-primary"
-                    >Trabajemos juntos</button
-                  >
-                </div>
-                <img
-                  src="/assets/images/banners/consultancy.webp"
-                  alt="banner"
-                />
-              </a>
-            </div>
-            <div class="widget widge-social-share">
-              <div class="blog-share">
-                <h5 class="title">Sígueme:</h5>
-                <ul class="social-list list-unstyled">
-                  {socialLinks.map((link) => (
-                    <li>
-                      <a href={link.href} target="_blank">
-                        <i class={link.icon}></i>
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-            <div class="widget widget-recent-post">
-              <h4 class="widget-title">Últimas publicaciones</h4>
-              <div class="post-list-wrap">
-                {latestPosts.map((post) => (
-                  <div class="single-post">
-                    <div class="post-thumbnail">
-                      <a href={`/blog/${post.slug}`}
-                        ><img src={post.data.image} alt={post.data.title} width="100"/></a
-                      >
-                  </div>
-                  <div class="post-content">
-                    <h6 class="title">
-                      <a href={`/blog/${post.slug}`}
-                        >{post.data.title}</a
-                      >
-                    </h6>
-                    <ul class="blog-meta list-unstyled">
-                      <li>{ post.data.pub_date.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' }) }</li>
-                    </ul>
-                  </div>
-                </div>
-                ))}
-              </div>
-            </div>
-          </div>
+          <ContentSidebar />
         </div>
       </div>
     </div>

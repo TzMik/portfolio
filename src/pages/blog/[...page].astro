@@ -1,69 +1,136 @@
 ---
 // src/pages/blog/[...page].astro
-import Layout from "../../layouts/Layout.astro";
-import PostCard from "../../components/PostCard.astro";
-import "../../styles/ProjectLayout.css";
+import AbstrakProjectLayout from "../../layouts/AbstrakLayout.astro";
+import BlogGrid from "../../components/abstrak/BlogGrid.astro";
+import ContentSidebar from "../../components/abstrak/ContentSidebar.astro";
+import "../../styles/AbstrakProjectLayout.css";
 
 // Importa PAGE_SIZE y las funciones de ayuda
-import { PAGE_SIZE, createStaticPathsForPosts } from "../../lib/pagination.js";
+import { createStaticPathsForPosts } from "../../lib/pagination.js";
 import { getSortedAndFilteredPosts } from "../../lib/blog-posts.js";
+import WorkTogether from "../../components/abstrak/WorkTogether.astro";
 
 // Llama a la función correcta para obtener las publicaciones
 const allPosts = await getSortedAndFilteredPosts();
 
-const { page = [] } = Astro.params;
-const currentPage = Number(page[0] ?? "1");
-const totalPages = Math.max(Math.ceil(allPosts.length / PAGE_SIZE), 1);
+const { page = 1 } = Astro.params;
+const currentPage = Number(page);
+const totalPages = Math.max(Math.ceil(allPosts.length / 3), 1);
 
+console.log(currentPage);
 if (
-  !Number.isInteger(currentPage) ||
-  currentPage < 1 ||
-  currentPage > totalPages
+  currentPage < 1 ||
+  currentPage > totalPages
 ) {
-  return Astro.response(new Response("Página no encontrada", { status: 404 }));
+  return Astro.response(new Response("Página no encontrada", { status: 404 }));
 }
 
-const start = (currentPage - 1) * PAGE_SIZE;
-const items = allPosts.slice(start, start + PAGE_SIZE);
+const start = (currentPage - 1) * 3;
+const items = allPosts.slice(start, start + 3);
 
 const pageUrl = (n) => (n === 1 ? "/blog" : `/blog/${n}`);
 
 //getStaticPaths ahora es mucho más simple y usa la función importada
 export async function getStaticPaths() {
-  return createStaticPathsForPosts();
+  return createStaticPathsForPosts(3);
 }
 ---
 
-<Layout>
-    <section class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 container py-3 mt-5">
-        <div class="section-header">
-            <h1>Todas las <span>Publicaciones</span></h1>
-            <p class="description">
-                Aquí puedes encontrar mis últimas publicaciones del blog.
-            </p>
-        </div>
-        <div class="row justify-content-center">
-            {items.map((post) => (
-                <PostCard post={post} />
-            ))}
-        </div>
-    </section>
+<AbstrakProjectLayout title="Blog">
+  <div class="breadcrum-area">
+    <div class="container">
+      <div class="breadcrumb">
+        <ul class="list-unstyled">
+          <li><a href="/">Inicio</a></li>
+          <li class="active">Blog</li>
+        </ul>
+        <h1 class="title h2">Blog</h1>
+      </div>
+    </div>
+    <ul class="shape-group-8 list-unstyled">
+      <li
+        class="shape shape-1"
+        data-sal="slide-right"
+        data-sal-duration="500"
+        data-sal-delay="100"
+      >
+        <img src="/abstrak/assets/media/others/bubble-9.png" alt="Bubble" />
+      </li>
+      <li
+        class="shape shape-2"
+        data-sal="slide-left"
+        data-sal-duration="500"
+        data-sal-delay="200"
+      >
+        <img src="/abstrak/assets/media/others/bubble-10.png" alt="Bubble" />
+      </li>
+      <li
+        class="shape shape-3"
+        data-sal="slide-up"
+        data-sal-duration="500"
+        data-sal-delay="300"
+      >
+        <img src="/abstrak/assets/media/others/line-4.png" alt="Line" />
+      </li>
+    </ul>
+  </div>
 
-    {
-    totalPages > 1 && (
-    <nav class="mt-8 d-flex flex-wrap align-items-center justify-content-center gap-2">
-        {Array.from({ length: totalPages }, (_, i) => {
-        const n = i + 1;
-        return (
-        <a
-            href={pageUrl(n)}
-            class={`rounded-md border px-3 py-1 text-sm ${n === currentPage ? "bg-black text-white" : ""}`}
-        >
-            {n}
-        </a>
-        );
-        })}
-    </nav>
-    )
-    }
-</Layout>
+  <section class="section-padding-equal">
+    <div class="container">
+      <div class="row row-40">
+        <div class="col-lg-8">
+          {items.map((post) => <BlogGrid post={post} />)}
+          <div class="pagination">
+            <ul>
+              <!-- Previous Button -->
+              {
+                currentPage > 1 && (
+                  <li>
+                    <a
+                      class="prev page-numbers"
+                      href={pageUrl(currentPage - 1)}
+                    >
+                      <i class="fal fa-arrow-left" />
+                    </a>
+                  </li>
+                )
+              }
+
+              <!-- Page Numbers -->
+              {
+                Array.from({ length: totalPages }, (_, i) => i + 1).map((n) => (
+                  <li>
+                    <a
+                      href={pageUrl(n)}
+                      class={`page-numbers ${n === currentPage ? "current" : ""}`}
+                    >
+                      {n}
+                    </a>
+                  </li>
+                ))
+              }
+
+              <!-- Next Button -->
+              {
+                currentPage < totalPages && (
+                  <li>
+                    <a
+                      class="next page-numbers"
+                      href={pageUrl(currentPage + 1)}
+                    >
+                      <i class="fal fa-arrow-right" />
+                    </a>
+                  </li>
+                )
+              }
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <ContentSidebar />
+        </div>
+      </div>
+    </div>
+  </section>
+  <WorkTogether />
+</AbstrakProjectLayout>
