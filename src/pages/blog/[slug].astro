@@ -24,7 +24,7 @@ const post: BlogPostSchema = entry.data;
 const { Content } = await entry.render();
 ---
 
-<AbstrakLayout>
+<AbstrakLayout title={post.title + " - Blog | MikelCanteroDev"} description={post.description} image={post.image}>
   <div class="breadcrum-area">
     <div class="container">
       <div class="breadcrumb">

@@ -9,9 +9,11 @@ import MyNumbers from "../components/abstrak/MyNumbers.astro";
 
 import { socialLinks } from "../data/MainInformation";
 
-const { title = "" } = Astro.props;
-
-
+const {
+  title = "MikelCanteroDev",
+  description = "Consultoría y desarrollo de software a medida para PYMES. Elimina el retrabajo y la ineficiencia operativa. Transforma tu empresa en crecimiento estratégico.",
+  image = "",
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -20,8 +22,14 @@ const { title = "" } = Astro.props;
     <!-- Meta Data -->
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>{ (title.length > 0 ? title + ' | MikelCanteroDev' : 'MikelCanteroDev') }</title>
-    <meta name="description" content="" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url.href} />
+
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
