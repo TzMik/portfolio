@@ -31,9 +31,22 @@ const blogPostSchema = z.object({
   draft: z.boolean().default(true),
   tags: z.array(z.string()).optional(),
   image: z.string().optional()
-})
+});
+
+const serviceSchema = z.object({
+  title: z.string(),
+  description: z.string(),
+  image: z.string().optional(),
+  price: z.number().optional(),
+  price_range: z.string().optional(),
+  payment_type: z.string().optional()
+});
 
 // COLLECTIONS
+const servicesCollection = defineCollection({
+  schema: serviceSchema,
+});
+
 const projectsCollection = defineCollection({
   schema: projectSchema,
 });
@@ -49,9 +62,11 @@ const blogPosts = defineCollection({
 export type ProjectSchema = z.infer<typeof projectSchema>;
 export type TestimonialSchema = z.infer<typeof testimonialSchema>;
 export type BlogPostSchema = z.infer<typeof blogPostSchema>;
+export type ServiceSchema = z.infer<typeof serviceSchema>;
 
 export const collections = {
   projects: projectsCollection,
   testimonials,
-  blogPosts
+  blogPosts,
+  services: servicesCollection
 };
