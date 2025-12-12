@@ -1,0 +1,19 @@
+---
+interface Props {
+  href: string;
+  icon: string;
+}
+const { href, icon } = Astro.props;
+---
+
+<li>
+  <a
+    href={href}
+    data-sal="slide-up"
+    data-sal-duration="500"
+    data-sal-delay="100"
+    target="_blank"
+  >
+    <i class={icon}></i>
+  </a>
+</li>

@@ -1,0 +1,14 @@
+---
+interface Props {
+  rss: string;
+  link: string;
+  followers: string;
+}
+
+const { rss, link, followers } = Astro.props;
+---
+<li class={rss} data-sal="slide-up" data-sal-duration="1000">
+  <a href={link} target="_blank">
+    <i class={` fab fa-${rss}`}></i><span>{followers} Seguidores</span></a
+  >
+</li>

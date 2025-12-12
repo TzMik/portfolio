@@ -1,0 +1,24 @@
+---
+interface Props {
+  image: string;
+  title: string;
+  url: string;
+}
+const { image, title, url } = Astro.props;
+---
+
+<div class="col">
+  <div class="project-grid">
+    <div class="thumbnail">
+      <a href={"/projects/" + url}>
+        <img src={image} alt="project" />
+      </a>
+    </div>
+    <div class="content">
+      <h4 class="title">
+        <a href={"/projects/" + url}>{title}</a>
+      </h4>
+      {/* <span class="subtitle">Website, UI/UX</span> */}
+    </div>
+  </div>
+</div>

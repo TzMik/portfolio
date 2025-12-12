@@ -9,9 +9,9 @@ export const PAGE_SIZE = 12;
  * @param {Function} getItemsFunction - An async function that returns an array of items.
  * @returns {Promise<Array<{ params: { page: string | undefined } }>>}
  */
-async function createStaticPaths(getItemsFunction) {
+async function createStaticPaths(getItemsFunction, pageSize = PAGE_SIZE) {
     const allItems = await getItemsFunction();
-    const totalPages = Math.max(Math.ceil(allItems.length / PAGE_SIZE), 1);
+    const totalPages = Math.max(Math.ceil(allItems.length / pageSize), 1);
 
     const paths = [{ params: { page: undefined } }];
     for (let n = 2; n <= totalPages; n++) {
@@ -20,12 +20,12 @@ async function createStaticPaths(getItemsFunction) {
     return paths;
 }
 
-export async function createStaticPathsForPosts() {
-    return createStaticPaths(getSortedAndFilteredPosts);
+export async function createStaticPathsForPosts(pageSize = PAGE_SIZE) {
+    return createStaticPaths(getSortedAndFilteredPosts, pageSize);
 }
 
-export async function createStaticPathsForProjects() {
-    return createStaticPaths(getSortedProjects);
+export async function createStaticPathsForProjects(pageSize = PAGE_SIZE) {
+    return createStaticPaths(getSortedProjects, pageSize);
 }
 
 export async function createStaticPathsForTags() {

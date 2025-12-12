@@ -1,0 +1,23 @@
+---
+interface Props {
+  url: string;
+  image: string;
+  title: string;
+}
+
+const { url, image, title } = Astro.props;
+---
+<div class="col-md-6">
+  <div class="project-grid project-style-2">
+    <div class="thumbnail">
+      <a href={'/projects/' + url}>
+        <img src={image} alt="project" />
+      </a>
+    </div>
+    <div class="content">
+      <h3 class="title h4 bg-color-dark text-white px-3 py-2">
+        <a href={'/projects/' + url}>{title}</a>
+      </h3>
+    </div>
+  </div>
+</div>

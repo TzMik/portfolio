@@ -21,6 +21,7 @@ const testimonialSchema = z.object({
   testimonial: z.string(),
   img: z.string().optional(),
   service: z.string().optional(),
+  companyImg: z.string().optional()
 });
 
 const blogPostSchema = z.object({

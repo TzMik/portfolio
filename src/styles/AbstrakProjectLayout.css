@@ -1,0 +1,64 @@
+#project-content h2 {
+    font-size: var(--h3);
+    font-family: var(--font-primary);
+    font-weight: 500;
+    letter-spacing: -0.025em;
+    color: var(--color-text-dark);
+}
+
+#project-content p {
+    font-size: var(--font-body-2);
+    line-height: var(--line-height-b1);
+    margin: 0 0 30px 0;
+}
+
+#project-content hr {
+    width: 100px;
+    color: var(--color-body);
+}
+
+#project-content ul, #project-content ol {
+    padding: 0 0 30px 4rem;
+}
+
+#project-content li , #project-content li p {
+    margin-bottom: 1rem;
+}
+
+pre {
+    padding: 2rem 1rem;
+    background-color: var(--color-body);
+    border-radius: 1rem;
+}
+
+#project-content a {
+    color: var(--color-rose);
+}
+
+#project-content table {
+    width: 100%;
+    border: 1px solid var(--color-body);
+}
+
+#project-content table tr {
+    border: 1px solid var(--color-body);
+}
+
+#project-content table th {
+    padding: 1rem;
+    background-color: #ffd3db;
+    color: var(--color-text-dark);
+    text-align: center;
+    text-decoration: underline;
+}
+
+#project-content table td {
+    padding: 1rem;
+    border: 1px solid var(--color-body);
+}
+
+.banner-cta {
+    position: relative;
+    top: 85px;
+    left: 20px;
+}

@@ -1,16 +1,16 @@
 ---
+import AbstrakLayout from "../../layouts/AbstrakLayout.astro";
 import { getCollection } from "astro:content";
 import type { ProjectSchema } from "../../content/config";
-import ProjectLayout from "../../layouts/ProjectLayout.astro";
-import ProjectRichSnippet from "../../components/ProjectRichSnippet.astro";
-import { slugify } from "../../utils/slugify";
+import "../../styles/AbstrakProjectLayout.css";
+import ContentSidebar from "../../components/abstrak/ContentSidebar.astro";
 
 export async function getStaticPaths() {
-    const projects = await getCollection("projects");
-    return projects.map((entry) => ({
-        params: { slug: entry.slug },
-        props: { entry },
-    }));
+  const projects = await getCollection("projects");
+  return projects.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
 }
 
 const { entry } = Astro.props;
@@ -18,57 +18,79 @@ const project: ProjectSchema = entry.data;
 const { Content } = await entry.render();
 
 if (project.draft !== false) {
-    return new Response(null, { status: 404 });
+  return new Response(null, { status: 404 });
 }
+
 ---
 
-<ProjectLayout image={project.image}>
-    <main class="drake-main">
-        <div id="smooth-wrapper">
-            <div id="smooth-content">
-                <article class="container">
-                    {
-                        project.image && (
-                            <div
-                                class="project-hero mt-2"
-                                style={`background-image: url('${project.image}'); background-size: cover; background-position: center; position: relative; width: 100%; min-height: 300px; display: flex; align-items: center; justify-content: center; border-radius: 1rem;`}
-                            >
-                                <div
-                                    class="project-hero-title"
-                                    style="position: absolute; z-index: 2; width: 100%; text-align: center;"
-                                >
-                                    <h1 style="color: var(--primary_color); text-shadow: 0 2px 8px rgba(0,0,0,0.7); margin: 0;font-weight: 800;">
-                                        {project.title}
-                                    </h1>
-                                </div>
-                                <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.75); border-radius: 1rem;" />
-                            </div>
-                        )
-                    }
-
-                    <div style="margin-bottom: 1rem;">
-                        <ul class="portfolio-categories">
-                            {
-                                project.tags?.map((cat) => (
-                                    <li>
-                                        <a href={`/tags/${ slugify(cat) }`}>{cat}</a>
-                                    </li>
-                                ))
-                            }
-                        </ul>
-                    </div>
-                    <div class="project-content">
-                        <Content />
-                    </div>
-                </article>
-            </div>
+<AbstrakLayout>
+  <div class="breadcrum-area breadcrumb-banner single-breadcrumb">
+    <div class="container">
+      <div class="breadcrumb">
+        <ul class="list-unstyled">
+          <li><a href="/">Inicio</a></li>
+          <li><a href="/projects">Proyectos</a></li>
+          <li class="active">{project.title}</li>
+        </ul>
+      </div>
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <div class="section-heading heading-left">
+            <h1 class="title h2">{project.title}</h1>
+            <p>
+              {project.description}
+            </p>
+          </div>
         </div>
-    </main>
-    <ProjectRichSnippet
-        title={project.title}
-        description={project.description}
-        image={project.image}
-        tags={project.tags}
-        date={project.pub_date}
-    />
-</ProjectLayout>
+        <div class="col-lg-6">
+          <div class="banner-thumbnail">
+            <img
+              class="paralax-image"
+              src={project.image}
+              alt="Illustration"
+              width="500"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <ul class="shape-group-8 list-unstyled">
+      <li
+        class="shape shape-1"
+        data-sal="slide-right"
+        data-sal-duration="500"
+        data-sal-delay="100"
+      >
+        <img src="/abstrak/assets/media/others/bubble-9.png" alt="Bubble" />
+      </li>
+      <li
+        class="shape shape-2"
+        data-sal="slide-left"
+        data-sal-duration="500"
+        data-sal-delay="200"
+      >
+        <img src="/abstrak/assets/media/others/bubble-20.png" alt="Bubble" />
+      </li>
+      <li
+        class="shape shape-3"
+        data-sal="slide-up"
+        data-sal-duration="500"
+        data-sal-delay="300"
+      >
+        <img src="/abstrak/assets/media/others/line-4.png" alt="Line" />
+      </li>
+    </ul>
+  </div>
+  <section class="section-padding-equal">
+    <div class="container">
+      <div class="row row-40">
+        <div class="col-lg-8" id="project-content">
+          <Content />
+        </div>
+        <div class="col-lg-4">
+          <ContentSidebar />
+        </div>
+      </div>
+    </div>
+  </section>
+</AbstrakLayout>

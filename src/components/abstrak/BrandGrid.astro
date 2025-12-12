@@ -1,0 +1,13 @@
+---
+interface Props {
+    image: string;
+    brand: string;
+}
+
+const { image, brand } = Astro.props;
+---
+<div class="col-lg-3 col-6 sal-animate" data-sal="slide-up" data-sal-duration="500">
+  <div class="brand-grid d-flex justify-content-center">
+    <img src={image} alt={brand} />
+  </div>
+</div>
