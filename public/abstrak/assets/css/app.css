@@ -9118,6 +9118,7 @@ body.op-modal-open {
     margin-bottom: 25px;
     padding-bottom: 20px;
     border-bottom: var(--border-lighter);
+    align-items: center;
 }
 
 .widget.widget-recent-post .single-post .post-thumbnail a {

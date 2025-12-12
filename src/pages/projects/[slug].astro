@@ -1,0 +1,144 @@
+---
+import AbstrakLayout from "../../layouts/AbstrakLayout.astro";
+import { getCollection } from "astro:content";
+import type { ProjectSchema } from "../../content/config";
+import "../../styles/AbstrakProjectLayout.css";
+import { calendarLink, socialLinks } from "../../data/MainInformation";
+import { getSortedAndFilteredPosts } from "../../lib/blog-posts.js";
+
+export async function getStaticPaths() {
+  const projects = await getCollection("projects");
+  return projects.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const project: ProjectSchema = entry.data;
+const { Content } = await entry.render();
+
+if (project.draft !== false) {
+  return new Response(null, { status: 404 });
+}
+
+const blogPosts = await getSortedAndFilteredPosts();
+const latestPosts = blogPosts.slice(0, 3);
+---
+
+<AbstrakLayout>
+  <div class="breadcrum-area breadcrumb-banner single-breadcrumb">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <div class="section-heading heading-left">
+            <h1 class="title h2">{project.title}</h1>
+            <p>
+              {project.description}
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="banner-thumbnail">
+            <img
+              class="paralax-image"
+              src={project.image}
+              alt="Illustration"
+              width="500"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <ul class="shape-group-8 list-unstyled">
+      <li
+        class="shape shape-1"
+        data-sal="slide-right"
+        data-sal-duration="500"
+        data-sal-delay="100"
+      >
+        <img src="/abstrak/assets/media/others/bubble-9.png" alt="Bubble" />
+      </li>
+      <li
+        class="shape shape-2"
+        data-sal="slide-left"
+        data-sal-duration="500"
+        data-sal-delay="200"
+      >
+        <img src="/abstrak/assets/media/others/bubble-20.png" alt="Bubble" />
+      </li>
+      <li
+        class="shape shape-3"
+        data-sal="slide-up"
+        data-sal-duration="500"
+        data-sal-delay="300"
+      >
+        <img src="/abstrak/assets/media/others/line-4.png" alt="Line" />
+      </li>
+    </ul>
+  </div>
+  <section class="section-padding single-portfolio-area">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-7" id="project-content">
+          <Content />
+        </div>
+        <div class="col-lg-4 offset-lg-1">
+          <div class="axil-sidebar">
+            <div class="widget widget-banner-ad">
+              <a href={calendarLink} target="_blank">
+                <div class="banner-cta">
+                  <button class="axil-btn btn-fill-primary"
+                    >Trabajemos juntos</button
+                  >
+                </div>
+                <img
+                  src="/assets/images/banners/consultancy.webp"
+                  alt="banner"
+                />
+              </a>
+            </div>
+            <div class="widget widge-social-share">
+              <div class="blog-share">
+                <h5 class="title">Sígueme:</h5>
+                <ul class="social-list list-unstyled">
+                  {socialLinks.map((link) => (
+                    <li>
+                      <a href={link.href} target="_blank">
+                        <i class={link.icon}></i>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            <div class="widget widget-recent-post">
+              <h4 class="widget-title">Últimas publicaciones</h4>
+              <div class="post-list-wrap">
+                {latestPosts.map((post) => (
+                  <div class="single-post">
+                    <div class="post-thumbnail">
+                      <a href={`/blog/${post.slug}`}
+                        ><img src={post.data.image} alt={post.data.title} width="100"/></a
+                      >
+                  </div>
+                  <div class="post-content">
+                    <h6 class="title">
+                      <a href={`/blog/${post.slug}`}
+                        >{post.data.title}</a
+                      >
+                    </h6>
+                    <ul class="blog-meta list-unstyled">
+                      <li>{ post.data.pub_date.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' }) }</li>
+                    </ul>
+                  </div>
+                </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</AbstrakLayout>
