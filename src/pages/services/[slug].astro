@@ -4,6 +4,7 @@ import AbstrakLayout from "../../layouts/AbstrakLayout.astro";
 import type { ServiceSchema } from "../../content/config";
 import ContentSidebar from "../../components/abstrak/ContentSidebar.astro";
 import "../../styles/AbstrakProjectLayout.css";
+import { calendarLink } from "../../data/MainInformation";
 
 export async function getStaticPaths() {
   const services = await getCollection("services");
@@ -25,24 +26,21 @@ const { Content } = await entry.render();
 >
   <div class="breadcrum-area breadcrumb-banner">
     <div class="container">
-      <div
-        class="section-heading heading-left"
-        data-sal="slide-right"
-        data-sal-duration="1000"
-        data-sal-delay="300"
-      >
+      <div class="breadcrumb">
+        <ul class="list-unstyled">
+          <li><a href="/">Inicio</a></li>
+          <li><a href="javascript:void(0);">Servicios</a></li>
+          <li class="active">{service.title}</li>
+        </ul>
+      </div>
+      <div class="section-heading heading-left">
         <h1 class="title h2">{service.title}</h1>
         <p>
           {service.description}
         </p>
       </div>
-      <div
-        class="banner-thumbnail"
-        data-sal="slide-up"
-        data-sal-duration="1000"
-        data-sal-delay="400"
-      >
-        <img class="paralax-image" src={service.image} alt="Illustration" />
+      <div class="banner-thumbnail">
+        <img class="paralax-image" src={service.image} alt="Illustration" width="500" />
       </div>
     </div>
     <ul class="shape-group-8 list-unstyled">
@@ -81,7 +79,7 @@ const { Content } = await entry.render();
             </div>
             <div class="d-flex justify-content-center">
                 <div>
-                    <a href="#" class="axil-btn btn-fill-primary">Contratar por $15,000 MXN</a>
+                    <a href={calendarLink} target="_blank" class="axil-btn btn-fill-primary">Agenda una llamada</a>
                 </div>
             </div>
         </div>
