@@ -4,6 +4,7 @@ import type { BlogPostSchema } from "../../content/config";
 import AbstrakLayout from "../../layouts/AbstrakLayout.astro";
 import ContentSidebar from "../../components/abstrak/ContentSidebar.astro";
 import "../../styles/AbstrakProjectLayout.css";
+import ProjectRichSnippet from "../../components/ProjectRichSnippet.astro";
 
 export async function getStaticPaths() {
   const now = new Date();
@@ -97,4 +98,5 @@ const { Content } = await entry.render();
       </div>
     </div>
   </section>
+  <ProjectRichSnippet title={post.title} description={post.description} image={post.image} tags={post.tags} date={post.pub_date} />
 </AbstrakLayout>
