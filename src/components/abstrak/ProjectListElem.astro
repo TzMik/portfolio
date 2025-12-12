@@ -6,8 +6,7 @@ interface Props {
 }
 const { image, title, url } = Astro.props;
 ---
-
-<div class="col">
+<div class="col-xl-4 col-md-6 project branding">
   <div class="project-grid">
     <div class="thumbnail">
       <a href={"/projects/" + url}>
@@ -18,7 +17,6 @@ const { image, title, url } = Astro.props;
       <h4 class="title">
         <a href={"/projects/" + url}>{title}</a>
       </h4>
-      {/* <span class="subtitle">Website, UI/UX</span> */}
     </div>
   </div>
 </div>

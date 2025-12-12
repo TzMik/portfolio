@@ -3,7 +3,6 @@ import AbstrakLayout from "../../layouts/AbstrakLayout.astro";
 import ProjectListElem from "../../components/abstrak/ProjectListElem.astro";
 import { getSortedProjects } from "../../lib/projects.js";
 import WorkTogether from "../../components/abstrak/WorkTogether.astro";
-import { calendarLink } from "../../data/MainInformation";
 
 export async function getStaticPaths({ paginate }) {
   const allProjects = await getSortedProjects();
@@ -61,59 +60,79 @@ const { page } = Astro.props;
     </ul>
   </div>
   <section class="section section-padding-equal pt--200 pt_md--80 pt_sm--60">
-    <div class="container-fluid plr--30">
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-3">
-        {
-          page.data.map((project) => (
-            <ProjectListElem
-              url={project.slug}
-              image={project.data.image || ""}
-              title={project.data.title || ""}
-            />
-          ))
-        }
+    <div class="container">
+      <div class="section-heading heading-left">
+        <span class="subtitle">Our Project</span>
+        <h2 class="title">Some of our finest <br /> work.</h2>
       </div>
-      <div class="pagination justify-content-center mt--20">
-        <ul>
-          <li>
-            {
-              page.url.prev ? (
-                <a class="prev page-numbers" href={page.url.prev}>
-                  <i class="fal fa-arrow-left" />
-                </a>
-              ) : null
-            }
-          </li>
-
-          {
-            Array.from({ length: page.lastPage }, (_, i) => i + 1).map(
-              (pageNum) => (
-                <li>
-                  <a
-                    href={
-                      pageNum === 1 ? "/projects2" : `/projects2/${pageNum}`
-                    }
-                    class={`page-numbers ${page.currentPage === pageNum ? "current" : ""}`}
-                  >
-                    {pageNum}
+      <div class="axil-isotope-wrapper">
+        <div class="isotope-button isotope-project-btn">
+          <button data-filter="*" class="is-checked"
+            ><span class="filter-text">Todos</span></button
+          >
+        </div>
+        <div class="row isotope-list">
+          {page.data.map((project) => (
+            <ProjectListElem
+              image={project.data.image}
+              title={project.data.title}
+              url={project.slug}
+            />
+          ))}
+        </div>
+        <div class="pagination justify-content-center mt--20">
+          <ul>
+            <li>
+              {
+                page.url.prev ? (
+                  <a class="prev page-numbers" href={page.url.prev}>
+                    <i class="fal fa-arrow-left" />
                   </a>
-                </li>
-              )
-            )
-          }
+                ) : null
+              }
+            </li>
 
-          <li>
             {
-              page.url.next ? (
-                <a class="next page-numbers" href={page.url.next}>
-                  <i class="fal fa-arrow-right" />
-                </a>
-              ) : null
+              Array.from({ length: page.lastPage }, (_, i) => i + 1).map(
+                (pageNum) => (
+                  <li>
+                    <a
+                      href={
+                        pageNum === 1 ? "/projects2" : `/projects2/${pageNum}`
+                      }
+                      class={`page-numbers ${page.currentPage === pageNum ? "current" : ""}`}
+                    >
+                      {pageNum}
+                    </a>
+                  </li>
+                )
+              )
             }
-          </li>
-        </ul>
+
+            <li>
+              {
+                page.url.next ? (
+                  <a class="next page-numbers" href={page.url.next}>
+                    <i class="fal fa-arrow-right" />
+                  </a>
+                ) : null
+              }
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
+    <ul class="shape-group-7 list-unstyled">
+      <li class="shape shape-1">
+        <img src="/abstrak/assets/media/others/circle-2.png" alt="circle" />
+      </li>
+      <li class="shape shape-2">
+        <img src="/abstrak/assets/media/others/bubble-2.png" alt="Line" />
+      </li>
+      <li class="shape shape-3">
+        <img src="/abstrak/assets/media/others/bubble-1.png" alt="Line" />
+      </li>
+    </ul>
   </section>
   <WorkTogether />
 </AbstrakLayout>
