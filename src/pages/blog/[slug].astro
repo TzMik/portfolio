@@ -1,21 +1,21 @@
 ---
 import { getCollection } from "astro:content";
 import type { BlogPostSchema } from "../../content/config";
-import ProjectLayout from "../../layouts/ProjectLayout.astro";
-import ProjectRichSnippet from "../../components/ProjectRichSnippet.astro";
-import { slugify } from "../../utils/slugify.js";
+import AbstrakLayout from "../../layouts/AbstrakLayout.astro";
+import ContentSidebar from "../../components/abstrak/ContentSidebar.astro";
+import "../../styles/AbstrakProjectLayout.css";
 
 export async function getStaticPaths() {
-    const now = new Date();
+  const now = new Date();
 
-    const blogPosts = await getCollection("blog", ({ data }) => {
-        return data.draft == false && data.pub_date <= now;
-    });
+  const blogPosts = await getCollection("blog", ({ data }) => {
+    return data.draft == false && data.pub_date <= now;
+  });
 
-    return blogPosts.map((entry) => ({
-        params: { slug: entry.slug },
-        props: { entry },
-    }));
+  return blogPosts.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
 }
 
 const { entry } = Astro.props;
@@ -23,55 +23,78 @@ const post: BlogPostSchema = entry.data;
 const { Content } = await entry.render();
 ---
 
-<ProjectLayout image={post.image}>
-    <main class="drake-main">
-        <div id="smooth-wrapper">
-            <div id="smooth-content">
-                <article class="container">
-                    {
-                        post.image && (
-                            <div
-                                class="project-hero mt-2"
-                                style={`background-image: url('${post.image}'); background-size: cover; background-position: center; position: relative; width: 100%; min-height: 300px; display: flex; align-items: center; justify-content: center; border-radius: 1rem;`}
-                            >
-                                <div
-                                    class="project-hero-title"
-                                    style="position: absolute; z-index: 2; width: 100%; text-align: center;"
-                                >
-                                    <h1 style="color: var(--primary_color); text-shadow: 0 2px 8px rgba(0,0,0,0.7); margin: 0;font-weight: 800;">
-                                        {post.title}
-                                    </h1>
-                                </div>
-                                <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.75); border-radius: 1rem;" />
-                            </div>
-                        )
-                    }
+<AbstrakLayout>
+  <div class="breadcrum-area">
+    <div class="container">
+      <div class="breadcrumb">
+        <ul class="list-unstyled">
+          <li><a href="/">Inicio</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <li class="active">{post.title}</li>
+        </ul>
+        <h1 class="title h2">
+          {post.title}
+        </h1>
+      </div>
+    </div>
+    <ul class="shape-group-8 list-unstyled">
+      <li
+        class="shape shape-1"
+        data-sal="slide-right"
+        data-sal-duration="500"
+        data-sal-delay="100"
+      >
+        <img src="/abstrak/assets/media/others/bubble-9.png" alt="Bubble" />
+      </li>
+      <li
+        class="shape shape-2"
+        data-sal="slide-left"
+        data-sal-duration="500"
+        data-sal-delay="200"
+      >
+        <img src="/abstrak/assets/media/others/bubble-11.png" alt="Bubble" />
+      </li>
+      <li
+        class="shape shape-3"
+        data-sal="slide-up"
+        data-sal-duration="500"
+        data-sal-delay="300"
+      >
+        <img src="/abstrak/assets/media/others/line-4.png" alt="Line" />
+      </li>
+    </ul>
+  </div>
 
-                    <div style="margin-bottom: 1rem;">
-                        <ul class="portfolio-categories">
-                            {
-                                post.tags?.map((tag) => (
-                                    <li>
-                                        <a href={`/tags/${slugify(tag)}`}>
-                                            {tag}
-                                        </a>
-                                    </li>
-                                ))
-                            }
-                        </ul>
-                    </div>
-                    <div class="project-content">
-                        <Content />
-                    </div>
-                </article>
+  <section class="section-padding-equal">
+    <div class="container">
+      <div class="row row-40">
+        <div class="col-lg-8">
+          <div class="single-blog">
+            <div class="single-blog-content blog-grid">
+              <div class="post-thumbnail">
+                <img src={post.image} alt="Blog" />
+              </div>
+              <div class="author">
+                <div class="author-thumb">
+                  <img src="/assets/images/portfolio.jpeg" alt="Blog Author" class="rounded-circle" width="80"/>
+                </div>
+                <div class="info">
+                  <h6 class="author-name">Mikel Cantero</h6>
+                  <ul class="blog-meta list-unstyled">
+                    <li>{post.pub_date.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}</li>
+                  </ul>
+                </div>
+              </div>
+              <div id="project-content">
+                <Content />
+              </div>
             </div>
+          </div>
         </div>
-    </main>
-    <ProjectRichSnippet
-        title={post.title}
-        description={post.description}
-        image={post.image}
-        tags={post.tags}
-        date={post.pub_date}
-    />
-</ProjectLayout>
+        <div class="col-lg-4">
+          <ContentSidebar />
+        </div>
+      </div>
+    </div>
+  </section>
+</AbstrakLayout>

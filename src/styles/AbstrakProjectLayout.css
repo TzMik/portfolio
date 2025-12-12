@@ -17,8 +17,18 @@
     color: var(--color-body);
 }
 
-#project-content ul {
+#project-content ul, #project-content ol {
     padding: 0 0 30px 4rem;
+}
+
+#project-content li , #project-content li p {
+    margin-bottom: 1rem;
+}
+
+pre {
+    padding: 2rem 1rem;
+    background-color: var(--color-body);
+    border-radius: 1rem;
 }
 
 #project-content a {
