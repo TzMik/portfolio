@@ -4646,6 +4646,7 @@ Pagination
 .project-grid .content .title {
     letter-spacing: -0.045em;
     margin-bottom: 10px;
+    border-radius: 1rem 0 0 1rem;
 }
 
 .project-grid .content .title a:hover {
