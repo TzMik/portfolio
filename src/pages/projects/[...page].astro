@@ -23,12 +23,13 @@ const { page } = Astro.props;
         </ul>
       </div>
       <div class="section-heading heading-left">
-        <h1 class="title h2">Casos de éxito</h1>
+        <h1 class="title h2">Proyectos</h1>
         <p>
-          Un recorrido visual por los desafíos de <b>crecimiento de PYMES</b> y cómo
-          mi enfoque en soluciones tecnológicas a medida eliminó el retrabajo y <b
-            >liberó el tiempo de sus equipos</b
-          >, traduciéndose en una eficiencia operativa medible.
+          Una selección de proyectos donde el foco principal es la <b>escalabilidad</b>
+          y la <b>eficiencia del servidor</b>. Aquí demuestro mi capacidad para diseñar
+          <b>APIs robustas, gestionar bases de datos complejas y automatizar flujos
+          de trabajo</b>, aplicando siempre patrones de diseño que aseguran un
+          código mantenible a largo plazo.
         </p>
       </div>
       <div class="banner-thumbnail">
@@ -63,7 +64,7 @@ const { page } = Astro.props;
     <div class="container">
       <div class="section-heading heading-left">
         <span class="subtitle">Proyectos</span>
-        <h2 class="title">Un poco de mi <br> trabajo</h2>
+        <h2 class="title">Un poco de mi <br /> trabajo</h2>
       </div>
       <div class="axil-isotope-wrapper">
         <div class="isotope-button isotope-project-btn">
@@ -72,13 +73,15 @@ const { page } = Astro.props;
           >
         </div>
         <div class="row isotope-list">
-          {page.data.map((project) => (
-            <ProjectListElem
-              image={project.data.image}
-              title={project.data.title}
-              url={project.slug}
-            />
-          ))}
+          {
+            page.data.map((project) => (
+              <ProjectListElem
+                image={project.data.image}
+                title={project.data.title}
+                url={project.slug}
+              />
+            ))
+          }
         </div>
         <div class="pagination justify-content-center mt--20">
           <ul>
@@ -105,7 +108,7 @@ const { page } = Astro.props;
                       {pageNum}
                     </a>
                   </li>
-                )
+                ),
               )
             }
 

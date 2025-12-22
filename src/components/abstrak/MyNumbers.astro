@@ -2,19 +2,11 @@
 import { getSortedProjects, getProjectsAmount } from "../../lib/projects.js";
 import { getPostsAmount } from "../../lib/blog-posts.js";
 import CounterUpGrid from "../../components/abstrak/CounterUpGrid.astro";
+import { yearsOfExperience } from "../../data/MainInformation";
 
 const numProjects = await getProjectsAmount();
 const numPosts = await getPostsAmount();
 
-const startDate = new Date(2018, 8, 1); // Mes 8 = septiembre (0-indexed)
-const today = new Date();
-const diffYears = today.getFullYear() - startDate.getFullYear();
-const diffMonths = today.getMonth() - startDate.getMonth();
-const diffDays = today.getDate() - startDate.getDate();
-let yearsExperience = diffYears;
-if (diffMonths < 0 || (diffMonths === 0 && diffDays < 0)) {
-  yearsExperience--;
-}
 ---
 <section class="section section-padding bg-color-dark">
     <div class="container">
@@ -26,7 +18,7 @@ if (diffMonths < 0 || (diffMonths === 0 && diffDays < 0)) {
         <div class="row justify-content-center">
             <CounterUpGrid
                 icon="/abstrak/assets/media/icon/icon-24.png"
-                count={yearsExperience}
+                count={yearsOfExperience}
                 title="Años de experiencia"
                 symbol={true}
             />

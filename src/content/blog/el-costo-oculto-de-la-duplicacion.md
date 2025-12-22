@@ -4,7 +4,7 @@ description: "¿Tu e-commerce pierde tiempo y dinero copiando datos entre TikTok
 pub_date: 2025-12-12
 tags: ["software genérico", "duplicación", "ineficiencia operativa", "eficiencia operativa", "integración de sistemas", "automatizar tareas manuales"]
 image: "/assets/images/blog/el-costo-oculto-de-la-duplicacion.webp"
-draft: false
+draft: true
 ---
 ## Por Qué tu Equipo de E-commerce Gasta Horas Copiando Datos (y Cómo Evitarlo)
 

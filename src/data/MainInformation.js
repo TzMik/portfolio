@@ -1,3 +1,15 @@
+
+const startDate = new Date(2018, 8, 1); // Mes 8 = septiembre (0-indexed)
+const today = new Date();
+const diffYears = today.getFullYear() - startDate.getFullYear();
+const diffMonths = today.getMonth() - startDate.getMonth();
+const diffDays = today.getDate() - startDate.getDate();
+let years = diffYears;
+if (diffMonths < 0 || (diffMonths === 0 && diffDays < 0)) {
+  years--;
+}
+export const yearsOfExperience = years;
+
 export const socialLinks = [
   {
     href: "https://www.linkedin.com/in/mikel-cantero-loi/",
