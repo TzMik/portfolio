@@ -2,34 +2,13 @@
 const { post } = Astro.props;
 ---
 
-<div class="blog-grid">
-  <h3 class="title">
-    <a href={`/blog/${post.slug}`}>{post.data.title}</a>
-  </h3>
-  <div class="author">
-    <div class="info">
-      <ul class="blog-meta list-unstyled">
-        <li>
-          {
-            post.data.pub_date.toLocaleDateString("es-ES", {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            })
-          }
-        </li>
-      </ul>
+<div class="col-md-6">
+  <div class="project-grid project-style-2">
+    <div class="thumbnail">
+      <a href={"/projects/" + post.slug}>
+        <img src={post.data.image} alt="project" />
+      </a>
     </div>
+    <div class="content">{post.data.title && <h3 class="title h6 bg-color-dark text-white px-3 py-2"><a href={"/projects/" + post.slug}>{post.data.title}</a></h3>}</div>
   </div>
-  <div class="post-thumbnail">
-    <a href={`/blog/${post.slug}`}
-      ><img src={post.data.image} alt={post.data.title} /></a
-    >
-  </div>
-  <p>
-    {post.data.description}
-  </p>
-  <a href={`/blog/${post.slug}`} class="axil-btn btn-borderd btn-large"
-    >Leer más</a
-  >
 </div>

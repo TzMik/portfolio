@@ -2,6 +2,8 @@
 import { getSortedAndFilteredPosts, getTags } from "./blog-posts.js";
 import { getSortedProjects } from "./projects.js";
 
+// Exportamos el tamaño de página para que sea consistente en toda la app
+export const POSTS_PER_PAGE = 10;
 export const PAGE_SIZE = 12;
 
 /**

@@ -6,7 +6,10 @@ import ContentSidebar from "../../components/abstrak/ContentSidebar.astro";
 import "../../styles/AbstrakProjectLayout.css";
 
 // Importa PAGE_SIZE y las funciones de ayuda
-import { createStaticPathsForPosts } from "../../lib/pagination.js";
+import {
+  createStaticPathsForPosts,
+  POSTS_PER_PAGE,
+} from "../../lib/pagination.js";
 import { getSortedAndFilteredPosts } from "../../lib/blog-posts.js";
 import WorkTogether from "../../components/abstrak/WorkTogether.astro";
 
@@ -15,24 +18,21 @@ const allPosts = await getSortedAndFilteredPosts();
 
 const { page = 1 } = Astro.params;
 const currentPage = Number(page);
-const totalPages = Math.max(Math.ceil(allPosts.length / 3), 1);
+const totalPages = Math.max(Math.ceil(allPosts.length / POSTS_PER_PAGE), 1);
 
 console.log(currentPage);
-if (
-  currentPage < 1 ||
-  currentPage > totalPages
-) {
+if (currentPage < 1 || currentPage > totalPages) {
   return Astro.response(new Response("Página no encontrada", { status: 404 }));
 }
 
-const start = (currentPage - 1) * 3;
-const items = allPosts.slice(start, start + 3);
+const start = (currentPage - 1) * POSTS_PER_PAGE;
+const items = allPosts.slice(start, start + POSTS_PER_PAGE);
 
 const pageUrl = (n) => (n === 1 ? "/blog" : `/blog/${n}`);
 
 //getStaticPaths ahora es mucho más simple y usa la función importada
 export async function getStaticPaths() {
-  return createStaticPathsForPosts(3);
+  return createStaticPathsForPosts(POSTS_PER_PAGE);
 }
 ---
 
@@ -79,7 +79,9 @@ export async function getStaticPaths() {
     <div class="container">
       <div class="row row-40">
         <div class="col-lg-8">
-          {items.map((post) => <BlogGrid post={post} />)}
+          <div class="row row-40">
+            {items.map((post) => <BlogGrid post={post} />)}
+          </div>
           <div class="pagination">
             <ul>
               <!-- Previous Button -->
