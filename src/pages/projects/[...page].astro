@@ -101,7 +101,7 @@ const { page } = Astro.props;
                   <li>
                     <a
                       href={
-                        pageNum === 1 ? "/projects2" : `/projects2/${pageNum}`
+                        pageNum === 1 ? "/projects" : `/projects/${pageNum}`
                       }
                       class={`page-numbers ${page.currentPage === pageNum ? "current" : ""}`}
                     >

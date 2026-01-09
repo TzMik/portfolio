@@ -4,7 +4,6 @@ description: "MyPostula.com es la herramienta esencial para postulantes. Organiz
 image: "/assets/images/projects/my-postula.webp"
 pub_date: 2025-11-12
 start_date: 2025-11-11
-top_project: true
 tags: ["MyPostula", "organizar postulaciones", "seguimiento de empleo", "control de solicitudes", "herramienta para buscar trabajo", "job tracking tool", "gestión de candidaturas", "MVP", "proyecto personal"]
 draft: false
 ---
