@@ -10,7 +10,7 @@
     - [x] [Model-View-Presenter (MVP)](/src/content/blog/mas-alla-del-mvc.md)
 - [x] [Patrón de diseño Repository](/src/content/blog/patron-repository.md)
 - [x] [Patrón de diseño Service](/src/content/blog/patron-service.md)
-- [ ] Patrón de diseño Factory
+- [x] [Patrón de diseño Factory](/src/content/blog/patron-factory.md)
 - [ ] Middlewares (ejecución antes o después)
 - [ ] El flujo de vida de una petición (_Request Lifecycle_)
 - [ ] Inversión de Control (IoC)
