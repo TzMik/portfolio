@@ -1,15 +1,15 @@
 ---
 import { calendarLink, socialLinks } from "../../data/MainInformation";
-import { getSortedAndFilteredPosts } from "../../lib/blog-posts.js";
+import { getSortedProjects } from "../../lib/projects.js";
 
-const blogPosts = await getSortedAndFilteredPosts();
-const latestPosts = blogPosts.slice(0, 3);
+const projects = await getSortedProjects();
+const latestProjects = projects.slice(0, 3);
 ---
 <div class="axil-sidebar">
   <div class="widget widget-banner-ad">
     <a href={calendarLink} target="_blank">
       <div class="banner-cta">
-        <button class="axil-btn btn-fill-primary">Trabajemos juntos</button>
+        <button class="axil-btn btn-fill-primary">Agenda una llamada</button>
       </div>
       <img src="/assets/images/banners/consultancy.webp" alt="banner" />
     </a>
@@ -34,7 +34,7 @@ const latestPosts = blogPosts.slice(0, 3);
     <h4 class="widget-title">Últimas publicaciones</h4>
     <div class="post-list-wrap">
       {
-        latestPosts.map((post) => (
+        latestProjects.map((post) => (
           <div class="single-post">
             <div class="post-thumbnail">
               <a href={`/blog/${post.slug}`}>
