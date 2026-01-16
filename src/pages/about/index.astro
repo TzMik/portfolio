@@ -1,7 +1,7 @@
 ---
 import AbstrakLayout from "../../layouts/AbstrakLayout.astro";
 import ContentSidebar from "../../components/abstrak/ContentSidebar.astro";
-import { yearsOfExperience } from "../../data/MainInformation";
+import { calendarLink, yearsOfExperience } from "../../data/MainInformation";
 import "../../styles/AbstrakProjectLayout.css";
 import { getSortedProjects } from "../../lib/projects.js";
 import ProjectGrid from "../../components/abstrak/ProjectGrid.astro";
@@ -16,9 +16,12 @@ topProjects = topProjects.slice(0, 2);
     <div class="container">
       <div class="section-heading heading-left">
         <h1 class="title h2">
-          De la Estrategia al Código: Senior Backend Engineer con Visión de
-          Arquitectura
+          Hago que el software trabaje para ti y no al revés
         </h1>
+        <p>
+          No diseño software para computadoras; diseño soluciones para personas
+          y negocios
+        </p>
       </div>
       <div class="banner-thumbnail thumbnail-4">
         <img
@@ -60,66 +63,82 @@ topProjects = topProjects.slice(0, 2);
       <div class="row row-40">
         <div class="col-lg-8" id="project-content">
           <p>
-            <b
-              >Ingeniero de Software con más de {yearsOfExperience} años de experiencia</b
-            >, especializado en la <b
-              >construcción de sistemas escalables y arquitectura de alto
-              rendimiento</b
-            >.
+            He visto a muchas Pymes frenar su crecimiento porque su operación se
+            volvió un caos de Excels, procesos manuales y sistemas que no se
+            hablan entre sí. Mi propósito es <b
+              >liberar el potencial de tu equipo</b
+            >, eliminando el retrabajo y construyendo la infraestructura
+            tecnológica que tu empresa necesita para escalar sin fricciones.
           </p>
+          <hr />
+          <h2 class="title">¿Por qué trabajar conmigo?</h2>
           <p>
-            Tras años liderando departamentos tecnológicos y definiendo la
-            estrategia técnica para empresas como Fonsecantero, he decidido
-            regresar a mi núcleo profesional: la ingeniería <b>backend</b>. Mi
-            trayectoria como <b>CTO y Tech Lead</b> me otorga una ventaja competitiva
-            única: no solo escribo código, sino que <b
-              >entiendo cómo este debe sostener el crecimiento real de un
-              negocio</b
-            > y la estabilidad operativa de un sistema.
-          </p>
-          <h2 class="title">Mi enfoque técnico</h2>
-          <p>
-            Me especializo en el desarrollo de infraestructuras robustas, con un
-            dominio avanzado de Node.js, Laravel (PHP) y Python. Mi experiencia
-            incluye:
+            A diferencia de un desarrollador convencional, yo hablo dos idiomas:
+            el <b>código</b> y los <b>negocios</b>.
           </p>
           <ul>
             <li>
-              <b>Arquitectura Escalable:</b> Diseño de soluciones que han soportado
-              infraestructuras con más de un millón de usuarios concurrentes y volúmenes
-              masivos de datos.
+              <b>Ingeniero de Software:</b> Tengo la capacidad técnica para construir
+              sistemas robustos, seguros y escalables (Laravel, Node.js, integraciones
+              de APIs e IA).
             </li>
             <li>
-              <b>Optimización de Procesos:</b> Implementación de sistemas de automatización
-              y web scraping que escalaron operativamente de 3 a más de 50 países.
-            </li>
-            <li>
-              <b>Cultura de Ingeniería:</b> Como ex-líder de equipos de hasta 13 desarrolladores
-              , aplico una mentalidad de mejora continua, revisión de código orientada
-              a buenas prácticas y reducción de deuda técnica.
+              <b>MBA & Consultor: </b> Entiendo los estados financieros, el ROI y
+              la importancia de la eficiencia operativa. No implemento tecnología
+              porque sea "novedosa", sino porque resuelve un problema que te está
+              costando dinero.
             </li>
           </ul>
-          <h2 class="title">Mi valor diferencial</h2>
+          <hr />
+          <h2 class="title">Experiencia que respalda tu confianza</h2>
           <p>
-            Mi formación como <b>Ingeniero Informático</b> complementada con un <b
-              >MBA</b
-            > me permite ser el puente entre los requerimientos complejos de negocio
-            y la ejecución técnica impecable. Actualmente, estoy enfocado en profundizar
-            en la orquestación de sistemas modernos que prioricen la eficiencia y
-            la mantenibilidad.
+            He tenido el privilegio de liderar la arquitectura y estrategia
+            tecnológica para empresas de alto impacto, optimizando flujos de
+            trabajo y lanzando plataformas para:
           </p>
-          <h2 class="title">Últimos proyectos</h2>
-          <div class="row row-45">
-            {
-              topProjects.map((project) => (
-                <ProjectGrid
-                  url={project.slug}
-                  image={project.data.image || ""}
-                  title=""
-                />
-              ))
-            }
-          </div>
+          <ul>
+            <li><b>Clōe</b> (Retail de moda con más de 50 tiendas físicas)</li>
+            <li>
+              <b>Fashion Group</b> (Distribuidor líder de marcas de cosméticos en
+              México)
+            </li>
+            <li>
+              <b>Fli Holding</b> (Startup de logística con crecimiento exponencial)
+            </li>
+            <li>Y muchas Pymes que ahora operan de manera más eficiente</li>
+          </ul>
+          <p>
+            Mi paso como <b>CTO</b> me enseñó que la mejor tecnología es la que se
+            vuelve invisible porque simplemente funciona, permitiendo que el equipo
+            se enfoque en lo que realmente importa: <b>crecer el negocio</b>.
+          </p>
+          <hr />
+          <h2 class="title">Mis Valores de Trabajo</h2>
+          <p>
+            En cada proyecto que acepto, aplico tres principios innegociables:
+          </p>
+          <ol>
+            <li>
+              <b>Obsesión por el Cliente:</b> Tu problema es mi problema hasta que
+              esté resuelto.
+            </li>
+            <li>
+              <b>Ingenio Simple:</b> Busco la solución más eficiente, no la más compleja.
+            </li>
+            <li>
+              <b>Sinceridad Radical:</b> Si no necesitas un software nuevo, sino ajustar
+              un proceso, te lo diré. Mi meta es tu rentabilidad.
+            </li>
+          </ol>
+          <blockquote>
+            <span class="title h5">¿Listo para dejar de luchar con sistemas ineficientes?</span>
+            <p class="mb-3">
+              Si sientes que tu empresa podría ser más ágil pero la operación te
+              absorbe el tiempo, hagamos una pausa. No necesitas más manos
+              haciendo trabajo manual, necesitas mejores sistemas.
+            </p>
+            <a href={calendarLink} target="_blank" class="axil-btn btn-fill-primary text-white">Agendar mi Diagnóstico de Eficiencia Gratis</a>
+          </blockquote>
         </div>
         <div class="col-lg-4">
           <ContentSidebar />

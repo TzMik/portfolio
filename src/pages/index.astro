@@ -67,7 +67,12 @@ const latestPosts = blogPosts.slice(0, 2);
         <div class="col-lg-6">
           <div class="banner-content">
             <span class="subtitle">MIKEL CANTERO</span>
-            <h1 class="title">Backend Engineer & Software Architect</h1>
+            <h1 class="title">Escala tu PyME sin el caos operativo</h1>
+            <p>
+              <b>Ayudo a dueños de PyMEs a liberar el potencial</b> de su equipo eliminando
+              tareas manuales y conectando sus sistemas <b
+                >con software 100% personalizado</b>
+            </p>
             <div
               class="btn-group"
               data-sal="slide-up"
@@ -79,7 +84,7 @@ const latestPosts = blogPosts.slice(0, 2);
                 href={calendarLink}
                 class="axil-btn btn-fill-primary btn-large"
               >
-                ¡Trabajemos juntos!
+                Agendar Diagnóstico de Eficiencia (Gratis)
               </a>
               <a href="#about" class="about-btn">Sobre mí</a>
             </div>
@@ -172,7 +177,7 @@ const latestPosts = blogPosts.slice(0, 2);
       </div>
       <div class="more-project-btn">
         <a href="/projects" class="axil-btn btn-fill-white">
-          Ver todos los proyectos
+          Ver casos de éxito
         </a>
       </div>
     </div>
@@ -195,22 +200,24 @@ const latestPosts = blogPosts.slice(0, 2);
         <div class="col-lg-6" data-sal="slide-up" data-sal-duration="800">
           <div class="about-us">
             <div class="section-heading heading-left mb-0">
-              <span class="subtitle">Sobre mí</span>
-              <h2 class="title mb--40">De la Estrategia al Código</h2>
+              <span class="subtitle"
+                >Donde la ingeniería se encuentra con la rentabilidad</span
+              >
+              <h2 class="title mb--40">Tecnología con visión de negocio</h2>
               <p>
-                Como ex-CTO, entiendo que <b>el código es solo una parte</b> de la
-                solución. Mi enfoque en el desarrollo Backend se centra en
-                <b>eliminar la inuda técnica y la ineficiencia estructural</b> desde
-                la arquitectura. Me especializo en diseñar sistemas <b
-                  >escalables y mantenibles</b
-                > que resuelven problemas de negocio reales, aplicando patrones de
-                diseño sólidos y automatización de infraestructura para garantizar
-                que el software sea un motor de crecimiento, no un obstáculo operativo.
+                Soy un Ingeniero de Software con un MBA, especializado en
+                <b>transformar el caos operativo en sistemas escalables y
+                automáticos</b>. Con experiencia liderando proyectos para marcas
+                como Clōe, Fashion Group y Fli Holding, mi enfoque no es solo
+                escribir código, sino diseñar soluciones que liberen el
+                potencial de tu equipo y generen un ROI tangible. Ayudo a dueños
+                de Pymes a dejar de luchar con procesos manuales y sistemas
+                ineficientes, construyendo la infraestructura tecnológica que su
+                crecimiento demanda.
               </p>
               <div>
-                <a
-                  href="/about"
-                  class="axil-btn btn-borderd btn-large">Leer más</a
+                <a href="/about" class="axil-btn btn-borderd btn-large"
+                  >Leer más</a
                 >
               </div>
             </div>
@@ -333,47 +340,4 @@ const latestPosts = blogPosts.slice(0, 2);
   </section>
 
   <WorkTogether />
-
-  <section class="section section-padding-equal">
-    <div class="container">
-      <div class="section-heading">
-        <span class="subtitle">Blog</span>
-        <h2 class="title">Últimas publicaciones</h2>
-        <p>Aquí encontrarás algunas de las publicaciones más recientes.</p>
-      </div>
-      <div class="row g-0">
-        {
-          latestPosts.map((post) => (
-            <LastPostGrid
-              url={post.slug}
-              image={post.data.image}
-              title={post.data.title}
-              content={post.data.description}
-            />
-          ))
-        }
-      </div>
-      <div class="row my-3">
-        <div class="col-12 d-flex justify-content-center">
-          <a href="/blog" class="axil-btn btn-large btn-fill-primary"
-            >Ver todos</a
-          >
-        </div>
-      </div>
-    </div>
-    <ul class="shape-group-1 list-unstyled">
-      <li class="shape shape-1">
-        <img src="/abstrak/assets/media/others/bubble-1.png" alt="bubble" />
-      </li>
-      <li class="shape shape-2">
-        <img src="/abstrak/assets/media/others/line-1.png" alt="bubble" />
-      </li>
-      <li class="shape shape-3">
-        <img src="/abstrak/assets/media/others/line-2.png" alt="bubble" />
-      </li>
-      <li class="shape shape-4">
-        <img src="/abstrak/assets/media/others/bubble-2.png" alt="bubble" />
-      </li>
-    </ul>
-  </section>
 </AbstrakLayout>
