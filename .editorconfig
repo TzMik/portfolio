@@ -6,27 +6,27 @@ root = true
 
 # 1. Configuración Global para todos los archivos (*)
 [*]
-charset = utf-8          # Codificación de caracteres estándar
-end_of_line = lf         # Usar saltos de línea al estilo Unix
-insert_final_newline = true # Asegurar que el archivo termine con una línea en blanco
-trim_trailing_whitespace = true # Eliminar espacios en blanco al final de las líneas
+charset = utf-8         
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
 
 # 2. Archivos Astro, HTML y Markdown
 [*.{astro,html,md,mdx}]
-indent_style = space     # Usar espacios para la indentación
-indent_size = 2          # Usar 2 espacios por nivel de indentación
+indent_style = space
+indent_size = 2
 
 # 3. Archivos JavaScript, TypeScript y JSON
 [*.{js,jsx,ts,tsx,json,mjs,cjs}]
-indent_style = space     # Usar espacios para la indentación
-indent_size = 2          # Usar 2 espacios por nivel de indentación
+indent_style = space
+indent_size = 2
 
 # 4. Archivos de Estilos (CSS, SCSS, etc.)
 [*.{css,scss,less}]
-indent_style = space     # Usar espacios para la indentación
-indent_size = 2          # Usar 2 espacios por nivel de indentación
+indent_style = space
+indent_size = 2
 
 # 5. Archivos de configuración (YAML, etc.)
 [*.{yml,yaml}]
-indent_style = space     # Usar espacios para la indentación
-indent_size = 2          # Usar 2 espacios por nivel de indentación
+indent_style = space
+indent_size = 2
