@@ -36,10 +36,8 @@ const blogPostSchema = z.object({
 const serviceSchema = z.object({
   title: z.string(),
   description: z.string(),
+  cta: z.string(),
   image: z.string().optional(),
-  price: z.number().optional(),
-  price_range: z.string().optional(),
-  payment_type: z.string().optional()
 });
 
 // COLLECTIONS

@@ -1,26 +1,18 @@
 import { getCollection } from 'astro:content';
-import { getSortedAndFilteredPosts } from '../lib/blog-posts.js'
 
 export async function get() {
     const projects = await getCollection('projects');
-    const blogPosts = await getCollection('blog');
 
     // Filtramos los proyectos que no tienen draft=true
     const filteredProjects = projects.filter(
         (project) => project.data.draft === false
     );
 
-    // Filtramos las publicaciones del blog que no tienen draft=true
-    const filteredBlogPosts = await getSortedAndFilteredPosts();
     const urls = [
         { url: '/', changefreq: 'daily', priority: 1.0 },
         ...filteredProjects.map((project) => ({
             url: `/projects/${project.slug}/`,
             lastmod: project.data.pub_date,
-        })),
-        ...filteredBlogPosts.map((post) => ({
-            url: `/blog/${post.slug}/`,
-            lastmod: post.data.pub_date,
         })),
     ];
 

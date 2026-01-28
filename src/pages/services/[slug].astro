@@ -1,0 +1,118 @@
+---
+import AbstrakLayout from "../../layouts/AbstrakLayout.astro";
+import { getCollection } from "astro:content";
+import type { ServiceSchema } from "../../content/config";
+import "../../styles/AbstrakProjectLayout.css";
+import ContentSidebar from "../../components/abstrak/ContentSidebar.astro";
+import { calendarLink } from "../../data/MainInformation";
+import TestimonialGrid from "../../components/abstrak/TestimonialGrid.astro";
+
+export async function getStaticPaths() {
+  const services = await getCollection("services");
+  return services.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+let testimonials = await getCollection("testimonials");
+testimonials = testimonials.sort(() => Math.random() - 0.5);
+testimonials = testimonials.slice(0, 3);
+
+const { entry } = Astro.props;
+const service: ServiceSchema = entry.data;
+const { Content } = await entry.render();
+---
+
+<AbstrakLayout>
+  <div class="breadcrum-area breadcrumb-banner single-breadcrumb">
+    <div class="container">
+      <div class="breadcrumb">
+        <ul class="list-unstyled">
+          <li><a href="/">Inicio</a></li>
+          <li><a href="/services">Servicios</a></li>
+          <li class="active">{service.title}</li>
+        </ul>
+      </div>
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <div class="section-heading heading-left">
+            <h1 class="title h2">{service.title}</h1>
+            <p>
+              {service.description}
+            </p>
+            <div>
+              <a
+                href={calendarLink}
+                target="_blank"
+                class="axil-btn btn-fill-primary">{service.cta}</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="banner-thumbnail">
+            <img
+              class="paralax-image"
+              src={service.image}
+              alt="Illustration"
+              width="500"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <ul class="shape-group-8 list-unstyled">
+      <li
+        class="shape shape-1"
+        data-sal="slide-right"
+        data-sal-duration="500"
+        data-sal-delay="100"
+      >
+        <img src="/abstrak/assets/media/others/bubble-9.png" alt="Bubble" />
+      </li>
+      <li
+        class="shape shape-2"
+        data-sal="slide-left"
+        data-sal-duration="500"
+        data-sal-delay="200"
+      >
+        <img src="/abstrak/assets/media/others/bubble-20.png" alt="Bubble" />
+      </li>
+      <li
+        class="shape shape-3"
+        data-sal="slide-up"
+        data-sal-duration="500"
+        data-sal-delay="300"
+      >
+        <img src="/abstrak/assets/media/others/line-4.png" alt="Line" />
+      </li>
+    </ul>
+  </div>
+  <section class="section-padding-equal">
+    <div class="container">
+      <div class="row row-40">
+        <div class="col-lg-8" id="project-content">
+          <Content />
+          <div class="row">
+            {
+              testimonials.map((testimonial) => (
+                <TestimonialGrid
+                  companyImage={testimonial.data.companyImg || ""}
+                  companyName={testimonial.data.company || ""}
+                  testimonial={testimonial.data.testimonial}
+                  authorImage={testimonial.data.img || ""}
+                  authorName={testimonial.data.name}
+                  authorTitle={testimonial.data.role}
+                />
+              ))
+            }
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <ContentSidebar />
+        </div>
+      </div>
+    </div>
+  </section>
+</AbstrakLayout>
