@@ -2,6 +2,7 @@ import { getCollection } from 'astro:content';
 
 export async function get() {
     const projects = await getCollection('projects');
+    const blogPosts = await getCollection('blog');
 
     // Filtramos los proyectos que no tienen draft=true
     const filteredProjects = projects.filter(
@@ -13,6 +14,10 @@ export async function get() {
         ...filteredProjects.map((project) => ({
             url: `/projects/${project.slug}/`,
             lastmod: project.data.pub_date,
+        })),
+        ...blogPosts.map((post) => ({
+            url: `/blog/${post.slug}/`,
+            lastmod: post.data.pub_date,
         })),
     ];
 
