@@ -8,3 +8,6 @@
 
 ## Documentación
 - [Documentación de Astro](/docs/astrom.md)
+
+## Toma de decisiones
+- [Blog in-site vs blog en LinkedIn](/docs/blog-in-site-vs-blog-en-linkedin.md)
