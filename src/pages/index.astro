@@ -9,6 +9,7 @@ import TestimonialGrid from "../components/abstrak/TestimonialGrid.astro";
 import FooterSocialLink from "../components/abstrak/FooterSocialLink.astro";
 import { socialLinks, calendarLink } from "../data/MainInformation";
 import WorkTogether from "../components/abstrak/WorkTogether.astro";
+import LastPostGrid from "../components/abstrak/LastPostGrid.astro";
 
 const brands = [
   {
@@ -278,6 +279,49 @@ const latestPosts = blogPosts.slice(0, 2);
       </li>
       <li class="shape shape-3">
         <img src="/abstrak/assets/media/others/line-5.png" alt="line" />
+      </li>
+    </ul>
+  </section>
+
+  <section class="section section-padding-equal">
+    <div class="container">
+      <div class="section-heading">
+        <span class="subtitle">Blog</span>
+        <h2 class="title">Últimas publicaciones</h2>
+        <p>Aquí encontrarás algunas de las publicaciones más recientes.</p>
+      </div>
+      <div class="row g-0">
+        {
+          latestPosts.map((post) => (
+            <LastPostGrid
+              url={post.slug}
+              image={post.data.image}
+              title={post.data.title}
+              content={post.data.description}
+            />
+          ))
+        }
+      </div>
+      <div class="row my-3">
+        <div class="col-12 d-flex justify-content-center">
+          <a href="/blog" class="axil-btn btn-large btn-fill-primary"
+            >Ver todos</a
+          >
+        </div>
+      </div>
+    </div>
+    <ul class="shape-group-1 list-unstyled">
+      <li class="shape shape-1">
+        <img src="/abstrak/assets/media/others/bubble-1.png" alt="bubble" />
+      </li>
+      <li class="shape shape-2">
+        <img src="/abstrak/assets/media/others/line-1.png" alt="bubble" />
+      </li>
+      <li class="shape shape-3">
+        <img src="/abstrak/assets/media/others/line-2.png" alt="bubble" />
+      </li>
+      <li class="shape shape-4">
+        <img src="/abstrak/assets/media/others/bubble-2.png" alt="bubble" />
       </li>
     </ul>
   </section>
