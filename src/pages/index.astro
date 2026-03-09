@@ -7,7 +7,7 @@ import BrandGrid from "../components/abstrak/BrandGrid.astro";
 import { getCollection } from "astro:content";
 import TestimonialGrid from "../components/abstrak/TestimonialGrid.astro";
 import FooterSocialLink from "../components/abstrak/FooterSocialLink.astro";
-import { socialLinks, calendarLink } from "../data/MainInformation";
+import { socialLinks, calendarLink, yearsOfExperience } from "../data/MainInformation";
 import WorkTogether from "../components/abstrak/WorkTogether.astro";
 import LastPostGrid from "../components/abstrak/LastPostGrid.astro";
 
@@ -67,11 +67,15 @@ const latestPosts = blogPosts.slice(0, 2);
         <div class="col-lg-6">
           <div class="banner-content">
             <span class="subtitle">MIKEL CANTERO</span>
-            <h1 class="title">Escala tu PyME sin el caos operativo</h1>
+            <h1 class="title">
+              Libérate de la operativa y enfócate en lo que importa
+            </h1>
             <p>
-              <b>Ayudo a dueños de PyMEs a liberar el potencial</b> de su equipo eliminando
-              tareas manuales y conectando sus sistemas <b
-                >con software 100% personalizado</b>
+              Soy Mikel Cantero, <b>Ingeniero de Software</b> y especialista en
+              <b>optimización de procesos</b>. Ayudo a dueños de negocios a eliminar
+              cuellos de botella mediante <b>software a medida y automatización
+              inteligente</b>. Deja de gestionar hojas de cálculo y empieza a
+              liderar una empresa conectada y escalable
             </p>
             <div
               class="btn-group"
@@ -90,14 +94,14 @@ const latestPosts = blogPosts.slice(0, 2);
             </div>
           </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-6 d-flex justify-content-center">
           <div class="banner-thumbnail">
             <div class="large-thumb">
               <img
-                class="paralax-image"
-                src="/assets/images/banners/main.webp"
+                class="paralax-image custom-shape"
+                src="/assets/images/portfolio.jpeg"
                 alt="Shape"
-                width="600"
+                width="300"
               />
             </div>
           </div>
@@ -200,23 +204,18 @@ const latestPosts = blogPosts.slice(0, 2);
         <div class="col-lg-6" data-sal="slide-up" data-sal-duration="800">
           <div class="about-us">
             <div class="section-heading heading-left mb-0">
-              <span class="subtitle"
-                >Donde la ingeniería se encuentra con la rentabilidad</span
-              >
-              <h2 class="title mb--40">Tecnología con visión de negocio</h2>
+              <span class="subtitle">Sobre mí</span>
+              <h2 class="title mb--40">Ingeniero, MBA y Arquitecto de Soluciones</h2>
               <p>
-                Soy un Ingeniero de Software con un MBA, especializado en
-                <b>transformar el caos operativo en sistemas escalables y
-                automáticos</b>. Con experiencia liderando proyectos para marcas
-                como Clōe, Fashion Group y Fli Holding, mi enfoque no es solo
-                escribir código, sino diseñar soluciones que liberen el
-                potencial de tu equipo y generen un ROI tangible. Ayudo a dueños
-                de Pymes a dejar de luchar con procesos manuales y sistemas
-                ineficientes, construyendo la infraestructura tecnológica que su
-                crecimiento demanda.
+                Con más de <b>{yearsOfExperience} años de experiencia</b> , he pasado de programar sistemas complejos a <b>liderar la estrategia tecnológica</b> de marcas internacionales como <b>Clõe y Fashion Group</b>.
               </p>
+              <ul>
+                <li>He <b>dirigido equipos</b> de 13 profesionales y <b>gestionado arquitecturas</b> que soportan millones de usuarios.</li>
+                <li>Mi formación MBA me permite <b>entender tus problemas financieros y operativos</b> antes de escribir una sola línea de código.</li>
+                <li><b>Automatizo lo manual</b> para que tu equipo recupere el tiempo que pierde en tareas repetitivas.</li>
+              </ul>
               <div>
-                <a href="/about" class="axil-btn btn-borderd btn-large"
+                <a href="/about" class="axil-btn btn-borderd btn-large mb-2"
                   >Leer más</a
                 >
               </div>

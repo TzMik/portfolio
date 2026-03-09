@@ -3,6 +3,7 @@ import AbstrakLayout from "../../layouts/AbstrakLayout.astro";
 import ProjectListElem from "../../components/abstrak/ProjectListElem.astro";
 import { getSortedProjects } from "../../lib/projects.js";
 import WorkTogether from "../../components/abstrak/WorkTogether.astro";
+import { yearsOfExperience } from "../../data/MainInformation";
 
 export async function getStaticPaths({ paginate }) {
   const allProjects = await getSortedProjects();
@@ -22,24 +23,24 @@ const { page } = Astro.props;
           <li class="active">Proyectos</li>
         </ul>
       </div>
-      <div class="section-heading heading-left">
-        <h1 class="title h2">Portafolio de Ingeniería Estratégica</h1>
-        <p>
-          He liderado la transformación digital de empresas referentes en su
-          sector, <b>diseñando sistemas que eliminan la fricción operativa y
-          maximizan la rentabilidad</b>. Cada proyecto aquí expuesto es el resultado
-          de combinar rigor técnico con visión estratégica (MBA) para convertir
-          problemas complejos en flujos de trabajo automáticos, escalables y
-          libres de errores.
-        </p>
+      <div class="row">
+        <div class="col-md-6">
+          <h1 class="title h2">Portafolio</h1>
+          <p>
+            Cada proyecto aquí expuesto es el resultado de unir <b>{yearsOfExperience} años de experiencia</b> técnica con una mentalidad <b>orientada a resultados</b>. Mi objetivo es simple: que tu <b>tecnología sea una inversión que maximice la rentabilidad</b>, no un gasto que genere problemas.
+          </p>
+        </div>
+        <div class="col-md-6 d-flex justify-content-center">
+          <img
+            class="paralax-image custom-shape"
+            src="/assets/images/portfolio.jpeg"
+            alt="Illustration"
+            width="300"
+          />
+        </div>
       </div>
+      <div class="section-heading heading-left"></div>
       <div class="banner-thumbnail">
-        <img
-          class="paralax-image w-75"
-          src="/assets/images/banners/management.webp"
-          alt="Illustration"
-          width="500"
-        />
       </div>
     </div>
     <ul class="shape-group-8 list-unstyled">
@@ -61,12 +62,8 @@ const { page } = Astro.props;
       </li>
     </ul>
   </div>
-  <section class="section section-padding-equal pt--200 pt_md--80 pt_sm--60">
+  <section class="section py-3">
     <div class="container">
-      <div class="section-heading heading-left">
-        <h2 class="title">Casos de Éxito</h2>
-        <span class="subtitle">Donde la arquitectura de software resuelve desafíos reales de negocio</span>
-      </div>
       <div class="axil-isotope-wrapper">
         <div class="isotope-button isotope-project-btn">
           <button data-filter="*" class="is-checked"
