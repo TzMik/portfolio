@@ -3,7 +3,7 @@ title: "Del Servidor al Cliente: Comprendiendo el Patrón MVVM (Model-View-ViewM
 description: "¿Qué es MVVM (Model-View-ViewModel)? Guía completa para frontend. Descubre cómo el Data Binding simplifica el código de la UI, el rol del ViewModel y por qué tu backend debe convertirse en una API JSON."
 pub_date: 2025-11-20
 tags: ["MVVM", "Model-View-ViewModel", "Frontend Architecture", "Data Binding", "ViewModel", "API REST", "JSON", "Vuejs", "Angular", "React State", "Arquitectura Web", "MVC vs MVVM"]
-image: "/assets/images/blog/del-servidor-al-cliente.webp"
+image: "/public/assets/images/blog/del-servidor-al-cliente.webp"
 draft: false
 ---
 Hemos visto cómo [**MVC**]() domina la arquitectura del *backend* (servidor). Sin embargo, cuando construyes una interfaz de usuario interactiva y compleja con *frameworks* de *frontend*, el patrón más común para manejar el estado de la UI es **MVVM (Model-View-ViewModel)**.

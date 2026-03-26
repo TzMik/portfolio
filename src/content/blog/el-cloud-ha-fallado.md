@@ -3,7 +3,7 @@ title: "El Cloud ha Fallado: ¿Somos Demasiado Dependientes de unos Pocos Gigant
 description: "Reflexión sobre las recientes caídas de AWS y Cloudflare. Analizamos nuestra dependencia del Cloud Computing, el alto costo de la resiliencia Multi-Cloud y por qué gigantes como X fallan."
 pub_date: 2025-11-18
 tags: ["Cloud Computing Fallo", "Caída AWS", "Caída Cloudflare", "Dependencia Cloud", "Estrategia Multi-Cloud", "Resiliencia Cloud", "Desacoplamiento", "Arquitectura Cloud", "Costo Multi-Cloud", "Gigantes tecnológicos", "X (Twitter) Caída"]
-image: "/assets/images/blog/el-cloud-ha-caido.webp"
+image: "/public/assets/images/blog/el-cloud-ha-caido.webp"
 draft: false
 ---
 Hace unas semanas, la caída de una **región clave de AWS** paralizó una porción considerable de internet. Muchos servicios populares se quedaron en negro, afectando desde *e-commerce* hasta plataformas de *streaming*. Hoy, una situación similar con **Cloudflare** nos recuerda la misma lección, y de la manera más dura.

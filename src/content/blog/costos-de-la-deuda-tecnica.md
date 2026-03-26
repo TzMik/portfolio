@@ -3,7 +3,7 @@ title: "El costo invisible: Cuantificando el impacto financiero de la deuda téc
 description: "Aprende a cuantificar el costo real de la deuda técnica en tu empresa. Este artículo traduce los problemas de código a métricas financieras, revelando cómo la ineficiencia afecta tu ROI, aumenta los costos de mantenimiento y expone a tu negocio a riesgos de seguridad."
 pub_date: 2025-09-20
 tags: ["impacto financiero", "costo de la deuda técnica", "ROI en software", "gastos de mantenimiento", "riesgos de seguridad", "costo de oportunidad", "ineficiencia operativa"]
-image: "/assets/images/blog/costos-de-la-deuda-tecnica.jpg"
+image: "/public/assets/images/blog/costos-de-la-deuda-tecnica.jpg"
 draft: false
 ---
 En nuestros [artículos anteriores](/blog/la-causa-de-la-deuda-tecnica), definimos la deuda técnica y exploramos sus causas. Ahora es el momento de hablar de lo que realmente importa para tu negocio: el costo. La deuda técnica es un **gasto invisible** que, si no se aborda, se **acumula como intereses**, **devorando tus recursos** y **frenando tu crecimiento**.

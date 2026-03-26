@@ -1,7 +1,7 @@
 ---
 title: "Expat – Transformando el Sector Inmobiliario en un Modelo SaaS"
 description: ""
-image: "/assets/images/projects/expat.png"
+image: "/public/assets/images/projects/expat.png"
 pub_date: 2026-01-09
 start_date: 2025-10-15
 end_date: 2026-02-01

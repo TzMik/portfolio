@@ -4,7 +4,7 @@ description: "Se desarrolló un sistema integral de gestión para VAX Solutions.
 pub_date: 2025-09-09
 start_date: 2024-01-01
 end_date: 2025-08-30
-image: "/assets/images/projects/vax.jpg"
+image: "/public/assets/images/projects/vax.jpg"
 top_project: true
 tags: ["Logística", "gestión de envíos", "sistema de administración", "desarrollo de software", "rutas de entrega", "automatización", "PHP", "JavaScript", "Google Cloud Platform", "Google Maps API", "Fonsecantero", "VAX Solutions", "soluciones tecnológicas"]
 draft: false

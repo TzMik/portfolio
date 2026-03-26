@@ -3,7 +3,7 @@ title: "Las causas ocultas de la deuda técnica: ¿Por qué mi proyecto acumula 
 description: "Descubre las causas ocultas de la deuda técnica en tus proyectos. Este artículo desvela cómo la presión por los plazos, la falta de arquitectura, la rotación de personal y la falta de inversión en mantenimiento afectan la calidad de tu código y la salud de tu negocio a largo plazo."
 pub_date: 2025-09-19
 tags: ["deuda técnica", "causas de la deuda técnica", "proyectos de software", "desarrollo de software", "presión por plazos", "arquitectura de software", "rotación de personal", "mantenimiento de código"]
-image: "/assets/images/blog/la-causa-de-la-deuda-tecnica.jpg"
+image: "/public/assets/images/blog/la-causa-de-la-deuda-tecnica.jpg"
 draft: false
 ---
 En el [artículo anterior](/blog/que-es-la-deuda-tecnica), definimos la deuda técnica y sus tipos. Ahora, nos adentramos en el porqué. La deuda técnica no aparece de la nada; es el resultado de un conjunto de factores, a menudo interrelacionados, que operan bajo la superficie de tu proyecto. Entender estas causas es el **primer paso** para poder gestionarla de forma efectiva.

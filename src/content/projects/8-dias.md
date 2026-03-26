@@ -1,7 +1,7 @@
 ---
 title: "Proyecto: 8 Días – Digitalización Estratégica del Ciclo Inmobiliario"
 description: "De la fragmentación de datos a la trazabilidad total. Descubre cómo lideré como CTO la digitalización de 8 Días, optimizando ciclos de compra-venta mediante ingeniería de procesos."
-image: "/assets/images/projects/8-dias.webp"
+image: "/public/assets/images/projects/8-dias.webp"
 pub_date: 2026-01-27
 start_date: 2024-01-01
 end_date: 2024-03-01

@@ -3,7 +3,7 @@ title: "Cómo saldar la deuda técnica: Estrategias prácticas para equipos y C-
 description: "Aprende las estrategias prácticas para saldar la deuda técnica. Este artículo ofrece una guía para equipos de desarrollo y líderes de negocio, con acciones concretas como la refactorización constante y la asignación de recursos, para transformar la ineficiencia en innovación y crecimiento."
 pub_date: 2025-09-21
 tags: ["gestión de la deuda técnica", "estrategias de desarrollo", "refactorización de código", "mantenimiento de software", "planificación de sprints", "comunicación técnica", "liderazgo tecnológico"]
-image: "/assets/images/blog/como-saldar-la-deuda-tecnica.jpg"
+image: "/public/assets/images/blog/como-saldar-la-deuda-tecnica.jpg"
 draft: false
 ---
 [Hemos viajado](/blog/costos-de-la-deuda-tecnica) desde la definición del problema hasta la cuantificación de su costo. Ahora, es el momento de la verdad: **¿cómo la saldamos?** La respuesta no es sencilla, ya que requiere un esfuerzo coordinado de todos los niveles de la organización. La buena noticia es que **existen estrategias** claras para que tanto los equipos de desarrollo como la alta dirección puedan gestionar esta deuda y liberar el potencial de la empresa.

@@ -1,12 +1,13 @@
 ---
 interface Props {
   url: string;
-  image: string;
+  image: string | any;
   title: string;
   content: string;
 }
 
 const { url, image, title, content } = Astro.props;
+const imageSrc = typeof image === 'string' ? image : image?.src;
 ---
 
 <div
@@ -17,7 +18,7 @@ const { url, image, title, content } = Astro.props;
 >
   <div class="blog-list flex-column gap-3">
     <div class="post-thumbnail">
-      <a href={'/blog/' + url}><img src={image} alt="Blog Post" /></a>
+      <a href={'/blog/' + url}><img src={imageSrc} alt="Blog Post" /></a>
     </div>
     <div class="post-content">
       <h5 class="title">

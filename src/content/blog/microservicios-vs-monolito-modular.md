@@ -3,7 +3,7 @@ title: "Microservicios vs. Monolito Modular: La Elección Estratégica"
 description: "¿Monolito Modular o Microservicios? Descubre qué arquitectura de software garantiza el mejor ROI para tu PYME. Compara complejidad, escalabilidad y costes. ¡Aplica la estrategia correcta!"
 pub_date: 2025-11-07
 tags: ["Microservicios", "Monolito modular", "arquitectura de software", "ROI", "desarrollo web", "escalabilidad", "coste de desarrollo", "PHP", "Python", "Flask", "Laravel", "eficiencia operativa", "Tech Lead", "PYMES"]
-image: "/assets/images/blog/microservicios-vs-monolito-modular.webp"
+image: "/public/assets/images/blog/microservicios-vs-monolito-modular.webp"
 draft: false
 ---
 La arquitectura de *software* que elijas es una decisión de negocio con un impacto directo en los **costes**, la **velocidad de desarrollo** y la **escalabilidad** futura de tu PYME. No hay una solución "mejor" universal; solo la más adecuada para tu contexto.

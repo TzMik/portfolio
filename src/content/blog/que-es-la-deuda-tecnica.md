@@ -3,7 +3,7 @@ title: "¿Qué es realmente la deuda técnica? Más allá de la metáfora del di
 description: "Descubre qué es la deuda técnica y por qué afecta a tu negocio. Aprende a diferenciar entre deuda intencional y no intencional para tomar decisiones estratégicas que aseguren la salud y la rentabilidad de tus proyectos de software a largo plazo."
 pub_date: 2025-09-18
 tags: ["deuda técnica", "gestión de proyectos", "desarrollo de software", "costos de TI", "ineficiencia operativa", "optimización de proyectos", "código limpio", "estrategias de desarrollo"]
-image: "/assets/images/blog/que-es-la-deuda-tecnica.jpg"
+image: "/public/assets/images/blog/que-es-la-deuda-tecnica.jpg"
 draft: false
 ---
 ¿Te has preguntado por qué un proyecto que empezó rápido ahora avanza a paso de tortuga? ¿O por qué tu equipo de desarrollo gasta más tiempo en arreglar errores que en crear nuevas funcionalidades? La respuesta podría ser la deuda técnica.

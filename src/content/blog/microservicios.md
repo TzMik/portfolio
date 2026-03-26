@@ -3,7 +3,7 @@ title: "Microservicios: ¿La solución mágica o una complejidad innecesaria par
 description: "¿Microservicios o monolito? Este artículo analiza los pros y contras de cada arquitectura. Aprende cuándo un monolito es la mejor opción para tu startup y cuándo es el momento de considerar una arquitectura distribuida para escalar tu negocio."
 pub_date: 2025-10-01
 tags: ["arquitectura de microservicios", "monolito vs microservicios", "escalabilidad de startups", "costo de microservicios", "resiliencia de software", "arquitectura de software", "monolito distribuido", "Web Scalability for Startup Engineers"]
-image: "/assets/images/blog/microservicios.webp"
+image: "/public/assets/images/blog/microservicios.webp"
 draft: false
 ---
 Cuando tu startup crece, la euforia por el éxito se mezcla con la preocupación por la infraestructura. Un monolito, que te sirvió bien al principio, comienza a mostrar grietas. Es entonces cuando escuchas hablar de los **microservicios**, una arquitectura que parece ser la solución a todos tus problemas de escalabilidad. Pero, ¿son realmente la respuesta para ti o solo una complejidad que tu equipo no necesita?

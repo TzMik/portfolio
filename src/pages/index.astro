@@ -172,7 +172,7 @@ const latestPosts = blogPosts.slice(0, 2);
         {
           topProjects.map((project) => (
             <ProjectGrid
-              url={project.slug}
+              url={project.id}
               image={project.data.image || ""}
               title={project.data.title || ""}
             />
@@ -293,7 +293,7 @@ const latestPosts = blogPosts.slice(0, 2);
         {
           latestPosts.map((post) => (
             <LastPostGrid
-              url={post.slug}
+              url={post.id}
               image={post.data.image}
               title={post.data.title}
               content={post.data.description}

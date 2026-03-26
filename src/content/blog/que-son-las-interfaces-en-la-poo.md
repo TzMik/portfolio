@@ -3,7 +3,7 @@ title: "¿Qué son las Interfaces en la POO?"
 description: "Las interfaces son una de las herramientas más importantes en la Programación Orientada a Objetos (POO). Permiten definir un contrato que deben seguir las clases, asegurando que tengan ciertos métodos y propiedades."
 pub_date: 2023-02-22
 tags: ["POO", "Programación Orientada a Objetos", "Interfaces", "Clases", "Herencia", "Polimorfismo", "Abstracción", "Código Escalable", "Testabilidad", "Separación de Intereses", "Patrón de Diseño"]
-image: "/assets/images/blog/que-son-las-interfaces.png"
+image: "/public/assets/images/blog/que-son-las-interfaces.png"
 draft: false
 ---
 Las interfaces son una parte esencial de la programación orientada a objetos (POO). **Una interfaz es un conjunto de métodos abstractos que una clase debe implementar para cumplir con un contrato determinado**. En este artículo, explicaremos en detalle qué son las interfaces, sus ventajas y desventajas y un ejemplo con PHP.

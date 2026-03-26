@@ -3,7 +3,7 @@ title: "De la Ineficiencia al ROI: Cómo un MVP Basado en Laravel y Livewire Pue
 description: "Descubre cómo un MVP con Laravel y Livewire puede transformar tu PYME. Acelera el desarrollo, reduce costos y libera el potencial de tu negocio al enfocarte en soluciones de software eficientes que generan un retorno de la inversión rápido."
 pub_date: 2025-09-17
 tags: ["Laravel", "Livewire", "MVP", "Producto Mínimo Viable", "PYMES", "Eficiencia Operativa", "ROI", "Retorno de la Inversión", "Desarrollo de software", "Soluciones de software", "Código limpio", "Astro", "Next.js", "PHP", "Desarrollo web"]
-image: "/assets/images/blog/laravel-livewire-puede-transformar-tu-pyme.jpg"
+image: "/public/assets/images/blog/laravel-livewire-puede-transformar-tu-pyme.jpg"
 draft: false
 ---
 ## La Promesa del Software a Medida: ¿Realidad o Gasto?
