@@ -3,7 +3,7 @@ title: "La ética del desarrollador: Por qué tu reputación es tu activo más v
 description: "Tu reputación es tu activo más valioso. Este artículo, inspirado en las enseñanzas de 'The Clean Coder', explora la importancia de la ética profesional, la integridad y la calidad en tu trabajo diario para construir una reputación sólida que te abrirá más puertas que cualquier habilidad técnica."
 pub_date: 2025-09-26
 tags: ["ética del desarrollador", "reputación profesional", "integridad en el código", "confianza en el equipo", "The Clean Coder", "prácticas de programación"]
-image: "/assets/images/blog/la-etica-del-desarrollador.webp"
+image: "/public/assets/images/blog/la-etica-del-desarrollador.webp"
 draft: false
 ---
 En el mundo del desarrollo de software, nos centramos mucho en las habilidades técnicas: dominar un nuevo lenguaje, aprender un *framework* de moda o resolver algoritmos complejos. Pero a menudo, pasamos por alto el factor más crucial para una carrera exitosa y duradera: **la reputación**. Como nos enseña "*The Clean Coder*", tu reputación como desarrollador no se construye sobre tus trucos más impresionantes, sino sobre tu **integridad, tu confiabilidad y tu ética profesional**.

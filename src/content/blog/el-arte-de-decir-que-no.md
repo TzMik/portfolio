@@ -3,7 +3,7 @@ title: "El arte de decir 'No': Por qué la honestidad es la mejor política en e
 description: "Descubre cómo el 'No' productivo te convierte en un consultor de confianza en el desarrollo de software. Este artículo explora por qué decir 'no' es una habilidad esencial para evitar la deuda técnica y gestionar las expectativas de forma profesional."
 pub_date: 2025-09-24
 tags: ["honestidad en desarrollo", "decir no", "gestión de expectativas", "comunicación profesional", "The Clean Coder", "deuda de expectativas", "habilidades de desarrollador"]
-image: "/assets/images/blog/el-arte-de-decir-que-no.webp"
+image: "/public/assets/images/blog/el-arte-de-decir-que-no.webp"
 draft: false
 ---
 En el mundo del desarrollo de software, **la presión** por entregar a tiempo **es constante**. A menudo, el impulso natural es decir "sí" a cada solicitud, cada plazo ajustado y cada funcionalidad de último momento, para no parecer un obstáculo. Sin embargo, como nos enseña "*The Clean Coder*", decir "sí" sin una evaluación honesta **es el camino más rápido hacia el fracaso** del proyecto, la deuda técnica y el agotamiento del equipo. El verdadero profesional sabe que decir "no" no es un acto de rebeldía, sino una muestra de **honestidad y responsabilidad**.

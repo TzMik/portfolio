@@ -3,7 +3,7 @@ title: "El Costo Oculto de la Duplicación"
 description: "¿Tu e-commerce pierde tiempo y dinero copiando datos entre TikTok Shop, tu ERP y Excel? Descubre el costo real de la duplicación de datos y cómo una solución a medida elimina el retrabajo para que tu equipo se enfoque en el crecimiento estratégico. Evita invertir en software genérico."
 pub_date: 2025-12-12
 tags: ["software genérico", "duplicación", "ineficiencia operativa", "eficiencia operativa", "integración de sistemas", "automatizar tareas manuales"]
-image: "/assets/images/blog/el-costo-oculto-de-la-duplicacion.webp"
+image: "/public/assets/images/blog/el-costo-oculto-de-la-duplicacion.webp"
 draft: true
 ---
 ## Por Qué tu Equipo de E-commerce Gasta Horas Copiando Datos (y Cómo Evitarlo)

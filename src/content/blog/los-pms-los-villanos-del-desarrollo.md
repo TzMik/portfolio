@@ -3,7 +3,7 @@ title: "Los Project Managers: ¿Los 'villanos' del desarrollo?"
 description: "¿Son los Project Managers realmente los enemigos de los desarrolladores? Analizamos por qué la planificación es clave para el éxito de cualquier proyecto de software."
 pub_date: 2026-03-08
 tags: ["project managers", "pm", "desarrollo", "planificación", "gestión de proyectos", "arquitectura"]
-image: "/assets/images/blog/los-pms-los-villanos-del-desarrollo.webp"
+image: "/public/assets/images/blog/los-pms-los-villanos-del-desarrollo.webp"
 draft: false
 ---
 Durante toda mi carrera he escuchado lo mismo: **los PMs suelen ser el perfil menos querido por los desarrolladores**.

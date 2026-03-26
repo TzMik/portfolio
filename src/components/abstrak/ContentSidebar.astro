@@ -33,18 +33,22 @@ const latestProjects = projects.slice(0, 3);
   <div class="widget widget-recent-post">
     <h4 class="widget-title">Últimas publicaciones</h4>
     <div class="post-list-wrap">
-      {
-        latestProjects.map((post) => (
-          <div class="single-post">
-            <div class="post-thumbnail">
-              <a href={`/blog/${post.slug}`}>
-                <img src={post.data.image} alt={post.data.title} width="100" />
-              </a>
-            </div>
-            <div class="post-content">
-              <h6 class="title">
-                <a href={`/blog/${post.slug}`}>{post.data.title}</a>
-              </h6>
+        {
+          latestProjects.map((post) => (
+            <div class="single-post">
+              <div class="post-thumbnail">
+                <a href={`/projects/${post.id}`}>
+                  <img
+                    src={typeof post.data.image === 'string' ? post.data.image : post.data.image?.src}
+                    alt={post.data.title}
+                    width="100"
+                  />
+                </a>
+              </div>
+              <div class="post-content">
+                <h6 class="title">
+                  <a href={`/projects/${post.id}`}>{post.data.title}</a>
+                </h6>
               <ul class="blog-meta list-unstyled">
                 <li>
                   {post.data.pub_date.toLocaleDateString("es-ES", {

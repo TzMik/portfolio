@@ -1,7 +1,7 @@
 ---
 title: "SAR: Sistema de Administración de Rentas"
 description: "Como CTO en Fonsecantero, transformamos la gestión inmobiliaria de SAR: de Excels manuales a un sistema automatizado que optimiza rentas y la toma de decisiones."
-image: "/assets/images/projects/sar.webp"
+image: "/public/assets/images/projects/sar.webp"
 pub_date: 2026-01-27
 start_date: 2024-03-01
 end_date: 2024-05-01

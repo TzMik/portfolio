@@ -3,7 +3,7 @@ title: "El Desarrollador No Va a Desaparecer: La IA No Escribe Código, Solo Tom
 description: "La IA no nos dejará sin empleo, solo cambiará el juego. En este artículo explico por qué el valor real del desarrollador es conceptual, no en escribir código. Descubre cómo usar la IA para maximizar el ROI en tu PYME."
 pub_date: 2025-10-04
 tags: ["Inteligencia Artificial", "Futuro Desarrolladores", "IA Desarrollo Web", "ROI Software", "Eficiencia Operativa PYMES", "Tech Lead", "CTO", "Laravel", "Next.js", "Python", "Conceptos Programación", "Valor Desarrollador", "Guía IA", "Revolución Conceptual", "Productividad IA"]
-image: "/assets/images/blog/el-desarrollador-no-va-a-desaparecer.webp"
+image: "/public/assets/images/blog/el-desarrollador-no-va-a-desaparecer.webp"
 draft: false
 ---
 ## La Gran Mentira: "La IA Nos Dejará Sin Empleo"

@@ -1,16 +1,17 @@
 ---
 interface Props {
-  image: string;
+  image: string | any;
   title: string;
   url: string;
 }
 const { image, title, url } = Astro.props;
+const imageSrc = typeof image === 'string' ? image : image?.src;
 ---
 <div class="col-xl-4 col-md-6 project branding">
   <div class="project-grid">
     <div class="thumbnail">
       <a href={"/projects/" + url}>
-        <img src={image} alt="project" />
+        <img src={imageSrc} alt="project" />
       </a>
     </div>
     <div class="content">

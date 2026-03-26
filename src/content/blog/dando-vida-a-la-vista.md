@@ -3,7 +3,7 @@ title: "Dando Vida a la Vista: Comprendiendo los View Engines (Motores de Planti
 description: "Los View Engines (Blade, Jinja, Twig) son esenciales en MVC. Descubre cómo simplifican la creación de HTML dinámico, mejoran la seguridad (XSS) y optimizan tu flujo de trabajo como desarrollador."
 pub_date: 2025-11-05
 tags: ["View Engine", "Motor de Plantilla", "MVC Vista", "HTML Dinámico", "Blade", "Jinja", "Twig", "Seguridad XSS", "Layouts", "Includes", "Experiencia Desarrollador"]
-image: "/assets/images/blog/dando-vida-a-la-vista.webp"
+image: "/public/assets/images/blog/dando-vida-a-la-vista.webp"
 draft: false
 ---
 Hemos hablado de cómo el [**Controlador** orquesta la lógica](/blog/desarrollo-web-simplificado) de negocio con el **Modelo** y luego pasa los datos a la **Vista**. Pero, ¿cómo la Vista toma esos datos y los transforma en el HTML que el usuario ve en su navegador? Aquí es donde entran en juego los **View Engines** o **Motores de Plantilla**.

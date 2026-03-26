@@ -3,7 +3,7 @@ title: "Bagisto, el catalizador que tu negocio necesita"
 description: "Descubre cómo Bagisto, una herramienta de código abierto basada en Laravel, puede ayudarte a transformar tu e-commerce. Deja de luchar con sistemas genéricos y procesos manuales para, en su lugar, crear una solución a la medida que te permita enfocarte en el crecimiento estratégico de tu negocio."
 pub_date: 2025-09-15
 tags: ["Bagisto", "E-commerce Laravel", "Tienda en línea", "Soluciones a medida", "Software de e-commerce", "Desarrollo web a medida", "Optimización de procesos", "Negocios online", "Ineficiencia operativa", "Automatización de procesos", "Gestión de inventario", "Flujos de trabajo", "Software genérico", "Integración de sistemas"]
-image: "/assets/images/blog/bagisto-el-catalizador-que-tu-negocio-necesita.jpg"
+image: "/public/assets/images/blog/bagisto-el-catalizador-que-tu-negocio-necesita.jpg"
 draft: false
 ---
 

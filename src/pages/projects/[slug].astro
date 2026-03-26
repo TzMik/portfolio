@@ -1,7 +1,7 @@
 ---
 import AbstrakLayout from "../../layouts/AbstrakLayout.astro";
 import { getCollection } from "astro:content";
-import type { ProjectSchema } from "../../content/config";
+import type { ProjectSchema } from "../../content.config";
 import "../../styles/AbstrakProjectLayout.css";
 import ContentSidebar from "../../components/abstrak/ContentSidebar.astro";
 import ProjectRichSnippet from "../../components/ProjectRichSnippet.astro";
@@ -9,14 +9,15 @@ import ProjectRichSnippet from "../../components/ProjectRichSnippet.astro";
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
   return projects.map((entry) => ({
-    params: { slug: entry.slug },
+    params: { slug: entry.id },
     props: { entry },
   }));
 }
 
 const { entry } = Astro.props;
 const project: ProjectSchema = entry.data;
-const { Content } = await entry.render();
+import { render } from "astro:content";
+const { Content, headings } = await render(entry);
 
 if (project.draft !== false) {
   return new Response(null, { status: 404 });
@@ -47,7 +48,7 @@ if (project.draft !== false) {
           <div class="banner-thumbnail">
             <img
               class="paralax-image"
-              src={project.image}
+              src={typeof project.image === 'string' ? project.image : project.image?.src}
               alt="Illustration"
               width="500"
             />

@@ -3,7 +3,7 @@ title: "Resend: El servicio de email para desarrolladores que no sabías que nec
 description: "Descubre las ventajas y desventajas del servicio de email Resend. Aprende por qué es la solución perfecta para desarrolladores que buscan simplicidad y cómo puedes integrarlo de forma segura y eficiente con Supabase y Edge Functions."
 pub_date: 2025-09-28
 tags: ["email marketing para desarrolladores", "envío de emails transaccionales", "automatización de emails", "integración de API de email", "comparativa de servicios de email", "soluciones de email para startups", "alternativas a SendGrid"]
-image: "/assets/images/blog/resend.webp"
+image: "/public/assets/images/blog/resend.webp"
 draft: false
 ---
 En el mundo del desarrollo de software, el envío de emails es una tarea común, pero a menudo compleja. A lo largo de los años, han surgido muchas soluciones, pero pocas han logrado la **simplicidad que ofrece Resend**. Si buscas un servicio de email transaccional que te permita enviar correos de manera programática, Resend es una opción que merece tu atención.

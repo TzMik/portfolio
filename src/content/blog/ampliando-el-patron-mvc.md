@@ -3,7 +3,7 @@ title: "Ampliando el Patrón MVC: El Principio de los 'Thin Controllers'"
 description: "Lleva tu código MVC al siguiente nivel. Aprende a crear Controladores Delgados y a usar Clases de Servicio para una lógica limpia. El secreto para escribir código escalable, reutilizable y fácil de testear."
 pub_date: 2025-10-15
 tags: ["MVC", "Arquitectura MVC", "Modelo-Vista-Controlador", "Thin Controllers", "Controladores Delgados", "Clases de Servicio", "Service Layer", "Lógica de Negocio", "Desarrollo Web Profesional", "Código Escalable", "Testabilidad", "Separación de Intereses", "Patrón de Diseño"]
-image: "/assets/images/blog/ampliando-el-patron-mvc.webp"
+image: "/public/assets/images/blog/ampliando-el-patron-mvc.webp"
 draft: false
 ---
 Una vez que entiendes el flujo básico de MVC, surge una pregunta común: ¿dónde pongo *exactamente* la lógica? La respuesta profesional es seguir el principio de los **Controladores Delgados** (*Thin Controllers*).

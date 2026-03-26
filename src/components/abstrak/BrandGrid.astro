@@ -1,13 +1,14 @@
 ---
 interface Props {
-    image: string;
+    image: string | any;
     brand: string;
 }
 
 const { image, brand } = Astro.props;
+const imageSrc = typeof image === 'string' ? image : image?.src;
 ---
 <div class="col-lg-3 col-6 sal-animate" data-sal="slide-up" data-sal-duration="500">
   <div class="brand-grid d-flex justify-content-center">
-    <img src={image} alt={brand} />
+    <img src={imageSrc} alt={brand} />
   </div>
 </div>
