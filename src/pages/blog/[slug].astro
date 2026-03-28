@@ -25,7 +25,7 @@ import { render } from "astro:content";
 const { Content, headings } = await render(entry);
 ---
 
-<AbstrakLayout title={post.title + " - Blog | MikelCanteroDev"} description={post.description} image={typeof post.image === 'string' ? post.image : post.image?.src || "/public/assets/images/portfolio.jpeg"}>
+<AbstrakLayout title={post.title + " - Blog | MikelCanteroDev"} description={post.description} image={typeof post.image === 'string' ? post.image : post.image?.src}>
   <div class="breadcrum-area">
     <div class="container">
       <div class="breadcrumb">
