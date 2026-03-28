@@ -1,6 +1,6 @@
 ---
 title: "El error del 'MVP Gigante': Por qué la obsesión por el producto terminado está matando tu innovación"
-description: ""
+description: "Evita el 'MVP Gigante': descubre por qué obsesionarse con el producto terminado mata la innovación y cómo validar tus hipótesis de negocio rápido para construir software rentable y escalable."
 pub_date: 2026-03-28
 tags: ["MVP", "Producto Mínimo Viable", "Innovación", "Desarrollo de Software", "Agilidad", "Deuda Técnica", "Estrategia de Producto", "PYMES", "Transformación Digital", "Pivotar", "Validación de Mercado"]
 draft: false
