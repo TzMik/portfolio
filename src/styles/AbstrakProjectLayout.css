@@ -90,7 +90,7 @@ pre {
 }
 
 #project-content blockquote {
-    background: var(--gradient-primary);
+    background: var(--gradient-accent);
     padding: 50px;
     border-radius: 30px;
     border-right: 2px solid rgba(80, 92, 253, 0);
@@ -196,24 +196,10 @@ pre {
     left: 20px;
 }
 
-#project-content blockquote {
-    background: var(--gradient-primary);
-    padding: 50px;
-    border-radius: 30px;
-    border-right: 2px solid rgba(80, 92, 253, 0);
-}
-
-#project-content blockquote p {
-    margin-bottom: 0;
-    font-weight: 600;
-}
-
 h2 {
   font-size: 22px;
 }
 
 h3 {
-  font-size: 20px;
-}
   font-size: 20px;
 }
