@@ -43,6 +43,20 @@ const serviceSchema = ({ image }: SchemaContext) => z.object({
   image: image().optional(),
 });
 
+const learningPathSchema = ({ image }: SchemaContext) => z.object({
+  title: z.string(),
+  description: z.string(),
+  pub_date: z.date().optional(),
+  draft: z.boolean().default(false),
+  tags: z.array(z.string()).optional(),
+  image: image().optional(),
+  links: z.array(z.object({
+    title: z.string(),
+    url: z.string(),
+    description: z.string().optional(),
+  })).optional(),
+});
+
 // --- COLLECTIONS ---
 
 const servicesCollection = defineCollection({
@@ -65,16 +79,23 @@ const blogPosts = defineCollection({
   schema: blogPostSchema,
 });
 
+const learningPathsCollection = defineCollection({
+  loader: glob({ pattern: '**/[^_]*.{md,mdx}', base: "./src/content/learning-paths" }),
+  schema: learningPathSchema,
+});
+
 // --- TYPES & EXPORTS ---
 
 export type ProjectSchema = z.infer<ReturnType<typeof projectSchema>>;
 export type TestimonialSchema = z.infer<ReturnType<typeof testimonialSchema>>;
 export type BlogPostSchema = z.infer<ReturnType<typeof blogPostSchema>>;
 export type ServiceSchema = z.infer<ReturnType<typeof serviceSchema>>;
+export type LearningPathSchema = z.infer<ReturnType<typeof learningPathSchema>>;
 
 export const collections = {
   projects: projectsCollection,
   testimonials,
   blogPosts,
   services: servicesCollection,
+  learningPaths: learningPathsCollection,
 };
