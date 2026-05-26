@@ -13,7 +13,7 @@
 - [x] [Patrón de diseño Factory](https://www.linkedin.com/pulse/factory-patrones-de-dise%C3%B1o-mikel-cantero-loinaz-levjc/)
 - [x] [Middlewares](https://www.linkedin.com/pulse/qu%C3%A9-es-un-middleware-mikel-cantero-loinaz-lrcwe/)
 - [x] [El flujo de vida de una petición (_Request Lifecycle_)](https://mikelcantero.dev/blog/el-flujo-de-vida-de-una-peticion)
-- [ ] Inversión de Control (IoC)
+- [x] Inversión de Control (IoC)
 - [ ] Contenedores de Dependecias (DI)
 
 ## Frontend
