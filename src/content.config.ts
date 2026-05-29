@@ -25,6 +25,7 @@ const testimonialSchema = ({ image }: SchemaContext) => z.object({
   img: image().optional(),
   service: z.string().optional(),
   companyImg: image().optional(),
+  draft: z.boolean().default(false),
 });
 
 const blogPostSchema = ({ image }: SchemaContext) => z.object({

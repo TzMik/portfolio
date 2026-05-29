@@ -1,0 +1,162 @@
+---
+import AbstrakLayout from "../../layouts/AbstrakLayout.astro";
+---
+
+<AbstrakLayout title="Dejar un Testimonio | MikelCanteroDev" description="Envía tu testimonio sobre tu experiencia trabajando conmigo.">
+  <div class="breadcrum-area breadcrumb-banner single-breadcrumb">
+    <div class="container">
+      <div class="breadcrumb">
+        <ul class="list-unstyled">
+          <li><a href="/">Inicio</a></li>
+          <li class="active">Dejar un Testimonio</li>
+        </ul>
+      </div>
+      <div class="row align-items-center">
+        <div class="col-lg-12">
+          <div class="section-heading heading-left">
+            <h1 class="title h2">Dejar un Testimonio</h1>
+            <p>Tu opinión es sumamente valiosa para mí y para futuros clientes.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ul class="shape-group-8 list-unstyled">
+      <li class="shape shape-1" data-sal="slide-right" data-sal-duration="500" data-sal-delay="100">
+        <img src="/abstrak/assets/media/others/bubble-9.png" alt="Bubble" />
+      </li>
+      <li class="shape shape-2" data-sal="slide-left" data-sal-duration="500" data-sal-delay="200">
+        <img src="/abstrak/assets/media/others/bubble-20.png" alt="Bubble" />
+      </li>
+      <li class="shape shape-3" data-sal="slide-up" data-sal-duration="500" data-sal-delay="300">
+        <img src="/abstrak/assets/media/others/line-4.png" alt="Line" />
+      </li>
+    </ul>
+  </div>
+
+  <section class="section section-padding-equal case-study-featured-area">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="contact-form-box shadow-box">
+            <!-- Contenedor de éxito oculto por defecto -->
+            <div id="success-container" class="text-center p-5 d-none">
+              <div style="font-size: 4rem; color: var(--color-primary); margin-bottom: 20px;">
+                <i class="fas fa-check-circle text-success" style="font-size: 4rem; color: #28a745;"></i>
+              </div>
+              <h3 class="title h4 mb-3">¡Muchas gracias por tu testimonio!</h3>
+              <p class="mb-4">Se ha registrado correctamente como borrador. Lo revisaré antes de publicarlo en el sitio.</p>
+              <a href="/" class="axil-btn btn-fill-primary">Volver al Inicio</a>
+            </div>
+
+            <!-- Formulario -->
+            <form id="testimonial-form">
+              <h3 class="title h4 mb-4">Completa los siguientes detalles</h3>
+              
+              <div id="error-container" class="alert alert-danger d-none mb-4" role="alert">
+                <i class="fas fa-exclamation-triangle mr-2"></i> <span id="error-message"></span>
+              </div>
+
+              <div class="form-group mb-3">
+                <label for="name" class="form-label font-weight-bold">Nombre Completo <span class="text-danger">*</span></label>
+                <input type="text" id="name" name="name" class="form-control" placeholder="Ej. Juan Pérez" required />
+              </div>
+
+              <div class="form-group mb-3">
+                <label for="role" class="form-label font-weight-bold">Puesto / Cargo <span class="text-danger">*</span></label>
+                <input type="text" id="role" name="role" class="form-control" placeholder="Ej. Director General en MiEmpresa" required />
+              </div>
+
+              <div class="form-group mb-3">
+                <label for="company" class="form-label font-weight-bold">Empresa <span class="text-muted">(Opcional)</span></label>
+                <input type="text" id="company" name="company" class="form-control" placeholder="Ej. MiEmpresa" />
+              </div>
+
+              <div class="form-group mb-3">
+                <label for="service" class="form-label font-weight-bold">Servicio Recibido <span class="text-muted">(Opcional)</span></label>
+                <input type="text" id="service" name="service" class="form-control" placeholder="Ej. Desarrollo Backend, Automatización" />
+              </div>
+
+              <div class="form-group mb-3">
+                <label for="testimonial" class="form-label font-weight-bold">Tu Testimonio <span class="text-danger">*</span></label>
+                <textarea id="testimonial" name="testimonial" class="form-control" rows="6" placeholder="Cuéntanos cómo fue tu experiencia..." required style="min-height: 120px;"></textarea>
+              </div>
+
+              <div class="form-row row mb-3">
+                <div class="col-md-6 form-group">
+                  <label for="img" class="form-label font-weight-bold">Foto de Perfil <span class="text-muted">(Opcional)</span></label>
+                  <input type="file" id="img" name="img" accept="image/*" class="form-control-file form-control" />
+                </div>
+                <div class="col-md-6 form-group">
+                  <label for="companyImg" class="form-label font-weight-bold">Logo de tu Empresa <span class="text-muted">(Opcional)</span></label>
+                  <input type="file" id="companyImg" name="companyImg" accept="image/*" class="form-control-file form-control" />
+                </div>
+              </div>
+
+              <div class="form-group mt-4">
+                <button type="submit" id="submit-btn" class="axil-btn btn-fill-primary btn-large w-100">Enviar Testimonio</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</AbstrakLayout>
+
+<script>
+  const form = document.getElementById('testimonial-form') as HTMLFormElement;
+  const successContainer = document.getElementById('success-container');
+  const errorContainer = document.getElementById('error-container');
+  const errorMessage = document.getElementById('error-message');
+  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      // Deshabilitar botón para evitar doble envío
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Enviando...';
+      }
+      
+      if (errorContainer) {
+        errorContainer.classList.add('d-none');
+      }
+
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch('/api/testimonios', {
+          method: 'POST',
+          body: formData
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+          throw new Error(result.error || 'Ocurrió un error al enviar el testimonio.');
+        }
+
+        // Mostrar contenedor de éxito y ocultar formulario
+        if (form && successContainer) {
+          form.classList.add('d-none');
+          successContainer.classList.remove('d-none');
+          successContainer.scrollIntoView({ behavior: 'smooth' });
+        }
+      } catch (err: any) {
+        if (errorContainer && errorMessage) {
+          errorMessage.textContent = err.message || 'Error de conexión. Inténtalo de nuevo.';
+          errorContainer.classList.remove('d-none');
+          errorContainer.scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Volver a habilitar botón
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Enviar Testimonio';
+        }
+      }
+    });
+  }
+</script>
