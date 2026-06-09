@@ -1,0 +1,123 @@
+---
+import AbstrakLayout from "../../layouts/AbstrakLayout.astro";
+import { getCollection } from "astro:content";
+import WorkTogether from "../../components/abstrak/WorkTogether.astro";
+
+const learningPaths = await getCollection("learningPaths", ({ data }) => {
+  return data.draft !== true;
+});
+---
+
+<AbstrakLayout title="Rutas de Aprendizaje | MikelCanteroDev" description="Aprende desarrollo frontend, backend, arquitectura de software y mejores prácticas con estas guías y enlaces seleccionados.">
+  <!--=====================================-->
+  <!--=        Breadcrumb Area Start      =-->
+  <!--=====================================-->
+  <div class="breadcrum-area">
+    <div class="container">
+      <div class="breadcrumb">
+        <ul class="list-unstyled">
+          <li><a href="/">Inicio</a></li>
+          <li class="active">Rutas de Aprendizaje</li>
+        </ul>
+      </div>
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <div class="section-heading heading-left">
+            <h1 class="title h2">Rutas de Aprendizaje</h1>
+            <p>
+              Guías de estudio estructuradas y colecciones de recursos clave para dominar el desarrollo de software moderno, desde el diseño de la interfaz hasta la arquitectura del servidor.
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-6 d-flex justify-content-center">
+          <img
+            class="paralax-image custom-shape"
+            src="/assets/images/portfolio.jpeg"
+            alt="Mikel Cantero"
+            width="300"
+          />
+        </div>
+      </div>
+    </div>
+    <ul class="shape-group-8 list-unstyled">
+      <li
+        class="shape shape-1"
+        data-sal="slide-right"
+        data-sal-duration="500"
+        data-sal-delay="100"
+      >
+        <img src="/abstrak/assets/media/others/bubble-9.png" alt="Bubble" />
+      </li>
+      <li
+        class="shape shape-2"
+        data-sal="slide-left"
+        data-sal-duration="500"
+        data-sal-delay="200"
+      >
+        <img src="/abstrak/assets/media/others/bubble-20.png" alt="Bubble" />
+      </li>
+    </ul>
+  </div>
+
+  <!--=====================================-->
+  <!--=        Learning Paths List        =-->
+  <!--=====================================-->
+  <section class="section section-padding bg-color-light">
+    <div class="container">
+      <div class="row row-30">
+        {learningPaths.length === 0 ? (
+          <div class="col-12 text-center py-5">
+            <h3>No hay rutas de aprendizaje disponibles en este momento.</h3>
+            <p>Vuelve pronto para ver nuevo contenido.</p>
+          </div>
+        ) : (
+          learningPaths.map((path) => {
+            // Determine an icon class depending on the tags
+            let iconClass = "fa-laptop-code";
+            if (path.data.tags?.includes("backend")) {
+              iconClass = "fa-server";
+            } else if (path.data.tags?.includes("arquitectura") || path.data.tags?.includes("solid")) {
+              iconClass = "fa-project-diagram";
+            } else if (path.data.tags?.includes("frontend")) {
+              iconClass = "fa-desktop";
+            }
+
+            return (
+              <div class="col-lg-4 col-md-6" data-sal="slide-up" data-sal-duration="800">
+                <div class="services-grid service-style-2" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between; border: 1px solid rgba(0,0,0,0.08); border-radius: 20px; padding: 40px; background: var(--color-white); transition: all 0.3s ease;">
+                  <div class="content" style="flex-grow: 1;">
+                    <div class="icon" style="font-size: 40px; margin-bottom: 25px; color: var(--color-primary);">
+                      <i class={`fas ${iconClass}`}></i>
+                    </div>
+                    <h3 class="title h4" style="margin-bottom: 15px;">
+                      <a href={`/learning-paths/${path.id}`}>{path.data.title}</a>
+                    </h3>
+                    <p style="margin-bottom: 20px; font-size: 15px; line-height: 1.6; color: var(--color-body);">
+                      {path.data.description}
+                    </p>
+                    {path.data.tags && (
+                      <div class="tags" style="margin-bottom: 25px;">
+                        {path.data.tags.map((tag) => (
+                          <span style="display: inline-block; background: rgba(var(--color-primary-rgb), 0.1); color: var(--color-primary); padding: 4px 12px; border-radius: 50px; font-size: 12px; font-weight: 500; margin-right: 8px; margin-bottom: 8px; text-transform: uppercase;">
+                            #{tag}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                  <div class="action-btn">
+                    <a href={`/learning-paths/${path.id}`} class="axil-btn btn-fill-primary btn-small" style="width: 100%; text-align: center;">
+                      Ver Ruta de Aprendizaje
+                    </a>
+                  </div>
+                </div>
+              </div>
+            );
+          })
+        )}
+      </div>
+    </div>
+  </section>
+
+  <WorkTogether />
+</AbstrakLayout>

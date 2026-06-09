@@ -3,7 +3,7 @@ title: "El compromiso del desarrollador: La diferencia entre un oficio y un pasa
 description: "Descubre la diferencia entre un trabajo y un oficio. Este artículo, inspirado en 'The Clean Coder' de Robert C. Martin, explora el compromiso del desarrollador, desde la responsabilidad del código hasta el poder de decir 'no' y la importancia del aprendizaje continuo."
 pub_date: 2025-09-23
 tags: ["desarrollo profesional", "compromiso del desarrollador", "The Clean Coder", "responsabilidad de código", "habilidades profesionales", "aprendizaje continuo", "código de conducta"]
-image: "/assets/images/blog/el-compromiso-del-desarrollador.webp"
+image: "/public/assets/images/blog/el-compromiso-del-desarrollador.webp"
 draft: false
 ---
 A menudo, la programación se percibe como una serie de tareas técnicas, pero Robert C. Martin, "Uncle Bob", en su libro "_The Clean Coder_" nos recuerda algo crucial: __el desarrollo de software es un oficio__. Y como todo oficio, requiere un compromiso que __va más allá de escribir código__. Se trata de __tomar las riendas__ de tu carrera y ser un profesional.

@@ -3,7 +3,7 @@ title: "El Patrón Service: Desacoplando la lógica de negocio para aplicaciones
 description: "El Patrón Service (o Capa de Servicio) es fundamental para mantener aplicaciones escalables y evitar el famoso 'código espagueti' donde la lógica de negocio termina mezclada con la base de datos o la interfaz de usuario."
 pub_date: 2026-01-06
 tags: ["patron-service", "arquitectura de software", "desarrollo de software", "desarrollo web"]
-image: "/assets/images/blog/patron-service.webp"
+image: "/public/assets/images/blog/patron-service.webp"
 draft: false
 ---
 ### ¿Qué es el Patrón Service?

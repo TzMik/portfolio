@@ -1,7 +1,7 @@
 ---
 title: "Fashion Group: Digitalización de la Fuerza de Ventas"
 description: "PWA que digitalizó la toma de pedidos para Fashion Group. La app eliminó el papel, integró lógica de negocio y automatizó el flujo de ventas para reducir errores y optimizar la eficiencia."
-image: "/assets/images/projects/pedidos-fg.jpg"
+image: "/public/assets/images/projects/pedidos-fg.jpg"
 pub_date: 2025-09-08
 start_date: 2024-01-01
 end_date: 2024-03-01

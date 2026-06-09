@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import type { BlogPostSchema } from "../../content/config";
+import type { BlogPostSchema } from "../../content.config";
 import AbstrakLayout from "../../layouts/AbstrakLayout.astro";
 import ContentSidebar from "../../components/abstrak/ContentSidebar.astro";
 import "../../styles/AbstrakProjectLayout.css";
@@ -9,22 +9,23 @@ import ProjectRichSnippet from "../../components/ProjectRichSnippet.astro";
 export async function getStaticPaths() {
   const now = new Date();
 
-  const blogPosts = await getCollection("blog", ({ data }) => {
+  const blogPosts = await getCollection("blogPosts", ({ data }) => {
     return data.draft == false && data.pub_date <= now;
   });
 
   return blogPosts.map((entry) => ({
-    params: { slug: entry.slug },
+    params: { slug: entry.id },
     props: { entry },
   }));
 }
 
 const { entry } = Astro.props;
 const post: BlogPostSchema = entry.data;
-const { Content } = await entry.render();
+import { render } from "astro:content";
+const { Content, headings } = await render(entry);
 ---
 
-<AbstrakLayout title={post.title + " - Blog | MikelCanteroDev"} description={post.description} image={post.image}>
+<AbstrakLayout title={post.title + " - Blog | MikelCanteroDev"} description={post.description} image={typeof post.image === 'string' ? post.image : post.image?.src}>
   <div class="breadcrum-area">
     <div class="container">
       <div class="breadcrumb">
@@ -73,7 +74,7 @@ const { Content } = await entry.render();
           <div class="single-blog">
             <div class="single-blog-content blog-grid">
               <div class="post-thumbnail">
-                <img src={post.image} alt="Blog" />
+                <img src={typeof post.image === 'string' ? post.image : post.image?.src} alt="Blog" />
               </div>
               <div class="author">
                 <div class="author-thumb">

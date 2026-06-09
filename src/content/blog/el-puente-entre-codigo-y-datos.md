@@ -3,7 +3,7 @@ title: "El Puente entre Código y Datos: Entendiendo los ORMs"
 description: "Domina el ORM (Mapeo Objeto-Relacional) y olvídate del SQL manual. Descubre cómo aumenta la productividad, reduce errores y cuándo es crucial usar SQL nativo para maximizar el rendimiento."
 pub_date: 2025-10-22
 tags: ["ORM", "Object-Relational Mapping", "Mapeo Objeto-Relacional", "SQL", "Base de Datos", "Modelo MVC", "Eloquent", "Active Record", "Productividad Desarrollo", "SQL Nativo", "Rendimiento DB", "Ventajas ORM", "Programación Orientada a Objetos"]
-image: "/assets/images/blog/el-puente-entre-el-codigo-y-datos.webp"
+image: "/public/assets/images/blog/el-puente-entre-el-codigo-y-datos.webp"
 draft: false
 ---
 Para que el **Modelo** de MVC pueda gestionar los datos de la base de datos (DB) de forma eficiente, la mayoría de los *frameworks* modernos utilizan una herramienta esencial: el **ORM** (Object-Relational Mapping, o Mapeo Objeto-Relacional).

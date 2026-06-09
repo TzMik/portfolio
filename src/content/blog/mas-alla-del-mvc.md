@@ -3,7 +3,7 @@ title: "Más Allá del MVC: Comprendiendo el Patrón Model-View-Presenter (MVP)"
 description: "Domina el patrón MVP (Model-View-Presenter). Aprende la diferencia con MVVM, cómo usar la Vista Pasiva para maximizar la testabilidad y cómo MVP encaja en la Arquitectura Limpia."
 pub_date: 2025-11-22
 tags: ["MVP", "Model-View-Presenter", "Vista Pasiva", "Testabilidad", "Presenter", "Arquitectura Limpia", "Arquitectura Hexagonal", "Separación de Intereses", "MVP vs MVVM", "Patrones UI"]
-image: "/assets/images/blog/mas-alla-del-mvc.webp"
+image: "/public/assets/images/blog/mas-alla-del-mvc.webp"
 draft: false
 ---
 Hemos explorado [MVC](/blog/desarrollo-web-simplificado) y [MVVM](/blog/del-servidor-al-cliente), patrones que buscan organizar la lógica de nuestras aplicaciones. Hoy nos adentraremos en otro patrón de interfaz de usuario fundamental: **Model-View-Presenter (MVP)**. Este patrón es particularmente relevante cuando la Vista necesita ser más "pasiva" o cuando la testabilidad de la lógica de presentación es una prioridad máxima.

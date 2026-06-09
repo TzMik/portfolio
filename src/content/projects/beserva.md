@@ -1,7 +1,7 @@
 ---
 title: "Beserva: Transformación Digital en la Industria de la Belleza"
 description: "Participé en el desarrollo de Beserva, un marketplace de belleza. Solución a medida con gestión de reservas, pagos con Stripe Connect y un crecimiento exponencial para la startup."
-image: "/assets/images/projects/beserva.jpg"
+image: "/public/assets/images/projects/beserva.jpg"
 pub_date: 2025-09-08
 start_date: 2023-08-01
 end_date: 2025-03-01

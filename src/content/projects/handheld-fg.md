@@ -1,7 +1,7 @@
 ---
 title: "Fashion Group HandHeld: Agilizando la Logística de Almacén"
 description: "Desarrollo de un sistema de búsqueda, agenda y mapas interactivos para los tótems de Intermoda 83, con un backend de administración y métricas en tiempo real."
-image: "/assets/images/projects/handheld-fg.jpg"
+image: "/public/assets/images/projects/handheld-fg.jpg"
 pub_date: 2025-09-15
 start_date: 2024-08-01
 end_date: 2024-12-31

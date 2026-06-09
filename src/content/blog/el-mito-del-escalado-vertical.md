@@ -3,7 +3,7 @@ title: "El Mito del Escalado Vertical: Por Qué Añadir Más Servidores no es Si
 description: "¿Es un servidor más grande la solución a su lentitud? Descubra por qué el escalado vertical es una trampa de costos y un riesgo operativo. Aprenda a implementar el escalado horizontal para maximizar la resiliencia, reducir gastos y asegurar el ROI en su PYME. Elimine la ineficiencia con la estrategia de un CTO."
 pub_date: 2025-10-03
 tags: ["escalado vertical", "escalado horizontal", "eficiencia operativa", "ROI", "costos de servidores", "resiliencia", "alta disponibilidad", "punto único de fallo", "arquitectura de software", "PYMES", "cloud computing", "gastos operativos", "optimización de costos", "crecimiento elástico"]
-image: "/assets/images/blog/el-mito-del-escalado-vertical.webp"
+image: "/public/assets/images/blog/el-mito-del-escalado-vertical.webp"
 draft: false
 ---
 Cuando su aplicación web empieza a sentirse lenta o el tráfico se dispara, la reacción instintiva de muchos dueños de negocios es simple: **"Compremos un servidor más grande y potente."**

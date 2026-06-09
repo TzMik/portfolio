@@ -2,7 +2,7 @@
 title: "Software que se adapta a tu PYME, no al revés"
 description: "Olvida las hojas de Excel infinitas y las herramientas genéricas. Creamos soluciones digitales a medida que optimizan tus procesos, ahorran tiempo y potencian tus ventas."
 cta: "Quiero una consultoría gratuita"
-image: "/assets/images/services/software-a-medida.webp"
+image: "/public/assets/images/services/software-a-medida.webp"
 ---
 ## ¿Sientes que tu tecnología te frena en lugar de impulsarte?
 

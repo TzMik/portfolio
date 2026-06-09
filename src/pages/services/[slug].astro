@@ -1,7 +1,7 @@
 ---
 import AbstrakLayout from "../../layouts/AbstrakLayout.astro";
 import { getCollection } from "astro:content";
-import type { ServiceSchema } from "../../content/config";
+import type { ServiceSchema } from "../../content.config";
 import "../../styles/AbstrakProjectLayout.css";
 import ContentSidebar from "../../components/abstrak/ContentSidebar.astro";
 import { calendarLink } from "../../data/MainInformation";
@@ -10,7 +10,7 @@ import TestimonialGrid from "../../components/abstrak/TestimonialGrid.astro";
 export async function getStaticPaths() {
   const services = await getCollection("services");
   return services.map((entry) => ({
-    params: { slug: entry.slug },
+    params: { slug: entry.id },
     props: { entry },
   }));
 }
@@ -21,7 +21,8 @@ testimonials = testimonials.slice(0, 3);
 
 const { entry } = Astro.props;
 const service: ServiceSchema = entry.data;
-const { Content } = await entry.render();
+import { render } from "astro:content";
+const { Content, headings } = await render(entry);
 ---
 
 <AbstrakLayout>
@@ -54,7 +55,7 @@ const { Content } = await entry.render();
           <div class="banner-thumbnail">
             <img
               class="paralax-image"
-              src={service.image}
+              src={typeof service.image === 'string' ? service.image : service.image?.src}
               alt="Illustration"
               width="500"
             />

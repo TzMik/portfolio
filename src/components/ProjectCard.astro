@@ -12,15 +12,15 @@ const { project, contentType } = Astro.props;
   )}
   <div class="portfolio-item portfolio-half">
     <div class="portfolio-item-inner">
-      <a href={`/${ contentType ?? "projects" }/${project.slug}`}>
+      <a href={`/${ contentType ?? "projects" }/${project.id}`}>
         <img
-          src={project.data.image}
+          src={typeof project.data.image === 'string' ? project.data.image : project.data.image?.src}
           alt={project.data.title ?? "Portfolio"}
         />
       </a>
     </div>
     <h2 class="project-listing-title">
-      <a href={`/${ contentType ?? "projects" }/${project.slug}`}>{project.data.title}</a>
+      <a href={`/${ contentType ?? "projects" }/${project.id}`}>{project.data.title}</a>
     </h2>
   </div>
 </div>

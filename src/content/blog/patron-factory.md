@@ -3,7 +3,7 @@ title: "Patrón de Diseño Factory: Creando Objetos sin Complicaciones"
 description: "Aprende a implementar el patrón Factory en TypeScript. Descubre cómo eliminar el código acoplado y los condicionales infinitos para crear aplicaciones escalables y fáciles de mantener."
 pub_date: 2026-01-15
 tags: ["patrón factory", "factory pattern typescript", "patrones de diseño", "programación orientada a objetos", "typescript design patterns", "clean code"]
-image: "/assets/images/blog/patron-factory.webp"
+image: "/public/assets/images/blog/patron-factory.webp"
 draft: false
 ---
 En el desarrollo de software, a menudo nos encontramos con una pregunta simple que puede complicarse rápidamente: **¿Cómo instanciamos objetos sin acoplar nuestro código a clases específicas?** Aquí es donde entra el patrón Factory (Fábrica).

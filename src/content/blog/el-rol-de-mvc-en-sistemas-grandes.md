@@ -3,7 +3,7 @@ title: "El Rol de MVC en Sistemas Grandes: Arquitectura de 3 Capas (Tiers)"
 description: "Descubre dónde encaja MVC en sistemas escalables. Entiende cómo se convierte en la Capa de Presentación en arquitecturas de 3 Capas y por qué esta separación es clave para la reutilización y la escalabilidad."
 pub_date: 2025-11-14
 tags: ["MVC en 3 Capas", "Arquitectura de 3 Capas", "Capa de Presentación", "Capa de Negocio", "Escalabilidad", "Separación de Intereses", "Reutilización de Código", "Sistemas Empresariales", "API REST", "Tier Architecture"]
-image: "/assets/images/blog/el-rol-de-mvc-en-sistemas-grandes.webp"
+image: "/public/assets/images/blog/el-rol-de-mvc-en-sistemas-grandes.webp"
 draft: false
 ---
 Hasta ahora, [hemos visto MVC](/blog/desarrollo-web-simplificado) como el modelo completo de nuestra aplicación. Sin embargo, en sistemas empresariales o a gran escala, el **MVC** generalmente se convierte en solo una parte de una arquitectura más grande, típicamente una **Arquitectura de 3 Capas (3-Tier Architecture)**.

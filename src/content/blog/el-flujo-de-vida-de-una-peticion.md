@@ -3,7 +3,7 @@ title: "El Viaje de una Petición: Entendiendo el Request Lifecycle"
 description: "¿Alguna vez te has detenido a pensar qué sucede exactamente desde que presionas 'Enter' en tu navegador hasta que los datos aparecen en tu pantalla? No es magia, es una coreografía técnica perfectamente coordinada."
 pub_date: 2026-03-23
 tags: ["Desarrollo Web", "Request Lifecycle", "Arquitectura de Software"]
-image: "/assets/images/blog/request-lifecycle.webp"
+image: "/public/assets/images/blog/request-lifecycle.webp"
 draft: false
 ---
 

@@ -1,7 +1,7 @@
 ---
-title: "Micro-ERP a Medida: Centralización Operativa para Avipecuaria Específica"
-description: "Caso de éxito: Micro-ERP a medida para Avipecuaria Específica. Descubre cómo centralizamos la gestión de flota, control de gastos y auditoría vehicular en Jalisco, eliminando el uso de Excel y reduciendo tiempos operativos en un 85%."
-image: "/assets/images/projects/erp-aviesa.webp"
+title: "Micro-ERP a Medida: Control Operativo y Blindaje Financiero para Aviesa"
+description: "Caso de éxito: Cómo centralizamos la gestión de flota y creamos un sistema de trazabilidad de efectivo que eliminó fugas de capital y redujo tiempos operativos en un 85%."
+image: "/public/assets/images/projects/erp-aviesa.webp"
 pub_date: 2026-02-03
 start_date: 2025-12-15
 end_date: 2026-01-31
@@ -27,6 +27,15 @@ Implementé un módulo de control de flota que automatiza lo que antes se hacía
 ### Control de gastos
 Digitalizamos el proceso de comprobación de viáticos. Los empleados registran viajes, comidas y traslados directamente en la plataforma, eliminando el extravío de tickets y agilizando el flujo de reembolsos y auditoría.
 
+### Módulo de Trazabilidad de Efectivo (Cash Control)
+Debido al éxito de la primera fase, desarrollé un módulo crítico para **eliminar la incertidumbre en el manejo de efectivo**. Este sistema gestiona el flujo de dinero en tres niveles de responsabilidad:
+
+* **Custodia de Operadores:** Registro exacto de entregas de efectivo entre empleados.
+* **Validación Administrativa:** El departamento de administración debe confirmar la recepción física del dinero para que el movimiento sea válido, eliminando el "yo sí entregué" sin pruebas.
+* **Ingreso a Tesorería:** Una vez validado, administración marca el ingreso formal a las cuentas de la empresa, cerrando el ciclo de auditoría.
+
+**El resultado:** La empresa ahora tiene visibilidad total y en tiempo real de quién tiene el dinero, dónde se originó y cuándo ingresó a caja, eliminando errores humanos y posibles fugas de capital.
+
 ### Dashboard financiero
 Para poder tomar decisiones basadas en datos desarrollé un dashboard financieron para:
 
@@ -34,7 +43,8 @@ Para poder tomar decisiones basadas en datos desarrollé un dashboard financiero
 * Identificar patrones de consumo por empleado.
 * Visualizar la salud financiera de la operación logística de un vistazo.
 
----
+### De herramienta operativa a núcleo estratégico
 
-### De la intuición a la precisión
-Con esta herramienta, **Avipecuaria Específica logró reducir el tiempo administrativo dedicado a la revisión de multas y vigencias en un 85%**, además de obtener una visibilidad total sobre los costos operativos reales de su flota.
+Lo que comenzó como una digitalización de hojas de cálculo evolucionó en un sistema de control financiero robusto. El cliente, al experimentar una **reducción del 85% en tiempos administrativos**, decidió escalar el sistema para resolver el problema más delicado de cualquier PyME: la trazabilidad del flujo de efectivo.
+
+Este proyecto demuestra que un software a medida no es un gasto estático, sino una herramienta orgánica que crece y se adapta conforme el negocio identifica nuevas áreas de oportunidad y eficiencia.

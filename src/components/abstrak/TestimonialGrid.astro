@@ -1,14 +1,17 @@
 ---
 interface Props {
-  companyImage: string;
+  companyImage: string | any;
   companyName: string;
   testimonial: string;
-  authorImage: string;
+  authorImage: string | any;
   authorName: string;
   authorTitle: string;
 }
 
 const { companyImage, companyName, testimonial, authorImage, authorName, authorTitle } = Astro.props;
+
+const companyImgSrc = typeof companyImage === 'string' ? companyImage : companyImage?.src;
+const authorImgSrc = typeof authorImage === 'string' ? authorImage : authorImage?.src;
 
 // Lógica mejorada para cortar el testimonio en la última palabra completa
 const MAX_LENGTH = 200;
@@ -48,7 +51,7 @@ if (testimonial.length > MAX_LENGTH) {
 >
   <div class="testimonial-grid">
     <span class="social-media"
-      ><img src={'/assets/images/testimonials/' + companyImage} alt={companyName} width="50" class="rounded"/></span
+      ><img src={companyImgSrc} alt={companyName} width="50" class="rounded"/></span
     >
     <p>
       <span class="testimonial-text" data-full-text={testimonial}>
@@ -64,7 +67,7 @@ if (testimonial.length > MAX_LENGTH) {
     <div class="author-info">
       <div class="thumb">
         <img
-          src={'/assets/images/testimonials/' + authorImage}
+          src={authorImgSrc}
           alt={authorName}
           width="50"
         />

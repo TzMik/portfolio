@@ -1,7 +1,7 @@
 ---
 title: "MyPostula.com — La Plataforma de Organización de Postulaciones (MVP)"
 description: "MyPostula.com es la herramienta esencial para postulantes. Organiza todas tus solicitudes de empleo, lleva un control de estados (entrevista, rechazada, etc.) y no pierdas el rastro de tu búsqueda de trabajo."
-image: "/assets/images/projects/my-postula.webp"
+image: "/public/assets/images/projects/my-postula.webp"
 pub_date: 2025-11-12
 start_date: 2025-11-11
 tags: ["MyPostula", "organizar postulaciones", "seguimiento de empleo", "control de solicitudes", "herramienta para buscar trabajo", "job tracking tool", "gestión de candidaturas", "MVP", "proyecto personal"]

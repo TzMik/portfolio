@@ -3,7 +3,7 @@ title: "¿Qué es un Middleware?"
 description: "Descubre qué es un Middleware en el desarrollo web, cómo funciona y por qué es una herramienta esencial en cualquier framework moderno."
 pub_date: 2026-02-10
 tags: ["Middleware", "Desarrollo Web", "Frameworks Web", "Seguridad", "Autenticación", "Autorización", "Lógica de Negocio", "Desarrollo Web Profesional", "Código Escalable", "Testabilidad", "Separación de Intereses", "Patrón de Diseño"]
-image: "/assets/images/blog/que-es-un-middleware.png"
+image: "/public/assets/images/blog/que-es-un-middleware.png"
 draft: false
 ---
 Como su propio nombre indica, es un software que se aplica en la mitad de algo, específicamente entre dos capas, aplicaciones o servicios.

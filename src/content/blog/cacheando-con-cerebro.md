@@ -3,7 +3,7 @@ title: "Cacheando con cerebro: Cómo la estrategia de caching puede salvar tu in
 description: "Descubre cómo una buena estrategia de caching puede ser la clave para la escalabilidad de tu aplicación web. Este artículo explora las diferentes capas de caching y cómo implementarlas puede ahorrarte dinero y mejorar drásticamente el rendimiento de tu infraestructura."
 pub_date: 2025-09-29
 tags: ["estrategia de caching", "optimización de rendimiento", "arquitectura web", "costos de infraestructura", "Laravel caching", "Next.js caching", "CDN", "Redis"]
-image: "/assets/images/blog/cacheando-con-cerebro.png"
+image: "/public/assets/images/blog/cacheando-con-cerebro.png"
 draft: false
 ---
 En el mundo de las aplicaciones web, el rendimiento no es un lujo, es una necesidad. Cada segundo de latencia extra se traduce en **usuarios frustrados** y **costos de infraestructura** inflados. Si tu sitio se vuelve lento, tu primera reacción podría ser comprar un servidor más grande, pero antes de gastar más dinero, piensa en una estrategia de **caching**. No es solo una técnica de optimización; es la herramienta más poderosa para escalar de manera inteligente.

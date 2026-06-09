@@ -4,7 +4,7 @@ description: "Plataforma internacional de empleo en la que participé desde mis 
 pub_date: 2025-09-04
 start_date: 2019-09-01
 end_date: 2023-04-01
-image: "/assets/images/projects/fidanto.jpg"
+image: "/public/assets/images/projects/fidanto.jpg"
 tags: ["Full-stack Development", "Web Scraping", "Liderazgo Técnico", "DevOps", "SEO"]
 draft: false
 ---

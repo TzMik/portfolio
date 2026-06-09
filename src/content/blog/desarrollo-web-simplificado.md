@@ -3,7 +3,7 @@ title: "Desarrollo Web Simplificado: Dominando la Arquitectura Modelo-Vista-Cont
 description: "Aprende la arquitectura MVC (Modelo-Vista-Controlador) desde cero. Descubre cómo este patrón organiza tu código, separa la lógica de los datos y resuelve los problemas de escalabilidad y mantenimiento en el desarrollo web."
 pub_date: 2025-10-08
 tags: ["MVC", "Arquitectura MVC", "Modelo-Vista-Controlador", "Patrón de Diseño", "Desarrollo Web", "Principiantes MVC", "Separación de Responsabilidades", "Flujo MVC", "Modelo", "Vista", "Controlador", "Programación", "Frameworks Web"]
-image: "/assets/images/blog/desarrollo-web-simplificado.webp"
+image: "/public/assets/images/blog/desarrollo-web-simplificado.webp"
 draft: false
 ---
 ## Introducción: La Necesidad de Orden en el Código

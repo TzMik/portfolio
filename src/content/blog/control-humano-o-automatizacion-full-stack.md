@@ -3,7 +3,7 @@ title: "¿Control Humano o Automatización Full-Stack con IA?"
 description: "Como ingeniero de software, exploré herramientas full-stack de IA (Antigravity, Cursor) y sentí una pérdida de control. Analizo por qué la automatización total genera código innecesario y defiende el rol crítico del control humano en la integración de código."
 pub_date: 2025-11-24
 tags: ["IA en desarrollo", "Desarrollo asistido por IA", "Ingeniería de Software", "Control de código", "Antigravity Google", "Cursor AI", "Next.js", "Recaptcha V3", "Deuda Técnica", "Automatización Full-Stack"]
-image: "/assets/images/blog/control-humano-o-automatizacion-full-stack.webp"
+image: "/public/assets/images/blog/control-humano-o-automatizacion-full-stack.webp"
 draft: false
 ---
 Soy un firme creyente en el poder de la Inteligencia Artificial para amplificar la productividad. La utilizo a diario, desde la asistencia en *debugging* hasta la generación de *boilerplate*. Sin embargo, mis recientes incursiones en herramientas de **desarrollo full-stack asistido por IA**, como **Antigravity** (de Google) o **Cursor**, me han dejado con una sensación innegable y profunda de **incomodidad**: la pérdida de control.

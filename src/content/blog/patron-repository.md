@@ -3,7 +3,7 @@ title: "Patrón Repository: El Guardián de tus Datos"
 description: "Aprende el Patrón Repository para aislar tu lógica de negocio de la base de datos. Mejora la testabilidad y flexibilidad de tu código con este patrón esencial."
 pub_date: 2025-12-02
 tags: ["Patrón Repository", "Patrones de Diseño Software", "Acceso a Datos", "Testabilidad", "Aislamiento de Lógica de Negocio", "Inyección de Dependencias", "Abstracción de Base de Datos", "Frameworks (Laravel, Spring Data)", "Desarrollo de Software"]
-image: "/assets/images/blog/patron-repository.webp"
+image: "/public/assets/images/blog/patron-repository.webp"
 draft: false
 ---
 En el mundo del desarrollo de software, la gestión de datos es una de las tareas más comunes y, a menudo, la más complicada. ¿Cómo nos aseguramos de que nuestra lógica de negocio no se contamine con los detalles de cómo se guardan o recuperan los datos? La respuesta elegante y bien establecida es el **Patrón de Diseño Repository**.

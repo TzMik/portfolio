@@ -30,6 +30,12 @@ const items = allPosts.slice(start, start + POSTS_PER_PAGE);
 
 const pageUrl = (n) => (n === 1 ? "/blog" : `/blog/${n}`);
 
+const postsJson = allPosts.map((post) => ({
+  id: post.id,
+  title: post.data.title,
+  image: typeof post.data.image === "string" ? post.data.image : post.data.image?.src || "",
+}));
+
 //getStaticPaths ahora es mucho más simple y usa la función importada
 export async function getStaticPaths() {
   return createStaticPathsForPosts(POSTS_PER_PAGE);
@@ -79,10 +85,10 @@ export async function getStaticPaths() {
     <div class="container">
       <div class="row row-40">
         <div class="col-lg-8">
-          <div class="row row-40">
+          <div class="row row-40" id="blog-posts-container">
             {items.map((post) => <BlogGrid post={post} />)}
           </div>
-          <div class="pagination">
+          <div class="pagination" id="blog-pagination">
             <ul>
               <!-- Previous Button -->
               {
@@ -129,10 +135,87 @@ export async function getStaticPaths() {
           </div>
         </div>
         <div class="col-lg-4">
+          <div class="widget widget-search">
+            <h4 class="widget-title">Buscar</h4>
+            <div class="blog-search">
+              <form action="#" class="blog-search-form" onsubmit="return false;">
+                <input type="text" id="blog-search" placeholder="Buscar por título..." />
+                <button class="search-button" type="button"><i class="fal fa-search"></i></button>
+              </form>
+            </div>
+          </div>
           <ContentSidebar />
         </div>
       </div>
     </div>
   </section>
   <WorkTogether />
+
+  <script define:vars={{ postsJson }}>
+    document.addEventListener("DOMContentLoaded", () => {
+      const searchInput = document.getElementById("blog-search");
+      const postsContainer = document.getElementById("blog-posts-container");
+      const pagination = document.getElementById("blog-pagination");
+
+      if (!searchInput || !postsContainer) return;
+
+      // Guardamos el HTML original de la página y su paginación
+      const originalHTML = postsContainer.innerHTML;
+      const originalPaginationDisplay = pagination ? pagination.style.display : "";
+
+      searchInput.addEventListener("input", (e) => {
+        const query = e.target.value.trim().toLowerCase();
+
+        if (query === "") {
+          // Restaurar estado original
+          postsContainer.innerHTML = originalHTML;
+          if (pagination) {
+            pagination.style.display = originalPaginationDisplay;
+          }
+          return;
+        }
+
+        // Filtrar posts por título
+        const filtered = postsJson.filter((post) =>
+          post.title.toLowerCase().includes(query)
+        );
+
+        // Ocultar paginación durante la búsqueda
+        if (pagination) {
+          pagination.style.display = "none";
+        }
+
+        if (filtered.length === 0) {
+          postsContainer.innerHTML = `
+            <div class="col-12 text-center py-5">
+              <h5 class="text-muted">No se encontraron publicaciones que coincidan con "${e.target.value}".</h5>
+            </div>
+          `;
+          return;
+        }
+
+        // Renderizar los resultados filtrados
+        postsContainer.innerHTML = filtered
+          .map(
+            (post) => `
+          <div class="col-md-6">
+            <div class="project-grid project-style-2">
+              <div class="thumbnail">
+                <a href="/blog/${post.id}">
+                  <img src="${post.image}" alt="blog" />
+                </a>
+              </div>
+              <div class="content">
+                <h3 class="title h6 bg-color-dark text-white px-3 py-2">
+                  <a href="/blog/${post.id}">${post.title}</a>
+                </h3>
+              </div>
+            </div>
+          </div>
+        `
+          )
+          .join("");
+      });
+    });
+  </script>
 </AbstrakProjectLayout>

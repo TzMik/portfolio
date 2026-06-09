@@ -3,7 +3,7 @@ title: "Tiempo para practicar: Cómo el 'kata' del desarrollador te hace más r�
 description: "Aprende por qué los katas de código son esenciales para cualquier desarrollador. Descubre cómo la práctica deliberada, más allá de los proyectos diarios, mejora tu velocidad, calidad y valor para la empresa. ¡Empieza hoy mismo!"
 pub_date: 2025-09-25
 tags: ["katas de código", "práctica de programación", "mejorar habilidades de código", "beneficios de los katas de código", "ejercicios para desarrolladores", "cómo ser mejor programador", "práctica deliberada en software", "aumentar velocidad de desarrollo"]
-image: "/assets/images/blog/tiempo-para-practicar.webp"
+image: "/public/assets/images/blog/tiempo-para-practicar.webp"
 draft: false
 ---
 Los mejores músicos no aprenden a tocar una nueva pieza en un concierto. Los atletas de élite no prueban una nueva técnica por primera vez en un partido. **Ellos practican**. A solas, una y otra vez, hasta que la técnica se convierte en un reflejo. En el mundo del software, a menudo olvidamos este principio. Creemos que la única forma de mejorar es trabajando en proyectos del día a día. Pero Robert C. Martin, "*Uncle Bob*," nos recuerda que el verdadero progreso viene de la **práctica deliberada**.

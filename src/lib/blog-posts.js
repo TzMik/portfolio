@@ -4,7 +4,7 @@ import { slugify } from "../utils/slugify.js";
 
 export async function getSortedAndFilteredPosts() {
     const now = new Date();
-    const allPosts = await getCollection("blog", ({ data }) => {
+    const allPosts = await getCollection("blogPosts", ({ data }) => {
         return !data.draft && data.pub_date <= now;
     });
 

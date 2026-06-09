@@ -3,7 +3,7 @@ title: "La Regla del 80/20 en el Rendimiento Web: Encuentra tus Cuellos de Botel
 description: "Meta Description: Aplica la Regla del 80/20 para disparar el rendimiento web. Aprende a identificar y corregir el 20% de los cuellos de botella que causan el 80% de la lentitud en Laravel, Next.js o Flask, maximizando tu ROI y eficiencia operativa."
 pub_date: 2025-10-02
 tags: ["Principio de Pareto rendimiento web", "Regla 80/20 web", "Optimización ROI", "Eficiencia operativa software", "Cuellos de botella web negocio", "Diagnóstico rendimiento web", "Identificar cuellos de botella", "Optimización base de datos", "Resolver N+1 queries", "Rendimiento Laravel", "Optimización Next.js", "Performance Flask Python", "Caching Redis", "APM herramientas"]
-image: "/assets/images/blog/la-regla-de-pareto-en-el-rendimiento-web.webp"
+image: "/public/assets/images/blog/la-regla-de-pareto-en-el-rendimiento-web.webp"
 draft: false
 ---
 ## La Paradoja de la Optimización: ¿Por Qué el 80/20 es tu Mejor Aliado?

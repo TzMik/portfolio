@@ -3,7 +3,7 @@ title: "El arte de la base de datos: Claves para diseñar esquemas y consultas q
 description: "Descubre cómo el arte de diseñar bases de datos puede salvar tu aplicación. Este artículo explora la importancia de los índices, la desnormalización estratégica y la optimización de consultas lentas para construir un sistema que pueda escalar sin problemas."
 pub_date: 2025-09-30
 tags: ["optimización de bases de datos", "escalabilidad de bases de datos", "diseño de esquemas", "índices SQL", "desnormalización", "optimización de consultas", "rendimiento de base de datos"]
-image: "/assets/images/blog/el-arte-de-la-base-de-datos.webp"
+image: "/public/assets/images/blog/el-arte-de-la-base-de-datos.webp"
 draft: false
 ---
 El éxito de una aplicación **depende de su base de datos**. Si bien un código limpio es esencial, un esquema de base de datos mal diseñado se convierte rápidamente en el cuello de botella más grande, ralentizando tu aplicación y limitando su crecimiento. Optimizar una base de datos no es una tarea reactiva; es un arte que se practica desde la fase de diseño para que el sistema esté preparado para el crecimiento.

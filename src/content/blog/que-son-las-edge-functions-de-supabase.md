@@ -3,7 +3,7 @@ title: "¿Qué son las Edge Functions de Supabase y por qué debería importarte
 description: "Descubre las Edge Functions de Supabase: qué son, para qué sirven y cómo pueden optimizar tu negocio. Aprende con un ejemplo práctico de código para enviar emails y mejora la eficiencia de tus proyectos."
 pub_date: 2025-09-27
 tags: ["Edge Functions", "Supabase", "envío de emails", "Resend", "serveless", "ventajas Edge Functions", "desarrollo web eficiente", "eficiencia operativa"]
-image: "/assets/images/blog/que-son-las-edge-functions-de-supabase.webp"
+image: "/public/assets/images/blog/que-son-las-edge-functions-de-supabase.webp"
 draft: false
 ---
 Imagina que tu servidor es una oficina central y tus usuarios están distribuidos por todo el mundo. Cada vez que alguien necesita algo, tiene que enviar una solicitud hasta la oficina, lo que puede ser lento. Las **Edge Functions** son como pequeñas sucursales de tu oficina, ubicadas estratégicamente en el **"borde" (edge)** de la red global de Cloudflare, cerca de tus usuarios. Esto reduce la latencia, es decir, el tiempo que tarda una solicitud en viajar del usuario al servidor y viceversa.
