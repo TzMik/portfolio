@@ -1,7 +1,7 @@
 ---
 title: "Caso de Éxito: Optimización de Workflows y Buenas Prácticas de Desarrollo en Grupo Cise"
 description: "Caso de estudio: Cómo optimicé los workflows ágiles, la arquitectura de software y las bases de datos de Grupo Cise mediante consultoría teórica y Pair Programming"
-image: "/assets/images/projects/asesoria-tecnica-grupo-cise.webp"
+image: "/public/assets/images/projects/asesoria-tecnica-grupo-cise.webp"
 pub_date: 2026-06-08
 start_date: 2026-05-01
 end_date: 2026-05-31
