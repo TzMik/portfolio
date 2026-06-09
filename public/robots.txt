@@ -1,15 +1,4 @@
-# robots.txt para portfolio
 User-agent: *
 Allow: /
 
-# Bloquear carpetas privadas o irrelevantes
-Disallow: /src/
-Disallow: /node_modules/
-Disallow: /public/assets/js/
-Disallow: /public/assets/css/
-
-# Permitir acceso a imágenes y favicon
-Allow: /public/assets/images/
-
-# Sitemap
-Sitemap: https://mikelcantero.dev/sitemap-index.xml
+Sitemap: https://mikelcantero.dev/sitemap.xml
