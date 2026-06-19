@@ -34,6 +34,9 @@ const postsJson = allPosts.map((post) => ({
   id: post.id,
   title: post.data.title,
   image: typeof post.data.image === "string" ? post.data.image : post.data.image?.src || "",
+  description: post.data.description,
+  pub_date: post.data.pub_date.toISOString(),
+  tags: post.data.tags || [],
 }));
 
 //getStaticPaths ahora es mucho más simple y usa la función importada
@@ -86,7 +89,7 @@ export async function getStaticPaths() {
       <div class="row row-40">
         <div class="col-lg-8">
           <div class="row row-40" id="blog-posts-container">
-            {items.map((post) => <BlogGrid post={post} />)}
+            {items.map((post, index) => <BlogGrid post={post} index={index} />)}
           </div>
           <div class="pagination" id="blog-pagination">
             <ul>
@@ -151,6 +154,7 @@ export async function getStaticPaths() {
   </section>
   <WorkTogether />
 
+
   <script define:vars={{ postsJson }}>
     document.addEventListener("DOMContentLoaded", () => {
       const searchInput = document.getElementById("blog-search");
@@ -197,22 +201,43 @@ export async function getStaticPaths() {
         // Renderizar los resultados filtrados
         postsContainer.innerHTML = filtered
           .map(
-            (post) => `
+            (post) => {
+              const date = new Date(post.pub_date).toLocaleDateString("es-ES", {
+                year: "numeric",
+                month: "short",
+                day: "numeric",
+              });
+              const excerpt =
+                post.description.length > 100
+                  ? post.description.slice(0, 100) + "..."
+                  : post.description;
+              const tagsHtml = post.tags && post.tags.length > 0
+                ? `<div class="tags-container">${post.tags.map(tag => `<span class="blog-tag-pill" style="background-color: var(--color-accent1); color: var(--color-dark);">${tag}</span>`).join('')}</div>`
+                : '';
+              return `
           <div class="col-md-6">
-            <div class="project-grid project-style-2">
-              <div class="thumbnail">
+            <div class="blog-post-card" style="background-color: var(--color-white); border-radius: 30px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); margin-bottom: 40px; overflow: hidden;">
+              <div class="thumbnail" style="position: relative; overflow: hidden; border-radius: 30px 30px 0 0;">
                 <a href="/blog/${post.id}">
-                  <img src="${post.image}" alt="blog" />
+                  <img src="${post.image}" alt="${post.title}" style="width: 100%; display: block;"/>
+                  <div class="image-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 50%); opacity: 0;"></div>
                 </a>
               </div>
-              <div class="content">
-                <h3 class="title h6 bg-color-dark text-white px-3 py-2">
-                  <a href="/blog/${post.id}">${post.title}</a>
+              <div class="content" style="padding: 30px;">
+                <ul class="blog-meta list-unstyled" style="margin-bottom: 15px;">
+                  <li style="font-size: 13px; color: var(--color-text-dark);"><i class="fal fa-calendar-alt me-2"></i>${date}</li>
+                </ul>
+                <h3 class="title h4" style="margin-bottom: 0;">
+                  <a href="/blog/${post.id}" style="color: var(--color-dark);">${post.title}</a>
                 </h3>
+                <p style="font-size: 15px; line-height: 1.7; margin-bottom: 20px; color: var(--color-gray-2);">${excerpt}</p>
+                ${tagsHtml}
+                <a href="/blog/${post.id}" class="more-btn" style="color: var(--color-rose); font-weight: 600; font-size: 15px;">Leer más <i class="fal fa-arrow-right"></i></a>
               </div>
             </div>
           </div>
-        `
+        `;
+            }
           )
           .join("");
       });

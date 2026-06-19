@@ -1,14 +1,181 @@
 ---
-const { post } = Astro.props;
+interface Props {
+  post: any;
+  index: number;
+}
+
+const { post, index } = Astro.props;
+const imageSrc = typeof post.data.image === 'string' ? post.data.image : post.data.image?.src || '';
+const formattedDate = post.data.pub_date.toLocaleDateString('es-ES', {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+});
+const excerpt = post.data.description.length > 100
+  ? post.data.description.slice(0, 100) + '...'
+  : post.data.description;
+const tags = post.data.tags || [];
 ---
 
-<div class="col-md-6">
-  <div class="project-grid project-style-2">
+<div class="col-md-6" data-sal="slide-up" data-sal-duration="800" data-sal-delay={100 + index * 50}>
+  <div class="blog-post-card">
     <div class="thumbnail">
       <a href={"/blog/" + post.id}>
-        <img src={typeof post.data.image === 'string' ? post.data.image : post.data.image?.src} alt="blog" />
+        <img src={imageSrc} alt={post.data.title} />
+        <div class="image-overlay"></div>
       </a>
     </div>
-    <div class="content">{post.data.title && <h3 class="title h6 bg-color-dark text-white px-3 py-2"><a href={"/blog/" + post.id}>{post.data.title}</a></h3>}</div>
+    <div class="content">
+      <ul class="blog-meta list-unstyled">
+        <li><i class="fal fa-calendar-alt me-2"></i>{formattedDate}</li>
+      </ul>
+      <h3 class="title h4">
+        <a href={"/blog/" + post.id}>{post.data.title}</a>
+      </h3>
+      <p>{excerpt}</p>
+      {tags.length > 0 && (
+        <div class="tags-container">
+          {tags.map(tag => (
+            <span class="blog-tag-pill">{tag}</span>
+          ))}
+        </div>
+      )}
+      <a href={"/blog/" + post.id} class="more-btn">Leer más <i class="fal fa-arrow-right"></i></a>
+    </div>
   </div>
 </div>
+
+<style>
+  .blog-post-card {
+    background-color: var(--color-white);
+    border-radius: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    margin-bottom: 40px;
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+  }
+
+  .blog-post-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  }
+
+  .blog-post-card .thumbnail {
+    position: relative;
+    overflow: hidden;
+    border-radius: 30px 30px 0 0;
+  }
+
+  .blog-post-card .thumbnail img {
+    width: 100%;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.2, 0.96, 0.34, 1);
+  }
+
+  .blog-post-card:hover .thumbnail img {
+    transform: scale(1.1);
+  }
+
+  .blog-post-card .image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 50%);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  .blog-post-card:hover .image-overlay {
+    opacity: 1;
+  }
+
+  .blog-post-card .content {
+    padding: 30px;
+  }
+
+  .blog-post-card .content .blog-meta {
+    margin-bottom: 15px;
+  }
+
+  .blog-post-card .content .blog-meta li {
+    font-size: 13px;
+    color: var(--color-text-dark);
+  }
+
+  .blog-post-card .content .title a {
+    color: var(--color-dark);
+    transition: color 0.3s ease-in-out;
+  }
+
+  .blog-post-card .content .title a:hover {
+    color: var(--color-rose);
+  }
+
+  .blog-post-card .content p {
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    color: var(--color-gray-2);
+  }
+
+  .blog-tag-pill {
+    display: inline-block;
+    background-color: var(--color-accent1);
+    color: var(--color-dark);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .tags-container {
+    margin-top: 15px;
+    margin-bottom: 20px;
+  }
+
+  .more-btn {
+    color: var(--color-rose);
+    font-weight: 600;
+    font-size: 15px;
+    transition: color 0.3s ease-in-out;
+  }
+
+  .more-btn i {
+    margin-left: 8px;
+    transition: margin-left 0.3s ease-in-out;
+  }
+
+  .more-btn:hover {
+    color: var(--color-primary);
+  }
+
+  .more-btn:hover i {
+    margin-left: 12px;
+  }
+
+  /* Dark mode adjustments */
+  .active-dark-mode .blog-post-card {
+    background-color: var(--dark-bg-color);
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.05);
+  }
+  .active-dark-mode .blog-post-card:hover {
+    box-shadow: 0 20px 60px rgba(255, 255, 255, 0.1);
+  }
+  .active-dark-mode .blog-post-card .content .title a {
+    color: var(--dark-title-light);
+  }
+  .active-dark-mode .blog-post-card .content .blog-meta li,
+  .active-dark-mode .blog-post-card .content p {
+    color: var(--dark-body-text);
+  }
+  .active-dark-mode .blog-tag-pill {
+    background-color: var(--dark-border-gray);
+    color: var(--dark-title-light);
+  }
+</style>
