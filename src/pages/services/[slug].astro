@@ -2,10 +2,8 @@
 import AbstrakLayout from "../../layouts/AbstrakLayout.astro";
 import { getCollection } from "astro:content";
 import type { ServiceSchema } from "../../content.config";
-import "../../styles/AbstrakProjectLayout.css";
 import ContentSidebar from "../../components/abstrak/ContentSidebar.astro";
 import { calendarLink } from "../../data/MainInformation";
-import TestimonialGrid from "../../components/abstrak/TestimonialGrid.astro";
 
 export async function getStaticPaths() {
   const services = await getCollection("services");
@@ -22,93 +20,79 @@ testimonials = testimonials.slice(0, 3);
 const { entry } = Astro.props;
 const service: ServiceSchema = entry.data;
 import { render } from "astro:content";
-const { Content, headings } = await render(entry);
+const { Content } = await render(entry);
 ---
 
 <AbstrakLayout>
-  <div class="breadcrum-area breadcrumb-banner single-breadcrumb">
+  <div class="page-header">
     <div class="container">
-      <div class="breadcrumb">
-        <ul class="list-unstyled">
-          <li><a href="/">Inicio</a></li>
-          <li><a href="/services">Servicios</a></li>
-          <li class="active">{service.title}</li>
-        </ul>
-      </div>
-      <div class="row align-items-center">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-minimal">
+          <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+          <li class="breadcrumb-item"><a href="/services">Servicios</a></li>
+          <li class="breadcrumb-item active">{service.title}</li>
+        </ol>
+      </nav>
+      <div class="row align-items-center g-4">
         <div class="col-lg-6">
-          <div class="section-heading heading-left">
-            <h1 class="title h2">{service.title}</h1>
-            <p>
-              {service.description}
-            </p>
-            <div>
-              <a
-                href={calendarLink}
-                target="_blank"
-                class="axil-btn btn-fill-primary">{service.cta}</a
-              >
-            </div>
-          </div>
+          <h1>{service.title}</h1>
+          <p class="text-secondary fs-5">{service.description}</p>
+          <a href={calendarLink} target="_blank" class="btn btn-brand mt-3">{service.cta || "Agendar llamada"}</a>
         </div>
-        <div class="col-lg-6">
-          <div class="banner-thumbnail">
+        <div class="col-lg-6 text-center">
+          {service.image && (
             <img
-              class="paralax-image"
               src={typeof service.image === 'string' ? service.image : service.image?.src}
-              alt="Illustration"
+              alt={service.title}
               width="500"
+              style="border-radius: var(--radius-lg); max-width: 100%;"
+              loading="lazy"
             />
-          </div>
+          )}
         </div>
       </div>
     </div>
-    <ul class="shape-group-8 list-unstyled">
-      <li
-        class="shape shape-1"
-        data-sal="slide-right"
-        data-sal-duration="500"
-        data-sal-delay="100"
-      >
-        <img src="/abstrak/assets/media/others/bubble-9.png" alt="Bubble" />
-      </li>
-      <li
-        class="shape shape-2"
-        data-sal="slide-left"
-        data-sal-duration="500"
-        data-sal-delay="200"
-      >
-        <img src="/abstrak/assets/media/others/bubble-20.png" alt="Bubble" />
-      </li>
-      <li
-        class="shape shape-3"
-        data-sal="slide-up"
-        data-sal-duration="500"
-        data-sal-delay="300"
-      >
-        <img src="/abstrak/assets/media/others/line-4.png" alt="Line" />
-      </li>
-    </ul>
   </div>
-  <section class="section-padding-equal">
+
+  <section class="section section-alt">
     <div class="container">
-      <div class="row row-40">
-        <div class="col-lg-8" id="project-content">
-          <Content />
-          <div class="row">
-            {
-              testimonials.map((testimonial) => (
-                <TestimonialGrid
-                  companyImage={testimonial.data.companyImg || ""}
-                  companyName={testimonial.data.company || ""}
-                  testimonial={testimonial.data.testimonial}
-                  authorImage={testimonial.data.img || ""}
-                  authorName={testimonial.data.name}
-                  authorTitle={testimonial.data.role}
-                />
-              ))
-            }
+      <div class="row g-5">
+        <div class="col-lg-8">
+          <div class="post-content">
+            <Content />
           </div>
+
+          <!-- Testimonials -->
+          {testimonials.length > 0 && (
+            <div class="mt-5">
+              <h3 class="section-title mb-4">Lo que dicen mis clientes</h3>
+              <div class="row g-4">
+                {testimonials.map((t) => {
+                  const companyImgSrc = typeof t.data.companyImg === 'string' ? t.data.companyImg : t.data.companyImg?.src;
+                  const authorImgSrc = typeof t.data.img === 'string' ? t.data.img : t.data.img?.src;
+                  const MAX_LENGTH = 200;
+                  const needsTrim = t.data.testimonial.length > MAX_LENGTH;
+                  const shortText = needsTrim ? t.data.testimonial.substring(0, t.data.testimonial.lastIndexOf(' ', MAX_LENGTH)) + '...' : t.data.testimonial;
+
+                  return (
+                    <div class="col-md-6">
+                      <div class="testimonial-card">
+                        {companyImgSrc && <img src={companyImgSrc} alt={t.data.company || ""} class="company-img" loading="lazy" />}
+                        <p class="testimonial-text">{shortText}</p>
+                        <div class="author-info">
+                          {authorImgSrc && <img src={authorImgSrc} alt={t.data.name} loading="lazy" />}
+                          <div>
+                            <span class="name">{t.data.name}</span>
+                            <span class="role">{t.data.role}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
         </div>
         <div class="col-lg-4">
           <ContentSidebar />

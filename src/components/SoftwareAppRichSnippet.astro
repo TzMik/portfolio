@@ -1,0 +1,31 @@
+---
+const { title, description, image, tags, date } = Astro.props;
+
+const imageUrl = typeof image === 'string' ? image : image?.src;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: title,
+  description,
+  ...(imageUrl ? { image: imageUrl } : {}),
+  keywords: tags,
+  datePublished: date,
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web",
+  author: { "@type": "Person", name: "Mikel Cantero" },
+  publisher: {
+    "@type": "Organization",
+    name: "Mikel Cantero",
+    logo: {
+      "@type": "ImageObject",
+      url: "https://mikelcantero.dev/assets/images/mc-logo.png",
+    },
+  },
+  mainEntityOfPage: Astro.url,
+};
+
+const json = JSON.stringify(jsonLd);
+---
+
+<script is:inline type="application/ld+json" set:html={json} />

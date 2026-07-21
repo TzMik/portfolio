@@ -15,7 +15,6 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const path: LearningPathSchema = entry.data;
-
 const { Content } = await render(entry);
 
 if (path.draft === true) {
@@ -24,119 +23,76 @@ if (path.draft === true) {
 ---
 
 <AbstrakLayout title={`${path.title} - Ruta de Aprendizaje | MikelCanteroDev`} description={path.description}>
-  <!--=====================================-->
-  <!--=        Breadcrumb Area Start      =-->
-  <!--=====================================-->
-  <div class="breadcrum-area breadcrumb-banner single-breadcrumb">
+  <div class="page-header">
     <div class="container">
-      <div class="breadcrumb">
-        <ul class="list-unstyled">
-          <li><a href="/">Inicio</a></li>
-          <li><a href="/learning-paths">Rutas de Aprendizaje</a></li>
-          <li class="active">{path.title}</li>
-        </ul>
-      </div>
-      <div class="row align-items-center">
-        <div class="col-lg-8">
-          <div class="section-heading heading-left">
-            <h1 class="title h2">{path.title}</h1>
-            <p>{path.description}</p>
-            {path.tags && (
-              <div class="tags mt-3">
-                {path.tags.map((tag) => (
-                  <span class="badge" style="background: rgba(var(--color-primary-rgb), 0.1); color: var(--color-primary); padding: 6px 14px; border-radius: 50px; font-size: 13px; font-weight: 500; margin-right: 8px;">
-                    #{tag}
-                  </span>
-                ))}
-              </div>
-            )}
-          </div>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-minimal">
+          <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+          <li class="breadcrumb-item"><a href="/learning-paths">Rutas</a></li>
+          <li class="breadcrumb-item active">{path.title}</li>
+        </ol>
+      </nav>
+      <h1>{path.title}</h1>
+      <p class="text-secondary fs-5">{path.description}</p>
+      {path.tags && (
+        <div class="mt-2">
+          {path.tags.map((tag) => (
+            <span class="tag-pill">#{tag}</span>
+          ))}
         </div>
-      </div>
+      )}
     </div>
-    <ul class="shape-group-8 list-unstyled">
-      <li class="shape shape-1" data-sal="slide-right" data-sal-duration="500" data-sal-delay="100">
-        <img src="/abstrak/assets/media/others/bubble-9.png" alt="Bubble" />
-      </li>
-      <li class="shape shape-2" data-sal="slide-left" data-sal-duration="500" data-sal-delay="200">
-        <img src="/abstrak/assets/media/others/bubble-20.png" alt="Bubble" />
-      </li>
-      <li class="shape shape-3" data-sal="slide-up" data-sal-duration="500" data-sal-delay="300">
-        <img src="/abstrak/assets/media/others/line-4.png" alt="Line" />
-      </li>
-    </ul>
   </div>
 
-  <!--=====================================-->
-  <!--=        Content & Links Area       =-->
-  <!--=====================================-->
-  <section class="section-padding-equal">
+  <section class="section section-alt">
     <div class="container">
-      <div class="row row-40">
-        <!-- Main Content - Prioritizing Links -->
-        <div class="col-lg-8" id="learning-path-links">
-          <h2 class="title h3 mb-4" style="font-weight: 700; color: var(--color-dark);">
-            <i class="fas fa-list-ol mr-2" style="color: var(--color-primary); margin-right: 12px;"></i>Recursos y Lecturas de la Ruta
+      <div class="row g-5">
+        <div class="col-lg-8">
+          <h2 class="mb-4" style="font-size: 22px; font-weight: 700;">
+            <i class="fas fa-list-ol me-2" style="color: var(--brand);"></i>Recursos y Lecturas de la Ruta
           </h2>
 
           {path.links && path.links.length > 0 ? (
-            <div class="curated-links-main-list">
+            <div>
               {path.links.map((link, index) => {
                 const isExternal = link.url.startsWith("http");
-                const targetAttr = isExternal ? "_blank" : "_self";
-                const relAttr = isExternal ? "noopener noreferrer" : undefined;
-                const iconClass = isExternal ? "fa-external-link-alt" : "fa-file-alt";
-
+                const target = isExternal ? "_blank" : "_self";
+                const rel = isExternal ? "noopener noreferrer" : undefined;
                 return (
-                  <div class="link-card-main" style="background: var(--color-white); padding: 35px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.05); margin-bottom: 25px; display: flex; gap: 25px; align-items: flex-start; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 15px 35px rgba(0,0,0,0.07)';" onmouseout="this.style.transform='none'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.03)';">
-                    <div class="link-number" style="background: rgba(var(--color-primary-rgb), 0.1); color: var(--color-primary); font-size: 20px; font-weight: 700; width: 50px; height: 50px; min-width: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                      {String(index + 1).padStart(2, '0')}
-                    </div>
-                    <div style="flex-grow: 1;">
-                      <h3 class="h5" style="margin-bottom: 10px; font-weight: 600;">
-                        <a href={link.url} target={targetAttr} rel={relAttr} style="color: var(--color-dark); transition: color 0.3s ease;" onmouseover="this.style.color='var(--color-primary)'" onmouseout="this.style.color='var(--color-dark)'">
-                          {link.title} <i class={`fas ${iconClass}`} style="font-size: 13px; margin-left: 8px; color: var(--color-primary);"></i>
+                  <div class="link-card">
+                    <div class="link-number">{String(index + 1).padStart(2, '0')}</div>
+                    <div class="link-info">
+                      <h4>
+                        <a href={link.url} target={target} rel={rel}>
+                          {link.title}
+                          {isExternal && <i class="fas fa-external-link-alt ms-2" style="font-size: 12px; color: var(--text-light);"></i>}
                         </a>
-                      </h3>
-                      {link.description && (
-                        <p style="font-size: 15px; color: var(--color-body); line-height: 1.6; margin-bottom: 15px;">
-                          {link.description}
-                        </p>
-                      )}
-                      <a href={link.url} target={targetAttr} rel={relAttr} class="axil-btn btn-fill-primary btn-small" style="padding: 8px 20px; font-size: 14px;">
-                        {isExternal ? 'Visitar Recurso' : 'Leer Artículo'} <i class="fas fa-chevron-right" style="font-size: 11px; margin-left: 6px;"></i>
-                      </a>
+                      </h4>
+                      {link.description && <p>{link.description}</p>}
                     </div>
+                    <a href={link.url} target={target} rel={rel} class="btn btn-outline-brand btn-sm flex-shrink-0">
+                      {isExternal ? 'Visitar' : 'Leer'} <i class="fas fa-chevron-right ms-1"></i>
+                    </a>
                   </div>
                 );
               })}
             </div>
           ) : (
-            <div class="text-center py-5" style="background: var(--color-white); border-radius: 20px; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.03);">
+            <div class="text-center py-5" style="background: #fff; border-radius: var(--radius-lg); padding: 48px;">
               <h4>No hay enlaces disponibles para esta ruta.</h4>
-              <p>Próximamente se añadirán recursos recomendados.</p>
+              <p class="text-secondary">Próximamente se añadirán recursos recomendados.</p>
             </div>
           )}
         </div>
 
-        <!-- Sidebar - SEO & Description -->
         <div class="col-lg-4">
-          <div class="sidebar" style="position: sticky; top: 100px;">
-            <div class="widget widget-seo-description" style="background: var(--color-white); padding: 35px; border-radius: 20px; border: 1px solid rgba(0,0,0,0.06); margin-bottom: 30px;">
-              <h4 class="widget-title" style="margin-bottom: 25px; border-bottom: 2px solid var(--color-primary); padding-bottom: 12px; font-weight: 700; color: var(--color-dark);">
-                <i class="fas fa-info-circle mr-2" style="color: var(--color-primary); margin-right: 10px;"></i>Sobre esta Ruta
-              </h4>
-              <div class="seo-content" style="font-size: 15px; line-height: 1.6; color: var(--color-body);">
-                <Content />
-
-                <a href={calendarLink} target="_blank">
-                  <div class="banner-cta">
-                    <button class="axil-btn btn-fill-primary">Agenda una llamada</button>
-                  </div>
-                </a>
-              </div>
+          <div class="sidebar-card">
+            <h4><i class="fas fa-info-circle me-2" style="color: var(--brand);"></i>Sobre esta Ruta</h4>
+            <div style="font-size: 15px; line-height: 1.6; color: var(--text-secondary);">
+              <Content />
+              <a href={calendarLink} target="_blank" class="btn btn-brand btn-sm w-100 mt-3"><i class="fas fa-calendar-alt me-1"></i>Agenda una llamada</a>
             </div>
-          <div>
+          </div>
         </div>
       </div>
     </div>

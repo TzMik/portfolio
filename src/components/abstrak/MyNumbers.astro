@@ -1,46 +1,39 @@
 ---
-import { getSortedProjects, getProjectsAmount } from "../../lib/projects.js";
+import { getProjectsAmount } from "../../lib/projects.js";
 import { getPostsAmount } from "../../lib/blog-posts.js";
-import CounterUpGrid from "../../components/abstrak/CounterUpGrid.astro";
 import { yearsOfExperience } from "../../data/MainInformation";
 
 const numProjects = await getProjectsAmount();
 const numPosts = await getPostsAmount();
-
 ---
-<section class="section section-padding bg-color-dark">
-    <div class="container">
-        <div class="section-heading heading-light">
-            <span class="subtitle">Mis números</span>
-            <h2 class="title">Información relevante</h2>
-            <p></p>
-        </div>
-        <div class="row justify-content-center">
-            <CounterUpGrid
-                icon="/abstrak/assets/media/icon/icon-24.png"
-                count={yearsOfExperience}
-                title="Años de experiencia"
-                symbol={true}
-            />
-            <CounterUpGrid
-                icon="/abstrak/assets/media/icon/icon-13.png"
-                count={numProjects}
-                title="Proyectos"
-            />
-            <CounterUpGrid
-                icon="/abstrak/assets/media/icon/icon-14.png"
-                count={numPosts}
-                title="Posts"
-            />
-        </div>
+<section style="padding: 60px 0; background: var(--secondary);">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-subtitle" style="color: rgba(255,255,255,0.7);">Mis números</span>
+      <h2 class="section-title" style="color: #fff;">Información relevante</h2>
     </div>
-    <ul class="list-unstyled shape-group-10">
-        <!-- <li class="shape shape-1"><img src="assets/media/others/line-9.png" alt="Circle"></li> -->
-        <li class="shape shape-2">
-            <img src="/abstrak/assets/media/others/bubble-42.png" alt="Circle" />
-        </li>
-        <li class="shape shape-3">
-            <img src="/abstrak/assets/media/others/bubble-43.png" alt="Circle" />
-        </li>
-    </ul>
+    <div class="row justify-content-center g-4">
+      <div class="col-lg-4 col-6">
+        <div class="stat-item">
+          <img src="/abstrak/assets/media/icon/icon-24.png" alt="Experiencia" class="stat-icon" loading="lazy" />
+          <div class="stat-number">{yearsOfExperience}+</div>
+          <div class="stat-label">Años de experiencia</div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-6">
+        <div class="stat-item">
+          <img src="/abstrak/assets/media/icon/icon-13.png" alt="Proyectos" class="stat-icon" loading="lazy" />
+          <div class="stat-number">{numProjects}</div>
+          <div class="stat-label">Proyectos</div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-6">
+        <div class="stat-item">
+          <img src="/abstrak/assets/media/icon/icon-14.png" alt="Posts" class="stat-icon" loading="lazy" />
+          <div class="stat-number">{numPosts}</div>
+          <div class="stat-label">Posts</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>

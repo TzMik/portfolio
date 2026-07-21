@@ -4,7 +4,7 @@ import { getCollection } from "astro:content";
 import type { ProjectSchema } from "../../content.config";
 import "../../styles/AbstrakProjectLayout.css";
 import ContentSidebar from "../../components/abstrak/ContentSidebar.astro";
-import ProjectRichSnippet from "../../components/ProjectRichSnippet.astro";
+import SoftwareAppRichSnippet from "../../components/SoftwareAppRichSnippet.astro";
 
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
@@ -17,77 +17,50 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const project: ProjectSchema = entry.data;
 import { render } from "astro:content";
-const { Content, headings } = await render(entry);
+const { Content } = await render(entry);
 
 if (project.draft !== false) {
   return new Response(null, { status: 404 });
 }
-
 ---
 
 <AbstrakLayout title={project.title + " - Proyectos | MikelCanteroDev"} description={project.description} image={project.image}>
-  <div class="breadcrum-area breadcrumb-banner single-breadcrumb">
+  <div class="page-header">
     <div class="container">
-      <div class="breadcrumb">
-        <ul class="list-unstyled">
-          <li><a href="/">Inicio</a></li>
-          <li><a href="/projects">Proyectos</a></li>
-          <li class="active">{project.title}</li>
-        </ul>
-      </div>
-      <div class="row align-items-center">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-minimal">
+          <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+          <li class="breadcrumb-item"><a href="/projects">Proyectos</a></li>
+          <li class="breadcrumb-item active">{project.title}</li>
+        </ol>
+      </nav>
+      <div class="row align-items-center g-4">
         <div class="col-lg-6">
-          <div class="section-heading heading-left">
-            <h1 class="title h2">{project.title}</h1>
-            <p>
-              {project.description}
-            </p>
-          </div>
+          <h1>{project.title}</h1>
+          <p class="text-secondary fs-5">{project.description}</p>
         </div>
-        <div class="col-lg-6">
-          <div class="banner-thumbnail">
+        <div class="col-lg-6 text-center">
+          {project.image && (
             <img
-              class="paralax-image"
               src={typeof project.image === 'string' ? project.image : project.image?.src}
-              alt="Illustration"
+              alt={project.title}
               width="500"
+              style="border-radius: var(--radius-lg); max-width: 100%;"
+              loading="lazy"
             />
-          </div>
+          )}
         </div>
       </div>
     </div>
-    <ul class="shape-group-8 list-unstyled">
-      <li
-        class="shape shape-1"
-        data-sal="slide-right"
-        data-sal-duration="500"
-        data-sal-delay="100"
-      >
-        <img src="/abstrak/assets/media/others/bubble-9.png" alt="Bubble" />
-      </li>
-      <li
-        class="shape shape-2"
-        data-sal="slide-left"
-        data-sal-duration="500"
-        data-sal-delay="200"
-      >
-        <img src="/abstrak/assets/media/others/bubble-20.png" alt="Bubble" />
-      </li>
-      <li
-        class="shape shape-3"
-        data-sal="slide-up"
-        data-sal-duration="500"
-        data-sal-delay="300"
-      >
-        <img src="/abstrak/assets/media/others/line-4.png" alt="Line" />
-      </li>
-    </ul>
   </div>
-  <section class="section-padding-equal">
+
+  <section class="section section-alt">
     <div class="container">
-      <div class="row row-40">
+      <div class="row g-5">
         <div class="col-lg-8" id="project-content">
-          <Content />
+          <div class="post-content">
+            <Content />
+          </div>
         </div>
         <div class="col-lg-4">
           <ContentSidebar />
@@ -95,5 +68,6 @@ if (project.draft !== false) {
       </div>
     </div>
   </section>
-  <ProjectRichSnippet title={project.title} description={project.description} image={project.image} tags={project.tags} date={project.pub_date} />
+
+  <SoftwareAppRichSnippet title={project.title} description={project.description} image={project.image} tags={project.tags} date={project.pub_date} />
 </AbstrakLayout>

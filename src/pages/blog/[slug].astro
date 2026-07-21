@@ -3,16 +3,13 @@ import { getCollection } from "astro:content";
 import type { BlogPostSchema } from "../../content.config";
 import AbstrakLayout from "../../layouts/AbstrakLayout.astro";
 import ContentSidebar from "../../components/abstrak/ContentSidebar.astro";
-import "../../styles/AbstrakProjectLayout.css";
-import ProjectRichSnippet from "../../components/ProjectRichSnippet.astro";
+import BlogPostRichSnippet from "../../components/BlogPostRichSnippet.astro";
 
 export async function getStaticPaths() {
   const now = new Date();
-
   const blogPosts = await getCollection("blogPosts", ({ data }) => {
     return data.draft == false && data.pub_date <= now;
   });
-
   return blogPosts.map((entry) => ({
     params: { slug: entry.id },
     props: { entry },
@@ -22,75 +19,44 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const post: BlogPostSchema = entry.data;
 import { render } from "astro:content";
-const { Content, headings } = await render(entry);
+const { Content } = await render(entry);
 ---
 
 <AbstrakLayout title={post.title + " - Blog | MikelCanteroDev"} description={post.description} image={typeof post.image === 'string' ? post.image : post.image?.src}>
-  <div class="breadcrum-area">
+  <div class="page-header">
     <div class="container">
-      <div class="breadcrumb">
-        <ul class="list-unstyled">
-          <li><a href="/">Inicio</a></li>
-          <li><a href="/blog">Blog</a></li>
-          <li class="active">{post.title}</li>
-        </ul>
-        <h1 class="title h2">
-          {post.title}
-        </h1>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-minimal">
+          <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+          <li class="breadcrumb-item"><a href="/blog">Blog</a></li>
+          <li class="breadcrumb-item active">{post.title}</li>
+        </ol>
+      </nav>
+      <h1>{post.title}</h1>
+      <div class="post-meta">
+        <span><i class="fas fa-user"></i>Mikel Cantero</span>
+        <span><i class="fas fa-calendar-alt"></i>{post.pub_date.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+        {post.tags && post.tags.map((tag) => (
+          <a href={`/tags/${tag.toLowerCase().replace(/\s+/g, '-')}`} class="tag-pill">{tag}</a>
+        ))}
       </div>
     </div>
-    <ul class="shape-group-8 list-unstyled">
-      <li
-        class="shape shape-1"
-        data-sal="slide-right"
-        data-sal-duration="500"
-        data-sal-delay="100"
-      >
-        <img src="/abstrak/assets/media/others/bubble-9.png" alt="Bubble" />
-      </li>
-      <li
-        class="shape shape-2"
-        data-sal="slide-left"
-        data-sal-duration="500"
-        data-sal-delay="200"
-      >
-        <img src="/abstrak/assets/media/others/bubble-11.png" alt="Bubble" />
-      </li>
-      <li
-        class="shape shape-3"
-        data-sal="slide-up"
-        data-sal-duration="500"
-        data-sal-delay="300"
-      >
-        <img src="/abstrak/assets/media/others/line-4.png" alt="Line" />
-      </li>
-    </ul>
   </div>
 
-  <section class="section-padding-equal">
+  <section class="section section-alt">
     <div class="container">
-      <div class="row row-40">
+      <div class="row g-5">
         <div class="col-lg-8">
-          <div class="single-blog">
-            <div class="single-blog-content blog-grid">
-              <div class="post-thumbnail">
-                <img src={typeof post.image === 'string' ? post.image : post.image?.src} alt="Blog" />
-              </div>
-              <div class="author">
-                <div class="author-thumb">
-                  <img src="/assets/images/portfolio.jpeg" alt="Blog Author" class="rounded-circle" width="80"/>
-                </div>
-                <div class="info">
-                  <h6 class="author-name">Mikel Cantero</h6>
-                  <ul class="blog-meta list-unstyled">
-                    <li>{post.pub_date.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}</li>
-                  </ul>
-                </div>
-              </div>
-              <div id="project-content">
-                <Content />
-              </div>
-            </div>
+          {post.image && (
+            <img
+              src={typeof post.image === 'string' ? post.image : post.image?.src}
+              alt={post.title}
+              style="width: 100%; border-radius: var(--radius-lg); margin-bottom: 32px;"
+              loading="lazy"
+            />
+          )}
+          <div class="post-content">
+            <Content />
           </div>
         </div>
         <div class="col-lg-4">
@@ -99,5 +65,6 @@ const { Content, headings } = await render(entry);
       </div>
     </div>
   </section>
-  <ProjectRichSnippet title={post.title} description={post.description} image={post.image} tags={post.tags} date={post.pub_date} />
+
+  <BlogPostRichSnippet title={post.title} description={post.description} image={post.image} tags={post.tags} date={post.pub_date} />
 </AbstrakLayout>

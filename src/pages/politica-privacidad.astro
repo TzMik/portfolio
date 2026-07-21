@@ -1,140 +1,73 @@
 ---
 import AbstrakLayout from "../layouts/AbstrakLayout.astro";
 import ContentSidebar from "../components/abstrak/ContentSidebar.astro";
-import { calendarLink } from "../data/MainInformation";
-import "../styles/AbstrakProjectLayout.css";
 ---
 
 <AbstrakLayout title="Política de Privacidad | MikelCanteroDev" description="Política de privacidad de MikelCanteroDev, incluyendo el uso de cookies, Google Analytics y Google AdSense.">
-  <div class="breadcrum-area breadcrumb-banner single-breadcrumb">
+  <div class="page-header">
     <div class="container">
-      <div class="breadcrumb">
-        <ul class="list-unstyled">
-          <li><a href="/">Inicio</a></li>
-          <li class="active">Política de Privacidad</li>
-        </ul>
-      </div>
-      <div class="row align-items-center">
-        <div class="col-lg-12">
-          <div class="section-heading heading-left">
-            <h1 class="title h2">Política de Privacidad</h1>
-            <p>Última actualización: 26 de mayo de 2026</p>
-          </div>
-        </div>
-      </div>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-minimal">
+          <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+          <li class="breadcrumb-item active">Política de Privacidad</li>
+        </ol>
+      </nav>
+      <h1>Política de Privacidad</h1>
+      <p class="text-secondary">Última actualización: 26 de mayo de 2026</p>
     </div>
-    <ul class="shape-group-8 list-unstyled">
-      <li class="shape shape-1" data-sal="slide-right" data-sal-duration="500" data-sal-delay="100">
-        <img src="/abstrak/assets/media/others/bubble-9.png" alt="Bubble" />
-      </li>
-      <li class="shape shape-2" data-sal="slide-left" data-sal-duration="500" data-sal-delay="200">
-        <img src="/abstrak/assets/media/others/bubble-20.png" alt="Bubble" />
-      </li>
-      <li class="shape shape-3" data-sal="slide-up" data-sal-duration="500" data-sal-delay="300">
-        <img src="/abstrak/assets/media/others/line-4.png" alt="Line" />
-      </li>
-    </ul>
   </div>
 
-  <section class="section section-padding case-study-featured-area">
+  <section class="section section-alt">
     <div class="container">
-      <div class="row row-40">
-        <div class="col-lg-8" id="project-content">
-          <p>
-            En <strong>MikelCanteroDev</strong>, accesible desde <a href="https://mikelcantero.dev">https://mikelcantero.dev</a>, una de nuestras principales prioridades es la privacidad de nuestros visitantes. Este documento de Política de Privacidad contiene los tipos de información que recopilamos y registramos, y cómo la utilizamos.
-          </p>
-          <p>
-            Si tiene preguntas adicionales o requiere más información sobre nuestra Política de Privacidad, no dude en ponerse en contacto con nosotros a través del correo electrónico <strong>contacto@mikelcantero.dev</strong>.
-          </p>
+      <div class="row g-5">
+        <div class="col-lg-8">
+          <div class="page-content post-content">
+            <p>En <strong>MikelCanteroDev</strong>, accesible desde <a href="https://mikelcantero.dev">https://mikelcantero.dev</a>, una de nuestras principales prioridades es la privacidad de nuestros visitantes. Este documento de Política de Privacidad contiene los tipos de información que recopilamos y registramos, y cómo la utilizamos.</p>
+            <p>Si tiene preguntas adicionales o requiere más información sobre nuestra Política de Privacidad, no dude en ponerse en contacto con nosotros a través del correo electrónico <strong>contacto@mikelcantero.dev</strong>.</p>
 
-          <h2 class="title h3 mt-5">1. Responsable del Tratamiento</h2>
-          <p>
-            El responsable del tratamiento de sus datos personales es <strong>Mikel Cantero</strong>, con domicilio en Zapopan, Jalisco, México. Puede contactar con nosotros por correo electrónico en <strong>contacto@mikelcantero.dev</strong> o por teléfono al <strong>+52 33 2646 2099</strong>.
-          </p>
+            <h2>1. Responsable del Tratamiento</h2>
+            <p>El responsable del tratamiento de sus datos personales es <strong>Mikel Cantero</strong>, con domicilio en Zapopan, Jalisco, México. Puede contactar con nosotros por correo electrónico en <strong>contacto@mikelcantero.dev</strong> o por teléfono al <strong>+52 33 2646 2099</strong>.</p>
 
-          <h2 class="title h3 mt-5">2. Información que Recopilamos</h2>
-          <p>
-            Podemos recopilar información personal de diversas maneras, incluyendo cuando visita nuestro sitio, se registra en él, programa un diagnóstico de eficiencia a través de nuestro enlace de calendario, o se pone en contacto directo con nosotros.
-          </p>
-          <ul>
-            <li><strong>Datos de Contacto:</strong> Nombre, dirección de correo electrónico, número de teléfono, nombre de la empresa y cualquier otra información que decida proporcionarnos a través de nuestros formularios o llamadas de diagnóstico.</li>
-            <li><strong>Datos de Navegación:</strong> Dirección IP, tipo de navegador, proveedor de servicios de Internet (ISP), páginas de origen/destino, fecha/hora y número de clics para analizar tendencias y administrar el sitio.</li>
-          </ul>
+            <h2>2. Información que Recopilamos</h2>
+            <p>Podemos recopilar información personal de diversas maneras, incluyendo cuando visita nuestro sitio, se registra en él, programa un diagnóstico de eficiencia a través de nuestro enlace de calendario, o se pone en contacto directo con nosotros.</p>
+            <ul>
+              <li><strong>Datos de Contacto:</strong> Nombre, dirección de correo electrónico, número de teléfono, nombre de la empresa y cualquier otra información que decida proporcionarnos a través de nuestros formularios o llamadas de diagnóstico.</li>
+              <li><strong>Datos de Navegación:</strong> Dirección IP, tipo de navegador, proveedor de servicios de Internet (ISP), páginas de origen/destino, fecha/hora y número de clics para analizar tendencias y administrar el sitio.</li>
+            </ul>
 
-          <h2 class="title h3 mt-5">3. Google Analytics</h2>
-          <p>
-            Este sitio web utiliza <strong>Google Analytics</strong>, un servicio de análisis web prestado por Google, Inc. ("Google"). Google Analytics utiliza "cookies", que son archivos de texto ubicados en su ordenador, para ayudar al sitio web a analizar cómo los usuarios utilizan el sitio.
-          </p>
-          <p>
-            La información generada por la cookie acerca de su uso del sitio web (incluyendo su dirección IP) será directamente transmitida y archivada por Google en los servidores de Estados Unidos. Google usará esta información con el propósito de seguir la pista de su uso del sitio web, recopilando informes de la actividad de la página y prestando otros servicios relacionados con la actividad del sitio web y el uso de Internet.
-          </p>
-          <p>
-            Google podrá transmitir dicha información a terceros cuando así se lo requiera la legislación, o cuando dichos terceros procesen la información por cuenta de Google. Google no asociará su dirección IP con ningún otro dato del que disponga Google.
-          </p>
-          <p>
-            Para obtener más información sobre el tratamiento de datos de Google Analytics, puede consultar la <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer">Política de Privacidad de Google y cómo utiliza los datos de sus socios</a>.
-          </p>
-          <p>
-            <strong>Cómo inhabilitar Google Analytics:</strong> Puede rechazar el tratamiento de los datos o la información rechazando el uso de cookies mediante la selección de la configuración apropiada de su navegador. Asimismo, puede evitar la recopilación y el uso de datos por parte de Google descargando e instalando el <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer">Complemento de inhabilitación para navegadores de Google Analytics</a>.
-          </p>
+            <h2>3. Google Analytics</h2>
+            <p>Este sitio web utiliza <strong>Google Analytics</strong>, un servicio de análisis web prestado por Google, Inc. ("Google"). Google Analytics utiliza "cookies", que son archivos de texto ubicados en su ordenador, para ayudar al sitio web a analizar cómo los usuarios utilizan el sitio.</p>
+            <p>La información generada por la cookie acerca de su uso del sitio web (incluyendo su dirección IP) será directamente transmitida y archivada por Google en los servidores de Estados Unidos. Google usará esta información con el propósito de seguir la pista de su uso del sitio web, recopilando informes de la actividad de la página y prestando otros servicios relacionados con la actividad del sitio web y el uso de Internet.</p>
+            <p>Google podrá transmitir dicha información a terceros cuando así se lo requiera la legislación, o cuando dichos terceros procesen la información por cuenta de Google. Google no asociará su dirección IP con ningún otro dato del que disponga Google.</p>
+            <p><strong>Cómo inhabilitar Google Analytics:</strong> Puede rechazar el tratamiento de los datos o la información rechazando el uso de cookies mediante la selección de la configuración apropiada de su navegador. Asimismo, puede evitar la recopilación y el uso de datos por parte de Google descargando e instalando el <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer">Complemento de inhabilitación para navegadores de Google Analytics</a>.</p>
 
-          <h2 class="title h3 mt-5">4. Google AdSense y Cookies de Publicidad</h2>
-          <p>
-            Este sitio web puede mostrar anuncios provistos por el programa publicitario <strong>Google AdSense</strong>. Google, como proveedor asociado de terceros, utiliza cookies para publicar anuncios en nuestro sitio web.
-          </p>
-          <p>
-            El uso de la cookie de <strong>DART (Dynamic Advertising Reporting Targeted)</strong> por parte de Google permite servir anuncios a nuestros usuarios basados en sus visitas a este sitio y a otros sitios web en Internet.
-          </p>
-          <p>
-            Los usuarios pueden optar por no utilizar la cookie de DART o la publicidad personalizada a través de las siguientes opciones:
-          </p>
-          <ul>
-            <li>Visitando la política de privacidad de la red de anuncios y contenido de Google en <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer">Configuración de Anuncios de Google</a>.</li>
-            <li>Visitando el sitio web de la <a href="https://www.aboutads.info/" target="_blank" rel="noopener noreferrer">Network Advertising Initiative</a> para inhabilitar el uso de cookies de publicidad personalizada de otros proveedores de terceros.</li>
-          </ul>
+            <h2>4. Google AdSense y Cookies de Publicidad</h2>
+            <p>Este sitio web puede mostrar anuncios provistos por el programa publicitario <strong>Google AdSense</strong>. Google, como proveedor asociado de terceros, utiliza cookies para publicar anuncios en nuestro sitio web.</p>
+            <p>Los usuarios pueden optar por no utilizar la cookie de DART o la publicidad personalizada a través de las siguientes opciones:</p>
+            <ul>
+              <li>Visitando la política de privacidad de la red de anuncios y contenido de Google en <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer">Configuración de Anuncios de Google</a>.</li>
+              <li>Visitando el sitio web de la <a href="https://www.aboutads.info/" target="_blank" rel="noopener noreferrer">Network Advertising Initiative</a>.</li>
+            </ul>
 
-          <h2 class="title h3 mt-5">5. Cookies y Web Beacons</h2>
-          <p>
-            Como cualquier otro sitio web, MikelCanteroDev utiliza "cookies". Estas cookies se utilizan para almacenar información, incluidas las preferencias de los visitantes y las páginas del sitio web a las que el visitante accedió o visitó. La información se utiliza para optimizar la experiencia de los usuarios al personalizar el contenido de nuestra página web en función del tipo de navegador de los visitantes y/u otra información.
-          </p>
-          <p>
-            Puede optar por desactivar las cookies a través de las opciones individuales de su navegador. Para obtener información más detallada sobre la gestión de cookies con navegadores web específicos, consulte los sitios web de sus respectivos navegadores.
-          </p>
+            <h2>5. Cookies y Web Beacons</h2>
+            <p>Como cualquier otro sitio web, MikelCanteroDev utiliza "cookies". Estas cookies se utilizan para almacenar información, incluidas las preferencias de los visitantes y las páginas del sitio web a las que el visitante accedió o visitó.</p>
 
-          <h2 class="title h3 mt-5">6. Derechos de los Usuarios (GDPR y Leyes Locales)</h2>
-          <p>
-            Dependiendo de su ubicación geográfica, usted cuenta con ciertos derechos sobre sus datos personales conforme a normativas como el Reglamento General de Protección de Datos (GDPR) de la Unión Europea y la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP) de México (Derechos ARCO):
-          </p>
-          <ul>
-            <li><strong>Derecho de Acceso:</strong> Tiene derecho a solicitar copias de sus datos personales.</li>
-            <li><strong>Derecho de Rectificación:</strong> Tiene derecho a solicitar que corrijamos cualquier información que considere inexacta o incompleta.</li>
-            <li><strong>Derecho de Cancelación / Supresión:</strong> Tiene derecho a solicitar que eliminemos sus datos personales bajo ciertas condiciones.</li>
-            <li><strong>Derecho de Oposición / Limitación del Tratamiento:</strong> Tiene derecho a oponerse o solicitar que limitemos el tratamiento de sus datos personales.</li>
-            <li><strong>Derecho a la Portabilidad de los Datos:</strong> Tiene derecho a solicitar que transfiramos los datos que hemos recopilado a otra organización o directamente a usted.</li>
-          </ul>
-          <p>
-            Si realiza una solicitud para ejercer estos derechos, responderemos en un plazo máximo de un mes. Por favor, póngase en contacto con nosotros en <strong>contacto@mikelcantero.dev</strong> para iniciar cualquiera de estas solicitudes.
-          </p>
+            <h2>6. Derechos de los Usuarios (GDPR y Leyes Locales)</h2>
+            <ul>
+              <li><strong>Derecho de Acceso:</strong> Tiene derecho a solicitar copias de sus datos personales.</li>
+              <li><strong>Derecho de Rectificación:</strong> Tiene derecho a solicitar que corrijamos cualquier información que considere inexacta o incompleta.</li>
+              <li><strong>Derecho de Cancelación / Supresión:</strong> Tiene derecho a solicitar que eliminemos sus datos personales bajo ciertas condiciones.</li>
+              <li><strong>Derecho de Oposición / Limitación del Tratamiento:</strong> Tiene derecho a oponerse o solicitar que limitemos el tratamiento de sus datos personales.</li>
+              <li><strong>Derecho a la Portabilidad de los Datos:</strong> Tiene derecho a solicitar que transfiramos los datos que hemos recopilado a otra organización o directamente a usted.</li>
+            </ul>
 
-          <h2 class="title h3 mt-5">7. Enlaces a Terceros</h2>
-          <p>
-            Nuestro sitio web contiene enlaces a otros sitios (por ejemplo, Google Calendar para programar citas, perfiles de redes sociales, etc.). Le recomendamos que revise las políticas de privacidad de estos sitios externos, ya que no tenemos control ni asumimos responsabilidad sobre sus prácticas, políticas de privacidad o contenidos de terceros.
-          </p>
-
-          <h2 class="title h3 mt-5">8. Modificaciones a esta Política de Privacidad</h2>
-          <p>
-            Nos reservamos el derecho de actualizar o modificar esta Política de Privacidad en cualquier momento. Cualquier cambio será publicado en esta misma página con una fecha de actualización revisada en la parte superior. Le recomendamos revisar esta política periódicamente para estar al tanto de cómo protegemos su información.
-          </p>
-
-          <h2 class="title h3 mt-5">9. Contacto</h2>
-          <p>
-            Para cualquier duda, aclaración, ejercicio de derechos o comentario con respecto a esta Política de Privacidad, puede contactarnos mediante:
-          </p>
-          <ul>
-            <li><strong>Correo electrónico:</strong> <a href="mailto:contacto@mikelcantero.dev">contacto@mikelcantero.dev</a></li>
-            <li><strong>Teléfono / WhatsApp:</strong> <a href="https://wa.me/523326462099" target="_blank" rel="noopener noreferrer">+52 33 2646 2099</a></li>
-            <li><strong>Dirección:</strong> Zapopan, Jalisco, México</li>
-          </ul>
+            <h2>7. Contacto</h2>
+            <ul>
+              <li><strong>Correo electrónico:</strong> <a href="mailto:contacto@mikelcantero.dev">contacto@mikelcantero.dev</a></li>
+              <li><strong>Teléfono / WhatsApp:</strong> <a href="https://wa.me/523326462099" target="_blank" rel="noopener noreferrer">+52 33 2646 2099</a></li>
+              <li><strong>Dirección:</strong> Zapopan, Jalisco, México</li>
+            </ul>
+          </div>
         </div>
         <div class="col-lg-4">
           <ContentSidebar />

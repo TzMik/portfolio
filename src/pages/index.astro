@@ -1,53 +1,60 @@
 ---
 import AbstrakLayout from "../layouts/AbstrakLayout.astro";
-import ProjectGrid from "../components/abstrak/ProjectGrid.astro";
 import { getSortedProjects } from "../lib/projects.js";
 import { getSortedAndFilteredPosts } from "../lib/blog-posts.js";
-import BrandGrid from "../components/abstrak/BrandGrid.astro";
 import { getCollection } from "astro:content";
-import TestimonialGrid from "../components/abstrak/TestimonialGrid.astro";
-import FooterSocialLink from "../components/abstrak/FooterSocialLink.astro";
 import { socialLinks, calendarLink, yearsOfExperience } from "../data/MainInformation";
-import WorkTogether from "../components/abstrak/WorkTogether.astro";
-import LastPostGrid from "../components/abstrak/LastPostGrid.astro";
+import ReviewRichSnippet from "../components/ReviewRichSnippet.astro";
+
+const siteUrl = "https://mikelcantero.dev";
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Mikel Cantero - Ingeniero de Software",
+  url: siteUrl,
+  description: "Consultoría y desarrollo de software a medida para PYMES. Elimina el retrabajo y la ineficiencia operativa.",
+  potentialAction: {
+    "@type": "SearchAction",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate: `${siteUrl}/search?q={search_term_string}`,
+    },
+    "query-input": "required name=search_term_string",
+  },
+};
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Mikel Cantero",
+  givenName: "Mikel",
+  familyName: "Cantero",
+  jobTitle: "Ingeniero de Software",
+  description: `Ingeniero de Software con más de ${yearsOfExperience} años de experiencia especializado en desarrollo web, automatización de procesos y software a medida para PYMES.`,
+  image: `${siteUrl}/assets/images/portfolio.jpeg`,
+  url: siteUrl,
+  sameAs: socialLinks.map((l) => l.href),
+  email: "contacto@mikelcantero.dev",
+  telephone: "+523326462099",
+};
+
+const websiteJson = JSON.stringify(websiteSchema);
+const personJson = JSON.stringify(personSchema);
 
 const brands = [
-  {
-    image: "/assets/images/brands/pinkup.png",
-    brand: "PinkUP Cosmetics",
-  },
-  {
-    image: "/assets/images/brands/GOC.png",
-    brand: "GOC Make Up",
-  },
-  {
-    image: "/assets/images/brands/Intermoda.png",
-    brand: "Intermoda",
-  },
-  {
-    image: "/assets/images/brands/Beserva.png",
-    brand: "Beserva",
-  },
-  {
-    image: "/assets/images/brands/cloe.png",
-    brand: "Cloe",
-  },
-  {
-    image: "/assets/images/brands/Instituto-jalisciense-de-cancerologia.png",
-    brand: "Instituto Jalisciense de Cancerología",
-  },
-  {
-    image: "/assets/images/brands/vax.png",
-    brand: "Vax Solutions",
-  },
-  {
-    image: "/assets/images/brands/idoo.png",
-    brand: "Idoo",
-  },
+  { image: "/assets/images/brands/pinkup.png", brand: "PinkUP Cosmetics" },
+  { image: "/assets/images/brands/GOC.png", brand: "GOC Make Up" },
+  { image: "/assets/images/brands/Intermoda.png", brand: "Intermoda" },
+  { image: "/assets/images/brands/Beserva.png", brand: "Beserva" },
+  { image: "/assets/images/brands/cloe.png", brand: "Cloe" },
+  { image: "/assets/images/brands/Instituto-jalisciense-de-cancerologia.png", brand: "Instituto Jalisciense de Cancerología" },
+  { image: "/assets/images/brands/vax.png", brand: "Vax Solutions" },
+  { image: "/assets/images/brands/idoo.png", brand: "Idoo" },
 ];
 
 let topProjects = await getSortedProjects();
-topProjects = topProjects.slice(0, 4);
+topProjects = topProjects.slice(0, 2);
 
 let testimonials = await getCollection("testimonials");
 testimonials = testimonials.sort(() => Math.random() - 0.5);
@@ -58,328 +65,260 @@ const latestPosts = blogPosts.slice(0, 2);
 ---
 
 <AbstrakLayout>
-  <!--=====================================-->
-  <!--=        Banner Area Start          =-->
-  <!--=====================================-->
-  <section class="banner banner-style-3">
+  <script is:inline type="application/ld+json" set:html={websiteJson} />
+  <script is:inline type="application/ld+json" set:html={personJson} />
+  <!-- Hero -->
+  <section class="hero-section">
     <div class="container">
       <div class="row align-items-center">
         <div class="col-lg-6">
-          <div class="banner-content">
-            <span class="subtitle">MIKEL CANTERO</span>
-            <h1 class="title">
-              Libérate de la operativa y enfócate en lo que importa
-            </h1>
-            <p>
-              Soy Mikel Cantero, <b>Ingeniero de Software</b> y especialista en
-              <b>optimización de procesos</b>. Ayudo a dueños de negocios a eliminar
-              cuellos de botella mediante <b>software a medida y automatización
-              inteligente</b>. Deja de gestionar hojas de cálculo y empieza a
-              liderar una empresa conectada y escalable
-            </p>
-            <div
-              class="btn-group"
-              data-sal="slide-up"
-              data-sal-duration="1000"
-              data-sal-delay="300"
-            >
-              <a
-                target="_blank"
-                href={calendarLink}
-                class="axil-btn btn-fill-primary btn-large"
-              >
-                Agendar Diagnóstico de Eficiencia (Gratis)
-              </a>
-              <a href="#about" class="about-btn">Sobre mí</a>
-            </div>
+          <span class="hero-subtitle">MIKEL CANTERO</span>
+          <h1 class="hero-title">Libérate de la operativa y enfócate en lo que importa</h1>
+          <p class="hero-desc">
+            Soy Mikel Cantero, <strong>Ingeniero de Software</strong> y especialista en
+            <strong>optimización de procesos</strong>. Ayudo a dueños de negocios a eliminar
+            cuellos de botella mediante <strong>software a medida y automatización inteligente</strong>.
+            Deja de gestionar hojas de cálculo y empieza a liderar una empresa conectada y escalable.
+          </p>
+          <div class="d-flex flex-wrap gap-3">
+            <a target="_blank" href={calendarLink} class="btn btn-brand btn-lg">Agendar Diagnóstico de Eficiencia (Gratis)</a>
+            <a href="#about" class="btn btn-outline-brand btn-lg">Sobre mí</a>
           </div>
         </div>
-        <div class="col-lg-6 d-flex justify-content-center">
-          <div class="banner-thumbnail">
-            <div class="large-thumb">
-              <img
-                class="paralax-image custom-shape"
-                src="/assets/images/portfolio.jpeg"
-                alt="Shape"
-                width="300"
-              />
-            </div>
-          </div>
+        <div class="col-lg-6 d-flex justify-content-center justify-content-lg-end hero-img-col">
+          <img src="/assets/images/portfolio.jpeg" alt="Mikel Cantero" loading="lazy" style="max-width: 200px; border-radius: var(--radius-lg);" />
         </div>
       </div>
     </div>
-    <ul class="list-unstyled shape-group-20">
-      <li
-        class="shape shape-1"
-        data-sal="slide-down"
-        data-sal-duration="500"
-        data-sal-delay="100"
-      >
-        <img src="/abstrak/assets/media/others/bubble-32.png" alt="Bubble" />
-      </li>
-      <li
-        class="shape shape-2"
-        data-sal="slide-left"
-        data-sal-duration="500"
-        data-sal-delay="200"
-      >
-        <img src="/abstrak/assets/media/others/bubble-33.png" alt="Bubble" />
-      </li>
-      <li
-        class="shape shape-4"
-        data-sal="slide-left"
-        data-sal-duration="500"
-        data-sal-delay="700"
-      >
-        <img src="/abstrak/assets/media/others/bubble-14.png" alt="Bubble" />
-      </li>
-      <li
-        class="shape shape-5"
-        data-sal="slide-left"
-        data-sal-duration="500"
-        data-sal-delay="700"
-      >
-        <img src="/abstrak/assets/media/others/bubble-4.png" alt="Bubble" />
-      </li>
-      <li
-        class="shape shape-6"
-        data-sal="slide-left"
-        data-sal-duration="500"
-        data-sal-delay="700"
-      >
-        <img src="/abstrak/assets/media/others/bubble-30.png" alt="Bubble" />
-      </li>
-      <li
-        class="shape shape-7"
-        data-sal="slide-left"
-        data-sal-duration="500"
-        data-sal-delay="700"
-      >
-        <img src="/abstrak/assets/media/others/bubble-31.png" alt="Bubble" />
-      </li>
-      <li class="shape shape-8 marque-images"></li>
-    </ul>
   </section>
 
-  <section class="section section-padding-equal bg-color-dark">
+  <!-- Featured Projects -->
+  <section class="section" style="background: var(--secondary); color: #fff;">
     <div class="container">
-      <div class="section-heading heading-light-left">
-        <span class="subtitle">Portafolio</span>
-        <h2 class="title">Proyectos Destacados</h2>
-        <p>Aquí encontrarás algunos de mis proyectos más destacados.</p>
+      <div class="section-header">
+        <span class="section-subtitle" style="color: rgba(255,255,255,0.7);">Portafolio</span>
+        <h2 class="section-title" style="color: #fff;">Proyectos Destacados</h2>
+        <p class="section-desc" style="color: rgba(255,255,255,0.75);">Aquí encontrarás algunos de mis proyectos más destacados.</p>
       </div>
-      <div class="row row-45">
+      <div class="row g-4 justify-content-center">
         {
-          topProjects.map((project) => (
-            <ProjectGrid
-              url={project.id}
-              image={project.data.image || ""}
-              title={project.data.title || ""}
-            />
-          ))
+          topProjects.map((project) => {
+            const imgSrc = typeof project.data.image === 'string' ? project.data.image : project.data.image?.src;
+            return (
+              <div class="col-md-6 col-lg-5">
+                <div class="card-custom">
+                  <div class="card-thumb">
+                    <a href={"/projects/" + project.id}>
+                      <img src={imgSrc || ""} alt={project.data.title} loading="lazy" />
+                    </a>
+                  </div>
+                  <div class="card-body">
+                    <h3 class="card-title">
+                      <a href={"/projects/" + project.id}>{project.data.title}</a>
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            );
+          })
         }
       </div>
-      <div class="more-project-btn">
-        <a href="/projects" class="axil-btn btn-fill-white">
-          Ver casos de éxito
-        </a>
+      <div class="text-center mt-5">
+        <a href="/projects" class="btn btn-outline-light btn-accent-hover">Ver casos de éxito</a>
       </div>
     </div>
-    <ul class="list-unstyled shape-group-10">
-      <li class="shape shape-1">
-        <img src="/abstrak/assets/media/others/circle-1.png" alt="Circle" />
-      </li>
-      <li class="shape shape-2">
-        <img src="/abstrak/assets/media/others/line-3.png" alt="Circle" />
-      </li>
-      <li class="shape shape-3">
-        <img src="/abstrak/assets/media/others/bubble-5.png" alt="Circle" />
-      </li>
-    </ul>
   </section>
 
-  <section class="section section-padding-equal bg-color-light" id="about">
+  <!-- About -->
+  <section class="section" id="about">
     <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-6" data-sal="slide-up" data-sal-duration="800">
-          <div class="about-us">
-            <div class="section-heading heading-left mb-0">
-              <span class="subtitle">Sobre mí</span>
-              <h2 class="title mb--40">Ingeniero, MBA y Arquitecto de Soluciones</h2>
-              <p>
-                Con más de <b>{yearsOfExperience} años de experiencia</b> , he pasado de programar sistemas complejos a <b>liderar la estrategia tecnológica</b> de marcas internacionales como <b>Clõe y Fashion Group</b>.
-              </p>
-              <ul>
-                <li>He <b>dirigido equipos</b> de 13 profesionales y <b>gestionado arquitecturas</b> que soportan millones de usuarios.</li>
-                <li>Mi formación MBA me permite <b>entender tus problemas financieros y operativos</b> antes de escribir una sola línea de código.</li>
-                <li><b>Automatizo lo manual</b> para que tu equipo recupere el tiempo que pierde en tareas repetitivas.</li>
-              </ul>
-              <div>
-                <a href="/about" class="axil-btn btn-borderd btn-large mb-2"
-                  >Leer más</a
-                >
+      <div class="row g-5 align-items-start">
+        <div class="col-lg-6">
+          <span class="section-subtitle">Sobre mí</span>
+          <h2 class="section-title">Ingeniero, MBA y Arquitecto de Soluciones</h2>
+          <p class="mb-4">
+            Con más de <strong>{yearsOfExperience} años de experiencia</strong>, he pasado de programar sistemas complejos a <strong>liderar la estrategia tecnológica</strong> de marcas internacionales como <strong>Clõe y Fashion Group</strong>.
+          </p>
+          <ul class="about-list">
+            <li>He <strong>dirigido equipos</strong> de 13 profesionales y <strong>gestionado arquitecturas</strong> que soportan millones de usuarios.</li>
+            <li>Mi formación MBA me permite <strong>entender tus problemas financieros y operativos</strong> antes de escribir una sola línea de código.</li>
+            <li><strong>Automatizo lo manual</strong> para que tu equipo recupere el tiempo que pierde en tareas repetitivas.</li>
+          </ul>
+          <a href="/about" class="btn btn-outline-brand">Leer más</a>
+        </div>
+        <div class="col-lg-6">
+          <div class="contact-card">
+            <h3>Métodos de contacto</h3>
+            <div class="contact-item">
+              <span class="contact-label">Correo electrónico</span>
+              <a href="mailto:contacto@mikelcantero.dev">contacto@mikelcantero.dev</a>
+            </div>
+            <div class="contact-item">
+              <span class="contact-label">Whatsapp</span>
+              <a href="https://wa.me/523326462099" target="_blank"><i class="fab fa-whatsapp me-1"></i>Escribir por WhatsApp</a>
+            </div>
+            <div class="contact-item">
+              <span class="contact-label">Agenda una llamada</span>
+              <a href={calendarLink} target="_blank" class="btn btn-brand btn-sm"><i class="fas fa-calendar-alt me-1"></i>Agenda una llamada</a>
+            </div>
+            <hr class="contact-divider" />
+            <span class="contact-label mb-2 d-block">Redes</span>
+            <div class="d-flex gap-2">
+              {socialLinks.map((link) => (
+                <a href={link.href} class="social-link" target="_blank" aria-label={link.icon.replace('fab fa-', '')} style="background: var(--border); color: var(--text-secondary); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 10px; font-size: 18px; transition: all var(--transition);">
+                  <i class={link.icon}></i>
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Blog</span>
+        <h2 class="section-title">Últimas publicaciones</h2>
+        <p class="section-desc">Aquí encontrarás algunas de las publicaciones más recientes.</p>
+      </div>
+      <div class="row g-4 justify-content-center">
+        {
+          latestPosts.map((post) => {
+            const imgSrc = typeof post.data.image === 'string' ? post.data.image : post.data.image?.src;
+            return (
+              <div class="col-md-6 col-lg-5">
+                <div class="card-custom">
+                  <div class="card-thumb">
+                    <a href={"/blog/" + post.id}>
+                      <img src={imgSrc || ""} alt={post.data.title} loading="lazy" />
+                    </a>
+                  </div>
+                  <div class="card-body">
+                    <h3 class="card-title">
+                      <a href={"/blog/" + post.id}>{post.data.title}</a>
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            );
+          })
+        }
+      </div>
+      <div class="text-center mt-5">
+        <a href="/blog" class="btn btn-brand">Ver todos</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Brands -->
+  <section class="section" style="background: var(--secondary);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle" style="color: rgba(255,255,255,0.7);">Marcas reconocidas</span>
+        <h2 class="section-title" style="color: #fff;">He trabajado con...</h2>
+        <p class="section-desc" style="color: rgba(255,255,255,0.75);">Aquí encontrarás algunos de los clientes con los que he trabajado.</p>
+      </div>
+      <div id="brandsCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          {[0, 4].map((start, idx) => (
+            <div class={`carousel-item ${idx === 0 ? 'active' : ''}`}>
+              <div class="row g-4 justify-content-center">
+                {brands.slice(start, start + 4).map((brand) => (
+                  <div class="col-6 col-md-3 brand-item">
+                    <img src={brand.image} alt={brand.brand} loading="lazy" />
+                  </div>
+                ))}
               </div>
             </div>
-          </div>
+          ))}
         </div>
-        <div
-          class="col-xl-5 col-lg-6 offset-xl-1"
-          data-sal="slide-up"
-          data-sal-duration="800"
-          data-sal-delay="100"
-        >
-          <div class="contact-form-box">
-            <h3 class="title">Métodos de contacto</h3>
-            <div>
-              <p class="mb-0">Correo electrónico</p>
-              <a href="mailto:contacto@mikelcantero.dev"
-                >contacto@mikelcantero.dev</a
-              >
-            </div>
-            <div class="mt-3">
-              <p class="mb-0">Whatsapp</p>
-              <a href="https://wa.me/523326462099" target="_blank">
-                <i class="fab fa-whatsapp"></i>
-                Escribir por WhatsApp
-              </a>
-            </div>
-            <div class="mt-3">
-              <p class="mb-2">Selecciona una fecha para una llamada</p>
-              <a
-                href={calendarLink}
-                target="_blank"
-                class="axil-btn btn-fill-primary"
-              >
-                <i class="fas fa-calendar-alt"></i>
-                Agenda una llamada
-              </a>
-            </div>
-            <div class="mt-3">
-              <div class="footer-social-link">
-                <ul class="list-unstyled">
-                  {
-                    socialLinks.map((link) => (
-                      <FooterSocialLink href={link.href} icon={link.icon} />
-                    ))
-                  }
-                </ul>
+        <div class="d-flex justify-content-center gap-3 mt-4">
+          <button class="btn btn-outline-light btn-sm rounded-circle" type="button" data-bs-target="#brandsCarousel" data-bs-slide="prev" aria-label="Anterior" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="btn btn-outline-light btn-sm rounded-circle" type="button" data-bs-target="#brandsCarousel" data-bs-slide="next" aria-label="Siguiente" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Testimonios</span>
+        <h2 class="section-title">De mis clientes y compañeros</h2>
+        <p class="section-desc">Aquí encontrarás algunos de los testimonios de mis clientes y compañeros.</p>
+      </div>
+      <div class="row g-4">
+        {
+          testimonials.map((t) => {
+            const companyImgSrc = typeof t.data.companyImg === 'string' ? t.data.companyImg : t.data.companyImg?.src;
+            const authorImgSrc = typeof t.data.img === 'string' ? t.data.img : t.data.img?.src;
+            const MAX_LENGTH = 200;
+            const needsTrim = t.data.testimonial.length > MAX_LENGTH;
+            const shortText = needsTrim ? t.data.testimonial.substring(0, t.data.testimonial.lastIndexOf(' ', MAX_LENGTH)) + '...' : t.data.testimonial;
+
+            return (
+              <div class="col-lg-4">
+                <div class="testimonial-card">
+                  {companyImgSrc && <img src={companyImgSrc} alt={t.data.company || ""} class="company-img" loading="lazy" />}
+                  <p class="testimonial-text">
+                    <span class="testimonial-text-content" data-full={t.data.testimonial}>{shortText}</span>
+                    {needsTrim && <button class="read-more-btn btn btn-sm btn-outline-brand mt-2" data-expanded="false">Ver más</button>}
+                  </p>
+                  <div class="author-info">
+                    {authorImgSrc && <img src={authorImgSrc} alt={t.data.name} loading="lazy" />}
+                    <div>
+                      <span class="name">{t.data.name}</span>
+                      <span class="role">{t.data.role}</span>
+                    </div>
+                  </div>
+                </div>
+                <ReviewRichSnippet name={t.data.name} role={t.data.role} company={t.data.company} avatar={authorImgSrc} testimonial={t.data.testimonial} service={t.data.service} />
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <ul class="shape-group-6 list-unstyled">
-      <li class="shape shape-1">
-        <img src="/abstrak/assets/media/others/bubble-7.png" alt="Bubble" />
-      </li>
-      <li class="shape shape-2">
-        <img src="/abstrak/assets/media/others/line-4.png" alt="line" />
-      </li>
-      <li class="shape shape-3">
-        <img src="/abstrak/assets/media/others/line-5.png" alt="line" />
-      </li>
-    </ul>
-  </section>
-
-  <section class="section section-padding-equal">
-    <div class="container">
-      <div class="section-heading">
-        <span class="subtitle">Blog</span>
-        <h2 class="title">Últimas publicaciones</h2>
-        <p>Aquí encontrarás algunas de las publicaciones más recientes.</p>
-      </div>
-      <div class="row g-0">
-        {
-          latestPosts.map((post) => (
-            <LastPostGrid
-              url={post.id}
-              image={post.data.image}
-              title={post.data.title}
-              content={post.data.description}
-            />
-          ))
-        }
-      </div>
-      <div class="row my-3">
-        <div class="col-12 d-flex justify-content-center">
-          <a href="/blog" class="axil-btn btn-large btn-fill-primary"
-            >Ver todos</a
-          >
-        </div>
-      </div>
-    </div>
-    <ul class="shape-group-1 list-unstyled">
-      <li class="shape shape-1">
-        <img src="/abstrak/assets/media/others/bubble-1.png" alt="bubble" />
-      </li>
-      <li class="shape shape-2">
-        <img src="/abstrak/assets/media/others/line-1.png" alt="bubble" />
-      </li>
-      <li class="shape shape-3">
-        <img src="/abstrak/assets/media/others/line-2.png" alt="bubble" />
-      </li>
-      <li class="shape shape-4">
-        <img src="/abstrak/assets/media/others/bubble-2.png" alt="bubble" />
-      </li>
-    </ul>
-  </section>
-
-  <section class="section section-padding bg-color-dark">
-    <div class="container">
-      <div class="section-heading heading-light-left">
-        <span class="subtitle">Marcas reconocidas</span>
-        <h2 class="title">He trabajado con...</h2>
-        <p>
-          Aquí encontrarás algunos de los clientes con los que he trabajado.
-        </p>
-      </div>
-      <div class="row align-items-center justify-content-center">
-        {
-          brands.map((brand) => (
-            <BrandGrid image={brand.image} brand={brand.brand} />
-          ))
+            );
+          })
         }
       </div>
     </div>
-    <ul class="list-unstyled shape-group-10">
-      <li class="shape shape-1">
-        <img src="/abstrak/assets/media/others/line-9.png" alt="Circle" />
-      </li>
-    </ul>
   </section>
 
-  <section class="section section-padding-equal">
+  <!-- CTA -->
+  <section class="cta-section">
     <div class="container">
-      <div class="section-heading heading-left">
-        <span class="subtitle">Testimonios</span>
-        <h2 class="title">De mis clientes y compañeros</h2>
-        <p>
-          Aquí encontrarás algunos de los testimonios de mis clientes y
-          compañeros.
-        </p>
-      </div>
-      <div class="row">
-        {
-          testimonials.map((testimonial) => (
-            <TestimonialGrid
-              companyImage={testimonial.data.companyImg || ""}
-              companyName={testimonial.data.company || ""}
-              testimonial={testimonial.data.testimonial}
-              authorImage={testimonial.data.img || ""}
-              authorName={testimonial.data.name}
-              authorTitle={testimonial.data.role}
-            />
-          ))
-        }
-      </div>
+      <span class="section-subtitle" style="color: var(--accent);">Trabajemos juntos</span>
+      <h2>¿Necesitas ayuda con tu proyecto?</h2>
+      <a href={calendarLink} target="_blank" class="btn btn-brand btn-lg">¡Hablemos!</a>
     </div>
-    <ul class="shape-group-4 list-unstyled">
-      <li class="shape-1">
-        <img src="/abstrak/assets/media/others/bubble-1.png" alt="Bubble" />
-      </li>
-    </ul>
   </section>
-
-  <WorkTogether />
 </AbstrakLayout>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.read-more-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var textSpan = this.parentElement.querySelector('.testimonial-text-content');
+        var expanded = this.getAttribute('data-expanded') === 'true';
+        if (expanded) {
+          var original = textSpan.getAttribute('data-original');
+          textSpan.textContent = original || textSpan.textContent.substring(0, 200);
+          this.textContent = 'Ver más';
+          this.setAttribute('data-expanded', 'false');
+        } else {
+          if (!textSpan.getAttribute('data-original')) {
+            textSpan.setAttribute('data-original', textSpan.textContent);
+          }
+          textSpan.textContent = textSpan.getAttribute('data-full');
+          this.textContent = 'Ver menos';
+          this.setAttribute('data-expanded', 'true');
+        }
+      });
+    });
+  });
+</script>

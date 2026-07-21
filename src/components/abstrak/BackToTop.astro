@@ -1,3 +1,53 @@
-<a href="#" id="backto-top" class="back-to-top">
-    <i class="far fa-angle-double-up"></i>
+<a href="#" id="backto-top" class="back-to-top" aria-label="Volver arriba">
+  <i class="fas fa-arrow-up"></i>
 </a>
+
+<style is:global>
+  .back-to-top {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: var(--brand);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    text-decoration: none;
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+  }
+  .back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+  }
+  .back-to-top:hover {
+    background: var(--brand-hover);
+    color: #fff;
+    transform: translateY(-2px);
+  }
+</style>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    var btn = document.getElementById('backto-top');
+    if (!btn) return;
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 400) {
+        btn.classList.add('show');
+      } else {
+        btn.classList.remove('show');
+      }
+    });
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+</script>

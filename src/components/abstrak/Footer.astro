@@ -1,31 +1,47 @@
 ---
+import { socialLinks } from "../../data/MainInformation";
+
 const year = new Date().getFullYear();
 ---
-<footer class="footer-area footer-dark">
+
+<footer class="footer-minimal">
   <div class="container">
-    <div
-      class="footer-bottom"
-      data-sal="slide-up"
-      data-sal-duration="500"
-      data-sal-delay="100"
-    >
-      <div class="row">
-        <div class="col-md-6">
-          <div class="footer-copyright">
-            <span class="copyright-text"
-              >© {year}. All rights reserved by <a href="https://mikelcantero.dev"
-                >MikelCanteroDev</a
-              >.</span
-            >
-          </div>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <img src="/assets/images/mc-logo.png" alt="MikelCanteroDev" style="width: 10rem; filter: brightness(0) invert(1);" class="mb-3" />
+        <p class="small" style="color: rgba(255,255,255,0.5); max-width: 280px;">
+          Consultoría y desarrollo de software a medida para PYMES. Elimina el retrabajo y la ineficiencia operativa.
+        </p>
+      </div>
+      <div class="col-md-4">
+        <h5>Enlaces</h5>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="/">Inicio</a></li>
+          <li class="mb-2"><a href="/projects">Proyectos</a></li>
+          <li class="mb-2"><a href="/blog">Blog</a></li>
+          <li class="mb-2"><a href="/about">Sobre mí</a></li>
+          <li class="mb-2"><a href="/learning-paths">Rutas</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h5>Sígueme</h5>
+        <div>
+          {socialLinks.map((link) => (
+            <a href={link.href} class="social-link" target="_blank" aria-label={link.icon.replace('fab fa-', '')}>
+              <i class={link.icon}></i>
+            </a>
+          ))}
         </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="row align-items-center">
         <div class="col-md-6">
-          <div class="footer-bottom-link">
-            <ul class="list-unstyled">
-              <li><a href="/politica-privacidad">Políticas de privacidad</a></li>
-              <li><a href="/terminos-uso">Términos de uso</a></li>
-            </ul>
-          </div>
+          <span>© {year} MikelCanteroDev. Todos los derechos reservados.</span>
+        </div>
+        <div class="col-md-6 text-md-end mt-2 mt-md-0">
+          <a href="/politica-privacidad" class="me-3">Política de privacidad</a>
+          <a href="/terminos-uso">Términos de uso</a>
         </div>
       </div>
     </div>

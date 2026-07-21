@@ -1,11 +1,6 @@
 ---
-// src/pages/blog/[...page].astro
-import AbstrakProjectLayout from "../../layouts/AbstrakLayout.astro";
-import BlogGrid from "../../components/abstrak/BlogGrid.astro";
+import AbstrakLayout from "../../layouts/AbstrakLayout.astro";
 import ContentSidebar from "../../components/abstrak/ContentSidebar.astro";
-import "../../styles/AbstrakProjectLayout.css";
-
-// Importa PAGE_SIZE y las funciones de ayuda
 import {
   createStaticPathsForPosts,
   POSTS_PER_PAGE,
@@ -13,14 +8,12 @@ import {
 import { getSortedAndFilteredPosts } from "../../lib/blog-posts.js";
 import WorkTogether from "../../components/abstrak/WorkTogether.astro";
 
-// Llama a la función correcta para obtener las publicaciones
 const allPosts = await getSortedAndFilteredPosts();
 
 const { page = 1 } = Astro.params;
 const currentPage = Number(page);
 const totalPages = Math.max(Math.ceil(allPosts.length / POSTS_PER_PAGE), 1);
 
-console.log(currentPage);
 if (currentPage < 1 || currentPage > totalPages) {
   return Astro.response(new Response("Página no encontrada", { status: 404 }));
 }
@@ -28,7 +21,7 @@ if (currentPage < 1 || currentPage > totalPages) {
 const start = (currentPage - 1) * POSTS_PER_PAGE;
 const items = allPosts.slice(start, start + POSTS_PER_PAGE);
 
-const pageUrl = (n) => (n === 1 ? "/blog" : `/blog/${n}`);
+const pageUrl = (n: number) => (n === 1 ? "/blog" : `/blog/${n}`);
 
 const postsJson = allPosts.map((post) => ({
   id: post.id,
@@ -36,119 +29,91 @@ const postsJson = allPosts.map((post) => ({
   image: typeof post.data.image === "string" ? post.data.image : post.data.image?.src || "",
 }));
 
-//getStaticPaths ahora es mucho más simple y usa la función importada
 export async function getStaticPaths() {
   return createStaticPathsForPosts(POSTS_PER_PAGE);
 }
 ---
 
-<AbstrakProjectLayout title="Blog | MikelCanteroDev">
-  <div class="breadcrum-area">
+<AbstrakLayout title="Blog | MikelCanteroDev">
+  <div class="page-header">
     <div class="container">
-      <div class="breadcrumb">
-        <ul class="list-unstyled">
-          <li><a href="/">Inicio</a></li>
-          <li class="active">Blog</li>
-        </ul>
-        <h1 class="title h2">Blog</h1>
-      </div>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-minimal">
+          <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+          <li class="breadcrumb-item active">Blog</li>
+        </ol>
+      </nav>
+      <h1>Blog</h1>
+      <p class="text-secondary fs-5 mb-0">Artículos sobre desarrollo de software, arquitectura y automatización.</p>
     </div>
-    <ul class="shape-group-8 list-unstyled">
-      <li
-        class="shape shape-1"
-        data-sal="slide-right"
-        data-sal-duration="500"
-        data-sal-delay="100"
-      >
-        <img src="/abstrak/assets/media/others/bubble-9.png" alt="Bubble" />
-      </li>
-      <li
-        class="shape shape-2"
-        data-sal="slide-left"
-        data-sal-duration="500"
-        data-sal-delay="200"
-      >
-        <img src="/abstrak/assets/media/others/bubble-10.png" alt="Bubble" />
-      </li>
-      <li
-        class="shape shape-3"
-        data-sal="slide-up"
-        data-sal-duration="500"
-        data-sal-delay="300"
-      >
-        <img src="/abstrak/assets/media/others/line-4.png" alt="Line" />
-      </li>
-    </ul>
   </div>
 
-  <section class="section-padding-equal">
+  <section class="section section-alt">
     <div class="container">
-      <div class="row row-40">
+      <div class="row g-5">
         <div class="col-lg-8">
-          <div class="row row-40" id="blog-posts-container">
-            {items.map((post) => <BlogGrid post={post} />)}
-          </div>
-          <div class="pagination" id="blog-pagination">
-            <ul>
-              <!-- Previous Button -->
-              {
-                currentPage > 1 && (
-                  <li>
-                    <a
-                      class="prev page-numbers"
-                      href={pageUrl(currentPage - 1)}
-                    >
-                      <i class="fal fa-arrow-left" />
-                    </a>
-                  </li>
-                )
-              }
-
-              <!-- Page Numbers -->
-              {
-                Array.from({ length: totalPages }, (_, i) => i + 1).map((n) => (
-                  <li>
-                    <a
-                      href={pageUrl(n)}
-                      class={`page-numbers ${n === currentPage ? "current" : ""}`}
-                    >
-                      {n}
-                    </a>
-                  </li>
-                ))
-              }
-
-              <!-- Next Button -->
-              {
-                currentPage < totalPages && (
-                  <li>
-                    <a
-                      class="next page-numbers"
-                      href={pageUrl(currentPage + 1)}
-                    >
-                      <i class="fal fa-arrow-right" />
-                    </a>
-                  </li>
-                )
-              }
-            </ul>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="widget widget-search">
-            <h4 class="widget-title">Buscar</h4>
-            <div class="blog-search">
-              <form action="#" class="blog-search-form" onsubmit="return false;">
-                <input type="text" id="blog-search" placeholder="Buscar por título..." />
-                <button class="search-button" type="button"><i class="fal fa-search"></i></button>
-              </form>
+          <!-- Search -->
+          <div class="mb-4">
+            <div class="search-form">
+              <input type="text" id="blog-search" placeholder="Buscar por título..." />
+              <button type="button" aria-label="Buscar"><i class="fas fa-search"></i></button>
             </div>
           </div>
+
+          <!-- Posts Grid -->
+          <div class="row g-4" id="blog-posts-container">
+            {items.map((post) => {
+              const imgSrc = typeof post.data.image === 'string' ? post.data.image : post.data.image?.src;
+              return (
+                <div class="col-md-6">
+                  <div class="card-custom">
+                    <div class="card-thumb">
+                      <a href={"/blog/" + post.id}>
+                        <img src={imgSrc || ""} alt={post.data.title} loading="lazy" />
+                      </a>
+                    </div>
+                    <div class="card-body">
+                      <h3 class="card-title">
+                        <a href={"/blog/" + post.id}>{post.data.title}</a>
+                      </h3>
+                      {post.data.description && <p class="text-secondary mt-2 mb-0" style="font-size: 14px; line-height: 1.5;">{post.data.description}</p>}
+                      <a href={"/blog/" + post.id} class="read-more mt-2 d-inline-block">Leer más <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          <!-- Pagination -->
+          <nav class="pagination-minimal d-flex justify-content-center mt-5" id="blog-pagination" aria-label="Paginación del blog">
+            <ul class="pagination">
+              <li class={`page-item ${currentPage <= 1 ? 'disabled' : ''}`}>
+                <a class="page-link" href={currentPage > 1 ? pageUrl(currentPage - 1) : '#'} aria-label="Anterior">
+                  <i class="fas fa-arrow-left"></i>
+                </a>
+              </li>
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((n) => (
+                <li class={`page-item ${n === currentPage ? 'active' : ''}`}>
+                  <a class="page-link" href={pageUrl(n)}>{n}</a>
+                </li>
+              ))}
+              <li class={`page-item ${currentPage >= totalPages ? 'disabled' : ''}`}>
+                <a class="page-link" href={currentPage < totalPages ? pageUrl(currentPage + 1) : '#'} aria-label="Siguiente">
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+        <div class="col-lg-4">
           <ContentSidebar />
         </div>
       </div>
     </div>
   </section>
+
   <WorkTogether />
 
   <script define:vars={{ postsJson }}>
@@ -159,7 +124,6 @@ export async function getStaticPaths() {
 
       if (!searchInput || !postsContainer) return;
 
-      // Guardamos el HTML original de la página y su paginación
       const originalHTML = postsContainer.innerHTML;
       const originalPaginationDisplay = pagination ? pagination.style.display : "";
 
@@ -167,7 +131,6 @@ export async function getStaticPaths() {
         const query = e.target.value.trim().toLowerCase();
 
         if (query === "") {
-          // Restaurar estado original
           postsContainer.innerHTML = originalHTML;
           if (pagination) {
             pagination.style.display = originalPaginationDisplay;
@@ -175,12 +138,10 @@ export async function getStaticPaths() {
           return;
         }
 
-        // Filtrar posts por título
         const filtered = postsJson.filter((post) =>
           post.title.toLowerCase().includes(query)
         );
 
-        // Ocultar paginación durante la búsqueda
         if (pagination) {
           pagination.style.display = "none";
         }
@@ -188,27 +149,27 @@ export async function getStaticPaths() {
         if (filtered.length === 0) {
           postsContainer.innerHTML = `
             <div class="col-12 text-center py-5">
-              <h5 class="text-muted">No se encontraron publicaciones que coincidan con "${e.target.value}".</h5>
+              <h5 class="text-secondary">No se encontraron publicaciones que coincidan con "${e.target.value}".</h5>
             </div>
           `;
           return;
         }
 
-        // Renderizar los resultados filtrados
         postsContainer.innerHTML = filtered
           .map(
             (post) => `
           <div class="col-md-6">
-            <div class="project-grid project-style-2">
-              <div class="thumbnail">
+            <div class="card-custom">
+              <div class="card-thumb">
                 <a href="/blog/${post.id}">
-                  <img src="${post.image}" alt="blog" />
+                  <img src="${post.image}" alt="${post.title}" loading="lazy" />
                 </a>
               </div>
-              <div class="content">
-                <h3 class="title h6 bg-color-dark text-white px-3 py-2">
+              <div class="card-body">
+                <h3 class="card-title">
                   <a href="/blog/${post.id}">${post.title}</a>
                 </h3>
+                <a href="/blog/${post.id}" class="read-more mt-2 d-inline-block">Leer m&aacute;s <i class="fas fa-arrow-right"></i></a>
               </div>
             </div>
           </div>
@@ -218,4 +179,4 @@ export async function getStaticPaths() {
       });
     });
   </script>
-</AbstrakProjectLayout>
+</AbstrakLayout>

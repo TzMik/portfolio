@@ -1,10 +1,7 @@
 ---
 import BackToTop from "../components/abstrak/BackToTop.astro";
-import Preloader from "../components/abstrak/Preloader.astro";
-import ThemeColorSwitch from "../components/abstrak/ThemeColorSwitch.astro";
 import Header from "../components/abstrak/Header.astro";
 import Footer from "../components/abstrak/Footer.astro";
-import Offcanvas from "../components/abstrak/Offcanvas.astro";
 import MyNumbers from "../components/abstrak/MyNumbers.astro";
 
 import { socialLinks } from "../data/MainInformation";
@@ -17,18 +14,29 @@ const {
 ---
 
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="es">
   <head>
     <!-- Meta Data -->
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="keywords" content="Mikel Cantero, consultoría software, desarrollo a medida, automatización PYMES, ingeniero de software, portfolio, eficiencia operativa" />
+    <meta name="author" content="Mikel Cantero" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#0b0e14" />
+    <link rel="canonical" href={Astro.url} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={image} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={Astro.url.href} />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:site_name" content="Mikel Cantero - Ingeniero de Software" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
 
     <meta
       name="viewport"
@@ -61,7 +69,9 @@ const {
       href="/abstrak/assets/css/vendor/odometer-theme-default.css"
     />
 
-    <!-- Site Stylesheet -->
+    <!-- Minimal Theme Stylesheet -->
+    <link rel="stylesheet" href="/abstrak/assets/css/minimal.css" />
+    <!-- Site Stylesheet (legacy) -->
     <link rel="stylesheet" href="/abstrak/assets/css/app.css" />
 
     <!-- Google tag (gtag.js) -->
@@ -80,15 +90,11 @@ const {
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4438825383617435"></script>
   </head>
 
-  <body class="sticky-header">
+  <body>
     <!--[if lte IE 9]>
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
   	<![endif]-->
     <BackToTop />
-
-    <Preloader />
-
-    <ThemeColorSwitch />
 
     <div id="main-wrapper" class="main-wrapper">
       <Header />
@@ -100,11 +106,6 @@ const {
       <!--=====================================-->
       <MyNumbers />
       <Footer />
-
-      <!--=====================================-->
-      <!--=       Offcanvas Menu Area       	=-->
-      <!--=====================================-->
-      <Offcanvas socialLinks={socialLinks} />
     </div>
 
     <!-- Jquery Js -->

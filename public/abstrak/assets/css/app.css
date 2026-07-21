@@ -746,7 +746,6 @@ input {
     color: var(--color-primary);
     font-weight: 500;
     position: relative;
-    margin-right: 22px;
 }
 
 .breadcrumb li:after {
@@ -4600,7 +4599,7 @@ Pagination
    Project
 -------------------------*/
 .project-grid {
-    box-shadow: 0 55px 86px -35px #ECF2F6;
+    box-shadow: 0 8px 22px -8px #b8b9ba;
     border-radius: 30px;
     margin-bottom: 40px;
 }
@@ -4628,18 +4627,18 @@ Pagination
 .project-grid .content {
     background-color: var(--color-white);
     border-radius: 0 0 30px 30px;
-    padding: 40px 50px;
+    padding: 15px 20px;
 }
 
 @media only screen and (max-width: 1199px) {
     .project-grid .content {
-        padding: 40px;
+        padding: 15px 20px;
     }
 }
 
 @media only screen and (max-width: 767px) {
     .project-grid .content {
-        padding: 30px;
+        padding: 15px 20px;
     }
 }
 
@@ -4647,6 +4646,7 @@ Pagination
     letter-spacing: -0.045em;
     margin-bottom: 10px;
     border-radius: 1rem 0 0 1rem;
+    font-size: 18px;
 }
 
 .project-grid .content .title a:hover {

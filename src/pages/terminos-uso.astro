@@ -1,126 +1,58 @@
 ---
 import AbstrakLayout from "../layouts/AbstrakLayout.astro";
 import ContentSidebar from "../components/abstrak/ContentSidebar.astro";
-import { calendarLink } from "../data/MainInformation";
-import "../styles/AbstrakProjectLayout.css";
 ---
 
 <AbstrakLayout title="Términos de Uso | MikelCanteroDev" description="Términos de uso y condiciones del sitio web MikelCanteroDev, incluyendo información legal, propiedad intelectual y avisos de publicidad.">
-  <div class="breadcrum-area breadcrumb-banner single-breadcrumb">
+  <div class="page-header">
     <div class="container">
-      <div class="breadcrumb">
-        <ul class="list-unstyled">
-          <li><a href="/">Inicio</a></li>
-          <li class="active">Términos de Uso</li>
-        </ul>
-      </div>
-      <div class="row align-items-center">
-        <div class="col-lg-12">
-          <div class="section-heading heading-left">
-            <h1 class="title h2">Términos de Uso</h1>
-            <p>Última actualización: 26 de mayo de 2026</p>
-          </div>
-        </div>
-      </div>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-minimal">
+          <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+          <li class="breadcrumb-item active">Términos de Uso</li>
+        </ol>
+      </nav>
+      <h1>Términos de Uso</h1>
+      <p class="text-secondary">Última actualización: 26 de mayo de 2026</p>
     </div>
-    <ul class="shape-group-8 list-unstyled">
-      <li class="shape shape-1" data-sal="slide-right" data-sal-duration="500" data-sal-delay="100">
-        <img src="/abstrak/assets/media/others/bubble-9.png" alt="Bubble" />
-      </li>
-      <li class="shape shape-2" data-sal="slide-left" data-sal-duration="500" data-sal-delay="200">
-        <img src="/abstrak/assets/media/others/bubble-20.png" alt="Bubble" />
-      </li>
-      <li class="shape shape-3" data-sal="slide-up" data-sal-duration="500" data-sal-delay="300">
-        <img src="/abstrak/assets/media/others/line-4.png" alt="Line" />
-      </li>
-    </ul>
   </div>
 
-  <section class="section section-padding case-study-featured-area">
+  <section class="section section-alt">
     <div class="container">
-      <div class="row row-40">
-        <div class="col-lg-8" id="project-content">
-          <p>
-            Bienvenido a <strong>MikelCanteroDev</strong>. Al acceder y navegar por este sitio web (<a href="https://mikelcantero.dev">https://mikelcantero.dev</a>), usted acepta cumplir y estar sujeto a los siguientes términos y condiciones de uso. Si no está de acuerdo con alguna parte de estos términos, por favor, no utilice nuestro sitio web.
-          </p>
+      <div class="row g-5">
+        <div class="col-lg-8">
+          <div class="page-content post-content">
+            <p>Bienvenido a <strong>MikelCanteroDev</strong>. Al acceder y navegar por este sitio web (<a href="https://mikelcantero.dev">https://mikelcantero.dev</a>), usted acepta cumplir y estar sujeto a los siguientes términos y condiciones de uso.</p>
 
-          <h2 class="title h3 mt-5">1. Aceptación de los Términos</h2>
-          <p>
-            El acceso y uso de este sitio web atribuye la condición de usuario, implicando su aceptación completa y sin reservas de todas y cada una de las disposiciones incluidas en estos Términos de Uso en el momento mismo en que accede al sitio. Estos términos pueden ser modificados en cualquier momento sin previo aviso, por lo que le recomendamos revisarlos de manera periódica.
-          </p>
+            <h2>1. Aceptación de los Términos</h2>
+            <p>El acceso y uso de este sitio web atribuye la condición de usuario, implicando su aceptación completa y sin reservas de todas y cada una de las disposiciones incluidas en estos Términos de Uso.</p>
 
-          <h2 class="title h3 mt-5">2. Uso Permitido del Sitio Web</h2>
-          <p>
-            El usuario se compromete a utilizar el sitio web, sus contenidos y servicios de conformidad con la ley, la moral, las buenas costumbres y el orden público. Queda estrictamente prohibido utilizar este sitio para:
-          </p>
-          <ul>
-            <li>Difundir virus informáticos o cualquier software malicioso que pueda dañar la infraestructura de este sitio o los sistemas de otros usuarios.</li>
-            <li>Realizar actividades de ingeniería inversa, hacking o vulneración de los sistemas de seguridad del sitio.</li>
-            <li>Introducir o compartir información falsa, difamatoria, obscena o ilegal en cualquier formulario o sección interactiva del sitio.</li>
-            <li>Usar scripts, robots u otras tecnologías automatizadas para extraer datos del sitio sin autorización expresa y por escrito de MikelCanteroDev.</li>
-          </ul>
+            <h2>2. Uso Permitido del Sitio Web</h2>
+            <p>El usuario se compromete a utilizar el sitio web de conformidad con la ley. Queda prohibido:</p>
+            <ul>
+              <li>Difundir virus informáticos o cualquier software malicioso.</li>
+              <li>Realizar actividades de ingeniería inversa o vulneración de los sistemas de seguridad.</li>
+              <li>Usar scripts, robots u otras tecnologías automatizadas para extraer datos sin autorización.</li>
+            </ul>
 
-          <h2 class="title h3 mt-5">3. Propiedad Intelectual e Industrial</h2>
-          <p>
-            Todos los contenidos de este sitio web, incluyendo de manera enunciativa más no limitativa, textos, códigos de programación (HTML, JS, CSS, Astro), artículos de blog, casos de estudio, logotipos, marcas, gráficos, diseños, imágenes y material de audio o video, son propiedad exclusiva de <strong>Mikel Cantero (MikelCanteroDev)</strong> o de terceros que han autorizado su uso, y están protegidos por las leyes de propiedad intelectual e industrial aplicables en México y a nivel internacional.
-          </p>
-          <p>
-            Queda estrictamente prohibida la reproducción, distribución, modificación, comunicación pública o transformación de cualquier contenido de este sitio con fines comerciales o de lucro sin la autorización previa por escrito de su titular. Su uso con fines informativos, educativos y no comerciales está permitido siempre que se cite explícitamente la fuente y la autoría de <strong>MikelCanteroDev</strong>.
-          </p>
+            <h2>3. Propiedad Intelectual</h2>
+            <p>Todos los contenidos de este sitio web son propiedad exclusiva de <strong>Mikel Cantero (MikelCanteroDev)</strong> o de terceros que han autorizado su uso, y están protegidos por las leyes de propiedad intelectual aplicables.</p>
 
-          <h2 class="title h3 mt-5">4. Exclusión de Garantías y Limitación de Responsabilidad</h2>
-          <p>
-            La información y los servicios ofrecidos en este sitio web se proporcionan "tal cual" y "según disponibilidad", sin garantías de ningún tipo, ya sean expresas o implícitas.
-          </p>
-          <p>
-            <strong>MikelCanteroDev</strong> no garantiza que el sitio web funcione de manera ininterrumpida o libre de errores, que los defectos sean corregidos, o que el servidor que lo pone a disposición esté libre de virus u otros componentes dañinos.
-          </p>
-          <p>
-            Bajo ninguna circunstancia MikelCanteroDev será responsable de ningún daño directo, indirecto, incidental, consecuente o punitivo derivado de:
-          </p>
-          <ul>
-            <li>La imposibilidad de acceder o utilizar el sitio web.</li>
-            <li>La presencia de software dañino en los archivos que se descarguen o visualicen.</li>
-            <li>Decisiones comerciales o técnicas tomadas por el usuario basadas en los artículos, guías o información publicada en este sitio web.</li>
-          </ul>
+            <h2>4. Exclusión de Garantías</h2>
+            <p>La información y los servicios ofrecidos en este sitio web se proporcionan "tal cual", sin garantías de ningún tipo. MikelCanteroDev no garantiza que el sitio web funcione de manera ininterrumpida o libre de errores.</p>
 
-          <h2 class="title h3 mt-5">5. Publicidad, Google AdSense y Servicios de Terceros</h2>
-          <p>
-            Este sitio web puede utilizar <strong>Google AdSense</strong> y redes de publicidad de terceros para mostrar anuncios publicitarios patrocinados. 
-          </p>
-          <ul>
-            <li>Los anuncios se sirven de forma automática y están basados en tecnologías de seguimiento (como las cookies descritas en nuestra <a href="/politica-privacidad">Política de Privacidad</a>).</li>
-            <li>MikelCanteroDev no se hace responsable de las ofertas, productos o servicios que los anunciantes promocionen a través de dichos banners o enlaces patrocinados. Cualquier reclamación relacionada con un anuncio deberá realizarse directamente al respectivo proveedor del servicio o producto anunciado.</li>
-          </ul>
+            <h2>5. Publicidad y Google AdSense</h2>
+            <p>Este sitio web puede utilizar Google AdSense y redes de publicidad de terceros para mostrar anuncios. MikelCanteroDev no se hace responsable de las ofertas, productos o servicios que los anunciantes promocionen.</p>
 
-          <h2 class="title h3 mt-5">6. Google Analytics e Información Estadística</h2>
-          <p>
-            Este sitio web hace uso de <strong>Google Analytics</strong> para medir y analizar el comportamiento de los usuarios en el sitio. Al utilizar este sitio, usted comprende y acepta que Google puede recopilar datos de su navegación de manera anónima para generar informes estadísticos, de acuerdo con los términos estipulados en nuestra <a href="/politica-privacidad">Política de Privacidad</a>.
-          </p>
+            <h2>6. Legislación Aplicable</h2>
+            <p>Para la resolución de todas las disputas se aplicará la legislación de los <strong>Estados Unidos Mexicanos</strong>. Las partes se someten a la jurisdicción de los tribunales competentes en <strong>Zapopan, Jalisco, México</strong>.</p>
 
-          <h2 class="title h3 mt-5">7. Enlaces Externos (Links)</h2>
-          <p>
-            Este sitio contiene enlaces a sitios web de terceros (como calendarios de reserva de citas, redes sociales GitHub, LinkedIn, Twitter, etc.). MikelCanteroDev no ejerce ningún tipo de control ni asume responsabilidad alguna por el contenido, políticas de privacidad o prácticas de los sitios web de terceros a los que redirigen estos enlaces. El acceso a dichos enlaces se realiza bajo la exclusiva responsabilidad del usuario.
-          </p>
-
-          <h2 class="title h3 mt-5">8. Modificación de los Términos de Uso</h2>
-          <p>
-            Nos reservamos el derecho de modificar o reemplazar estos Términos de Uso en cualquier momento. Los cambios entrarán en vigor de manera inmediata tras su publicación en esta página web. Al continuar utilizando el sitio después de que se publiquen las modificaciones, usted acepta quedar vinculado por los términos modificados.
-          </p>
-
-          <h2 class="title h3 mt-5">9. Legislación Aplicable y Jurisdicción</h2>
-          <p>
-            Para la resolución de todas las disputas, controversias o reclamaciones que puedan surgir en relación con este sitio web o las actividades en él desarrolladas, se aplicará la legislación de los <strong>Estados Unidos Mexicanos</strong>. Las partes se someten expresamente a la jurisdicción de los tribunales competentes en la ciudad de <strong>Zapopan, Jalisco, México</strong>, renunciando expresamente a cualquier otro fuero que pudiera corresponderles por razón de sus domicilios presentes o futuros.
-          </p>
-
-          <h2 class="title h3 mt-5">10. Contacto</h2>
-          <p>
-            Si tiene alguna duda o comentario sobre estos Términos de Uso, por favor contáctenos a través de:
-          </p>
-          <ul>
-            <li><strong>Correo electrónico:</strong> <a href="mailto:contacto@mikelcantero.dev">contacto@mikelcantero.dev</a></li>
-            <li><strong>WhatsApp / Teléfono:</strong> <a href="https://wa.me/523326462099" target="_blank" rel="noopener noreferrer">+52 33 2646 2099</a></li>
-          </ul>
+            <h2>7. Contacto</h2>
+            <ul>
+              <li><strong>Correo electrónico:</strong> <a href="mailto:contacto@mikelcantero.dev">contacto@mikelcantero.dev</a></li>
+              <li><strong>WhatsApp / Teléfono:</strong> <a href="https://wa.me/523326462099" target="_blank" rel="noopener noreferrer">+52 33 2646 2099</a></li>
+            </ul>
+          </div>
         </div>
         <div class="col-lg-4">
           <ContentSidebar />

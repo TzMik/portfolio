@@ -1,41 +1,61 @@
 ---
 import { calendarLink } from "../../data/MainInformation";
 ---
-<section class="section call-to-action-area">
+<section class="cta-section">
   <div class="container">
-    <div class="call-to-action">
-      <div class="section-heading heading-light">
-        <span class="subtitle">Trabajemos juntos</span>
-        <h2 class="title">¿Necesitas ayuda con tu proyecto?</h2>
-        <a
-          href={calendarLink}
-          target="_blank"
-          class="axil-btn btn-large btn-fill-white">¡Hablemos!</a
-        >
-      </div>
+    <div class="cta-content">
+      <span class="cta-subtitle">Trabajemos juntos</span>
+      <h2 class="cta-title">¿Necesitas ayuda con tu proyecto?</h2>
+      <a href={calendarLink} target="_blank" class="cta-btn">¡Hablemos!</a>
     </div>
   </div>
-  <ul class="list-unstyled shape-group-9">
-    <li class="shape shape-1">
-      <img src="/abstrak/assets/media/others/bubble-12.png" alt="Comments" />
-    </li>
-    <li class="shape shape-2">
-      <img src="/abstrak/assets/media/others/bubble-16.png" alt="Comments" />
-    </li>
-    <li class="shape shape-3">
-      <img src="/abstrak/assets/media/others/bubble-13.png" alt="Comments" />
-    </li>
-    <li class="shape shape-4">
-      <img src="/abstrak/assets/media/others/bubble-14.png" alt="Comments" />
-    </li>
-    <li class="shape shape-5">
-      <img src="/abstrak/assets/media/others/bubble-16.png" alt="Comments" />
-    </li>
-    <li class="shape shape-6">
-      <img src="/abstrak/assets/media/others/bubble-15.png" alt="Comments" />
-    </li>
-    <li class="shape shape-7">
-      <img src="/abstrak/assets/media/others/bubble-16.png" alt="Comments" />
-    </li>
-  </ul>
 </section>
+
+<style is:global>
+  .cta-section {
+    padding: 80px 0;
+    background: var(--dark, #1a1a2e);
+    text-align: center;
+  }
+
+  .cta-content {
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .cta-subtitle {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--purple, #896BA7);
+    margin-bottom: 16px;
+  }
+
+  .cta-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 32px;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    padding: 14px 40px;
+    background: var(--purple, #896BA7);
+    color: #fff;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 16px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .cta-btn:hover {
+    background: #7a5d96;
+    color: #fff;
+  }
+</style>

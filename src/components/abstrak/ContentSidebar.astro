@@ -5,63 +5,49 @@ import { getSortedProjects } from "../../lib/projects.js";
 const projects = await getSortedProjects();
 const latestProjects = projects.slice(0, 3);
 ---
-<div class="axil-sidebar">
-  <div class="widget widget-banner-ad">
+<div>
+  <!-- CTA Banner -->
+  <div class="sidebar-card">
+    <a href={calendarLink} target="_blank" class="btn btn-brand btn-sm w-100 mb-3">
+      <i class="fas fa-calendar-alt me-1"></i>Agenda una llamada
+    </a>
     <a href={calendarLink} target="_blank">
-      <div class="banner-cta">
-        <button class="axil-btn btn-fill-primary">Agenda una llamada</button>
-      </div>
-      <img src="/assets/images/banners/consultancy.webp" alt="banner" />
+      <img src="/assets/images/banners/consultancy.webp" alt="Consultoría" style="border-radius: var(--radius); width: 100%;" loading="lazy" />
     </a>
   </div>
-  <div class="widget widge-social-share">
-    <div class="blog-share">
-      <h5 class="title">Sígueme:</h5>
-      <ul class="social-list list-unstyled">
-        {
-          socialLinks.map((link) => (
-            <li>
-              <a href={link.href} target="_blank">
-                <i class={link.icon} />
-              </a>
-            </li>
-          ))
-        }
-      </ul>
+
+  <!-- Social -->
+  <div class="sidebar-card">
+    <h4>Sígueme</h4>
+    <div class="d-flex gap-2 flex-wrap">
+      {socialLinks.map((link) => (
+        <a href={link.href} class="social-link" target="_blank" aria-label={link.icon.replace('fab fa-', '')} style="background: var(--border); color: var(--text-secondary); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 10px; font-size: 18px; transition: all var(--transition);">
+          <i class={link.icon}></i>
+        </a>
+      ))}
     </div>
   </div>
-  <div class="widget widget-recent-post">
-    <h4 class="widget-title">Últimas publicaciones</h4>
-    <div class="post-list-wrap">
-        {
-          latestProjects.map((post) => (
-            <div class="single-post">
-              <div class="post-thumbnail">
-                <a href={`/projects/${post.id}`}>
-                  <img
-                    src={typeof post.data.image === 'string' ? post.data.image : post.data.image?.src}
-                    alt={post.data.title}
-                    width="100"
-                  />
-                </a>
-              </div>
-              <div class="post-content">
-                <h6 class="title">
-                  <a href={`/projects/${post.id}`}>{post.data.title}</a>
-                </h6>
-              <ul class="blog-meta list-unstyled">
-                <li>
-                  {post.data.pub_date.toLocaleDateString("es-ES", {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
-                </li>
-              </ul>
+
+  <!-- Latest Projects -->
+  <div class="sidebar-card">
+    <h4>Últimas publicaciones</h4>
+    {latestProjects.map((post) => {
+      const imgSrc = typeof post.data.image === 'string' ? post.data.image : post.data.image?.src;
+      return (
+        <div class="sidebar-post">
+          {imgSrc && (
+            <a href={`/projects/${post.id}`}>
+              <img src={imgSrc} alt={post.data.title} loading="lazy" />
+            </a>
+          )}
+          <div class="post-info">
+            <a href={`/projects/${post.id}`}>{post.data.title}</a>
+            <div class="date">
+              {post.data.pub_date.toLocaleDateString("es-ES", { year: "numeric", month: "long", day: "numeric" })}
             </div>
           </div>
-        ))
-      }
-    </div>
+        </div>
+      );
+    })}
   </div>
 </div>

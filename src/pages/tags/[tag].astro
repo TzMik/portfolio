@@ -1,9 +1,7 @@
 ---
 import { filterByTag, getTags } from '../../lib/blog-posts.js';
 import { PAGE_SIZE } from "../../lib/pagination.js";
-import Layout from '../../layouts/Layout.astro';
-import PostCard from '../../components/PostCard.astro';
-import "../../styles/ProjectLayout.css";
+import AbstrakLayout from '../../layouts/AbstrakLayout.astro';
 
 export async function getStaticPaths() {
   const allTags = await getTags();
@@ -12,7 +10,7 @@ export async function getStaticPaths() {
   for (const tag of allTags) {
     const posts = await filterByTag(tag);
     const totalPages = Math.max(Math.ceil(posts.length / PAGE_SIZE), 1);
-    
+
     for (let i = 1; i <= totalPages; i++) {
       paths.push({
         params: {
@@ -26,44 +24,80 @@ export async function getStaticPaths() {
   return paths;
 }
 
-const { tag, page } = Astro.params;
+const { tag, page: pageStr } = Astro.params;
+const page = pageStr;
 const allPostsWithTag = await filterByTag(tag);
 const currentPage = Number(page ?? "1");
 const totalPages = Math.max(Math.ceil(allPostsWithTag.length / PAGE_SIZE), 1);
 const start = (currentPage - 1) * PAGE_SIZE;
 const items = allPostsWithTag.slice(start, start + PAGE_SIZE);
 
-const pageUrl = (n) => `/tags/${tag}${n === 1 ? '' : `/${n}`}`;
-
+const pageUrl = (n: number) => `/tags/${tag}${n === 1 ? '' : `/${n}`}`;
 ---
-<Layout>
-  <section class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 container py-3 mt-5">
-    <div class="section-header">
-      <h1>Posts con la etiqueta: <span>{tag}</span></h1>
-      <p class="description">
-        Aquí puedes encontrar todas las publicaciones con la etiqueta: {tag}.
-      </p>
+
+<AbstrakLayout title={`${tag} - Blog | MikelCanteroDev`}>
+  <div class="page-header">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-minimal">
+          <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+          <li class="breadcrumb-item"><a href="/blog">Blog</a></li>
+          <li class="breadcrumb-item active">{tag}</li>
+        </ol>
+      </nav>
+      <h1>Posts con la etiqueta: <span style="color: var(--brand);">{tag}</span></h1>
+      <p class="text-secondary fs-5">Aquí puedes encontrar todas las publicaciones con la etiqueta: {tag}.</p>
     </div>
-    <div class="row justify-content-center">
-      {items.map((post) => (
-        <PostCard post={post} />
-      ))}
+  </div>
+
+  <section class="section section-alt">
+    <div class="container">
+      {items.length === 0 ? (
+        <div class="text-center py-5">
+          <h4>No hay publicaciones con esta etiqueta.</h4>
+        </div>
+      ) : (
+        <div class="row g-4">
+          {items.map((post) => {
+            const imgSrc = typeof post.data.image === 'string' ? post.data.image : post.data.image?.src;
+            return (
+              <div class="col-md-6 col-lg-4">
+                <div class="card-custom">
+                  <div class="card-thumb">
+                    <a href={"/blog/" + post.id}>
+                      <img src={imgSrc || ""} alt={post.data.title} loading="lazy" />
+                    </a>
+                  </div>
+                  <div class="card-body">
+                    <h3 class="card-title">
+                      <a href={"/blog/" + post.id}>{post.data.title}</a>
+                    </h3>
+                    <a href={"/blog/" + post.id} class="read-more d-inline-block mt-2">Leer más <i class="fas fa-arrow-right"></i></a>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
+
+      {totalPages > 1 && (
+        <nav class="pagination-minimal d-flex justify-content-center mt-5" aria-label="Paginación">
+          <ul class="pagination">
+            <li class={`page-item ${currentPage <= 1 ? 'disabled' : ''}`}>
+              <a class="page-link" href={currentPage > 1 ? pageUrl(currentPage - 1) : '#'} aria-label="Anterior"><i class="fas fa-arrow-left"></i></a>
+            </li>
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map((n) => (
+              <li class={`page-item ${n === currentPage ? 'active' : ''}`}>
+                <a class="page-link" href={pageUrl(n)}>{n}</a>
+              </li>
+            ))}
+            <li class={`page-item ${currentPage >= totalPages ? 'disabled' : ''}`}>
+              <a class="page-link" href={currentPage < totalPages ? pageUrl(currentPage + 1) : '#'} aria-label="Siguiente"><i class="fas fa-arrow-right"></i></a>
+            </li>
+          </ul>
+        </nav>
+      )}
     </div>
   </section>
-
-  {totalPages > 1 && (
-    <nav class="mt-8 d-flex flex-wrap align-items-center justify-content-center gap-2">
-      {Array.from({ length: totalPages }, (_, i) => {
-        const n = i + 1;
-        return (
-          <a
-            href={pageUrl(n)}
-            class={`rounded-md border px-3 py-1 text-sm ${n === currentPage ? "bg-black text-white" : ""}`}
-          >
-            {n}
-          </a>
-        );
-      })}
-    </nav>
-  )}
-</Layout>
+</AbstrakLayout>

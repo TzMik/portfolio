@@ -4,7 +4,6 @@ import ContentSidebar from "../../components/abstrak/ContentSidebar.astro";
 import { calendarLink, yearsOfExperience } from "../../data/MainInformation";
 import "../../styles/AbstrakProjectLayout.css";
 import { getSortedProjects } from "../../lib/projects.js";
-import ProjectGrid from "../../components/abstrak/ProjectGrid.astro";
 import WorkTogether from "../../components/abstrak/WorkTogether.astro";
 
 let topProjects = await getSortedProjects();
@@ -12,88 +11,54 @@ topProjects = topProjects.slice(0, 2);
 ---
 
 <AbstrakLayout title="Sobre Mí | MikelCanteroDev">
-  <div class="breadcrum-area">
+  <div class="page-header">
     <div class="container">
-      <div class="row align-items-center">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-minimal">
+          <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+          <li class="breadcrumb-item active">Sobre mí</li>
+        </ol>
+      </nav>
+      <div class="row align-items-center g-5">
         <div class="col-lg-6">
-          <h1 class="title h2">
-            Hago que el software trabaje para ti y no al revés
-          </h1>
-          <p>
-            No diseño software para computadoras; diseño soluciones para personas
-            y negocios
-          </p>
+          <h1>Hago que el software trabaje para ti y no al revés</h1>
+          <p class="text-secondary fs-5">No diseño software para computadoras; diseño soluciones para personas y negocios.</p>
         </div>
-        <div class="d-flex justify-content-center col-lg-6">
-          <img
-            src="/assets/images/portfolio.jpeg"
-            width="300"
-            alt="Mikel Cantero"
-            class="custom-shape"
-          />
+        <div class="col-lg-6 text-center">
+          <img src="/assets/images/portfolio.jpeg" width="200" alt="Mikel Cantero" style="border-radius: var(--radius-lg);" loading="lazy" />
         </div>
       </div>
     </div>
-    <ul class="shape-group-8 list-unstyled">
-      <li
-        class="shape shape-1"
-        data-sal="slide-right"
-        data-sal-duration="500"
-        data-sal-delay="100"
-      >
-        <img src="/abstrak/assets/media/others/bubble-9.png" alt="Bubble" />
-      </li>
-      <li
-        class="shape shape-2"
-        data-sal="slide-left"
-        data-sal-duration="500"
-        data-sal-delay="200"
-      >
-        <img src="/abstrak/assets/media/others/bubble-22.png" alt="Bubble" />
-      </li>
-      <li
-        class="shape shape-3"
-        data-sal="slide-up"
-        data-sal-duration="500"
-        data-sal-delay="300"
-      >
-        <img src="/abstrak/assets/media/others/line-4.png" alt="Line" />
-      </li>
-    </ul>
   </div>
-  <section class="section section-padding case-study-featured-area">
+
+  <section class="section section-alt">
     <div class="container">
-      <div class="row row-40">
+      <div class="row g-5">
         <div class="col-lg-8" id="project-content">
-          <p>
-            Seguramente has sentido que, a medida que tu empresa crece, los procesos que antes funcionaban hoy se quedan cortos. Hojas de cálculo infinitas, tareas manuales que roban horas a tu equipo y la sensación de que, si no estás presente, el sistema se detiene.
-          </p>
-          <p>
-            <b>Yo estoy aquí para cambiar eso.</b>
-          </p>
-          <h2 class="title h3">De las grandes ligas a tu negocio</h2>
-          <p>
-            Mi trayectoria no empezó ayer. Soy <b>Ingeniero Informático con un MBA</b>. He tenido el privilegio de ser <b>CTO liderando equipos de 13 profesionales y gestionando más de 20 proyectos para marcas de renombre como Clõe y Fashion Group</b>.
-          </p>
-          <p>
-            He gestionado sistemas que han llegado a <b>soportar a más de 1 millón de usuarios y optimizado bases de datos con más de 20 millones de registros</b>. Pero, ¿por qué te cuento esto? No es para presumir números, sino para que sepas que sé lo que significa la <b>escalabilidad real</b>.
-          </p>
-          <h2 class="title h3">¿Por qué trabajar conmigo?</h2>
-          <p>
-            A diferencia de un programador convencional, yo no solo veo código; veo negocios.Hablo tu idioma: </p>
-          <ul>
-            <li>Gracias a mi MBA, <b>entiendo de rentabilidad, eficiencia y estrategia</b>, no solo de servidores.</li>
-            <li>Experiencia "En las trincheras": <b>He liderado proyectos desde cero hasta su fase internacional en más de 50 países</b>.</li>
-            <li>Adiós al caos: Mi especialidad es <b>detectar esos "cuellos de botella"</b> que frenan tu operación y eliminarlos con <b>automatizaciones inteligentes</b>.</li>
-          </ul>
-          <h2 class="title h3">Mi filosofía es simple: Menos manual, más estratégico</h2>
-          <p>
-            Hoy trabajo como consultor independiente porque disfruto ver el impacto directo que tiene una buena arquitectura de software en una PyME. Utilizo herramientas de última generación como <b>Laravel, Node.JS y Python</b> (entre otras muchas tecnologías) para crear soluciones que no solo resuelven el problema de hoy, sino que están listas para el crecimiento de mañana.
-          </p>
-          <blockquote>
-            <span class="title h5">¿Listo para eliminar el caos operativo de tu empresa?</span>
-            <a href={calendarLink} target="_blank" class="axil-btn btn-fill-primary text-white">Agendar mi Diagnóstico de Eficiencia Gratis</a>
-          </blockquote>
+          <div class="post-content">
+            <p>Seguramente has sentido que, a medida que tu empresa crece, los procesos que antes funcionaban hoy se quedan cortos. Hojas de cálculo infinitas, tareas manuales que roban horas a tu equipo y la sensación de que, si no estás presente, el sistema se detiene.</p>
+            <p><strong>Yo estoy aquí para cambiar eso.</strong></p>
+
+            <h2>De las grandes ligas a tu negocio</h2>
+            <p>Mi trayectoria no empezó ayer. Soy <strong>Ingeniero Informático con un MBA</strong>. He tenido el privilegio de ser <strong>CTO liderando equipos de 13 profesionales y gestionando más de 20 proyectos para marcas de renombre como Clõe y Fashion Group</strong>.</p>
+            <p>He gestionado sistemas que han llegado a <strong>soportar a más de 1 millón de usuarios y optimizado bases de datos con más de 20 millones de registros</strong>. Pero, ¿por qué te cuento esto? No es para presumir números, sino para que sepas que sé lo que significa la <strong>escalabilidad real</strong>.</p>
+
+            <h2>¿Por qué trabajar conmigo?</h2>
+            <p>A diferencia de un programador convencional, yo no solo veo código; veo negocios. Hablo tu idioma:</p>
+            <ul>
+              <li>Gracias a mi MBA, <strong>entiendo de rentabilidad, eficiencia y estrategia</strong>, no solo de servidores.</li>
+              <li>Experiencia "En las trincheras": <strong>He liderado proyectos desde cero hasta su fase internacional en más de 50 países</strong>.</li>
+              <li>Adiós al caos: Mi especialidad es <strong>detectar esos "cuellos de botella"</strong> que frenan tu operación y eliminarlos con <strong>automatizaciones inteligentes</strong>.</li>
+            </ul>
+
+            <h2>Mi filosofía es simple: Menos manual, más estratégico</h2>
+            <p>Hoy trabajo como consultor independiente porque disfruto ver el impacto directo que tiene una buena arquitectura de software en una PyME. Utilizo herramientas de última generación como <strong>Laravel, Node.JS y Python</strong> (entre otras muchas tecnologías) para crear soluciones que no solo resuelven el problema de hoy, sino que están listas para el crecimiento de mañana.</p>
+
+            <blockquote>
+              <span style="font-size: 18px; font-weight: 600; display: block; margin-bottom: 16px;">¿Listo para eliminar el caos operativo de tu empresa?</span>
+              <a href={calendarLink} target="_blank" class="btn btn-brand">Agendar mi Diagnóstico de Eficiencia Gratis</a>
+            </blockquote>
+          </div>
         </div>
         <div class="col-lg-4">
           <ContentSidebar />
@@ -101,5 +66,39 @@ topProjects = topProjects.slice(0, 2);
       </div>
     </div>
   </section>
+
+  <!-- Featured Projects -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Portafolio</span>
+        <h2 class="section-title">Proyectos Destacados</h2>
+      </div>
+      <div class="row g-4 justify-content-center">
+        {
+          topProjects.map((project) => {
+            const imgSrc = typeof project.data.image === 'string' ? project.data.image : project.data.image?.src;
+            return (
+              <div class="col-md-6">
+                <div class="card-custom">
+                  <div class="card-thumb">
+                    <a href={"/projects/" + project.id}>
+                      <img src={imgSrc || ""} alt={project.data.title} loading="lazy" />
+                    </a>
+                  </div>
+                  <div class="card-body">
+                    <h3 class="card-title">
+                      <a href={"/projects/" + project.id}>{project.data.title}</a>
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            );
+          })
+        }
+      </div>
+    </div>
+  </section>
+
   <WorkTogether />
 </AbstrakLayout>
