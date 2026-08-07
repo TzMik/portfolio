@@ -15,13 +15,13 @@ draft: false
 
 ### El origen del proyecto
 
-La idea de este proyecto nació de otro, el [Micro-ERP de Aviesa](https://mikelcantero.dev/projects/erp-aviesa), donde se les desarrolló una solución parecida. Empresas como **Aviesa**, que cuentan con una flotilla de vehículos a su disposición, pierden una cantidad considerable de tiempo revisando **adeudos vehiculares** de forma manual, ya que tienen que copiar y pegar información de un archivo (normalmente una hoja de cálculo tipo Excel) a la página del gobierno.
+La idea de este proyecto nació de otro, el <a href="https://mikelcantero.dev/projects/erp-aviesa" target="_blank">Micro-ERP de Aviesa</a>, donde se les desarrolló una solución parecida. Empresas como **<a href="https://aviesaonline.com" target="_blank" rel="noopener noreferrer">Aviesa</a>**, que cuentan con una flotilla de vehículos a su disposición, pierden una cantidad considerable de tiempo revisando **adeudos vehiculares** de forma manual, ya que tienen que copiar y pegar información de un archivo (normalmente una hoja de cálculo tipo Excel) a la página del gobierno.
 
-Digamos que revisar cada coche tomaría 2 minutos en el mejor de los casos. Si multiplicamos 2 minutos por el número de vehículos que tenemos —por poner un ejemplo, supongamos que son 8 coches—, ya serían 16 minutos invertidos en una tarea repetitiva que no aporta ningún tipo de valor a la empresa. Además, un proceso manual da pie a cometer errores, como typos, no copiar o pegar el valor correcto, o pegar el texto incompleto. Cada equivocación sumaría a la cantidad final de minutos invertidos en una tarea intrascendente.
+Digamos que revisar cada coche tomaría 2 minutos en el mejor de los casos. Si multiplicamos 2 minutos por el número de vehículos que tenemos - por poner un ejemplo, supongamos que son 8 coches - , ya serían 16 minutos invertidos en una tarea repetitiva que no aporta ningún tipo de valor a la empresa. Además, un proceso manual da pie a cometer errores, como typos, no copiar o pegar el valor correcto, o pegar el texto incompleto. Cada equivocación sumaría a la cantidad final de minutos invertidos en una tarea intrascendente.
 
 ### La solución
 
-De esta premisa nace **RevisaTusMultas.com**, una plataforma que ayuda a estas empresas a agilizar sustancialmente este proceso. La herramienta permite registrar la información de los vehículos (placa, número de serie, número de motor y propietario) una sola vez y revisar los adeudos con un solo clic. Con este sencillo gesto, el sistema abre la página del Gobierno de Jalisco referente a adeudos vehiculares, rellena la información del coche seleccionado y envía los datos; todo de forma automática, sin que el usuario tenga que hacer más que seleccionar el vehículo que quiere revisar.
+De esta premisa nace **<a href="https://revisatusmultas.com" target="_blank" rel="noopener noreferrer">RevisaTusMultas.com</a>**, una plataforma que ayuda a estas empresas a agilizar sustancialmente este proceso. La herramienta permite registrar la información de los vehículos (placa, número de serie, número de motor y propietario) una sola vez y revisar los adeudos con un solo clic. Con este sencillo gesto, el sistema abre la página del Gobierno de Jalisco referente a adeudos vehiculares, rellena la información del coche seleccionado y envía los datos; todo de forma automática, sin que el usuario tenga que hacer más que seleccionar el vehículo que quiere revisar.
 
 ### Planes de la plataforma
 
@@ -37,4 +37,4 @@ RevisaTusMultas cuenta con 4 planes diferentes:
 #### 7 de agosto de 2026
 El proyecto se encuentra en fase de validación. Por el momento solo está disponible la revisión de multas de Jalisco, con la intención de medir el interés del mercado. Se ha definido una serie de KPIs para dar el salto a otros estados.
 
-También se están valorando las necesidades de los usuarios para desarrollar nuevas funciones y automatizaciones, así que si quieres mandar tu opinión o solicitud, estaremos encantados de escucharte en **contacto@mikelcantero.dev**.
+También se están valorando las necesidades de los usuarios para desarrollar nuevas funciones y automatizaciones, así que si quieres mandar tu opinión o solicitud, estaremos encantados de escucharte en **<a href="mailto:contacto@mikelcantero.dev">contacto@mikelcantero.dev</a>**.
