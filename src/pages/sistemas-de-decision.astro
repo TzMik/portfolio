@@ -1,5 +1,6 @@
 ---
 import AbstrakLayout from "../layouts/AbstrakLayout.astro";
+import { decisionSystems } from "../data/decisionSystems.js";
 ---
 
 <AbstrakLayout
@@ -29,38 +30,26 @@ import AbstrakLayout from "../layouts/AbstrakLayout.astro";
         <p class="section-desc">Estos sistemas ya están funcionando. Pruébalos.</p>
       </div>
       <div class="row g-4 justify-content-center">
-        <div class="col-md-6 col-lg-4">
-          <a href="/sistemas-de-decision/vale-la-pena-esta-compra" class="text-decoration-none">
-            <div class="card-custom h-100">
-              <div class="card-body d-flex flex-column">
-                <div class="card-icon">
-                  <i class="fas fa-cart-plus"></i>
+        {
+          decisionSystems.map((system) => (
+            <div class="col-md-6 col-lg-4">
+              <a href={system.url.replace(/^\/|\/$/g, "")} class="text-decoration-none">
+                <div class="card-custom h-100">
+                  <div class="card-body d-flex flex-column">
+                    <div class="card-icon">
+                      <i class={system.icon}></i>
+                    </div>
+                    <h3 class="card-title">{system.title}</h3>
+                    <p class="text-secondary flex-grow-1">
+                      {system.summary}
+                    </p>
+                    <span class="btn btn-brand btn-sm align-self-start">Probar el sistema</span>
+                  </div>
                 </div>
-                <h3 class="card-title">¿Vale la pena esta compra?</h3>
-                <p class="text-secondary flex-grow-1">
-                  Checklist minimalista en 4 pasos: necesidad, valor, finanzas y desapego. El sistema decide por ti.
-                </p>
-                <span class="btn btn-brand btn-sm align-self-start">Probar el sistema</span>
-              </div>
+              </a>
             </div>
-          </a>
-        </div>
-        <div class="col-md-6 col-lg-4">
-          <a href="/sistemas-de-decision/anti-euforia" class="text-decoration-none">
-            <div class="card-custom h-100">
-              <div class="card-body d-flex flex-column">
-                <div class="card-icon">
-                  <i class="fas fa-thermometer-half"></i>
-                </div>
-                <h3 class="card-title">Anti-euforia: ¿tu idea de proyecto es real?</h3>
-                <p class="text-secondary flex-grow-1">
-                  Evalúa una idea con 4 filtros (viabilidad, mercado, oportunidad e impacto) antes de invertir tiempo y dinero.
-                </p>
-                <span class="btn btn-brand btn-sm align-self-start">Probar el sistema</span>
-              </div>
-            </div>
-          </a>
-        </div>
+          ))
+        }
       </div>
     </div>
   </section>
