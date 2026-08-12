@@ -1,0 +1,71 @@
+---
+import AbstrakLayout from "../../layouts/AbstrakLayout.astro";
+import PurchaseWizard from "../../components/abstrak/PurchaseWizard.astro";
+---
+
+<AbstrakLayout
+  title="¿Vale la pena esta compra? Sistema de Decisión | MikelCanteroDev"
+  description="Sistema de decisión gratuito para saber si una compra vale la pena. Responde 4 pasos: necesidad, valor, finanzas y desapego, y obtén una decisión clara en minutos."
+>
+  <div class="page-header">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-minimal">
+          <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+          <li class="breadcrumb-item"><a href="/sistemas-de-decision">Sistemas de decisión</a></li>
+          <li class="breadcrumb-item active">¿Vale la pena esta compra?</li>
+        </ol>
+      </nav>
+      <h1>¿Vale la pena esta compra?</h1>
+      <p class="text-secondary fs-5">
+        Antes de gastar, responde 4 preguntas simples sobre necesidad, valor, finanzas y desapego. El sistema calculará automáticamente si la compra vale la pena o si es mejor dejarla pasar.
+      </p>
+    </div>
+  </div>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Cómo funciona</span>
+        <h2 class="section-title">4 pasos hacia una compra consciente</h2>
+      </div>
+      <div class="row g-4 justify-content-center">
+        {[
+          { icon: "fas fa-question-circle", title: "1. Preguntas clave", desc: "¿Lo necesitas realmente, o ya tienes algo que cumple esa función?" },
+          { icon: "fas fa-balance-scale", title: "2. Valor", desc: "Evalúa uso, durabilidad, satisfacción y sustentabilidad." },
+          { icon: "fas fa-wallet", title: "3. Finanzas", desc: "¿El precio es razonable y no compromete tus finanzas básicas?" },
+          { icon: "fas fa-recycle", title: "4. Desapego", desc: "¿Estás dispuesto a reemplazar algo similar que ya no usas?" },
+        ].map((step) => (
+          <div class="col-md-6 col-lg-3">
+            <div class="card-custom h-100">
+              <div class="card-body text-center">
+                <div class="card-icon mx-auto">
+                  <i class={step.icon}></i>
+                </div>
+                <h3 class="card-title">{step.title}</h3>
+                <p class="text-secondary mb-0">{step.desc}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <PurchaseWizard />
+</AbstrakLayout>
+
+<style is:global>
+  .card-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius);
+    background: var(--brand-light);
+    color: var(--brand);
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+</style>

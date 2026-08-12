@@ -1,0 +1,73 @@
+---
+import AbstrakLayout from "../../layouts/AbstrakLayout.astro";
+import AntiEuphoriaWizard from "../../components/abstrak/AntiEuphoriaWizard.astro";
+---
+
+<AbstrakLayout
+  title="Sistema Anti-Euforia: ¿Tu idea de proyecto es real? | MikelCanteroDev"
+  description="Evalúa una idea de proyecto antes de invertir tiempo y dinero. Fórmula con 4 filtros: viabilidad real, validación de mercado, costo de oportunidad e impacto. Descarta proyectos por euforia."
+>
+  <div class="page-header">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-minimal">
+          <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+          <li class="breadcrumb-item"><a href="/sistemas-de-decision">Sistemas de decisión</a></li>
+          <li class="breadcrumb-item active">Anti-euforia</li>
+        </ol>
+      </nav>
+      <h1>Sistema Anti-Euforia</h1>
+      <p class="text-secondary fs-5">
+        ¿Tu idea es real o es el "próximo Facebook"? Este sistema mete <strong>fricción cognitiva</strong>: obliga a aterrizar la ilusión en datos, restricciones de tiempo y costos reales antes de mover una sola piedra.
+      </p>
+    </div>
+  </div>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">La matriz</span>
+        <h2 class="section-title">4 filtros contra la euforia</h2>
+        <p class="section-desc">Cada filtro pesa en el resultado final de la evaluación.</p>
+      </div>
+      <div class="row g-4 justify-content-center">
+        {[
+          { icon: "fas fa-tools", title: "Viabilidad real", weight: "30%", desc: "¿Puedes construir el MVP con lo que ya tienes hoy, sin depender de nadie?" },
+          { icon: "fas fa-users", title: "Validación de mercado", weight: "30%", desc: "¿Hay gente buscando activamente una solución, conoces a 3 que pagarían y ya existe competencia?" },
+          { icon: "fas fa-hourglass-half", title: "Costo de oportunidad", weight: "25%", desc: "¿Vale la pena el tiempo y el foco que le quitará a tu actividad principal?" },
+          { icon: "fas fa-rocket", title: "Retorno / Impacto", weight: "15%", desc: "¿El margen o el impacto estratégico justifica el estrés adicional?" },
+        ].map((filter) => (
+          <div class="col-md-6 col-lg-3">
+            <div class="card-custom h-100">
+              <div class="card-body text-center d-flex flex-column">
+                <div class="card-icon mx-auto">
+                  <i class={filter.icon}></i>
+                </div>
+                <h3 class="card-title">{filter.title}</h3>
+                <span class="badge bg-secondary align-self-center mb-3">{filter.weight}</span>
+                <p class="text-secondary mb-0 flex-grow-1">{filter.desc}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <AntiEuphoriaWizard />
+</AbstrakLayout>
+
+<style is:global>
+  .card-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius);
+    background: var(--brand-light);
+    color: var(--brand);
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+</style>

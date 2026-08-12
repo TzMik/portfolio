@@ -1,0 +1,592 @@
+---
+// Asistente de decisión de compra minimalista
+const steps = [
+  { id: 0, title: "El objeto", icon: "fas fa-box" },
+  { id: 1, title: "Preguntas clave", icon: "fas fa-question-circle" },
+  { id: 2, title: "Valor", icon: "fas fa-balance-scale" },
+  { id: 3, title: "Finanzas", icon: "fas fa-wallet" },
+  { id: 4, title: "Desapego", icon: "fas fa-recycle" },
+];
+const stepCount = steps.length;
+---
+
+<section id="asistente" class="section">
+  <div class="container">
+    <div class="card-custom p-4">
+      <!-- Barra de progreso de pasos -->
+      <ol class="wizard-steps list-unstyled d-flex flex-wrap justify-content-between mb-4" id="wizardSteps">
+        {steps.map((step, i) => (
+          <li class={`wizard-step${i === 0 ? " active" : ""}`} data-step={step.id}>
+            <span class="wizard-step-dot"><i class={step.icon}></i></span>
+            <span class="wizard-step-label">{step.title}</span>
+          </li>
+        ))}
+      </ol>
+
+      <!-- Paso 0: Datos -->
+      <div class="wizard-pane" data-pane="0">
+        <h4 class="mb-3">Sobre el objeto</h4>
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label class="form-label" for="wzObject">Nombre del objeto</label>
+            <input type="text" class="form-control" id="wzObject" placeholder="Ej. Nueva chaqueta" />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label" for="wzDate">Fecha de evaluación</label>
+            <input type="date" class="form-control" id="wzDate" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Paso 1: Preguntas clave -->
+      <div class="wizard-pane" data-pane="1" style="display: none;">
+        <h4 class="mb-3">Paso 1 — Preguntas clave</h4>
+
+        <div class="mb-3">
+          <label class="form-label fw-semibold">1. ¿Lo necesito realmente?</label>
+          <div class="btn-group btn-group-toggle d-block" role="group">
+            <input type="radio" class="btn-check" name="wzNeed" id="wzNeedYes" value="yes" />
+            <label class="btn btn-outline-brand" for="wzNeedYes">Sí</label>
+            <input type="radio" class="btn-check" name="wzNeed" id="wzNeedNo" value="no" />
+            <label class="btn btn-outline-brand" for="wzNeedNo">No</label>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label fw-semibold">2. ¿Ya tengo algo que cumpla esta función?</label>
+          <div class="btn-group btn-group-toggle d-block" role="group">
+            <input type="radio" class="btn-check" name="wzOwn" id="wzOwnNo" value="no" />
+            <label class="btn btn-outline-brand" for="wzOwnNo">No</label>
+            <input type="radio" class="btn-check" name="wzOwn" id="wzOwnYes" value="yes" />
+            <label class="btn btn-outline-brand" for="wzOwnYes">Sí</label>
+          </div>
+        </div>
+
+        <div id="wzOwnSuffWrap" style="display: none;" class="mb-3 ms-3">
+          <label class="form-label fw-semibold">2b. ¿Lo que tengo es suficiente?</label>
+          <div class="btn-group btn-group-toggle d-block" role="group">
+            <input type="radio" class="btn-check" name="wzOwnSuff" id="wzOwnSuffYes" value="yes" />
+            <label class="btn btn-outline-brand" for="wzOwnSuffYes">Sí</label>
+            <input type="radio" class="btn-check" name="wzOwnSuff" id="wzOwnSuffNo" value="no" />
+            <label class="btn btn-outline-brand" for="wzOwnSuffNo">No</label>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label fw-semibold">3. ¿Cómo me sentiré si no lo compro?</label>
+          <div class="btn-group btn-group-toggle d-block" role="group">
+            <input type="radio" class="btn-check" name="wzFeel" id="wzFeelQol" value="qol" />
+            <label class="btn btn-outline-brand" for="wzFeelQol">Afectará mi calidad de vida</label>
+            <input type="radio" class="btn-check" name="wzFeel" id="wzFeelWhim" value="whim" />
+            <label class="btn btn-outline-brand" for="wzFeelWhim">Es un capricho pasajero</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Paso 2: Evaluación de valor -->
+      <div class="wizard-pane" data-pane="2" style="display: none;">
+        <h4 class="mb-3">Paso 2 — Evaluación de valor</h4>
+        <p class="text-secondary">Responde cada aspecto con la opción más honesta para ti. El total debe sumar <strong>12 o más</strong> para considerar la compra.</p>
+        <div class="row g-3">
+          {[
+            {
+              id: "wzUse",
+              label: "Uso esperado",
+              desc: "¿Cuánto lo vas a usar?",
+              options: [
+                { value: 1, text: "Una vez al año" },
+                { value: 2, text: "Una vez al mes" },
+                { value: 3, text: "Una vez a la semana" },
+                { value: 4, text: "Cada dos días" },
+                { value: 5, text: "Todos los días" },
+              ],
+            },
+            {
+              id: "wzDur",
+              label: "Durabilidad",
+              desc: "¿Cuánto durará en buen estado?",
+              options: [
+                { value: 1, text: "Menos de un año" },
+                { value: 2, text: "1–2 años" },
+                { value: 3, text: "2–5 años" },
+                { value: 4, text: "5–10 años" },
+                { value: 5, text: "Más de 10 años / de por vida" },
+              ],
+            },
+            {
+              id: "wzSat",
+              label: "Satisfacción",
+              desc: "¿Cuánto te hará feliz?",
+              options: [
+                { value: 1, text: "Casi nada" },
+                { value: 2, text: "Un poco" },
+                { value: 3, text: "Moderadamente" },
+                { value: 4, text: "Mucho" },
+                { value: 5, text: "Enormemente" },
+              ],
+            },
+            {
+              id: "wzSus",
+              label: "Sustentabilidad",
+              desc: "¿Qué tan responsable es con el entorno?",
+              options: [
+                { value: 1, text: "Nada sostenible" },
+                { value: 2, text: "Poco sostenible" },
+                { value: 3, text: "Algo sostenible" },
+                { value: 4, text: "Bastante sostenible" },
+                { value: 5, text: "Muy sostenible" },
+              ],
+            },
+          ].map((item) => (
+            <div class="col-md-6">
+              <label class="form-label fw-semibold" for={item.id}>{item.label} <span class="text-secondary fw-normal">({item.desc})</span></label>
+              <select class="form-select value-score" id={item.id}>
+                <option value="" selected disabled>Elige…</option>
+                {item.options.map((opt) => <option value={opt.value}>{opt.text}</option>)}
+              </select>
+            </div>
+          ))}
+        </div>
+        <div class="mt-4 d-flex align-items-center gap-3">
+          <strong>Total:</strong>
+          <span id="wzValueTotal" class="badge bg-secondary fs-6">0</span>
+          <span class="text-secondary">/ 20 · mínimo para considerar: <strong>12</strong></span>
+        </div>
+      </div>
+
+      <!-- Paso 3: Financieramente consciente -->
+      <div class="wizard-pane" data-pane="3" style="display: none;">
+        <h4 class="mb-3">Paso 3 — Financieramente consciente</h4>
+
+        <div class="mb-3">
+          <label class="form-label fw-semibold">1. ¿El precio es razonable para el valor que aporta?</label>
+          <div class="btn-group btn-group-toggle d-block" role="group">
+            <input type="radio" class="btn-check" name="wzPrice" id="wzPriceYes" value="yes" />
+            <label class="btn btn-outline-brand" for="wzPriceYes">Sí</label>
+            <input type="radio" class="btn-check" name="wzPrice" id="wzPriceNo" value="no" />
+            <label class="btn btn-outline-brand" for="wzPriceNo">No</label>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label fw-semibold">2. ¿Puedo pagar esto sin comprometer mis finanzas básicas?</label>
+          <div class="btn-group btn-group-toggle d-block" role="group">
+            <input type="radio" class="btn-check" name="wzPay" id="wzPayYes" value="yes" />
+            <label class="btn btn-outline-brand" for="wzPayYes">Sí</label>
+            <input type="radio" class="btn-check" name="wzPay" id="wzPayNo" value="no" />
+            <label class="btn btn-outline-brand" for="wzPayNo">No</label>
+          </div>
+        </div>
+
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label class="form-label fw-semibold" for="wzHours">3. ¿Cuántas horas de trabajo necesito para cubrir esta compra?</label>
+            <input type="number" class="form-control" id="wzHours" min="0" step="0.5" placeholder="Ej. 12" />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label fw-semibold">¿Esas horas valen la pena?</label>
+            <div class="btn-group btn-group-toggle d-block" role="group">
+              <input type="radio" class="btn-check" name="wzHoursWorth" id="wzHoursWorthYes" value="yes" />
+              <label class="btn btn-outline-brand" for="wzHoursWorthYes">Vale la pena</label>
+              <input type="radio" class="btn-check" name="wzHoursWorth" id="wzHoursWorthNo" value="no" />
+              <label class="btn btn-outline-brand" for="wzHoursWorthNo">No vale la pena</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Paso 4: Desapego y reemplazo -->
+      <div class="wizard-pane" data-pane="4" style="display: none;">
+        <h4 class="mb-3">Paso 4 — Desapego y reemplazo</h4>
+        <div class="mb-3">
+          <label class="form-label fw-semibold">¿Estoy dispuesto a deshacerme de algo similar que ya no uso?</label>
+          <div class="btn-group btn-group-toggle d-block" role="group">
+            <input type="radio" class="btn-check" name="wzDetach" id="wzDetachYes" value="yes" />
+            <label class="btn btn-outline-brand" for="wzDetachYes">Sí</label>
+            <input type="radio" class="btn-check" name="wzDetach" id="wzDetachNo" value="no" />
+            <label class="btn btn-outline-brand" for="wzDetachNo">No</label>
+          </div>
+        </div>
+        <div id="wzDetachWrap" style="display: none;">
+          <label class="form-label fw-semibold" for="wzDetachItem">Especifica el objeto a reemplazar</label>
+          <input type="text" class="form-control" id="wzDetachItem" placeholder="Ej. Chaqueta desgastada" />
+        </div>
+      </div>
+
+      <!-- Resultado -->
+      <div class="wizard-pane" data-pane="5" style="display: none;">
+        <div class="text-center mb-4">
+          <div id="wzResultBadge" class="result-badge mx-auto mb-3"></div>
+          <h3 id="wzResultTitle" class="fw-bold mb-1"></h3>
+          <p id="wzResultObject" class="text-secondary mb-1"></p>
+          <p id="wzResultDate" class="text-secondary small"></p>
+        </div>
+        <div id="wzResultReasons" class="mb-4"></div>
+        <h5 class="mb-3">Resumen de la evaluación</h5>
+        <div class="table-responsive">
+          <table class="table table-bordered align-middle mb-0" id="wzResultTable">
+            <thead><tr><th scope="col">Pregunta</th><th scope="col">Respuesta</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div class="text-center mt-4">
+          <button type="button" class="btn btn-outline-brand" id="wzRestart"><i class="fas fa-redo me-1"></i>Reiniciar evaluación</button>
+        </div>
+      </div>
+
+      <!-- Navegación -->
+      <div class="d-flex justify-content-between align-items-center mt-4 pt-3 border-top">
+        <button type="button" class="btn btn-outline-brand" id="wzPrev" disabled><i class="fas fa-chevron-left me-1"></i>Anterior</button>
+        <button type="button" class="btn btn-brand" id="wzNext">Siguiente<i class="fas fa-chevron-right ms-1"></i></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  .wizard-steps { position: relative; }
+  .wizard-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    flex: 1 1 0;
+    min-width: 70px;
+    color: var(--text-secondary);
+    opacity: 0.55;
+    transition: opacity var(--transition), color var(--transition);
+  }
+  .wizard-step.active { opacity: 1; color: var(--brand); }
+  .wizard-step.done { opacity: 0.85; color: var(--text); }
+  .wizard-step-dot {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--border);
+    color: var(--text-secondary);
+    font-size: 17px;
+    transition: background var(--transition), color var(--transition);
+  }
+  .wizard-step.active .wizard-step-dot { background: var(--brand); color: #fff; }
+  .wizard-step.done .wizard-step-dot { background: var(--brand-light); color: var(--brand); }
+  .wizard-step-label { font-size: 12px; font-weight: 600; text-align: center; }
+
+  .wizard-pane .btn-group-toggle .btn {
+    margin: 4px 6px 4px 0;
+    border-radius: var(--radius) !important;
+  }
+  .result-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    font-size: 36px;
+    color: #fff;
+  }
+  .result-badge.approved { background: #198754; }
+  .result-badge.rejected { background: #dc3545; }
+  .result-badge.reconsider { background: #fd7e14; }
+</style>
+
+<script is:inline>
+  (function () {
+    "use strict";
+
+    var STEP_DATA = 0, STEP_RESULT = 5;
+    var current = 0;
+    var maxReached = 0;
+
+    var panes = document.querySelectorAll(".wizard-pane");
+    var steps = document.querySelectorAll(".wizard-step");
+    var btnPrev = document.getElementById("wzPrev");
+    var btnNext = document.getElementById("wzNext");
+
+    // Toggle de pregunta condicional (ya tengo algo similar)
+    var ownYes = document.getElementById("wzOwnYes");
+    var ownSuffWrap = document.getElementById("wzOwnSuffWrap");
+    ownYes.addEventListener("change", function () {
+      if (ownYes.checked) ownSuffWrap.style.display = "block";
+    });
+    document.querySelectorAll('input[name="wzOwn"]').forEach(function (r) {
+      r.addEventListener("change", function () {
+        if (!ownYes.checked) {
+          ownSuffWrap.style.display = "none";
+          var rad = document.querySelector('input[name="wzOwnSuff"]:checked');
+          if (rad) rad.checked = false;
+        }
+      });
+    });
+
+    // Toggle desapego
+    var detachYes = document.getElementById("wzDetachYes");
+    var detachWrap = document.getElementById("wzDetachWrap");
+    document.querySelectorAll('input[name="wzDetach"]').forEach(function (r) {
+      r.addEventListener("change", function () {
+        detachWrap.style.display = detachYes.checked ? "block" : "none";
+      });
+    });
+
+    // Total de valor en vivo
+    function refreshTotal() {
+      var total = 0;
+      document.querySelectorAll(".value-score").forEach(function (s) {
+        total += parseInt(s.value || "0", 10);
+      });
+      var el = document.getElementById("wzValueTotal");
+      el.textContent = total;
+      el.classList.toggle("bg-success", total >= 12);
+      el.classList.toggle("bg-secondary", total < 12);
+    }
+    document.querySelectorAll(".value-score").forEach(function (s) {
+      s.addEventListener("change", refreshTotal);
+    });
+
+    // Navegación
+    function showStep(n) {
+      current = n;
+      panes.forEach(function (p) {
+        p.style.display = parseInt(p.getAttribute("data-pane"), 10) === n ? "block" : "none";
+      });
+      steps.forEach(function (s, i) {
+        s.classList.toggle("active", i === n);
+        s.classList.toggle("done", i < n);
+      });
+      maxReached = Math.max(maxReached, n);
+      btnPrev.disabled = n === 0;
+      btnNext.innerHTML =
+        n === STEP_RESULT
+          ? ""
+          : n === 4
+            ? "Ver decisión<i class=\"fas fa-chevron-right ms-1\"></i>"
+            : "Siguiente<i class=\"fas fa-chevron-right ms-1\"></i>";
+      btnNext.style.display = n === STEP_RESULT ? "none" : "inline-block";
+    }
+
+    btnPrev.addEventListener("click", function () {
+      if (current > 0) showStep(current - 1);
+    });
+
+    btnNext.addEventListener("click", function () {
+      if (current < 4 && validateStep(current)) {
+        showStep(current + 1);
+      } else if (current === 4) {
+        showStep(STEP_RESULT);
+        renderResult();
+      }
+    });
+
+    function required(name) {
+      var r = document.querySelector('input[name="' + name + '"]:checked');
+      return r ? r.value : null;
+    }
+
+    function validateStep(step) {
+      var msg = null;
+      if (step === 0) {
+        if (!document.getElementById("wzObject").value.trim()) msg = "Escribe el nombre del objeto.";
+      } else if (step === 1) {
+        if (!required("wzNeed")) msg = "Responde: ¿lo necesitas realmente?";
+        else if (!required("wzOwn")) msg = "Responde: ¿ya tienes algo que cumpla esta función?";
+        else if (required("wzOwn") === "yes" && !required("wzOwnSuff")) msg = "Responde: ¿lo que tienes es suficiente?";
+        else if (!required("wzFeel")) msg = "Responde: ¿cómo te sentirás si no lo compras?";
+      } else if (step === 2) {
+        document.querySelectorAll(".value-score").forEach(function (s) {
+          if (!s.value) msg = "Responde las 4 evaluaciones de valor del paso 2.";
+        });
+      } else if (step === 3) {
+        if (!required("wzPrice")) msg = "Responde: ¿el precio es razonable?";
+        else if (!required("wzPay")) msg = "Responde: ¿puedes pagarlo sin comprometer tus finanzas?";
+        else if (document.getElementById("wzHours").value === "") msg = "Indica cuántas horas de trabajo necesitas.";
+        else if (!required("wzHoursWorth")) msg = "Responde: ¿esas horas valen la pena?";
+      } else if (step === 4) {
+        if (!required("wzDetach")) msg = "Responde: ¿estás dispuesto a deshacerte de algo similar?";
+      }
+      if (msg) {
+        alert(msg);
+        return false;
+      }
+      return true;
+    }
+
+    // --- Lógica de decisión ---
+    var valueLabels = {
+      wzUse: {
+        1: "Una vez al año",
+        2: "Una vez al mes",
+        3: "Una vez a la semana",
+        4: "Cada dos días",
+        5: "Todos los días",
+      },
+      wzDur: {
+        1: "Menos de un año",
+        2: "1–2 años",
+        3: "2–5 años",
+        4: "5–10 años",
+        5: "Más de 10 años / de por vida",
+      },
+      wzSat: {
+        1: "Casi nada",
+        2: "Un poco",
+        3: "Moderadamente",
+        4: "Mucho",
+        5: "Enormemente",
+      },
+      wzSus: {
+        1: "Nada sostenible",
+        2: "Poco sostenible",
+        3: "Algo sostenible",
+        4: "Bastante sostenible",
+        5: "Muy sostenible",
+      },
+    };
+
+    function valueLabel(field, score) {
+      return valueLabels[field][score] || String(score);
+    }
+
+    function evaluate() {
+      var object = document.getElementById("wzObject").value.trim();
+      var date = document.getElementById("wzDate").value;
+      var need = required("wzNeed");
+      var own = required("wzOwn");
+      var ownSuff = required("wzOwnSuff");
+      var feel = required("wzFeel");
+      var scores = {};
+      document.querySelectorAll(".value-score").forEach(function (s) {
+        scores[s.id] = parseInt(s.value || "0", 10);
+      });
+      var total = scores.wzUse + scores.wzDur + scores.wzSat + scores.wzSus;
+      var price = required("wzPrice");
+      var pay = required("wzPay");
+      var hours = document.getElementById("wzHours").value;
+      var hoursWorth = required("wzHoursWorth");
+      var detach = required("wzDetach");
+      var detachItem = document.getElementById("wzDetachItem").value.trim();
+
+      var rejects = [];
+      var softs = [];
+
+      if (need === "no") rejects.push("No lo necesitas realmente.");
+      if (own === "yes" && ownSuff === "yes") rejects.push("Ya tienes algo que cumple esa función y es suficiente.");
+      if (feel === "whim") rejects.push("Es un capricho pasajero.");
+      if (total < 12) rejects.push("La evaluación de valor no alcanza el mínimo: " + total + " / 12.");
+      if (pay === "no") rejects.push("La compra comprometería tus finanzas básicas.");
+      if (hoursWorth === "no") rejects.push("Las " + (hours || "X") + " horas de trabajo que cuesta no valen la pena.");
+
+      if (price === "no") softs.push("El precio no parece razonable: busca alternativas o reconsidera.");
+      if (detach === "no") softs.push("Reflexiona más: no estás dispuesto a deshacerte de algo similar.");
+
+      var status = "approved";
+      if (rejects.length > 0) status = "rejected";
+      else if (softs.length > 0) status = "reconsider";
+
+      return {
+        object: object,
+        date: date,
+        status: status,
+        rejects: rejects,
+        softs: softs,
+        summary: [
+          ["Nombre del objeto", object],
+          ["¿Lo necesito realmente?", need === "yes" ? "Sí" : "No"],
+          ["¿Ya tengo algo similar?", own === "yes" ? (ownSuff === "yes" ? "Sí, y es suficiente" : "Sí, pero no es suficiente") : "No"],
+          ["¿Cómo me sentiré si no lo compro?", feel === "qol" ? "Afectaría mi calidad de vida" : "Es un capricho pasajero"],
+          ["Uso esperado", valueLabel("wzUse", scores.wzUse)],
+          ["Durabilidad", valueLabel("wzDur", scores.wzDur)],
+          ["Satisfacción", valueLabel("wzSat", scores.wzSat)],
+          ["Sustentabilidad", valueLabel("wzSus", scores.wzSus)],
+          ["Total puntos valor", total + " / 20"],
+          ["¿El precio es razonable?", price === "yes" ? "Sí" : "No"],
+          ["¿Puedo pagarlo sin problemas?", pay === "yes" ? "Sí" : "No"],
+          ["Horas de trabajo necesarias", hours + " h"],
+          ["¿Vale la pena por horas?", hoursWorth === "yes" ? "Vale la pena" : "No vale la pena"],
+          ["¿Reemplazar algo viejo?", detach === "yes" ? (detachItem || "Sí") : "No"],
+        ],
+      };
+    }
+
+    function renderResult() {
+      var res = evaluate();
+      var badge = document.getElementById("wzResultBadge");
+      var title = document.getElementById("wzResultTitle");
+      var reasons = document.getElementById("wzResultReasons");
+      var tbody = document.querySelector("#wzResultTable tbody");
+
+      if (res.status === "approved") {
+        badge.className = "result-badge approved mx-auto mb-3";
+        badge.innerHTML = "<i class=\"fas fa-check\"></i>";
+        title.textContent = "Compra aprobada";
+        title.style.color = "#198754";
+      } else if (res.status === "rejected") {
+        badge.className = "result-badge rejected mx-auto mb-3";
+        badge.innerHTML = "<i class=\"fas fa-times\"></i>";
+        title.textContent = "Compra rechazada";
+        title.style.color = "#dc3545";
+      } else {
+        badge.className = "result-badge reconsider mx-auto mb-3";
+        badge.innerHTML = "<i class=\"fas fa-exclamation\"></i>";
+        title.textContent = "Reconsidera la compra";
+        title.style.color = "#fd7e14";
+      }
+
+      document.getElementById("wzResultObject").textContent = res.object;
+      document.getElementById("wzResultDate").textContent = res.date ? "Evaluado el " + res.date : "";
+
+      var html = "";
+      if (res.rejects.length > 0) {
+        html += "<div class=\"alert alert-danger\"><strong>Motivos:</strong><ul class=\"mb-0 mt-2\">";
+        res.rejects.forEach(function (r) { html += "<li>" + r + "</li>"; });
+        html += "</ul></div>";
+      }
+      if (res.softs.length > 0) {
+        html += "<div class=\"alert alert-warning\"><strong>A tener en cuenta:</strong><ul class=\"mb-0 mt-2\">";
+        res.softs.forEach(function (s) { html += "<li>" + s + "</li>"; });
+        html += "</ul></div>";
+      }
+      reasons.innerHTML = html;
+
+      tbody.innerHTML = "";
+      res.summary.forEach(function (row) {
+        var tr = document.createElement("tr");
+        var th = document.createElement("th");
+        th.scope = "row";
+        th.textContent = row[0];
+        var td = document.createElement("td");
+        td.textContent = row[1];
+        tr.appendChild(th);
+        tr.appendChild(td);
+        tbody.appendChild(tr);
+      });
+    }
+
+    function reset() {
+      var form = document.querySelector("#asistente .card-custom");
+      form.querySelectorAll("input[type=radio]").forEach(function (r) { r.checked = false; });
+      form.querySelectorAll(".value-score").forEach(function (s) { s.value = ""; });
+      form.querySelectorAll("input[type=text], input[type=number], input[type=date]").forEach(function (i) {
+        i.value = i.id === "wzDate" ? new Date().toISOString().split("T")[0] : "";
+      });
+      ownSuffWrap.style.display = "none";
+      detachWrap.style.display = "none";
+      refreshTotal();
+      current = 0;
+      maxReached = 0;
+      showStep(0);
+      window.scrollTo({ top: document.getElementById("asistente").offsetTop - 90, behavior: "smooth" });
+    }
+
+    document.getElementById("wzRestart").addEventListener("click", reset);
+
+    // Fecha por defecto hoy
+    if (!document.getElementById("wzDate").value) {
+      document.getElementById("wzDate").value = new Date().toISOString().split("T")[0];
+    }
+
+    showStep(0);
+  })();
+</script>

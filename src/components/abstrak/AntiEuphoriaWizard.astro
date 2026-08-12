@@ -1,0 +1,601 @@
+---
+// Sistema Anti-Euforia: fricción cognitiva antes de mover una piedra
+const steps = [
+  { id: 0, title: "Proyecto", icon: "fas fa-folder" },
+  { id: 1, title: "Filtro anti-euforia", icon: "fas fa-thermometer-half" },
+  { id: 2, title: "Viabilidad", icon: "fas fa-tools" },
+  { id: 3, title: "Mercado", icon: "fas fa-users" },
+  { id: 4, title: "Oportunidad", icon: "fas fa-hourglass-half" },
+  { id: 5, title: "Impacto", icon: "fas fa-rocket" },
+];
+
+const sections = [
+  {
+    id: "viabilidad",
+    name: "Viabilidad y Capacidad Real",
+    weight: "30%",
+    pane: 2,
+    questions: [
+      {
+        id: "aeQ1",
+        title: "Recursos actuales",
+        text: "¿Puedo construir el MVP con las habilidades y herramientas que ya tengo hoy, sin contratar a nadie?",
+        options: [
+          { value: 1, text: "No, tendría que aprender o contratar a alguien" },
+          { value: 2, text: "Me falta bastante, sería difícil" },
+          { value: 3, text: "Podría, aunque tendría que improvisar" },
+          { value: 4, text: "Sí, tengo casi todas las habilidades y herramientas" },
+          { value: 5, text: "Sí, puedo empezar hoy sin contratar ni aprender nada nuevo" },
+        ],
+      },
+      {
+        id: "aeQ2",
+        title: "Tiempo real disponible",
+        text: "¿Si le dedico solo 5 horas a la semana, puedo lanzar una primera versión funcional en menos de 30 días?",
+        options: [
+          { value: 1, text: "Imposible" },
+          { value: 2, text: "Muy poco probable" },
+          { value: 3, text: "Quizá, pero justo" },
+          { value: 4, text: "Probablemente sí" },
+          { value: 5, text: "Sí, sin problema" },
+        ],
+      },
+      {
+        id: "aeQ3",
+        title: "Dependencia externa",
+        text: "¿El éxito de la idea depende cero de alianzas con terceros, permisos complejos o conseguir un socio técnico?",
+        options: [
+          { value: 1, text: "Depende de muchas cosas externas" },
+          { value: 2, text: "Depende de bastante gente o permisos" },
+          { value: 3, text: "Depende de algunas cosas, pero controlables" },
+          { value: 4, text: "Depende de muy poco externo" },
+          { value: 5, text: "No depende de nadie más que de mí" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "mercado",
+    name: "Validación Fría de Mercado",
+    weight: "30%",
+    pane: 3,
+    questions: [
+      {
+        id: "aeQ4",
+        title: "Dolor real vs. Deseo",
+        text: "¿Hay gente buscando activamente una solución a este problema en Google o comunidades en este momento, o tengo que educarlos para que entiendan el problema?",
+        options: [
+          { value: 1, text: "No hay búsqueda, habría que educar al mercado" },
+          { value: 2, text: "Muy poca, casi nadie lo busca" },
+          { value: 3, text: "Algo: hay interés, pero poca búsqueda activa" },
+          { value: 4, text: "Sí, hay búsqueda en Google y comunidades" },
+          { value: 5, text: "Hay mucha búsqueda activa y constante" },
+        ],
+      },
+      {
+        id: "aeQ5",
+        title: "Prueba de pago",
+        text: "¿Conozco a 3 personas específicas por su nombre que estarían dispuestas a pagarme hoy por resolver esto?",
+        options: [
+          { value: 1, text: "No conozco a nadie que pagaría" },
+          { value: 2, text: "Conozco a 1, y no estoy seguro" },
+          { value: 3, text: "Conozco a 2 o 3, pero sin confirmar" },
+          { value: 4, text: "Conozco a 3 que probablemente pagarían" },
+          { value: 5, text: "Conozco al menos a 3 que pagarían hoy mismo" },
+        ],
+      },
+      {
+        id: "aeQ6",
+        title: "Competencia existente",
+        text: "¿Ya existen competidores haciendo dinero con esto? (Si no hay competencia, suele significar que no hay mercado, no que eres un genio).",
+        options: [
+          { value: 1, text: "No hay ningún competidor visible" },
+          { value: 2, text: "Solo proyectos pequeños o de aficionados" },
+          { value: 3, text: "Hay algunos, pero no parecen ganar mucho" },
+          { value: 4, text: "Hay competidores claros facturando" },
+          { value: 5, text: "Hay competidores consolidados ganando dinero" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "oportunidad",
+    name: "Costo de Oportunidad y Riesgo",
+    weight: "25%",
+    pane: 4,
+    questions: [
+      {
+        id: "aeQ7",
+        title: "Simplicidad operativa",
+        text: "¿Una vez lanzado, requiere menos de 2 horas a la semana de mantenimiento o atención al cliente?",
+        options: [
+          { value: 1, text: "Exige mucho mantenimiento o atención" },
+          { value: 2, text: "Requiere bastante tiempo cada semana" },
+          { value: 3, text: "Algo: unas 3 a 5 horas semanales" },
+          { value: 4, text: "Poco: alrededor de 2 horas" },
+          { value: 5, text: "Casi nada: menos de 2 horas a la semana" },
+        ],
+      },
+      {
+        id: "aeQ8",
+        title: "Matador de foco",
+        text: "¿Si este proyecto fracasa, me habrá dejado aprendizajes o activos reutilizables para mi negocio o carrera principal?",
+        options: [
+          { value: 1, text: "Sería tiempo perdido sin aprovechar nada" },
+          { value: 2, text: "Dejaría muy poco aprovechable" },
+          { value: 3, text: "Algo: algunos aprendizajes sueltos" },
+          { value: 4, text: "Dejaría bastantes aprendizajes y activos útiles" },
+          { value: 5, text: "Dejaría mucho reutilizable para mi actividad principal" },
+        ],
+      },
+      {
+        id: "aeQ9",
+        title: "Distribución",
+        text: "¿Tengo un canal de distribución claro y gratuito para llegar a los primeros 100 usuarios o clientes sin gastar en publicidad?",
+        options: [
+          { value: 1, text: "No tengo canal ni idea de cómo llegar" },
+          { value: 2, text: "Tengo un canal débil o pagado" },
+          { value: 3, text: "Tengo un canal, pero con alcance limitado" },
+          { value: 4, text: "Tengo un canal claro y gratuito" },
+          { value: 5, text: "Tengo canales gratuitos y activos para llegar a cientos" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "impacto",
+    name: "Impacto y Escalabilidad",
+    weight: "15%",
+    pane: 5,
+    questions: [
+      {
+        id: "aeQ10",
+        title: "Retorno vs. Esfuerzo",
+        text: "¿El margen financiero o el impacto estratégico justifica el estrés adicional que le sumará a mi vida?",
+        options: [
+          { value: 1, text: "No justifica nada del esfuerzo o estrés" },
+          { value: 2, text: "Apenas lo justifica" },
+          { value: 3, text: "Lo justifica a medias" },
+          { value: 4, text: "Sí, lo justifica" },
+          { value: 5, text: "Lo justifica de sobra" },
+        ],
+      },
+    ],
+  },
+];
+---
+
+<section id="asistente" class="section">
+  <div class="container">
+    <div class="card-custom p-4">
+      <!-- Barra de progreso de pasos -->
+      <ol class="wizard-steps list-unstyled d-flex flex-wrap justify-content-between mb-4" id="wizardSteps">
+        {steps.map((step, i) => (
+          <li class={`wizard-step${i === 0 ? " active" : ""}`} data-step={step.id}>
+            <span class="wizard-step-dot"><i class={step.icon}></i></span>
+            <span class="wizard-step-label">{step.title}</span>
+          </li>
+        ))}
+      </ol>
+
+      <!-- Paso 0: Identificación -->
+      <div class="wizard-pane" data-pane="0">
+        <h4 class="mb-3">Sobre el proyecto</h4>
+        <p class="text-secondary">Aterriza la idea en datos antes de emocionarte.</p>
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label class="form-label fw-semibold" for="aeName">Nombre del proyecto / idea</label>
+            <input type="text" class="form-control" id="aeName" placeholder="Ej. Aplicación para organizar finanzas" />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label fw-semibold" for="aeDate">Fecha de evaluación</label>
+            <input type="date" class="form-control" id="aeDate" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Paso 1: Filtro de fricción -->
+      <div class="wizard-pane" data-pane="1" style="display: none;">
+        <h4 class="mb-3">Paso 1 — Filtro de fricción</h4>
+        <p class="text-secondary">Si respondes <strong>SÍ</strong> a cualquiera de estas dos preguntas, el proyecto se <strong>archiva de inmediato</strong>.</p>
+
+        <div class="mb-3">
+          <label class="form-label fw-semibold">1. ¿Este proyecto requiere que deje de lado mi proyecto/fuente de ingresos principal durante más de 3 meses para ver el primer dólar/resultado?</label>
+          <div class="btn-group btn-group-toggle d-block" role="group">
+            <input type="radio" class="btn-check" name="aeFilter1" id="aeFilter1Si" value="si" />
+            <label class="btn btn-outline-brand" for="aeFilter1Si">Sí</label>
+            <input type="radio" class="btn-check" name="aeFilter1" id="aeFilter1No" value="no" />
+            <label class="btn btn-outline-brand" for="aeFilter1No">No</label>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label fw-semibold">2. ¿Estoy considerando esta idea principalmente porque estoy aburrido o frustrado con mi trabajo/proyecto actual?</label>
+          <div class="btn-group btn-group-toggle d-block" role="group">
+            <input type="radio" class="btn-check" name="aeFilter2" id="aeFilter2Si" value="si" />
+            <label class="btn btn-outline-brand" for="aeFilter2Si">Sí</label>
+            <input type="radio" class="btn-check" name="aeFilter2" id="aeFilter2No" value="no" />
+            <label class="btn btn-outline-brand" for="aeFilter2No">No</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pasos 2-5: Secciones puntuadas -->
+      {sections.map((section) => (
+        <div class="wizard-pane" data-pane={section.pane} style="display: none;">
+          <h4 class="mb-3">Paso {section.pane} — {section.name} <small class="text-secondary fw-normal">(peso {section.weight})</small></h4>
+          <p class="text-secondary">Elige la opción que mejor describa tu situación real, sin maquillarla.</p>
+          {section.questions.map((q) => (
+            <div class="mb-4">
+              <label class="form-label fw-semibold mb-1" for={q.id}>{q.title}</label>
+              <p class="text-secondary small mb-2">{q.text}</p>
+              <select class="form-select ae-score" id={q.id}>
+                <option value="" selected disabled>Elige…</option>
+                {q.options.map((opt) => <option value={opt.value}>{opt.text}</option>)}
+              </select>
+            </div>
+          ))}
+        </div>
+      ))}
+
+      <!-- Resultado -->
+      <div class="wizard-pane" data-pane="6" style="display: none;">
+        <div class="text-center mb-4">
+          <div id="aeResultBadge" class="result-badge mx-auto mb-3"></div>
+          <h3 id="aeResultTitle" class="fw-bold mb-1"></h3>
+          <p id="aeResultObject" class="text-secondary mb-1"></p>
+          <p id="aeResultDate" class="text-secondary small"></p>
+        </div>
+        <div id="aeResultScore" class="text-center mb-4"></div>
+        <div id="aeResultReasons" class="mb-4"></div>
+
+        <!-- Regla de las 72 horas -->
+        <div id="aeCoolingBox" style="display: none;" class="alert alert-warning">
+          <h5 class="fw-bold mb-3"><i class="fas fa-hourglass-half me-1"></i>La regla de oro: Periodo de Enfriamiento (72 horas)</h5>
+          <p class="text-muted">Tu puntuación supera 4.2. <strong>Esta es exactamente la señal de alerta de la euforia.</strong> Antes de mover una piedra:</p>
+          <ol class="mb-3">
+            <li>Guarda la idea en un documento (Notion, Google Forms, etc.) con su puntuación.</li>
+            <li><strong>No trabajes en ella durante 3 días completos.</strong></li>
+            <li>Vuelve a responder este formulario tras las 72 horas. Si la puntuación baja de <strong>4.2</strong> cuando la emoción haya disminuido, se archiva.</li>
+          </ol>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="aeCoolingAck" />
+            <label class="form-check-label" for="aeCoolingAck">
+              He leído la Regla de las 72 Horas y me comprometo a re-evaluar esta idea con honestidad cuando baje la euforia.
+            </label>
+          </div>
+        </div>
+
+        <h5 class="mb-3">Resumen de la evaluación</h5>
+        <div class="table-responsive">
+          <table class="table table-bordered align-middle mb-0" id="aeResultTable">
+            <thead><tr><th scope="col">Pregunta</th><th scope="col">Respuesta</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div class="text-center mt-4">
+          <button type="button" class="btn btn-outline-brand" id="aeRestart"><i class="fas fa-redo me-1"></i>Reiniciar evaluación</button>
+        </div>
+      </div>
+
+      <!-- Navegación -->
+      <div class="d-flex justify-content-between align-items-center mt-4 pt-3 border-top">
+        <button type="button" class="btn btn-outline-brand" id="aePrev" disabled><i class="fas fa-chevron-left me-1"></i>Anterior</button>
+        <button type="button" class="btn btn-brand" id="aeNext">Siguiente<i class="fas fa-chevron-right ms-1"></i></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  .wizard-steps { position: relative; }
+  .wizard-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    flex: 1 1 0;
+    min-width: 72px;
+    color: var(--text-secondary);
+    opacity: 0.55;
+    transition: opacity var(--transition), color var(--transition);
+  }
+  .wizard-step.active { opacity: 1; color: var(--brand); }
+  .wizard-step.done { opacity: 0.85; color: var(--text); }
+  .wizard-step-dot {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--border);
+    color: var(--text-secondary);
+    font-size: 17px;
+    transition: background var(--transition), color var(--transition);
+  }
+  .wizard-step.active .wizard-step-dot { background: var(--brand); color: #fff; }
+  .wizard-step.done .wizard-step-dot { background: var(--brand-light); color: var(--brand); }
+  .wizard-step-label { font-size: 12px; font-weight: 600; text-align: center; }
+
+  .wizard-pane .btn-group-toggle .btn {
+    margin: 4px 6px 4px 0;
+    border-radius: var(--radius) !important;
+  }
+  .result-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    font-size: 36px;
+    color: #fff;
+  }
+  .result-badge.approved { background: #198754; }
+  .result-badge.rejected { background: #dc3545; }
+  .result-badge.reconsider { background: #fd7e14; }
+  .score-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 10px 18px;
+    border-radius: var(--radius);
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    "use strict";
+
+    var STEP_RESULT = 6;
+    var current = 0;
+
+    var panes = document.querySelectorAll(".wizard-pane");
+    var steps = document.querySelectorAll(".wizard-step");
+    var btnPrev = document.getElementById("aePrev");
+    var btnNext = document.getElementById("aeNext");
+
+    function required(name) {
+      var r = document.querySelector('input[name="' + name + '"]:checked');
+      return r ? r.value : null;
+    }
+
+    // Navegación
+    function showStep(n) {
+      current = n;
+      panes.forEach(function (p) {
+        p.style.display = parseInt(p.getAttribute("data-pane"), 10) === n ? "block" : "none";
+      });
+      steps.forEach(function (s, i) {
+        s.classList.toggle("active", i === n);
+        s.classList.toggle("done", i < n);
+      });
+      btnPrev.disabled = n === 0;
+      btnNext.innerHTML =
+        n === STEP_RESULT
+          ? ""
+          : n === 5
+            ? "Ver dictamen<i class=\"fas fa-chevron-right ms-1\"></i>"
+            : "Siguiente<i class=\"fas fa-chevron-right ms-1\"></i>";
+      btnNext.style.display = n === STEP_RESULT ? "none" : "inline-block";
+    }
+
+    btnPrev.addEventListener("click", function () {
+      if (current > 0) showStep(current - 1);
+    });
+
+    btnNext.addEventListener("click", function () {
+      if (current === 1 && (required("aeFilter1") === "si" || required("aeFilter2") === "si")) {
+        showStep(STEP_RESULT);
+        renderResult();
+        return;
+      }
+      if (current < 5 && validateStep(current)) {
+        showStep(current + 1);
+      } else if (current === 5) {
+        showStep(STEP_RESULT);
+        renderResult();
+      }
+    });
+
+    function validateStep(step) {
+      var msg = null;
+      if (step === 0) {
+        if (!document.getElementById("aeName").value.trim()) msg = "Escribe el nombre del proyecto o idea.";
+      } else if (step === 1) {
+        if (!required("aeFilter1")) msg = "Responde la pregunta 1 del filtro de fricción.";
+        else if (!required("aeFilter2")) msg = "Responde la pregunta 2 del filtro de fricción.";
+      } else if (step >= 2 && step <= 5) {
+        document.querySelectorAll('.wizard-pane[data-pane="' + step + '"] .ae-score').forEach(function (s) {
+          if (!s.value) msg = "Responde todas las preguntas de este paso (1 a 5).";
+        });
+      }
+      if (msg) {
+        alert(msg);
+        return false;
+      }
+      return true;
+    }
+
+    // --- Lógica de decisión ---
+    function evaluate() {
+      var name = document.getElementById("aeName").value.trim();
+      var date = document.getElementById("aeDate").value;
+      var f1 = required("aeFilter1");
+      var f2 = required("aeFilter2");
+
+      var scoreIds = ["aeQ1", "aeQ2", "aeQ3", "aeQ4", "aeQ5", "aeQ6", "aeQ7", "aeQ8", "aeQ9", "aeQ10"];
+      var scores = {};
+      scoreIds.forEach(function (id) {
+        scores[id] = parseInt(document.getElementById(id).value || "0", 10);
+      });
+
+      var total = 0, answered = 0;
+      scoreIds.forEach(function (id) { total += scores[id]; if (scores[id] > 0) answered++; });
+      var avg = answered === 10 ? total / 10 : null;
+
+      var filters = [];
+      if (f1 === "si") filters.push("Requeriría dejar de lado tu fuente de ingresos principal por más de 3 meses.");
+      if (f2 === "si") filters.push("La idea nace del aburrimiento o la frustración con tu situación actual.");
+
+      // Bandas
+      var band = null;
+      if (avg !== null) {
+        if (avg < 3.3) band = "archived";
+        else if (avg < 4.2) band = "waitlist";
+        else band = "executable";
+      }
+
+      var coolingAck = document.getElementById("aeCoolingAck").checked;
+
+      return {
+        name: name,
+        date: date,
+        f1: f1,
+        f2: f2,
+        scores: scores,
+        total: total,
+        avg: avg,
+        filters: filters,
+        band: band,
+        coolingAck: coolingAck,
+      };
+    }
+
+    function renderResult() {
+      var res = evaluate();
+      var badge = document.getElementById("aeResultBadge");
+      var title = document.getElementById("aeResultTitle");
+      var score = document.getElementById("aeResultScore");
+      var reasons = document.getElementById("aeResultReasons");
+      var coolingBox = document.getElementById("aeCoolingBox");
+      var tbody = document.querySelector("#aeResultTable tbody");
+
+      // Determina estado
+      var status, headline;
+      if (res.filters.length > 0) {
+        status = "archived";
+        headline = "Proyecto archivado";
+      } else if (res.band === "archived") {
+        status = "archived";
+        headline = "Archivar";
+      } else if (res.band === "waitlist") {
+        status = "waitlist";
+        headline = "Lista de Espera / Incubadora";
+      } else if (res.band === "executable") {
+        if (res.coolingAck) {
+          status = "execute";
+          headline = "Ejecutar MVP (con enfriamiento)";
+        } else {
+          status = "cooling";
+          headline = "Ejecutar MVP — pendiente de enfriamiento";
+        }
+      } else {
+        status = "archived";
+        headline = "Proyecto archivado";
+      }
+
+      var iconMap = { archived: "fa-archive", waitlist: "fa-clock", cooling: "fa-hourglass-half", execute: "fa-rocket" };
+      var colorMap = { archived: "#dc3545", waitlist: "#fd7e14", cooling: "#fd7e14", execute: "#198754" };
+      var badgeClassMap = { archived: "rejected", waitlist: "reconsider", cooling: "reconsider", execute: "approved" };
+
+      badge.className = "result-badge " + badgeClassMap[status] + " mx-auto mb-3";
+      badge.innerHTML = "<i class=\"fas " + iconMap[status] + "\"></i>";
+      title.textContent = headline;
+      title.style.color = colorMap[status];
+
+      document.getElementById("aeResultObject").textContent = res.name;
+      document.getElementById("aeResultDate").textContent = res.date ? "Evaluado el " + res.date : "";
+
+      if (res.avg !== null) {
+        score.innerHTML =
+          "<span class=\"score-pill\" style=\"color:" + colorMap[status] + "; border: 2px solid " + colorMap[status] + ";\">" +
+          "<span>Puntaje promedio:</span><span>" + res.avg.toFixed(1) + " / 5</span></span>";
+      } else {
+        score.innerHTML = "<span class=\"text-secondary\">Sin puntaje: descartado por el filtro de fricción.</span>";
+      }
+
+      coolingBox.style.display = res.band === "executable" && res.filters.length === 0 ? "block" : "none";
+
+      var html = "";
+      if (res.filters.length > 0) {
+        html += "<div class=\"alert alert-danger\"><strong>Fricción detectada — archivo inmediato:</strong><ul class=\"mb-0 mt-2\">";
+        res.filters.forEach(function (f) { html += "<li>" + f + "</li>"; });
+        html += "</ul></div>";
+      }
+      if (status === "archived" && res.filters.length === 0) {
+        html += "<div class=\"alert alert-danger\">La idea no tiene tracción suficiente, requiere demasiado esfuerzo o es fruto de la euforia inicial (promedio < 3.3).</div>";
+      }
+      if (status === "waitlist") {
+        html += "<div class=\"alert alert-warning\">La idea es buena, pero no es prioritaria. <strong>Se revisa dentro de 3 meses</strong>, cuando termines tu proyecto actual.</div>";
+      }
+      if (status === "execute") {
+        html += "<div class=\"alert alert-success\">Tienes verde para dedicarle un <strong>experimento de máximo 14 días / 20 horas de trabajo total</strong> para validar ventas.</div>";
+      }
+      if (status === "cooling") {
+        html += "<div class=\"alert alert-warning\">Tu puntuación permite ejecutar el MVP, pero <strong>primero completa el periodo de enfriamiento de 72 horas</strong> marcando el compromiso. Solo entonces tendrás luz verde.</div>";
+      }
+      reasons.innerHTML = html;
+
+      tbody.innerHTML = "";
+      var labels = {
+        aeQ1: "1. Recursos actuales",
+        aeQ2: "2. Tiempo real disponible",
+        aeQ3: "3. Dependencia externa",
+        aeQ4: "4. Dolor real vs. Deseo",
+        aeQ5: "5. Prueba de pago",
+        aeQ6: "6. Competencia existente",
+        aeQ7: "7. Simplicidad operativa",
+        aeQ8: "8. Matador de foco",
+        aeQ9: "9. Distribución",
+        aeQ10: "10. Retorno vs. Esfuerzo",
+      };
+      var rows = [
+        ["Nombre del proyecto", res.name],
+        ["Filtro: dejar proyecto principal >3 meses", res.f1 === "si" ? "Sí" : "No"],
+        ["Filtro: idea por aburrimiento/frustración", res.f2 === "si" ? "Sí" : "No"],
+      ];
+      Object.keys(labels).forEach(function (id) {
+        rows.push([labels[id], res.scores[id] ? res.scores[id] + " / 5" : "—"]);
+      });
+      rows.push(["Puntaje promedio (10 preguntas)", res.avg !== null ? res.avg.toFixed(1) + " / 5" : "—"]);
+      rows.forEach(function (row) {
+        var tr = document.createElement("tr");
+        var th = document.createElement("th");
+        th.scope = "row";
+        th.textContent = row[0];
+        var td = document.createElement("td");
+        td.textContent = row[1];
+        tr.appendChild(th);
+        tr.appendChild(td);
+        tbody.appendChild(tr);
+      });
+    }
+
+    function reset() {
+      var form = document.querySelector("#asistente .card-custom");
+      form.querySelectorAll("input[type=radio]").forEach(function (r) { r.checked = false; });
+      form.querySelectorAll(".ae-score").forEach(function (s) { s.value = ""; });
+      form.querySelectorAll("input[type=text], input[type=date]").forEach(function (i) {
+        i.value = i.id === "aeDate" ? new Date().toISOString().split("T")[0] : "";
+      });
+      var ack = document.getElementById("aeCoolingAck");
+      ack.checked = false;
+      document.getElementById("aeCoolingBox").style.display = "none";
+      current = 0;
+      showStep(0);
+      window.scrollTo({ top: document.getElementById("asistente").offsetTop - 90, behavior: "smooth" });
+    }
+
+    document.getElementById("aeRestart").addEventListener("click", reset);
+
+    if (!document.getElementById("aeDate").value) {
+      document.getElementById("aeDate").value = new Date().toISOString().split("T")[0];
+    }
+
+    showStep(0);
+  })();
+</script>
