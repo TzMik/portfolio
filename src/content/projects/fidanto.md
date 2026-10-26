@@ -1,6 +1,6 @@
 ---
 title: "Fidanto: De programador junior a Tech Lead"
-description: "Plataforma internacional de empleo en la que participé desde mis inicios como programador backend junior hasta convertirme en Tech Lead, liderando el desarrollo y escalabilidad del proyecto."
+description: "Crecí de Junior Developer a Tech Lead debido a mis capacidades de aparendizaje, entrega y desempeño."
 pub_date: 2025-09-04
 start_date: 2019-09-01
 end_date: 2023-04-01

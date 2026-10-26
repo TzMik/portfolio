@@ -1,6 +1,6 @@
 ---
-title: "Fonsecantero: Socios tecnológicos para empresas visionarias"
-description: "Mi experiencia como CTO y cofundador en Fonsecantero, una empresa dedicada a diseñar soluciones tecnológicas personalizadas, liderar equipos y transformar negocios a través de la innovación."
+title: "Fonsecantero: CTO & Co-founder"
+description: "Lideré más de 20 proyectos de tecnología y gestioné un equipo técnico de hasta 13 personas."
 pub_date: 2021-08-01
 start_date: 2023-04-01
 end_date: 2025-08-31
@@ -29,7 +29,7 @@ El cuarto cliente clave fue **Intermoda**, la exposición de moda más important
 
 A la par, desarrollamos múltiples proyectos de menor escala para otros **e-commerce y sistemas de gestión**. Esta vertiente de desarrollo de software a medida se convirtió en la **principal fuente de ingresos** de la empresa durante mi etapa allí.
 
-El último proyecto en el que participé en esta empresa fue en crear un sistema de tipo API REST para facilitar la gestión de **TikTok** Shop para la marca **Cloe**.
+El último proyecto en el que participé en esta empresa fue en crear un sistema de tipo API REST para facilitar la gestión de **TikTok Shop** para la marca **Cloe**.
 
 ### Tecnología y negocio
 Como CTO de un negocio que llegó a tener **más de 11 empleados**, aprendí a ser bastante polivalente. Me enfocaba en la **estrategia** y en el avance de los proyectos, con el objetivo principal de garantizar que se entregaran a tiempo y cumpliendo con las expectativas de los clientes.
