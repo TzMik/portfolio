@@ -9,13 +9,19 @@
  * @typedef {Object} ExperienceItem
  * @property {string}   role        Cargo
  * @property {string}   company     Empresa
+ * @property {string}   [url]       Web de la empresa (opcional, se enlaza el nombre)
  * @property {string}   location    Ubicación / modalidad (ej: "Remoto")
  * @property {string}   start       Año o fecha de inicio (ej: "2022")
  * @property {string}   [end]       Año o fecha de fin (omitir si es el actual)
  * @property {boolean}  [current]   true para el puesto actual (resalta el punto)
  * @property {string}   description Descripción breve
  * @property {string[]} [stack]     Tecnologías destacadas
+ *
+ * El campo `url` es opcional. Si lo añades, el nombre de la empresa se
+ * mostrará como enlace en src/pages/about/index.astro. Ejemplo:
+ *   { role: "…", company: "Acme", url: "https://acme.com", … }
  */
+/** @type {ExperienceItem[]} */
 export const experience = [
   {
     role: "Lead Developer",
@@ -40,6 +46,7 @@ export const experience = [
   {
     role: "Co-founder & CTO",
     company: "Fonsecantero (Guadalajara, Jalisco, México)",
+    url: "/projects/fonsecantero",
     location: "Remoto",
     start: "Abr 2023",
     end: "Sep 2025",
@@ -50,6 +57,7 @@ export const experience = [
   {
     role: "Junior Backend Developer / Full-stack Developer / Tech Lead",
     company: "Fidanto (Zapopan, Jalisco, México)",
+    url: "/projects/fidanto",
     location: "Híbrido",
     start: "Sep 2019",
     end: "May 2023",
