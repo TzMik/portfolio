@@ -1,50 +1,45 @@
 ---
-title: "Micro-ERP a Medida: Control Operativo y Blindaje Financiero para Aviesa"
-description: "Caso de éxito: Cómo centralizamos la gestión de flota y creamos un sistema de trazabilidad de efectivo que eliminó fugas de capital y redujo tiempos operativos en un 85%."
-image: "/public/assets/images/projects/erp-aviesa.webp"
+title: "Aviesa: Sistema de gestión a medida"
+description: "Sistema de Gestión que tiene como objetivo digitalizar y automatizar procesos internos de la empresa"
+image: "/public/assets/images/projects/Aviesa-MikelCanteroDev.webp"
 pub_date: 2026-02-03
 start_date: 2025-12-15
-end_date: 2026-01-31
+end_date: 2026-12-31
 tags: ["desarrollo de software a medida", "micro ERP para pymes", "sistema de control de flota vehicular", "gestión de gastos de viáticos", "software administrativo para empresas jalisco"]
+top_project: true
 draft: false
 ---
-**Rol:** Ingeniero de Software Freelance
+
+**Cliente:** Avipecuaria Específica (Aviesa)<br>
+**Rol:** Software Engineer (MikelCanteroDev)<br>
+**Periodo:** Febrero 2026 - Presente<br>
 
 **Aviesa** (Avipecuaria Específica) estaba sufriendo el problema que sufren muchos de mis clientes, estaban usando Excel por falta de conocimiento de que se puede crear un **sistema a medida para agilizar sus operaciones**. Con Excel podían trabajar sin problemas, sin embargo, vieron que con un sistema centralizado podían ahorrar horas de trabajo.
 
-Para ello, entrevisté a las personas involucradas en las operaciones para entender por completo el flujo de trabajo que querían optimizar. De ese análisis nación un micro-erp con los módulos que realmente necesitaban y con la opción de ir creciendo junto a las necesidades del cliente. Estos son los módulos que desarrollé:
+Para ello, entrevisté a las personas involucradas en las operaciones para entender por completo el flujo de trabajo que querían optimizar. De ese análisis nación un **Sistema de Gestión** sencillo con los módulos que realmente necesitaban y con la opción de ir creciendo junto a las necesidades del cliente.
 
-### Gestión Multi-Empresa y Capital Humano
-El sistema permite administrar distintas entidades fiscales bajo un mismo techo. Cada empleado está vinculado a su empresa correspondiente y, crucialmente, asignado a los vehículos que opera.
+### Gestión de flotilla
+El primer problema con una victoria rápida que identifiqué fue la **gestión de la flotilla vehicular**. Noté que utilizaban una hoja de Excel para almacenar los datos de los vehículos de la empresa y copiaban y pegaban manualmente la información en el portal del gobierno de Jalisco para verificar si tenían adeudos pendientes. Al ser una tarea periódica, **perdían tiempo valioso** mes a mes en un proceso completamente automatizable.
 
-### Gestión Vehicular
-Implementé un módulo de control de flota que automatiza lo que antes se hacía con hojas de cálculo y de forma manual:
+Para resolverlo, desarrollé un sistema que permitía registrar los vehículos, consultar las multas en el portal con un solo clic y gestionar de forma integral los gastos vehiculares (combustible, mantenimiento, reparaciones y multas).
 
-* **Alerta de vigencia:** Control de vigencia de seguro y tarjeta de circulación.
-* **Integración directa con portal de adeudos:** se integró el portal de adeudo vehicular en el mismo sistema para no tener que saltar entre plataformas.
-* **Historial de Mantenimiento:** Registro detallado de gastos por unidad para identificar qué vehículos están dejando de ser rentables.
+Más adelante, aprovechando la solución y viendo que era un problema recurrente en el mercado, empaqueté este desarrollo en un SaaS para ayudar a otras empresas con la misma necesidad: <a href="/projects/revisa-tus-multas" target="_blank">RevisaTusMultas.com</a>.
 
-### Control de gastos
-Digitalizamos el proceso de comprobación de viáticos. Los empleados registran viajes, comidas y traslados directamente en la plataforma, eliminando el extravío de tickets y agilizando el flujo de reembolsos y auditoría.
+### Sistema de gastos
+El desarrollo del módulo de gastos vehiculares sirvió como carta de presentación: nos permitió generar confianza y mostrar el enorme potencial de un sistema a medida. A su vez, ayudó al cliente a identificar otras áreas clave del negocio donde valía la pena invertir en tecnología para optimizar sus procesos internos.
 
-### Módulo de Trazabilidad de Efectivo (Cash Control)
-Debido al éxito de la primera fase, desarrollé un módulo crítico para **eliminar la incertidumbre en el manejo de efectivo**. Este sistema gestiona el flujo de dinero en tres niveles de responsabilidad:
+Con el objetivo de simplificar cómo el personal notificaba a administración los viáticos y otros egresos, creamos un **módulo unificado de reporte de gastos**. Este se integró de forma transparente con el sistema de gastos vehiculares, centralizando toda la información en un solo lugar.
 
-* **Custodia de Operadores:** Registro exacto de entregas de efectivo entre empleados.
-* **Validación Administrativa:** El departamento de administración debe confirmar la recepción física del dinero para que el movimiento sea válido, eliminando el "yo sí entregué" sin pruebas.
-* **Ingreso a Tesorería:** Una vez validado, administración marca el ingreso formal a las cuentas de la empresa, cerrando el ciclo de auditoría.
+Gracias a esta integración, logramos **consolidar a un solo canal** la recepción de reportes de gastos. Además, incorporamos **paneles de control con gráficas, reportes automatizados y filtros avanzados** para auditar con total precisión quién, cuándo y en qué se gastaba cada recurso.
 
-**El resultado:** La empresa ahora tiene visibilidad total y en tiempo real de quién tiene el dinero, dónde se originó y cuándo ingresó a caja, eliminando errores humanos y posibles fugas de capital.
+### Control de remisiones
+Otra cosa con la que batallaban mucho era con el flujo para reportar las remisiones. Como no tenían un control claro, era fácil que las cosas se traspapelaran o se perdieran en el camino.
 
-### Dashboard financiero
-Para poder tomar decisiones basadas en datos desarrollé un dashboard financieron para:
+Para centralizar todo en el sistema, les creamos un **módulo completo de registro de remisiones**. Incluía un proceso de **validación** para asegurar que los datos fueran correctos y un check o **indicador de estado** para saber fácilmente si esas remisiones ya habían sido **ingresadas en el sistema de contabilidad** o si seguían pendientes.
 
-* Filtrar gastos por categorías y rangos de fechas.
-* Identificar patrones de consumo por empleado.
-* Visualizar la salud financiera de la operación logística de un vistazo.
+Esto les quitó dolores de cabeza y le dio al equipo contable **un control mucho más claro** de qué se había procesado y qué no.
 
-### De herramienta operativa a núcleo estratégico
+### CRM
+Otro problema con el que sufrían mucho era la **creación de cotizaciones**. No tenían una fuente de datos centralizada, así que para hacer una cotización tenían que estar preguntando a cada rato los precios actualizados de los productos y las promociones que estaban activas.
 
-Lo que comenzó como una digitalización de hojas de cálculo evolucionó en un sistema de control financiero robusto. El cliente, al experimentar una **reducción del 85% en tiempos administrativos**, decidió escalar el sistema para resolver el problema más delicado de cualquier PyME: la trazabilidad del flujo de efectivo.
-
-Este proyecto demuestra que un software a medida no es un gasto estático, sino una herramienta orgánica que crece y se adapta conforme el negocio identifica nuevas áreas de oportunidad y eficiencia.
+Para resolverlo, desarrollamos este módulo centralizado e incluimos un **historial de precios por producto, el cálculo del ticket promedio por cliente y recordatorios automáticos de recompra**. Entre estas y otras funciones, logramos darle a los vendedores de Aviesa una herramienta completa para facilitar el seguimiento de sus clientes y pedidos.

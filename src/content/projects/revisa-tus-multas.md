@@ -5,7 +5,6 @@ pub_date: 2026-08-07
 start_date: 2026-08-01
 tags: ["PHP 8.5", "JavaScript", "CSS", "TailwindCSS", "Arquitectura Hexagonal", "DDD", "automación de procesos", "adeudos vehiculares", "Jalisco", "MikelCanteroDev"]
 image: "/public/assets/images/projects/revisa-tus-multas.webp"
-top_project: true
 draft: false
 ---
 

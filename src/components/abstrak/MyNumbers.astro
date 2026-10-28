@@ -1,9 +1,7 @@
 ---
-import { getProjectsAmount } from "../../lib/projects.js";
 import { getPostsAmount } from "../../lib/blog-posts.js";
 import { yearsOfExperience } from "../../data/MainInformation";
 
-const numProjects = await getProjectsAmount();
 const numPosts = await getPostsAmount();
 ---
 <section style="padding: 60px 0; background: var(--secondary);">
@@ -16,14 +14,14 @@ const numPosts = await getPostsAmount();
       <div class="col-lg-4 col-6">
         <div class="stat-item">
           <img src="/abstrak/assets/media/icon/icon-24.png" alt="Experiencia" class="stat-icon" loading="lazy" />
-          <div class="stat-number">{yearsOfExperience}+</div>
+          <div class="stat-number">+{yearsOfExperience}</div>
           <div class="stat-label">Años de experiencia</div>
         </div>
       </div>
       <div class="col-lg-4 col-6">
         <div class="stat-item">
           <img src="/abstrak/assets/media/icon/icon-13.png" alt="Proyectos" class="stat-icon" loading="lazy" />
-          <div class="stat-number">{numProjects}</div>
+          <div class="stat-number">+20</div>
           <div class="stat-label">Proyectos</div>
         </div>
       </div>
