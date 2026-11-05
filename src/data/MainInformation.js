@@ -20,7 +20,7 @@ export const socialLinks = [
     icon: "fab fa-github",
   },
   {
-    href: "https://x.com/Tzmik",
+    href: "https://x.com/mikelcanterodev",
     icon: "fab fa-x-twitter",
   },
 ];
